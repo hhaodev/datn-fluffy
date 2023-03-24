@@ -1,0 +1,472 @@
+
+.Heading {
+    display: block;
+}
+
+
+/* css gradient */
+.Heading .Heading-global h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 100px;
+    line-height: 1;
+    font-weight: 500;
+    margin: 50px;
+    background-image: linear-gradient(to right, #52b788, #3a86ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.Heading .Heading-global h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    font-family: Ttcommons,sans-serif;
+    font-size: 100px;
+    line-height: 1;
+    font-weight: 500;
+    margin: 50px;
+    background-image: linear-gradient(to right, #52b788, #3a86ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+.Heading .Heading-global a {
+    border: 1px solid #d4f559;
+    padding: 22px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left: 45%;
+    border-radius: 20px;
+    background-color: #d4f559;
+    transform: scale(1.8);
+}
+
+
+.Heading .Heading-global a:hover {
+    transition: 0.5s;
+    background-color: aquamarine;
+}
+
+.Heading .Heading-img {
+    margin-top: 100px;
+    width: 100%;
+}
+
+/* end css Heading  */
+
+/* css Hero  */
+.Hero{
+    background-color: #195e44;
+    color: #fff;
+}
+
+
+.Hero-section .Hero-wrapper h1 {
+    padding: 50px;
+    text-align: center;
+    font-family: Ivartext,sans-serif;
+    font-size: 4.375rem;
+    line-height: 1.25;
+    font-weight: 700;
+    background-image: linear-gradient(to right, #8ce137, #065fee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+.Hero-section .Hero-wrapper p {
+    margin-bottom: 30px;
+    font-size: 30px;
+    line-height: 2;
+    font-weight: 400;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.Hero-section .Hero-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: 100px;
+}
+
+.Hero-section .Hero-footer .Hero-grid {
+    background-color: #195e44;
+    padding: 20px;
+    text-align: center;
+}
+
+.Hero-section .Hero-footer .Hero-grid .Hero-color1 {
+   color: #1fbe72;
+   font-size: 50px;
+}
+
+.Hero-section .Hero-footer .Hero-grid .Hero-color2 {
+   color: #c4951b;
+   font-size: 50px;
+
+}
+
+.Hero-section .Hero-footer .Hero-grid .Hero-color3 {
+    color: #a2d3ff;
+   font-size: 50px;
+
+}
+
+.Hero-section .Hero-footer .Hero-grid p {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.Hero-footer .Hero-grid .Hero-color1, 
+.Hero-color2, .Hero-color3{
+    padding-bottom: 5px;
+}
+
+/* .Hero-footer .Hero-grid::not(:last-child) {
+    border-right: 1px solid #f8f8f8;
+} */
+.Hero img {
+    display: block;
+    height: 750px;
+    width: 100%;
+    border-radius: 50rem 50rem 0 0;
+}
+
+/* end css Hero  */
+
+/* css Padding */
+.Padding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+    background-color: #cfeeff;
+}
+
+.Padding .Padding-global h1 {
+    font-size: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-family: 'Open Sans', sans-serif;
+    background: rgb(18, 55, 144);
+    background: linear-gradient(0deg, rgb(60, 99, 189) 9%, rgb(87, 96, 224) 27%, rgb(36, 152, 209) 73%, rgb(97, 29, 146) 79%);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+
+}
+
+.Padding img {
+    width: 80%;
+    height: 90%;
+    padding: 10px;
+}
+
+/* end css padding  */
+
+/* css LearnMore  */
+/* LearnMore1 */
+
+.LearnMore {
+    /* margin: 80px; */
+    padding: 30px;
+}
+.LearnMore1 {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LearnMore1 .LearnMore-one {
+    margin: 50px;
+    margin-top: 30px;
+    flex: 1;
+}
+
+.LearnMore1 .LearnMore-one .LearnMore-text1 {
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+    background-image: linear-gradient(to right, #52b788, #3a86ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.LearnMore1 .LearnMore-one p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.LearnMore-one .right {
+   float: right;
+   width: 300px;
+   margin: 50px;
+}
+
+.LearnMore1 .LearnMore-one button {
+    line-height: 50px;
+    font-weight: bold;
+    background-color: #fffdf4;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+
+}
+
+.LearnMore1 .LearnMore-one button:hover {
+    transition: 0.5s;
+    transform: scale(1.2);
+    background-color: #d4f559;
+}
+
+.LearnMore1 .LearnMore-one a {
+    text-decoration: none;
+    padding: 50px;
+    color: black;
+
+}
+
+
+/* LearnMore2 */
+.LearnMore2 {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LearnMore2 .LearnMore-two {
+    margin: 50px;
+    margin-top: 30px;
+    flex: 1;
+}
+
+.LearnMore2 .LearnMore-two .LearnMore-text2 {
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+    background-image: linear-gradient(to right, #52b788, #3a86ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+}
+
+.LearnMore2 .LearnMore-two p {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom:  50px;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.LearnMore2 .LearnMore-two button {
+    line-height: 50px;
+    font-weight: bold;
+    background-color: #fffdf4;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.LearnMore2 .LearnMore-two button:hover {
+    transition: 0.5s;
+    transform: scale(1.2);
+    background-color: #d4f559;
+}
+
+
+.LearnMore2 .LearnMore-two a {
+    text-decoration: none;
+    padding: 50px;
+    color: black;
+
+}
+
+
+.LearnMore .left {
+    float: left;
+    margin-right: 20px;
+}
+/* end css LearnMore */
+
+/* css Review */
+
+.Review {
+    background-color: #fbf6e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    width: 100%;
+}
+
+.Review img {
+    width: 100%;
+    height: 600px;
+}
+
+.Review .Review-content {
+    padding: 30px;
+    margin-left: 50px;
+    flex: 1;
+}
+
+.Review .Review-content h3 {
+    font-family: Ivartext,sans-serif;
+    font-size: 2.125rem;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 35px;
+    background-image: linear-gradient(to right, #52b788, #3a86ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.Review .Review-content p {
+    margin-bottom: 1em;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+.Review .Review-content .Text {
+    display: flex;
+    padding-top: .45rem;
+    padding-bottom: .45rem;
+    align-items: center;
+    font-size: 1.375rem;
+    line-height: 1.5;
+    font-weight: bold;
+    text-transform: capitalize;
+
+    position: relative;
+
+
+}
+
+.Review .Review-content .Text a .bx {
+    position: absolute;
+    margin-left: 160px;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(0);
+}
+
+.Review .Review-content .Text a {
+    position: absolute;
+    padding-top: 25px;
+    text-decoration: none;
+    color: black; 
+}
+
+.Review .Review-content .Text a:hover .bx {
+    transform: translateX(10px);
+}
+
+.Review .Review-content .Text a:hover {
+    box-shadow: 0 2px #1fbe72;
+}
+
+.Review .Review-content .bx {
+    padding: 10px;
+    font-size: 26px;
+    color: #1fbe72;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* end css Review  */
+
+/* css Consultant */
+
+.Consultant {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 439px;
+    background-color: #151d34;
+}
+
+.Consultant .Consultant-content {
+    margin: 200px;
+}
+
+.Consultant .Consultant-content h2 {
+    color: #fff;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: Ivartext,sans-serif;
+    font-size: 2.75rem;
+    line-height: 1.25;
+    font-weight: 700;
+
+   
+    
+}
+
+/* .Consultant .Consultant-content h2::before {
+    content: '';
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin-right: 0.5em;
+    transform: rotate(-135deg);
+    vertical-align: middle;
+} */
+
+.Consultant .Consultant-content button {
+   margin-left: 30%;
+   border: 2px solid #d4f559;
+   border-radius: .25rem;
+   background-color: #d4f559;
+   border-radius: 20px;
+   
+}
+
+.Consultant .Consultant-content button:hover {
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
+.Consultant .Consultant-content button a {
+    text-decoration: none;
+    font-size: 25px;
+    padding: 35px;
+    line-height: 45px;
+    color: black;
+    font-weight: bold;
+}
+
+.Consultant .Consultant-img1 {
+    float: left;
+    width: 333px;
+    height: 439px;
+}
+
+.Consultant .Consultant-img2 {
+    float: right;
+    width: 333px;
+    height: 439px;
+}
