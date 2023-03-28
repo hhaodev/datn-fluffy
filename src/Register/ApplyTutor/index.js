@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Button, Checkbox, Form, Input, Select } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import "../ApplyTutor/ApplyTutor.css"
+import imgsignin from '../../assets/images/backgroundsignin.png'
 
 
 function ApplyTutor() {
@@ -24,13 +25,23 @@ function ApplyTutor() {
         </Form.Item>
     );
     return (
-        <div className="container__apply">
-            <div className="Navigation">
-                <h1 className="logo"><Link to="/">Fluffy</Link></h1>
+        <div className="apply_gr">
+            <div className="apply__logo">
+                <h1><Link to="/" className="logo__apply">Fluffy</Link></h1>
             </div>
 
-            <div className="apply">
-                <h1 className="apply-heading">Apply to become a tutor</h1>
+            <div className="img-apply">
+                {/* <h2 className="signin__h1">welcome to Fluffy, sign in now to reach your goal !!!</h2> */}
+                <img src={imgsignin} alt="" className="img__bgapply" />
+            </div>
+
+            <div className="apply__all">
+                <h1 className="apply__heading">Apply to become a Tutor</h1>
+                <button className="apply__social">
+                    <i className="bx bxl-google apply__social-icon " />
+                    <span className="apply_social-text">Sign up with google</span>
+                </button>
+                <div className="apply__or"><span>Or</span></div>
                 <Form
                     name="basic"
                     onFinish={onFinish}
@@ -38,6 +49,7 @@ function ApplyTutor() {
                     autoComplete="off"
                     layout="vertical"
                 >
+                    <div className="apply__firstlast">
                     <Form.Item
                         label="Firstname"
                         name="firstname"
@@ -47,8 +59,9 @@ function ApplyTutor() {
                                 message: 'Please input your firstname!',
                             },
                         ]}
+                        className="apply__first"
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "35px" }}  />
                     </Form.Item>
                     <Form.Item
                         label="Lastname"
@@ -60,8 +73,11 @@ function ApplyTutor() {
                             },
                         ]}
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "35px" }} />
                     </Form.Item>
+                    </div>
+
+                    <div className="apply__email">
                     <Form.Item
                         label="Email"
                         name="email"
@@ -77,8 +93,12 @@ function ApplyTutor() {
                             },
                         ]}
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "35px" }} />
                     </Form.Item>
+                    </div>
+
+
+                    <div className="apply__password">
                     <Form.Item
                         label="Password"
                         name="password"
@@ -88,8 +108,9 @@ function ApplyTutor() {
                                 message: 'Please input your password!',
                             },
                         ]}
+                        className="apply__pass"
                     >
-                        <Input.Password style={{ height: "50px" }} />
+                        <Input.Password style={{ height: "40px" }} />
                     </Form.Item>
                     <Form.Item
                         name="confirm"
@@ -111,8 +132,11 @@ function ApplyTutor() {
                             }),
                         ]}
                     >
-                        <Input.Password style={{ height: "50px" }} />
+                        <Input.Password style={{ height: "40px" }} />
                     </Form.Item>
+                    </div>
+
+                    <div className="apply__phone">
                     <Form.Item
                         name="remember"
                         valuePropName="checked"
@@ -120,6 +144,7 @@ function ApplyTutor() {
                             offset: 8,
                             span: 16,
                         }}
+                        
                     >
                     </Form.Item>
                     <Form.Item
@@ -131,14 +156,16 @@ function ApplyTutor() {
                                 message: 'Please input your phone number!',
                             },
                         ]}
+                        className="apply__phonepadding"
                     >
                         <Input
                             addonBefore={prefixSelector}
                             style={{
-                                height: '50px',
+                                height: '40px',
                             }}
                         />
                     </Form.Item>
+
                     <Form.Item
                         name="gender"
                         label="Gender"
@@ -155,24 +182,33 @@ function ApplyTutor() {
                             <Option value="other">Other</Option>
                         </Select>
                     </Form.Item>
+                    {/* </div>
+
+                    <div className="signup__gender"> */}
+                    
+                    </div>
+
+                    <div className="apply__submit">
                     <Form.Item
                         wrapperCol={{
                             offset: 8,
                             span: 16,
                         }}
                     >
-                        <Button className="create-button" type="primary" htmlType="submit">
-                            Create an account
+                        <Button className="apply-button" type="primary" htmlType="submit">
+                            Sign up
                         </Button>
                     </Form.Item>
-                    <div class="footer">
-                        <p>Already have an account?</p>
-                        <button><Link to="/signin">Sign in</Link></button>
+                    </div>
+
+
+                    <div className="apply__footer">
+                        <p className="apply__want">Want to become a tutor?</p>
+                        <button className="apply__apply"><Link to="/applytutor">Apply today</Link></button>
                     </div>
                 </Form>
             </div>
         </div>
-
     );
 }
 

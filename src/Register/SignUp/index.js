@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { Button, Checkbox, Form, Input, Select } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import "../SignUp/SignUp.css"
+import imgsignin from '../../assets/images/backgroundsignin.png'
+
 
 function SignUp() {
     const onFinish = (values) => {
@@ -23,17 +25,23 @@ function SignUp() {
         </Form.Item>
     );
     return (
-        <div className="contai">
-            <div className="Navigation">
-                <h1 className="logo"><Link to="/">Fluffy</Link></h1>
+        <div className="signup__gr">
+            <div className="signup__logo">
+                <h1><Link to="/" className="logo__signup">Fluffy</Link></h1>
             </div>
-            <div className="signup">
-                <h1 className="signup-heading">Sign up</h1>
-                <button className="signup-social">
-                    <i className="bx bxl-google signup-social-icon " />
-                    <span className="signup-social-text">Signup with google</span>
+
+            <div className="img-signup">
+                {/* <h2 className="signin__h1">welcome to Fluffy, sign in now to reach your goal !!!</h2> */}
+                <img src={imgsignin} alt="" className="img__bgsignup" />
+            </div>
+
+            <div className="signup__all">
+                <h1 className="signup__heading">Sign up</h1>
+                <button className="signup__social">
+                    <i className="bx bxl-google signup__social-icon " />
+                    <span className="signup_social-text">Sign up with google</span>
                 </button>
-                <div className="signup-or"><span>Or</span></div>
+                <div className="signup__or"><span>Or</span></div>
                 <Form
                     name="basic"
                     onFinish={onFinish}
@@ -41,6 +49,7 @@ function SignUp() {
                     autoComplete="off"
                     layout="vertical"
                 >
+                    <div className="signup__firstlast">
                     <Form.Item
                         label="Firstname"
                         name="firstname"
@@ -50,8 +59,9 @@ function SignUp() {
                                 message: 'Please input your firstname!',
                             },
                         ]}
+                        className="signup__first"
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "35px" }}  />
                     </Form.Item>
                     <Form.Item
                         label="Lastname"
@@ -63,8 +73,11 @@ function SignUp() {
                             },
                         ]}
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "35px" }} />
                     </Form.Item>
+                    </div>
+
+                    <div className="signup__email">
                     <Form.Item
                         label="Email"
                         name="email"
@@ -80,8 +93,12 @@ function SignUp() {
                             },
                         ]}
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "35px" }} />
                     </Form.Item>
+                    </div>
+
+
+                    <div className="signup__password">
                     <Form.Item
                         label="Password"
                         name="password"
@@ -91,8 +108,9 @@ function SignUp() {
                                 message: 'Please input your password!',
                             },
                         ]}
+                        className="signup__pass"
                     >
-                        <Input.Password style={{ height: "50px" }} />
+                        <Input.Password style={{ height: "40px" }} />
                     </Form.Item>
                     <Form.Item
                         name="confirm"
@@ -114,8 +132,11 @@ function SignUp() {
                             }),
                         ]}
                     >
-                        <Input.Password style={{ height: "50px" }} />
+                        <Input.Password style={{ height: "40px" }} />
                     </Form.Item>
+                    </div>
+
+                    <div className="signup__phone">
                     <Form.Item
                         name="remember"
                         valuePropName="checked"
@@ -123,6 +144,7 @@ function SignUp() {
                             offset: 8,
                             span: 16,
                         }}
+                        
                     >
                     </Form.Item>
                     <Form.Item
@@ -134,14 +156,16 @@ function SignUp() {
                                 message: 'Please input your phone number!',
                             },
                         ]}
+                        className="signup__phonepadding"
                     >
                         <Input
                             addonBefore={prefixSelector}
                             style={{
-                                height: '50px',
+                                height: '40px',
                             }}
                         />
                     </Form.Item>
+
                     <Form.Item
                         name="gender"
                         label="Gender"
@@ -158,6 +182,13 @@ function SignUp() {
                             <Option value="other">Other</Option>
                         </Select>
                     </Form.Item>
+                    {/* </div>
+
+                    <div className="signup__gender"> */}
+                    
+                    </div>
+
+                    <div className="signup__submit">
                     <Form.Item
                         wrapperCol={{
                             offset: 8,
@@ -165,12 +196,15 @@ function SignUp() {
                         }}
                     >
                         <Button className="signin-button" type="primary" htmlType="submit">
-                            Sumbit
+                            Sign up
                         </Button>
                     </Form.Item>
-                    <div className="footer">
-                        <p>Want to become a tutor?</p>
-                        <button><Link to="/applytutor">Apply today</Link></button>
+                    </div>
+
+
+                    <div className="signup__footer">
+                        <p className="signup__want">Want to become a tutor?</p>
+                        <button className="signup__apply"><Link to="/applytutor">Apply today</Link></button>
                     </div>
                 </Form>
             </div>
