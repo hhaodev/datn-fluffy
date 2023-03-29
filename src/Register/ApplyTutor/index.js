@@ -200,12 +200,6 @@ function ApplyTutor() {
                         </Button>
                     </Form.Item>
                     </div>
-
-
-                    <div className="apply__footer">
-                        <p className="apply__want">Want to become a tutor?</p>
-                        <button className="apply__apply"><Link to="/applytutor">Apply today</Link></button>
-                    </div>
                 </Form>
             </div>
         </div>
