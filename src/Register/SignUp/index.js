@@ -1,16 +1,59 @@
-import { Link } from "react-router-dom";
-import { Button, Checkbox, Form, Input, Select } from 'antd';
+import { Link, useNavigate, } from "react-router-dom";
+import { Button, Form, Input, message, Select } from 'antd';
+import { gql, useMutation } from '@apollo/client';
+import { UserType, UserGender } from '../../constraint'
+import { useState } from "react";
 import "../SignUp/SignUp.css"
+import { useDispatch } from "react-redux";
+import { setVerify } from "../../Redux/features/verifySlice";
+import { setUserdata } from "../../Redux/features/userSlice";
+
+
 
 function SignUp() {
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const { Option } = Select;
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const SIGN_UP = gql`
+    mutation signUp($input: SignUpDto!) {
+    signUp(input: $input  ) {
+        message
+        success
+    }
+    }
+`;
+    const [signUp, { error, loading }] = useMutation(SIGN_UP);
+    
+    const [status, setStatus] = useState(false)
+    const onFinish = (user) => {
+        const datatemp = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            password: user.password,
+            phoneNumber: user.phoneNumber,
+            gender: user.gender,
+            type : UserType.STUDENT
+        }
+        const getData =  async () => {
+            const result  = await signUp({
+                variables: {
+                    input: datatemp,
+                },
+            });
+            setStatus(result.data.signUp.success);
+            dispatch(setVerify(user.email))
+            dispatch(setUserdata(user.lastName))
+        }
+        getData()
+        
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    const { Option } = Select;
+
     const prefixSelector = (
+        
         <Form.Item name="prefix" noStyle>
             <Select
                 style={{
@@ -22,8 +65,12 @@ function SignUp() {
             </Select>
         </Form.Item>
     );
+
+    
+
     return (
         <div className="contai">
+            {status && navigate("/verifi")}
             <div className="Navigation">
                 <h1 className="logo"><Link to="/">Fluffy</Link></h1>
             </div>
@@ -43,19 +90,20 @@ function SignUp() {
                 >
                     <Form.Item
                         label="Firstname"
-                        name="firstname"
+                        name="firstName"
                         rules={[
                             {
                                 required: true,
                                 message: 'Please input your firstname!',
                             },
                         ]}
+
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "50px" }}  />
                     </Form.Item>
                     <Form.Item
                         label="Lastname"
-                        name="lastname"
+                        name="lastName"
                         rules={[
                             {
                                 required: true,
@@ -80,7 +128,7 @@ function SignUp() {
                             },
                         ]}
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "50px" }}  />
                     </Form.Item>
                     <Form.Item
                         label="Password"
@@ -117,16 +165,7 @@ function SignUp() {
                         <Input.Password style={{ height: "50px" }} />
                     </Form.Item>
                     <Form.Item
-                        name="remember"
-                        valuePropName="checked"
-                        wrapperCol={{
-                            offset: 8,
-                            span: 16,
-                        }}
-                    >
-                    </Form.Item>
-                    <Form.Item
-                        name="phone"
+                        name="phoneNumber"
                         label="Phone Number"
                         rules={[
                             {
@@ -139,7 +178,8 @@ function SignUp() {
                             addonBefore={prefixSelector}
                             style={{
                                 height: '50px',
-                            }}
+                            }}                  
+                            name="phoneNumber"
                         />
                     </Form.Item>
                     <Form.Item
@@ -152,11 +192,12 @@ function SignUp() {
                             },
                         ]}
                     >
-                        <Select placeholder="select your gender">
-                            <Option value="male">Male</Option>
-                            <Option value="female">Female</Option>
-                            <Option value="other">Other</Option>
+                        
+                        <Select  placeholder="select your gender">
+                            <Option value={UserGender.MALE}>Male</Option>
+                            <Option value={UserGender.FEMALE}>Female</Option>
                         </Select>
+                        
                     </Form.Item>
                     <Form.Item
                         wrapperCol={{
@@ -164,7 +205,7 @@ function SignUp() {
                             span: 16,
                         }}
                     >
-                        <Button className="signin-button" type="primary" htmlType="submit">
+                        <Button  className="signin-button" type="primary" htmlType="submit">
                             Sumbit
                         </Button>
                     </Form.Item>

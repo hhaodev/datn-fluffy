@@ -1,16 +1,55 @@
-import { Link } from "react-router-dom";
-import { Button, Checkbox, Form, Input, Select } from 'antd';
+import { Link, useNavigate,  } from "react-router-dom";
+import { Button, Form, Input, Select } from 'antd';
+import { gql, useMutation } from '@apollo/client';
+import { UserGender, UserType } from '../../constraint';
+import { useState } from "react";
 import "../ApplyTutor/ApplyTutor.css"
+import { useDispatch } from "react-redux";
+import { setVerify } from "../../Redux/features/verifySlice";
+
 
 
 function ApplyTutor() {
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const { Option } = Select;
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [status, setStatus] = useState(false)
+    const SIGN_UP = gql`
+    mutation signUp($input: SignUpDto!) {
+    signUp(input: $input  ) {
+        message
+        success
+    }
+    }
+`;
+
+    const [signUp, { error, loading }] = useMutation(SIGN_UP);
+    
+    const onFinish = (user) => {
+        const datatemp = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            password: user.password,
+            phoneNumber: user.phoneNumber,
+            gender: user.gender,
+            type : UserType.STUDENT
+        }
+        const getData =  async () => {
+            const result  = await signUp({
+                variables: {
+                    input: datatemp,
+                },
+            });
+            setStatus(result.data.signUp.success);
+            dispatch(setVerify(user.email))
+        }
+        getData()
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    const { Option } = Select;
+    
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select
@@ -23,12 +62,13 @@ function ApplyTutor() {
             </Select>
         </Form.Item>
     );
+    
     return (
         <div className="container__apply">
+            {status && navigate("/verifi")}
             <div className="Navigation">
                 <h1 className="logo"><Link to="/">Fluffy</Link></h1>
             </div>
-
             <div className="apply">
                 <h1 className="apply-heading">Apply to become a tutor</h1>
                 <Form
@@ -40,7 +80,7 @@ function ApplyTutor() {
                 >
                     <Form.Item
                         label="Firstname"
-                        name="firstname"
+                        name="firstName"
                         rules={[
                             {
                                 required: true,
@@ -52,7 +92,7 @@ function ApplyTutor() {
                     </Form.Item>
                     <Form.Item
                         label="Lastname"
-                        name="lastname"
+                        name="lastName"
                         rules={[
                             {
                                 required: true,
@@ -60,7 +100,7 @@ function ApplyTutor() {
                             },
                         ]}
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "50px" }}/>
                     </Form.Item>
                     <Form.Item
                         label="Email"
@@ -111,19 +151,10 @@ function ApplyTutor() {
                             }),
                         ]}
                     >
-                        <Input.Password style={{ height: "50px" }} />
+                        <Input.Password style={{ height: "50px" }}/>
                     </Form.Item>
                     <Form.Item
-                        name="remember"
-                        valuePropName="checked"
-                        wrapperCol={{
-                            offset: 8,
-                            span: 16,
-                        }}
-                    >
-                    </Form.Item>
-                    <Form.Item
-                        name="phone"
+                        name="phoneNumber"
                         label="Phone Number"
                         rules={[
                             {
@@ -137,6 +168,7 @@ function ApplyTutor() {
                             style={{
                                 height: '50px',
                             }}
+                            
                         />
                     </Form.Item>
                     <Form.Item
@@ -148,12 +180,12 @@ function ApplyTutor() {
                                 message: 'Please select gender!',
                             },
                         ]}
-                    >
-                        <Select placeholder="select your gender">
-                            <Option value="male">Male</Option>
-                            <Option value="female">Female</Option>
-                            <Option value="other">Other</Option>
+                    >      
+                        <Select  placeholder="select your gender">
+                            <Option value={UserGender.MALE}>Male</Option>
+                            <Option value={UserGender.FEMALE}>Female</Option>
                         </Select>
+                        
                     </Form.Item>
                     <Form.Item
                         wrapperCol={{
@@ -161,11 +193,11 @@ function ApplyTutor() {
                             span: 16,
                         }}
                     >
-                        <Button className="create-button" type="primary" htmlType="submit">
+                        <Button className="signin-button" type="primary" htmlType="submit">
                             Create an account
                         </Button>
                     </Form.Item>
-                    <div class="footer">
+                    <div className="footer">
                         <p>Already have an account?</p>
                         <button><Link to="/signin">Sign in</Link></button>
                     </div>

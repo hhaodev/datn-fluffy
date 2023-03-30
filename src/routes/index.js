@@ -5,6 +5,8 @@ import SignIn from '../Register/SignIn';
 import SignUp from '../Register/SignUp';
 import ApplyTutor from '../Register/ApplyTutor';
 import ForgotPassWord from '../Register/ForgotPass';
+import Verifi from '../Register/Verifi';
+
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -14,6 +16,7 @@ const publicRoutes = [
     { path: '/signup', component: SignUp, layout: null},
     { path: '/applytutor', component: ApplyTutor, layout: null},
     { path: '/forgotpassword', component: ForgotPassWord, layout: null},
+    { path: '/verifi', component: Verifi, layout: null},
 ];
 
 const privateRoutes = [

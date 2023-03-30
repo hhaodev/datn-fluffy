@@ -1,18 +1,60 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
+import { gql, useMutation } from '@apollo/client';
+import { useState } from "react";
 import "./SignIn.css"
+import { useDispatch } from "react-redux";
+import { setUserdata } from "../../Redux/features/userSlice";
 
 
 
 function SignIn() {
-
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const SIGNIN = gql`
+    mutation signIn($input: SignInDto!) {
+        signIn(input: $input  ) {
+        lastName    
+        token
+        refreshToken
+    }
+    }
+`;
+    const [signIn, { loading }] = useMutation(SIGNIN);
+    const [error, setError] = useState("")
     const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+        const datatemp = {
+            email: values.username,
+            password: values.password
+        }
+        const getData = async () => {
+            setError('')
+            try {
+                const result = await signIn({
+                    variables: {
+                        input: datatemp,
+                    },
+                });
+                localStorage.setItem("token", JSON.stringify(result.data.signIn.token))
+                dispatch(setUserdata(result.data.signIn.lastName))
+                navigate("/")
+
+            } catch (error) {
+                setError(error.message);
+            }
+        }
+        getData()
+
     };
-    
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
+
     return (
+
         <div className="container">
+            {error && alert(error)}
             <div className="Navigation">
                 <h1 className="logo"><Link to="/">Fluffy</Link></h1>
             </div>
@@ -31,6 +73,7 @@ function SignIn() {
                         remember: true,
                     }}
                     onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
                 >
                     <Form.Item
                         label="Username"

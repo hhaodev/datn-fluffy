@@ -1,4 +1,4 @@
-import Navbar from '../../components/Navbar';
+
 import "../Home/Home.css"
 import heading from "../../assets/images/heading.png"
 import hero from "../../assets/images/hero.png"
