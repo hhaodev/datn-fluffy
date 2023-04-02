@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Pacifico&display=swap');
+
+.home__fluffy {
+    
+}
+
+/* css Heading  */
 
 .Heading {
     display: block;
+    background-color: #fffdf4;
+}
+
+.Heading-global {
+    background-color: #fffdf4 !important;
 }
 
 
@@ -9,15 +21,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
     font-size: 100px;
-    line-height: 1;
     font-weight: 500;
-    margin: 50px;
     background-image: linear-gradient(to right, #52b788, #3a86ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-family: 'Pacifico', cursive;
 }
 
 .Heading .Heading-global h2 {
@@ -25,7 +35,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
-    font-family: Ttcommons,sans-serif;
+    font-family: 'Pacifico', cursive;
     font-size: 100px;
     line-height: 1;
     font-weight: 500;
@@ -47,6 +57,7 @@
     border-radius: 20px;
     background-color: #d4f559;
     transform: scale(1.8);
+    font-family: 'Catamaran', sans-serif;
 }
 
 
@@ -62,6 +73,7 @@
 
 /* end css Heading  */
 
+
 /* css Hero  */
 .Hero{
     background-color: #195e44;
@@ -72,7 +84,7 @@
 .Hero-section .Hero-wrapper h1 {
     padding: 50px;
     text-align: center;
-    font-family: Ivartext,sans-serif;
+    font-family: 'Catamaran', sans-serif;
     font-size: 4.375rem;
     line-height: 1.25;
     font-weight: 700;
@@ -90,6 +102,7 @@
     font-weight: 400;
     padding-left: 4rem;
     padding-right: 4rem;
+    font-family: 'Catamaran', sans-serif;
 }
 
 .Hero-section .Hero-footer {
@@ -125,6 +138,8 @@
 .Hero-section .Hero-footer .Hero-grid p {
     font-size: 26px;
     font-weight: bold;
+    font-family: 'Catamaran', sans-serif;
+
 }
 
 .Hero-footer .Hero-grid .Hero-color1, 
@@ -158,7 +173,7 @@
     font-size: 40px;
     padding-left: 100px;
     padding-right: 100px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Catamaran', sans-serif;
     background: rgb(18, 55, 144);
     background: linear-gradient(0deg, rgb(60, 99, 189) 9%, rgb(87, 96, 224) 27%, rgb(36, 152, 209) 73%, rgb(97, 29, 146) 79%);
     -webkit-background-clip: text;
@@ -210,7 +225,8 @@
     font-weight: 600;
     margin-bottom: 30px;
     color: black;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Catamaran', sans-serif;
+
 }
 
 .LearnMore-one .right {
@@ -273,8 +289,7 @@
     font-size: 20px;
     margin-bottom:  50px;
     color: black;
-    font-family: 'Open Sans', sans-serif;
-
+    font-family: 'Catamaran', sans-serif;
 }
 
 .LearnMore2 .LearnMore-two button {
@@ -330,7 +345,7 @@
 }
 
 .Review .Review-content h3 {
-    font-family: Ivartext,sans-serif;
+    font-family: 'Catamaran', sans-serif;
     font-size: 2.125rem;
     line-height: 1.25;
     font-weight: 700;
@@ -346,6 +361,7 @@
     font-size: 1.25rem;
     line-height: 1.3;
     font-weight: 500;
+    font-family: 'Catamaran', sans-serif;
 }
 
 .Review .Review-content .Text {
@@ -357,10 +373,7 @@
     line-height: 1.5;
     font-weight: bold;
     text-transform: capitalize;
-
     position: relative;
-
-
 }
 
 .Review .Review-content .Text a .bx {
@@ -417,7 +430,7 @@
     color: #fff;
     margin-bottom: 30px;
     text-align: center;
-    font-family: Ivartext,sans-serif;
+    font-family: 'Catamaran', sans-serif;
     font-size: 2.75rem;
     line-height: 1.25;
     font-weight: 700;
@@ -425,16 +438,6 @@
    
     
 }
-
-/* .Consultant .Consultant-content h2::before {
-    content: '';
-    display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
-    margin-right: 0.5em;
-    transform: rotate(-135deg);
-    vertical-align: middle;
-} */
 
 .Consultant .Consultant-content button {
    margin-left: 30%;

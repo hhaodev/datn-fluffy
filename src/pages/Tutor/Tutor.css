@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Catamaran:wght@200&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Signika+Negative:wght@300&family=Signika:wght@300;500&display=swap');
 .Every-tutor {
     background-color: #195e44;
     color: #fffdf4;
@@ -50,6 +51,7 @@
 
 .Every-tutor .Every-grid .Every-section-small p {
     font-size: 1.5rem;
+    
 }
 
 .Every-tutor .Every-grid .Every-section-small .every-text {
@@ -104,6 +106,8 @@
 .whytutor-global {
     padding-right: 5%;
     padding-left: 5%;
+    background-color: #fffdf4;
+
 }
 
 .whytutor-global .whytutor-large {
@@ -158,6 +162,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .margin-bottom .whytutor-medium-p {
@@ -173,6 +178,7 @@
     grid-template-columns: 1fr 1fr;
     -ms-grid-rows: auto;
     grid-template-rows: auto;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .margin-bottom .whytutor-medium-p .layout-content1 .textsize {
@@ -239,6 +245,7 @@
     margin-bottom: 1rem;
     font-size: 1.375rem;
     line-height: 1.25;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .whytutor-grid .col-item h3 {
@@ -247,6 +254,7 @@
     font-size: 2.125rem;
     line-height: 1.25;
     font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .whytutor-grid .col-item p {
@@ -255,7 +263,8 @@
     font-size: 1.25rem;
     line-height: 1.3;
     font-weight: 400;
-}
+    font-family: 'Open Sans', sans-serif;
+} 
 
 /* end css Whytutor */
 

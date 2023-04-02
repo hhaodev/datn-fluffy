@@ -13,8 +13,9 @@ function Verifi() {
     const VERIFY = gql`
     mutation verifyCode($input: CodeVerifyDto!) {
         verifyCode(input: $input  ) {
-        token
-    }
+            token,
+            refreshToken
+        }
     }
 `;
     const [verify, { loading }] = useMutation(VERIFY);
@@ -31,9 +32,10 @@ function Verifi() {
                     },
 
                 });
-                // localStorage.setItem("token", JSON.stringify(result.data.verifyCode.token))
-                navigate("/login")
-
+                alert("Đăng ký thành công!")
+                localStorage.setItem("token", result.data.verifyCode.token)
+                localStorage.setItem("refreshToken", result.data.verifyCode.refreshToken)
+                navigate("/onboardstudent")
             } catch (error) {
                 alert(error.message)
             }

@@ -1,7 +1,9 @@
+
 .Footer {
     display: block;
     padding-right: 5%;
     padding-left: 5%;
+    background-color: #fffdf4;
 }
 
 .Footer .Footer-global {

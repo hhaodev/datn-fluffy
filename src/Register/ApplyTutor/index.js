@@ -1,4 +1,4 @@
-import { Link, useNavigate,  } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { Button, Form, Input, Select } from 'antd';
 import { gql, useMutation } from '@apollo/client';
 import { UserGender, UserType } from '../../constraint';
@@ -6,7 +6,7 @@ import { useState } from "react";
 import "../ApplyTutor/ApplyTutor.css"
 import { useDispatch } from "react-redux";
 import { setVerify } from "../../Redux/features/verifySlice";
-
+import imgsignin from '../../assets/images/backgroundsignin.png'
 
 
 function ApplyTutor() {
@@ -24,7 +24,7 @@ function ApplyTutor() {
 `;
 
     const [signUp, { error, loading }] = useMutation(SIGN_UP);
-    
+
     const onFinish = (user) => {
         const datatemp = {
             firstName: user.firstName,
@@ -33,10 +33,10 @@ function ApplyTutor() {
             password: user.password,
             phoneNumber: user.phoneNumber,
             gender: user.gender,
-            type : UserType.STUDENT
+            type: UserType.STUDENT
         }
-        const getData =  async () => {
-            const result  = await signUp({
+        const getData = async () => {
+            const result = await signUp({
                 variables: {
                     input: datatemp,
                 },
@@ -49,7 +49,7 @@ function ApplyTutor() {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    
+
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select
@@ -62,15 +62,26 @@ function ApplyTutor() {
             </Select>
         </Form.Item>
     );
-    
+
     return (
-        <div className="container__apply">
+        <div className="apply_gr">
             {status && navigate("/verifi")}
-            <div className="Navigation">
-                <h1 className="logo"><Link to="/">Fluffy</Link></h1>
+            <div className="apply__logo">
+                <h1><Link to="/" className="logo__apply">Fluffy</Link></h1>
             </div>
-            <div className="apply">
-                <h1 className="apply-heading">Apply to become a tutor</h1>
+
+            <div className="img-apply">
+                {/* <h2 className="signin__h1">welcome to Fluffy, sign in now to reach your goal !!!</h2> */}
+                <img src={imgsignin} alt="" className="img__bgapply" />
+            </div>
+
+            <div className="apply__all">
+                <h1 className="apply__heading">Apply to become a Tutor</h1>
+                <button className="apply__social">
+                    <i className="bx bxl-google apply__social-icon " />
+                    <span className="apply_social-text">Sign up with google</span>
+                </button>
+                <div className="apply__or"><span>Or</span></div>
                 <Form
                     name="basic"
                     onFinish={onFinish}
@@ -78,30 +89,35 @@ function ApplyTutor() {
                     autoComplete="off"
                     layout="vertical"
                 >
-                    <Form.Item
-                        label="Firstname"
-                        name="firstName"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your firstname!',
-                            },
-                        ]}
-                    >
-                        <Input style={{ height: "50px" }} />
-                    </Form.Item>
-                    <Form.Item
-                        label="Lastname"
-                        name="lastName"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your lastname!',
-                            },
-                        ]}
-                    >
-                        <Input style={{ height: "50px" }}/>
-                    </Form.Item>
+                    <div className="apply__firstlast">
+                        <Form.Item
+                            label="Firstname"
+                            name="firstName"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your firstname!',
+                                },
+                            ]}
+                            className="apply__first"
+                        >
+                            <Input style={{ height: "35px" }} />
+                        </Form.Item>
+                        <Form.Item
+                            label="Lastname"
+                            name="lastName"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your lastname!',
+                                },
+                            ]}
+                        >
+                        <Input style={{ height: "35px" }} />
+                    </Form.Item >
+                    </div >
+
+                    <div className="apply__email">
                     <Form.Item
                         label="Email"
                         name="email"
@@ -117,8 +133,12 @@ function ApplyTutor() {
                             },
                         ]}
                     >
-                        <Input style={{ height: "50px" }} />
+                        <Input style={{ height: "35px" }} />
                     </Form.Item>
+                    </div>
+
+
+                    <div className="apply__password">
                     <Form.Item
                         label="Password"
                         name="password"
@@ -128,8 +148,9 @@ function ApplyTutor() {
                                 message: 'Please input your password!',
                             },
                         ]}
+                        className="apply__pass"
                     >
-                        <Input.Password style={{ height: "50px" }} />
+                        <Input.Password style={{ height: "40px" }} />
                     </Form.Item>
                     <Form.Item
                         name="confirm"
@@ -151,10 +172,23 @@ function ApplyTutor() {
                             }),
                         ]}
                     >
-                        <Input.Password style={{ height: "50px" }}/>
+                        <Input.Password style={{ height: "40px" }} />
+                    </Form.Item >
+                    </div >
+
+                    <div className="apply__phone">
+                    <Form.Item
+                        name="remember"
+                        valuePropName="checked"
+                        wrapperCol={{
+                            offset: 8,
+                            span: 16,
+                        }}
+                        
+                    >
                     </Form.Item>
                     <Form.Item
-                        name="phoneNumber"
+                        name="phone"
                         label="Phone Number"
                         rules={[
                             {
@@ -162,15 +196,17 @@ function ApplyTutor() {
                                 message: 'Please input your phone number!',
                             },
                         ]}
+                        className="apply__phonepadding"
                     >
                         <Input
                             addonBefore={prefixSelector}
                             style={{
-                                height: '50px',
+                                height: '40px',
                             }}
                             
                         />
                     </Form.Item>
+
                     <Form.Item
                         name="gender"
                         label="Gender"
@@ -187,24 +223,27 @@ function ApplyTutor() {
                         </Select>
                         
                     </Form.Item>
+                    {/* </div>
+
+                    <div className="signup__gender"> */}
+                    
+                    </div>
+
+                    <div className="apply__submit">
                     <Form.Item
                         wrapperCol={{
                             offset: 8,
                             span: 16,
                         }}
                     >
-                        <Button className="signin-button" type="primary" htmlType="submit">
-                            Create an account
-                        </Button>
-                    </Form.Item>
-                    <div className="footer">
-                        <p>Already have an account?</p>
-                        <button><Link to="/signin">Sign in</Link></button>
-                    </div>
-                </Form>
-            </div>
-        </div>
-
+                        <Button className="apply-button" type="primary" htmlType="submit">
+                Sign up
+            </Button>
+        </Form.Item>
+                    </div >
+                </Form >
+            </div >
+        </div >
     );
 }
 

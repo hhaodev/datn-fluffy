@@ -1,44 +1,134 @@
-* {
+
+*{
     box-sizing: border-box;
 }
 
-.container__apply {
-    width: 100%;
-    min-height: 100vh;
-    background: rgb(238, 174, 202);
-    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+
+.apply_gr{
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 100px 0;
+    justify-content: space-around;
+    /* padding: 100px 0; */
 }
 
-/* css Navigation */
+.img-apply .img__bgapply {
+    margin-left: 50px;
+    margin-top: 100px;
+    max-width: 700px;
+    max-height: 640px;
+}   
 
-.Navigation {
-    width: 100%;
-    height: 100px;
-    box-sizing: border-box;
+.apply__firstlast {
+    display: flex;
+}
+
+.apply__heading {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #52b788, #3a86ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+}
+
+.apply__first {
+    margin-right: 45px;
+}
+
+.apply__password {
+    display: flex;
+    position: relative;
+    top: -24px;
+}
+
+.apply__pass {
+    margin-right: 45px;
+}
+
+.apply__phone {
+    position: relative;
+    top: -33px;
+    display: flex;
+
+}
+
+.apply__phonepadding {
+    padding-right: 10px;
+}
+
+.apply__submit {
+    position: relative;
+    top: -30px;
+    margin-left: 60px;
+}
+
+.apply__footer {
+    display: flex;
+    position: relative;
+    top: -40px;
+}
+
+.apply__want {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.apply__email {
+    position: relative;
+    top: -12px;
+}
+
+.apply__want {
+    padding-right: 140px;
+}
+
+.apply__footer .apply__apply {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #0e0ecf;
+
+}
+
+.apply__footer .apply__apply:hover {
+    background-color: #dcb4f0;
+    color: white;
+}
+
+.apply__logo {
     top: 0;
+    left: 50px;
     position: absolute;
-    position: fixed;
 }
+
+.apply__logo .logo__apply {
+    font-size: 50px;
+    text-decoration: none;
+    padding-left: 20px;
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+}
+
+
+
 
 .Navigation .logo {
     position: absolute;
     font-size: 60px;
     font-weight: 600;
     padding-left: 60px;
-    background: rgb(63, 97, 174);
-    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
+    background: rgb(63,97,174);
+    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;
 }
 
 .Navigation .logo a {
-    background: rgb(63, 97, 174);
-    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
+    background: rgb(63,97,174);
+    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;
@@ -46,21 +136,6 @@
 
 }
 
-/* .Nav-content .content {
-    width: 290px;
-    height: 250px;
-    position: absolute;
-    position: fixed;
-    right: 10px;
-    top: 0;
-    font-size: 60px;
-    font-weight: 600;
-    background: rgb(63,97,174);
-    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
-    -webkit-background-clip: text;
-    color: transparent;
-    background-clip: text;
-} */
 
 /* css icons */
 .display .bx {
@@ -70,8 +145,8 @@
     top: 0;
     font-size: 60px;
     font-weight: 600;
-    background: rgb(63, 97, 174);
-    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
+    background: rgb(63,97,174);
+    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;
@@ -88,71 +163,46 @@
 
 /* end css icons */
 
+/* css signup */
 
-
-
-
-/* end css Navigation */
-
-.apply {
+.apply__all {
     padding: 20px 75px;
     background-color: #fff;
     width: 100%;
-    max-width: 600px;
+    max-width: 550px;
     border-radius: 20px;
+    height: 680px;
 }
 
-.apply p {
-    font-feature-settings: "liga" off;
-    font-family: TT Commons, sans-serif;
-    font-size: 18px;
-    line-height: 22px;
-    color: rgb(108, 105, 105);
-}
-
-.apply label {
-    font-weight: 600;
+.signin-button {
+    background-color: #6850a4;
 }
 
 
-.apply-heading {
-    font-size: 35px;
-    font-weight: bold;
-    color: #373941;
-    text-align: center;
-    margin-bottom: 35px;
-    background-clip: text;
-    background: linear-gradient(to right, #52b788, #3a86ff);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.apply-social {
-    padding: 10px;
-    border-radius: 20px;
+.apply__social {
+    margin-left: 30px;
+    border-radius: 10px;
     display: block;
-    width: 100%;
+    width: 80%;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
     border: 0;
     background-color: #4c6ff4;
     display: flex;
     align-items: center;
-    cursor: pointer;
     outline: none;
     box-shadow: 0 5px 10px 0 rgba(76, 111, 244, 0.5);
 }
 
-.apply-social:hover {
-    transition: 0.5s;
-    transform: scale(1.2);
+.apply__social:hover {
+    background-color: #014cce;
 }
-
-.apply-social-icon {
-    width: 60px;
-    height: 60px;
+.apply__social-icon {
+    margin: 10px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
     background-color: white;
     display: flex;
@@ -162,43 +212,41 @@
     font-size: 30px;
 }
 
-.apply-social-text {
+.apply__social-text {
     display: block;
     margin: 0 auto;
 }
 
 
-/* css or */
-.apply-or {
+
+.apply__or {
     text-align: center;
     font-size: 15px;
     color: #999;
-    margin: 40px auto;
+    margin: 10px auto;
     position: relative;
+    bottom: -10px;
 }
 
-.apply-or span {
+.apply__or span {
     display: inline-block;
-    padding: 10px 30px;
+    padding: 10px 10px;
     background-color: #fff;
     position: relative;
     z-index: 2;
 }
 
-.apply-or::after {
+.apply__or::after {
     content: "";
     width: 100%;
-    height: 0.5px;
+    height: 1px;
     background-color: #999;
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-50%);
 }
 
-/* end css or */
-
-.apply-label {
+.signup-label {
     font-size: 20px;
     color: black;
     font-weight: 700px;
@@ -207,19 +255,28 @@
     cursor: pointer;
 }
 
-.apply-input {
+.signup-input {
     display: block;
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     border-radius: 20px;
-    outline: none;
     border: 1px solid rgb(157, 154, 154);
+    outline: none;
     font-family: "Poppins", sans-serif;
     font-size: 18px;
     margin-bottom: 30px;
 }
 
-.apply-submit {
+.select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.signup-submit {
     padding: 25px;
     color: white;
     font-size: 28px;
@@ -238,98 +295,29 @@
     margin-bottom: 25px;
 }
 
-.apply-submit:hover {
+.signup-submit:hover {
     transition: 1s;
     background-color: #0e7413;
 }
 
-.apply-already {
+.signup-already {
     text-align: center;
     font-size: 16px;
     color: #999;
 }
 
-.apply-login-link {
+.signup-login-link {
     color: #2979ff;
     text-decoration: none;
 }
 
-/* captcha */
+/* end css signup */
 
 
-.apply-form .captcha {
-    margin-top: 50px;
-}
-
-.apply .captcha {
-    margin: 15px 0px;
-
-}
-
-.apply .captcha label {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-
-.apply .captcha .preview {
-    color: black;
-    width: 100%;
-    text-align: center;
-    height: 20px;
-    line-height: 50px;
-    letter-spacing: 8px;
-    border: 1px dashed black;
-    font-family: "monospace";
-
-
-    padding: 25px;
-    font-size: 18px;
-    margin-top: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.apply .captcha .preview span {
-    display: inline-block;
-    user-select: none;
-}
-
-.apply .captcha .captcha-form {
-    display: flex;
-}
-
-.apply .captcha .captcha-form input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #888;
-}
-
-.apply .captcha .captcha-form .captcha-refresh {
-    width: 40px;
-    border: none;
-    outline: none;
-    background: #4c6ff4;
-    color: #eee;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-/* end css captcha  */
-
-/* css explanatoryText */
-
-.apply .apply-form .explanatoryText {
-    font-family: TT Commons, sans-serif;
-    font-size: 15px;
-    padding-bottom: 10px;
-    /* line-height: 22px; */
-    color: #a1a3a5;
-}
 
 /* css forgot pass */
 
-.apply a {
+.signup a {
     font-size: 15px;
     float: right;
     color: #1f6cb2;
@@ -338,35 +326,35 @@
 /* end css forgot pass  */
 
 /* css footer  */
-.apply .footer {
+.signup .footer {
     display: flex;
     justify-content: space-between;
 }
 
-.apply .footer p {
+.signup .footer p {
     font-size: 20px;
     margin-top: 2px;
 }
 
-.apply .footer button a {
+.signup .footer button a {
     text-decoration: none;
     padding: 10px;
     line-height: 8px;
     color: #1c8754;
 }
-
-.apply .footer button {
+.signup .footer button {
     background-color: white;
     border: 2px solid #1c8754;
     border-radius: 10px;
 }
 
-.apply .footer button:hover {
+.signup .footer button:hover {
     background-color: rgb(213, 242, 230);
     transition: 1s;
     transform: scale(1.2);
 }
 
+/* end css footer */
 
 /* css Footer-bottom */
 
@@ -374,6 +362,7 @@
     position: fixed;
     padding: 10px;
     right: 0;
+    top: 90%;
 }
 
 .Footer-bottom a {
@@ -396,8 +385,8 @@
     bottom: 0;
     font-size: 60px;
     font-weight: 600;
-    background: rgb(63, 97, 174);
-    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
+    background: rgb(63,97,174);
+    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;

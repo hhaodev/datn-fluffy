@@ -12,7 +12,7 @@ import consu2 from "../../assets/images/consultant2.png"
 
 function Home() {
     return (
-        <div>
+        <section className="home__fluffy">
             <div className="Heading">
                 <div className="Heading-global">
                     <h1>Every student needs a</h1>
@@ -102,7 +102,7 @@ function Home() {
                 </div>
                 <img src={consu2} alt="" className="Consultant-img2" />
             </div>
-        </div>
+        </section>
 
     );
 }

@@ -6,7 +6,6 @@ import App from './App';
 import client from './configGQL';
 import { store } from './Redux/store'
 import { Provider } from 'react-redux'
-// import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
