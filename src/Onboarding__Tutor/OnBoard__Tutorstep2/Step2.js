@@ -34,7 +34,7 @@ function OnboardTutor__Step2() {
 };
   return ( 
     <div className="step2__body">
-      <h1 className="step2__logo">Onboarding</h1>
+      <h1 className="step2__logo">Fluffy</h1>
       <p className="step2__p">Thank you for signing up for our account, let's start your goals with these steps</p>
       <div>
         <img src={imgright} className="step2__img"></img>

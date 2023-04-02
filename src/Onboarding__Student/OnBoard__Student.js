@@ -15,14 +15,14 @@ import React, { useState } from 'react';
 import imgright from '../assets/images/onboarding1.png'
 
 
+
+
 function OnBoard__Student() {
 
 // 
 const [isDivVisible, setIsDivVisible] = useState(false);
 
-function handleButtonClick() {
-  setIsDivVisible(true);
-}
+
   // 
   const [school, setschool] = React.useState('');
   const handleChange = (event) => {
@@ -36,7 +36,7 @@ function handleButtonClick() {
       <h1 className="Logo_onboarding">Onboarding</h1>
       <p className="p">Thank you for signing up for our account, let's start your goals with these steps</p>
       <div>
-        <img src={imgright} className="img_onboarding"></img>
+        {/* <img src={imgright} className="img_onboarding"></img> */}
       </div>
     <div className="form-wrapper">
       <div className="content">
@@ -70,10 +70,9 @@ function handleButtonClick() {
            </div>
 
     <div>
-    <button className="plus_onboard" onClick={handleButtonClick}><i class="fa-solid fa-circle-plus"></i></button>
+    <button className="plus_onboard"><i class="fa-solid fa-circle-plus"></i></button>
     {isDivVisible && <div/>}
     </div>
-           {/* <Button className="plus"><i class="fa-solid fa-circle-plus"></i></Button> */}
            <Stack spacing={2} direction="row"></Stack>
 
           

@@ -69,7 +69,7 @@ function OnboardTutor__Step1() {
  
     return ( 
       <div className="step1__body">
-      <h1 className="step1__logo">Onboarding</h1>
+      <h1 className="step1__logo">Fluffy</h1>
       <p className="step1__p">Thank you for signing up for our account, let's start your goals with these steps</p>
       <div>
         <img src={imgright} className="step1__img"></img>

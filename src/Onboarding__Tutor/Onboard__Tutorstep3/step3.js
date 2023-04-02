@@ -55,7 +55,7 @@ const props = {
 
     return ( 
         <div className="step3__body">
-        <h1 className="step3__logo">Onboarding</h1>
+        <h1 className="step3__logo">Fluffy</h1>
         <p className="step3__p">Thank you for signing up for our account, let's start your goals with these steps</p>
         <div>
           <img src={imgright} className="step3__img"></img>
