@@ -1,15 +1,16 @@
-
-*{
+* {
     box-sizing: border-box;
 }
 
 
 
-.signup__gr{
+.signup__gr {
     display: flex;
     align-items: center;
     justify-content: space-around;
     /* padding: 100px 0; */
+    background: rgb(253, 29, 248);
+    background: linear-gradient(90deg, rgba(253, 29, 248, 1) 0%, rgba(131, 58, 180, 1) 0%, rgba(252, 176, 69, 1) 100%);
 }
 
 .img-signup .img__bgsignup {
@@ -17,7 +18,7 @@
     margin-top: 100px;
     max-width: 700px;
     max-height: 640px;
-}   
+}
 
 .signup__firstlast {
     display: flex;
@@ -120,16 +121,16 @@
     font-size: 60px;
     font-weight: 600;
     padding-left: 60px;
-    background: rgb(63,97,174);
-    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
+    background: rgb(63, 97, 174);
+    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;
 }
 
 .Navigation .logo a {
-    background: rgb(63,97,174);
-    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
+    background: rgb(63, 97, 174);
+    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;
@@ -146,8 +147,8 @@
     top: 0;
     font-size: 60px;
     font-weight: 600;
-    background: rgb(63,97,174);
-    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
+    background: rgb(63, 97, 174);
+    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;
@@ -171,12 +172,8 @@
     background-color: #fff;
     width: 100%;
     max-width: 550px;
-    border-radius: 20px;
+    border-radius: 50px;
     height: 700px;
-}
-
-.signin-button {
-    background-color: #6850a4;
 }
 
 
@@ -200,6 +197,7 @@
 .signup__social:hover {
     background-color: #014cce;
 }
+
 .signup__social-icon {
     margin: 10px;
     width: 40px;
@@ -343,6 +341,7 @@
     line-height: 8px;
     color: #1c8754;
 }
+
 .signup .footer button {
     background-color: white;
     border: 2px solid #1c8754;
@@ -386,8 +385,8 @@
     bottom: 0;
     font-size: 60px;
     font-weight: 600;
-    background: rgb(63,97,174);
-    background: linear-gradient(0deg, rgba(63,97,174,1) 9%, rgba(87,93,183,1) 27%, rgba(196,76,223,1) 73%, rgba(196,76,223,1) 79%);
+    background: rgb(63, 97, 174);
+    background: linear-gradient(0deg, rgba(63, 97, 174, 1) 9%, rgba(87, 93, 183, 1) 27%, rgba(196, 76, 223, 1) 73%, rgba(196, 76, 223, 1) 79%);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;

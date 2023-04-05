@@ -10,9 +10,9 @@ import OnboardTutor__Step1 from '../Onboarding__Tutor/Onboard__Tutorstep1/Step1'
 import OnboardTutor__Step2 from '../Onboarding__Tutor/OnBoard__Tutorstep2/Step2';
 import OnboardTutor__Step3 from '../Onboarding__Tutor/Onboard__Tutorstep3/step3';
 import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/step4';
-import Homestudent from '../StudentPages/HomeStudent/Home';
 import Mycourse from '../StudentPages/MyCourse/Course';
 import Verifi from '../Register/Verifi';
+import Homestudent from '../StudentPages/HomeStudent/Home';
 
 
 const publicRoutes = [
