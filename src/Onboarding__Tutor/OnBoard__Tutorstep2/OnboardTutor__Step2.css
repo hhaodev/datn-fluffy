@@ -1,18 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Pacifico&family=Signika+Negative:wght@300&display=swap');
-body {
-  background: linear-gradient(to right, #654ea3, #eaafc8);
+
+.step2__body{
+  background: #FFF;
   box-sizing: border-box;
+  height: 100%; 
 }
+
 .step2__wrapper {
-  background-color: #EBC7E6; 
+  background-color: #87CEFA	;  
   padding: 20px;
   width: 600px;
   height: 650px;
   margin:  0 auto;
   margin-top: 30px;
   border-radius: 50px;
+  position: relative;
+  top: 100px;
+  bottom: -100px;
 }
+
+.step2__rangepicker {
+  margin-top: 5px;
+  width: 440px;
+}
+
+.step2__year {
+  font-weight: bold;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.step2__buttonsub {
+  margin-right: 20px;
+}
+
+.step2__footer {
+  position: relative;
+  top: -40px;
+  right: -200px;
+}
+
+.step2__step {
+  width: 1000px;
+  position: relative;
+  top: 100px;
+  right: -280px;
+}
+
 
 .step2__content {
   display: flex;
@@ -28,7 +62,7 @@ body {
   color: #fff;
   font-family: 'Signika Negative', sans-serif;
   font-weight: 700;
-  text-shadow: 3px 3px 0px #e04d8d;
+  text-shadow: 3px 3px 0px #1857d4;
   position: relative;
   top: -30px;
   padding: 20px;
@@ -95,12 +129,6 @@ body {
   position: absolute;
 }
 
-.step2__body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
 .step2__img  {
   max-width: 700px;
@@ -116,8 +144,8 @@ body {
   left: 80px;
   font-size: 55px;
   font-family: 'Signika Negative', sans-serif;
-  text-shadow: 3px 3px 0px #e04d8d;
-  color: #EBC7E6;
+  text-shadow: 3px 3px 0px #22a2e1;
+  color: #2334e8;
 }
 
 .step2__body .step2__p {

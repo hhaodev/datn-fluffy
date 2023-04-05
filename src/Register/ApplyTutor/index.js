@@ -1,17 +1,55 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { Button, Form, Input, Select } from 'antd';
+import { gql, useMutation } from '@apollo/client';
+import { UserGender, UserType } from '../../constraint';
+import { useState } from "react";
 import "../ApplyTutor/ApplyTutor.css"
+import { useDispatch } from "react-redux";
+import { setVerify } from "../../Redux/features/verifySlice";
 import imgsignin from '../../assets/images/backgroundsignin.png'
 
 
 function ApplyTutor() {
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const { Option } = Select;
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [status, setStatus] = useState(false)
+    const SIGN_UP = gql`
+    mutation signUp($input: SignUpDto!) {
+    signUp(input: $input  ) {
+        message
+        success
+    }
+    }
+`;
+
+    const [signUp, { error, loading }] = useMutation(SIGN_UP);
+
+    const onFinish = (user) => {
+        const datatemp = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            password: user.password,
+            phoneNumber: user.phoneNumber,
+            gender: user.gender,
+            type: UserType.STUDENT
+        }
+        const getData = async () => {
+            const result = await signUp({
+                variables: {
+                    input: datatemp,
+                },
+            });
+            setStatus(result.data.signUp.success);
+            dispatch(setVerify(user.email))
+        }
+        getData()
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    const { Option } = Select;
+
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select
@@ -24,8 +62,10 @@ function ApplyTutor() {
             </Select>
         </Form.Item>
     );
+
     return (
         <div className="apply_gr">
+            {status && navigate("/verifi")}
             <div className="apply__logo">
                 <h1><Link to="/" className="logo__apply">Fluffy</Link></h1>
             </div>
@@ -50,32 +90,32 @@ function ApplyTutor() {
                     layout="vertical"
                 >
                     <div className="apply__firstlast">
-                    <Form.Item
-                        label="Firstname"
-                        name="firstname"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your firstname!',
-                            },
-                        ]}
-                        className="apply__first"
-                    >
-                        <Input style={{ height: "35px" }}  />
-                    </Form.Item>
-                    <Form.Item
-                        label="Lastname"
-                        name="lastname"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your lastname!',
-                            },
-                        ]}
-                    >
+                        <Form.Item
+                            label="Firstname"
+                            name="firstName"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your firstname!',
+                                },
+                            ]}
+                            className="apply__first"
+                        >
+                            <Input style={{ height: "35px" }} />
+                        </Form.Item>
+                        <Form.Item
+                            label="Lastname"
+                            name="lastName"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your lastname!',
+                                },
+                            ]}
+                        >
                         <Input style={{ height: "35px" }} />
-                    </Form.Item>
-                    </div>
+                    </Form.Item >
+                    </div >
 
                     <div className="apply__email">
                     <Form.Item
@@ -133,8 +173,8 @@ function ApplyTutor() {
                         ]}
                     >
                         <Input.Password style={{ height: "40px" }} />
-                    </Form.Item>
-                    </div>
+                    </Form.Item >
+                    </div >
 
                     <div className="apply__phone">
                     <Form.Item
@@ -163,6 +203,7 @@ function ApplyTutor() {
                             style={{
                                 height: '40px',
                             }}
+                            
                         />
                     </Form.Item>
 
@@ -175,12 +216,12 @@ function ApplyTutor() {
                                 message: 'Please select gender!',
                             },
                         ]}
-                    >
-                        <Select placeholder="select your gender">
-                            <Option value="male">Male</Option>
-                            <Option value="female">Female</Option>
-                            <Option value="other">Other</Option>
+                    >      
+                        <Select  placeholder="select your gender">
+                            <Option value={UserGender.MALE}>Male</Option>
+                            <Option value={UserGender.FEMALE}>Female</Option>
                         </Select>
+                        
                     </Form.Item>
                     {/* </div>
 
@@ -196,13 +237,13 @@ function ApplyTutor() {
                         }}
                     >
                         <Button className="apply-button" type="primary" htmlType="submit">
-                            Sign up
-                        </Button>
-                    </Form.Item>
-                    </div>
-                </Form>
-            </div>
-        </div>
+                Sign up
+            </Button>
+        </Form.Item>
+                    </div >
+                </Form >
+            </div >
+        </div >
     );
 }
 

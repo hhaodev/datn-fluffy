@@ -12,6 +12,7 @@ import OnboardTutor__Step3 from '../Onboarding__Tutor/Onboard__Tutorstep3/step3'
 import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/step4';
 import Homestudent from '../StudentPages/HomeStudent/Home';
 import Mycourse from '../StudentPages/MyCourse/Course';
+import Verifi from '../Register/Verifi';
 
 
 const publicRoutes = [
@@ -20,6 +21,7 @@ const publicRoutes = [
     { path: '/resources', component: Resources, },
     { path: '/signin', component: SignIn, layout: null},
     { path: '/signup', component: SignUp, layout: null},
+    { path: '/verifi', component: Verifi, layout: null},
     { path: '/applytutor', component: ApplyTutor, layout: null},
     { path: '/forgotpassword', component: ForgotPassWord, layout: null},
     { path: '/onboardstudent', component: Onboarding__Student, layout: null},

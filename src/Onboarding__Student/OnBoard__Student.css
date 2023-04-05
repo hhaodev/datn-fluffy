@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Catamaran:wght@200&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Signika+Negative:wght@300&family=Signika:wght@300;500&display=swap');
 body {
-  background: linear-gradient(to right, #654ea3, #eaafc8);
+  /* background: linear-gradient(to right, #654ea3, #eaafc8); */
   box-sizing: border-box;
 }
 .form-wrapper {
-  background-color: #EBC7E6; 
+  background-color: #87CEFA	;  
   padding: 20px;
   width: 500px;
   height: 550px;
@@ -22,12 +22,12 @@ body {
   flex-direction: column;
 }
 
-.content .h2 {
+.content .student__h2 {
   font-size: 50px;
   color: #fff;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
-  text-shadow: 3px 3px 0px #e04d8d;
+  text-shadow: 3px 3px 0px #1857d4;
 }
 
 .content .welcome {
@@ -37,7 +37,7 @@ body {
   font-size: 25px;
   color: white;
   font-family: 'Signika Negative', sans-serif;
-  text-shadow: 3px 3px 0px #e04d8d;
+  text-shadow: 3px 3px 0px #1857d4;
 }
 
 .form__dropdown {
@@ -52,6 +52,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.student__logo{
+  position: absolute;
+  top: 20px;
+  left: 80px;
+  font-size: 55px;
+  font-family: 'Signika Negative', sans-serif;
+  text-shadow: 3px 3px 0px #22a2e1;
+  color: #2334e8;
 }
 
 .bottom {
@@ -113,9 +123,9 @@ body {
   position: absolute;
   bottom: 50px;
   font-size: 25px;
+  font-weight: bold;
   font-family: 'Signika Negative', sans-serif;
-  text-shadow: 3px 3px 0px #f82f86;
-  color: #ffffff;
+  color: #2168c5;
 }
 
 .bottom .skip {
@@ -123,4 +133,23 @@ body {
   font-size: 30px;
   font-family: 'Signika Negative', sans-serif;
 }
+
+.ant-picker {
+  width: 100%;
+}
+
+.ant-btn {
+  margin-top: 50px;
+}
+
+.student__buttonsub {
+  margin-right: 20px;
+  margin-left: 80px;
+}
+
+.ant-form {
+  max-height: 100%;
+  height: 232px;
+}
+
 

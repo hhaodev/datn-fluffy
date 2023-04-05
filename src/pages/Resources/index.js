@@ -6,8 +6,6 @@ import consu1 from "../../assets/images/consultant1.png"
 
 
 
-
-
 function Resources() {
     return (
         <div>
