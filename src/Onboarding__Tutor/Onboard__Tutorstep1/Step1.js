@@ -2,11 +2,8 @@ import '../../Onboarding__Tutor/Onboard__Tutorstep1/OnboardTutor__Step1.css'
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 import imgright from '../../assets/images/backgroundsignin.png';
-<<<<<<< HEAD
-=======
 import { Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
->>>>>>> 4a0f398beb35323079b01ba523ab2d5f50c21aac
 import { Upload } from 'antd';
 import { Select } from 'antd';
 import { DatePicker, Space } from 'antd';
@@ -60,10 +57,6 @@ function OnboardTutor__Step1() {
   const handleChange = (event) => {
     setschool(event.target.value);
   };
-<<<<<<< HEAD
-
-=======
->>>>>>> 4a0f398beb35323079b01ba523ab2d5f50c21aac
   const props = {
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     listType: 'picture',
@@ -148,9 +141,9 @@ function OnboardTutor__Step1() {
             
           </div>
           <div className='step1__footer'>
-            <Link to="/onboardtutorstep2"><Button type="primary" htmlType="submit" className="step1__buttonsub">
+            <Button type="primary" htmlType="submit" className="step1__buttonsub">
               Submit
-            </Button></Link>
+            </Button>
             <Link to="/onboardtutorstep2"><Button>Skip</Button></Link>
           </div>
         </div>

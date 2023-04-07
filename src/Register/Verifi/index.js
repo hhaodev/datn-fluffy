@@ -2,8 +2,7 @@ import { Button, Form, Input } from 'antd';
 import { useNavigate, } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { gql, useMutation } from '@apollo/client';
-import { useState } from "react";
-import { UserType } from '../../constraint';
+
 
 
 
@@ -18,9 +17,8 @@ function Verifi() {
             refreshToken
             type
         }
-    }
-`;
-    const [verify, { loading }] = useMutation(VERIFY);
+    }`;
+    const [verify, { }] = useMutation(VERIFY);
     const onFinish = (values) => {
         const datatemp = {
             code: values.code,
@@ -31,8 +29,7 @@ function Verifi() {
                 const result = await verify({
                     variables: {
                         input: datatemp,
-                    },
-                    
+                    }
                 });
                 alert("Đăng ký thành công!")
                 localStorage.setItem("token", result.data.verifyCode.token)
@@ -48,14 +45,16 @@ function Verifi() {
             }
         }
         getData()
-
+        
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+
     return (
         <>
-            <span>vui long kiem tra email: </span><span>{dataVerify}</span>
+            {Object.keys(dataVerify).length > 0 && <span>vui long kiem tra email: {dataVerify}</span>}
             <Form
                 name="basic"
                 labelCol={{
@@ -98,6 +97,7 @@ function Verifi() {
                 </Form.Item>
             </Form>
         </>
+        // </div>
     );
 }
 

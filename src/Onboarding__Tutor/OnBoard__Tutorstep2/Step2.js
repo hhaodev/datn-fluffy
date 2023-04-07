@@ -15,16 +15,12 @@ import { Steps } from 'antd';
 
 
 function OnboardTutor__Step2() {
-<<<<<<< HEAD
-
-=======
   const { RangePicker } = DatePicker;
 
   const [school, setschool] = React.useState('');
   const handleChange = (event) => {
     setschool(event.target.value);
   };
->>>>>>> 4a0f398beb35323079b01ba523ab2d5f50c21aac
 
   const description = 'Academic Level';
   const items = [

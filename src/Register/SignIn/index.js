@@ -26,14 +26,14 @@ function SignIn() {
     }
 `;
     const [signIn, { loading }] = useMutation(SIGNIN);
-    const [error, setError] = useState("")
+    
     const onFinish = (values) => {
         const datatemp = {
             email: values.username,
             password: values.password
         }
         const getData = async () => {
-            setError('')
+            
             try {
                 const result = await signIn({
                     variables: {
@@ -52,7 +52,6 @@ function SignIn() {
                 dispatch(setCurrentUser(userData))
                 navigate("/")
             } catch (error) {
-                // setError(error.message);
                 alert(error.message);
 
             }

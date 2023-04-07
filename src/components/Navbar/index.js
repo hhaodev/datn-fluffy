@@ -15,7 +15,7 @@ function Navbar() {
             <ul className="Navbar-col">
                 <li><Link to="/tutor">Become a Tutor</Link></li>
                 <li><Link to="/resources">Resources</Link></li>
-                { !(Object.values(currentUser).length === 0)  ? <li>Hello, {currentUser.lastName}</li> : <li><Link to="/signin">Login</Link></li> }
+                { !(Object.values(currentUser).length === 0)  ? <li>Hi, {currentUser.lastName}</li> : <li><Link to="/signin">Login</Link></li> }
             </ul>
         </div>
     );

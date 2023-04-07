@@ -33,7 +33,7 @@ function ApplyTutor() {
             password: user.password,
             phoneNumber: user.phoneNumber,
             gender: user.gender,
-            type: UserType.STUDENT
+            type: UserType.TUTOR
         }
         const getData = async () => {
             const result = await signUp({
