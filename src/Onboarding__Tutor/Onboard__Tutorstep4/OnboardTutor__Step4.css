@@ -1,0 +1,23 @@
+.step4__body .step4__logo{
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    font-size: 55px;
+    font-family: 'Signika Negative', sans-serif;
+    text-shadow: 3px 3px 0px #22a2e1;
+    color: #2334e8;
+  }
+
+  .step4__step {
+    width: 1000px;
+    position: relative;
+    top: 100px;
+    right: -280px;
+  }
+
+  .step4__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 250px;
+  }

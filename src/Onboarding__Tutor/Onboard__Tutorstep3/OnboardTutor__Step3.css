@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Pacifico&family=Signika+Negative:wght@300&display=swap');
-body {
-  background: linear-gradient(to right, #654ea3, #eaafc8);
-  box-sizing: border-box;
-}
+
 .step3__wrapper {
-  background-color: #EBC7E6; 
+  background-color: #87CEFA	;   
   padding: 20px;
   width: 600px;
   margin:  0 auto;
-  margin-top: 91px;
+  margin-top: 129px;
   border-radius: 50px;
   margin-bottom: 20px;
 }
@@ -28,7 +25,7 @@ body {
   color: #fff;
   font-family: 'Signika Negative', sans-serif;
   font-weight: 700;
-  text-shadow: 3px 3px 0px #e04d8d;
+  text-shadow: 3px 3px 0px #1857d4;
   position: relative;
   top: -30px;
   padding: 10px;
@@ -59,19 +56,8 @@ body {
   align-items: center;
 }
 
-.step3__bottom {
-  position: relative;
-  margin-top: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.step3__bottom .step3__button {
-    margin-right: 20px;
-    padding: 10px;
-    background-color: #e04d8d;
-}
+
 
 .step3__plus {
   position: relative;
@@ -94,18 +80,9 @@ body {
 }
 
 .step3__body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #FFF;
+  box-sizing: border-box;
   height: 100%;
-}
-
-.step3__img  {
-  max-width: 700px;
-  max-height: 450px;
-  margin-left: 100px;
-  margin-top: 160px;
-  /* margin-right: 120px; */
 }
 
 .step3__body .step3__logo{
@@ -114,8 +91,21 @@ body {
   left: 80px;
   font-size: 55px;
   font-family: 'Signika Negative', sans-serif;
-  text-shadow: 3px 3px 0px #e04d8d;
-  color: #EBC7E6;
+  text-shadow: 3px 3px 0px #22a2e1;
+  color: #2334e8;
+}
+
+.step3__step {
+    width: 1000px;
+    position: relative;
+    top: 100px;
+    right: -280px;
+}
+
+.step3__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .step3__body .step3__p {

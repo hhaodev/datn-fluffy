@@ -1,16 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Pacifico&family=Signika+Negative:wght@300&display=swap');
-body {
-  background: linear-gradient(to right, #654ea3, #eaafc8);
+.step1__body {
+  background: #FFF	;
   box-sizing: border-box;
 }
 .step1__wrapper {
-  background-color: #EBC7E6; 
+  background-color: #87CEFA	; 
   padding: 20px;
   width: 600px;
   margin:  0 auto;
   margin-top: 30px;
   border-radius: 50px;
+  position: relative;
+  top: 100px;
+}
+
+.step1__body {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.step1__school {
+  width: 440px !important;
+}
+
+.step1__rangepicker {
+  margin-top: 5px;
+  width: 440px;
+}
+
+.step1__year {
+  padding-top: 10px;
+  font-weight: bold;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.step1__pheader {
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-family: 'Catamaran', sans-serif;
 }
 
 .step1__content {
@@ -27,7 +56,7 @@ body {
   color: #fff;
   font-family: 'Signika Negative', sans-serif;
   font-weight: 700;
-  text-shadow: 3px 3px 0px #e04d8d;
+  text-shadow: 3px 3px 0px #1857d4;
   position: relative;
   top: -30px;
   padding: 10px;
@@ -47,7 +76,7 @@ body {
   padding: 30px;
   background-color: #fff;
   width: 500px;
-  border-radius: 20px;
+  border-radius: 10px;
   position: relative;
   top: -20px
 }
@@ -79,15 +108,15 @@ body {
   margin-left: 341px;
   margin-top: 10px;
   font-size: 40px;
-  color: #e04d8d;
+  color: rgb(36, 106, 244);
   top: -10px;
   right: -40px;
-  background-color: #ebc7e6;
+  background-color: #87CEFA;
   border: none;
 }
 
 .step1__plus:hover {
-  color: rgb(36, 106, 244);
+  color: rgb(11, 47, 120);
 }
 
 .plus i {
@@ -115,8 +144,8 @@ body {
   left: 80px;
   font-size: 55px;
   font-family: 'Signika Negative', sans-serif;
-  text-shadow: 3px 3px 0px #e04d8d;
-  color: #EBC7E6;
+  text-shadow: 3px 3px 0px #22a2e1;
+  color: #2334e8;
 }
 
 .step1__body .step1__p {
@@ -145,7 +174,7 @@ body {
 
 
 .step1__psubject {
-  padding-right: 54px;
+  padding-right: 48px;
   font-weight: bold;
   font-family: 'Catamaran', sans-serif;
 }
@@ -171,22 +200,38 @@ body {
   margin-top: 10px;
 }
 
-.upload-list-inline .ant-upload-list-item {
-  float: left;
-  width: 200px;
-  margin-inline-end: 8px;
-}
 
-.ant-upload-rtl.upload-list-inline .ant-upload-list-item {
-  float: right;
-}
 
 .step1__textupload {
-  padding-bottom: 5px;
   font-size: 15px;
   font-weight: bold;
   font-family: 'Catamaran', sans-serif;
   padding-top: 20px;
 }
+
+
+
+.step1__step {
+  width: 1000px;
+  position: relative;
+  top: 100px;
+}
+
+
+.step1__buttonsub {
+  margin-right: 20px;
+}
+
+.step1__footer {
+  display: flex;
+  position: relative;
+  top: -30px;
+}
+
+.ant-form {
+  max-height: 100%;
+  height: 232px;
+}
+
 
 

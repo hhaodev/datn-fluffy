@@ -65,8 +65,7 @@ function SignIn() {
     };
 
     return (
-        <div className="signin__gr">
-
+        <section className="signin__gr">
             <div className="signin__all">
             <div className="signin__logo">
                 <h1><Link to="/" className="logo__signin">Fluffy</Link></h1>
@@ -146,7 +145,7 @@ function SignIn() {
                 </Form>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

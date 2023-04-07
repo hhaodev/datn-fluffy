@@ -223,7 +223,7 @@ function SignUp() {
                                 span: 16,
                             }}
                         >
-                            <Button className="signin-button" type="primary" htmlType="submit">
+                            <Button className="signup-button" type="primary" htmlType="submit">
                                 Sign up
                             </Button>
                         </Form.Item>
