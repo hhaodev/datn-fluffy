@@ -11,8 +11,9 @@ function App() {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user.currentUser)
 
-  useEffect(() => {
-    if (Object.values(currentUser).length === 0) {
+  useEffect(() =>  {
+    if (Object.values(currentUser).length === 0) 
+    {
       client.query({
         query: gql`
         query {
@@ -32,6 +33,7 @@ function App() {
       })
     }
   }, [])
+  
 
   return (
     <Routes>

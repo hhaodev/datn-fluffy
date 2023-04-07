@@ -5,18 +5,23 @@ import { gql, useMutation } from '@apollo/client';
 import { useState } from "react";
 import "./SignIn.css"
 import { useDispatch } from "react-redux";
-import {  } from "../../Redux/features/userSlice";
+import { setCurrentUser } from "../../Redux/features/userSlice";
 import imgsignin from '../../assets/images/backgroundsignin.png'
 
 function SignIn() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    
     const SIGNIN = gql`
     mutation signIn($input: SignInDto!) {
-        signIn(input: $input  ) {
-        lastName    
+        signIn(input: $input  ) {  
         token
         refreshToken
+        id
+        firstName
+        lastName
+        email
+        type
     }
     }
 `;
@@ -37,6 +42,14 @@ function SignIn() {
                 });
                 localStorage.setItem("token", result.data.signIn.token)
                 localStorage.setItem("refreshToken", result.data.signIn.refreshToken)
+               
+                let userData = {
+                    id: result.data.signIn.id, 
+                    lastName: result.data.signIn.lastName, 
+                    firstName: result.data.signIn.firstName, 
+                    type: result.data.signIn.type
+                }
+                dispatch(setCurrentUser(userData))
                 navigate("/")
             } catch (error) {
                 // setError(error.message);

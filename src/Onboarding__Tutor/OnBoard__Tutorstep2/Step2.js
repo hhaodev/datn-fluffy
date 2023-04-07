@@ -22,10 +22,7 @@ import { Input } from 'antd';
 
 
 function OnboardTutor__Step2() {
-  const [school, setschool] = React.useState('');
-  const handleChange = (event) => {
-    setschool(event.target.value);
-  };
+
 
 
   const { TextArea } = Input;

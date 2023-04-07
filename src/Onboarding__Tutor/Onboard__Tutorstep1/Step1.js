@@ -13,7 +13,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 import imgright from '../../assets/images/backgroundsignin.png';
-// import * as React from 'react';
 import { Upload } from 'antd';
 
 function OnboardTutor__Step1() {
@@ -29,16 +28,6 @@ function OnboardTutor__Step1() {
   const handleChange = (event) => {
     setschool(event.target.value);
   };
-
-  // const [img, setImg] = useState()
-
-  // const handlePreviewImg = (e) => {
-  //   const file = e.target.files[0];
-  //   file.preview = URL.createObjectURL(file)
-  //   setImg(file)
-  //   }
-
-  // form input
 
   const props = {
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',

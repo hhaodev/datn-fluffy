@@ -3,6 +3,7 @@ import { useNavigate, } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { gql, useMutation } from '@apollo/client';
 import { useState } from "react";
+import { UserType } from '../../constraint';
 
 
 
@@ -13,8 +14,9 @@ function Verifi() {
     const VERIFY = gql`
     mutation verifyCode($input: CodeVerifyDto!) {
         verifyCode(input: $input  ) {
-            token,
+            token
             refreshToken
+            type
         }
     }
 `;
@@ -30,12 +32,17 @@ function Verifi() {
                     variables: {
                         input: datatemp,
                     },
-
+                    
                 });
                 alert("Đăng ký thành công!")
                 localStorage.setItem("token", result.data.verifyCode.token)
                 localStorage.setItem("refreshToken", result.data.verifyCode.refreshToken)
-                navigate("/onboardstudent")
+                if (result.data.verifyCode.type === "STUDENT") {
+                    navigate("/onboardstudent")
+                } else if (result.data.verifyCode.type === "TUTOR") {
+                    navigate("/onboardtutorstep1")
+                }
+
             } catch (error) {
                 alert(error.message)
             }
