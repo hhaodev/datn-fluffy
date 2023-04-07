@@ -4,13 +4,14 @@ import con1 from '../../assets/images/con1.svg'
 import con2 from '../../assets/images/con2.svg'
 import con3 from '../../assets/images/con3.svg'
 import con4 from '../../assets/images/con4.svg'
-import cate1 from '../../assets/images/cate1.png'
-import cate2 from '../../assets/images/cate2.png'
-import cate3 from '../../assets/images/cate3.png'
+import cate1 from '../../assets/images/undraw_Educator_re_ju47.png'
+import cate2 from '../../assets/images/undraw_Male_avatar_g98d.png'
+import cate3 from '../../assets/images/undraw_Traveling_yhxq.png'
+import course from '../../assets/images/course.png'
 import course1 from '../../assets/images/course1.jpg'
 import course2 from '../../assets/images/course2.jpg'
 import course3 from '../../assets/images/course3.jpg'
-import cate4 from '../../assets/images/cate4.png'
+import cate4 from '../../assets/images/undraw_Ready_for_waves_vlke.png'
 import course4 from '../../assets/images/course4.jpg'
 import cta1 from '../../assets/images/cta1.png'
 import cta2 from '../../assets/images/cta2.png'
@@ -45,7 +46,7 @@ function myHome() {
                 <ul className="navbar">
                     <li><Link to='/mycourse' >Home</Link></li>
                     <li><Link to="/mycourse" >My Course</Link></li>
-                    <li><Link to='/mycourse' >Payment</Link></li>    
+                    <li><Link to='/mycourse' >Payment</Link></li>
                 </ul>
                 <div className="header-icons">
                     <Dropdown overlay={menu} placement="bottomRight">
@@ -71,7 +72,7 @@ function myHome() {
                 </div>
             </section>
             {/*-start container section--*/}
-            <section className="container">
+            <section className="student__container">
                 <div className="container-box">
                     <div className="container-img">
                         <img src={con1} />
@@ -118,23 +119,23 @@ function myHome() {
                 <div className="categories-content">
                     <div className="box">
                         <img src={cate1} />
-                        <h3>Angular Development</h3>
-                        <p>5 Courses</p>
+                        <h3>Reading Development</h3>
+                        <p>6 Courses</p>
                     </div>
                     <div className="box">
                         <img src={cate2} />
-                        <h3>Angular Development</h3>
-                        <p>5 Courses</p>
+                        <h3>Game Development</h3>
+                        <p>8 Courses</p>
                     </div>
                     <div className="box">
-                        <img src={cate3} />
-                        <h3>Angular Development</h3>
-                        <p>5 Courses</p>
+                        <img src={ cate3 } />
+                        <h3>Book Development</h3>
+                        <p>6 Courses</p>
                     </div>
                     <div className="box">
                         <img src={cate4} />
-                        <h3>Angular Development</h3>
-                        <p>5 Courses</p>
+                        <h3>Star Development</h3>
+                        <p>8 Courses</p>
                     </div>
                 </div>
                 <div className="main-btn">
@@ -147,7 +148,7 @@ function myHome() {
                     <h5>COURSES</h5>
                     <h2>Explore Popular Courses</h2>
                 </div>
-                <div className="courses-content">
+                {/* <div className="courses-content">
                     <div className="row">
                         <img src={course1} />
                         <div className="courses-text">
@@ -268,7 +269,229 @@ function myHome() {
                             </div>
                         </div>
                     </div>
+                </div> */}
+
+                <div className="grid-container">
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
+
                 <div className="main-btn">
                     <a href="" className="btn">Buy Now</a>
                 </div>
