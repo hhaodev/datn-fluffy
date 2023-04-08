@@ -69,10 +69,9 @@ function SignIn() {
             <div className="signin__logo">
                 <h1><Link to="/" className="logo__signin">Fluffy</Link></h1>
             </div>
-            <div className="img-signin">
-                {/* <h2 className="signin__h1">welcome to Fluffy, sign in now to reach your goal !!!</h2> */}
+            {/* <div className="img-signin">
                 <img src={imgsignin} alt="" className="img__bgsignin" />
-            </div>
+            </div> */}
 
             <div className="box__signin">
                 <h1 className="signup-heading">Sign in</h1>

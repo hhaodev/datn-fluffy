@@ -141,7 +141,8 @@ function OnboardTutor__Step1() {
           </div>
           <div className='step1__footer'>
             <Button type="primary" htmlType="submit" className="step1__buttonsub">
-              Submit
+              <Link to="/onboardtutorstep2">Submit</Link>
+              
             </Button>
             <Link to="/onboardtutorstep2"><Button>Skip</Button></Link>
           </div>
