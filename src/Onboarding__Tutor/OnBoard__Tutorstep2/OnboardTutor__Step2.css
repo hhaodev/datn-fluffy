@@ -65,7 +65,6 @@
   text-shadow: 3px 3px 0px #1857d4;
   position: relative;
   top: -30px;
-  padding: 20px;
 }
 
 .step2__content .welcome {
@@ -170,9 +169,9 @@
   padding-top: 20px;
 }
 
-.step2__describe {
+/* .step2__describe {
     padding-top: 20px;
-}
+} */
 
 .step2__pdescribe {
     padding-bottom: 5px;

@@ -1,109 +1,442 @@
-import "../Home/Home.css"
-import heading from "../../assets/images/heading.png"
-import hero from "../../assets/images/hero.png"
-import padding from "../../assets/images/padding.png"
-import learn1 from "../../assets/images/learnMore1.png"
-import learn2 from "../../assets/images/learnMore2.png"
-import review from "../../assets/images/review.png"
-import consu from "../../assets/images/consultant1.png"
-import consu2 from "../../assets/images/consultant2.png"
+import '../../pages/Home/Home.css'
+import home from '../../assets/images/home.png'
+import con1 from '../../assets/images/con1.svg'
+import con2 from '../../assets/images/con2.svg'
+import con3 from '../../assets/images/con3.svg'
+import con4 from '../../assets/images/con4.svg'
+import cate1 from '../../assets/images/undraw_Educator_re_ju47.png'
+import cate2 from '../../assets/images/undraw_Male_avatar_g98d.png'
+import cate3 from '../../assets/images/undraw_Traveling_yhxq.png'
+import cate4 from '../../assets/images/undraw_Ready_for_waves_vlke.png'
+import course4 from '../../assets/images/course4.jpg'
+import cta1 from '../../assets/images/cta1.png'
+import cta2 from '../../assets/images/cta2.png'
+import cta3 from '../../assets/images/cta3.png'
+import cta4 from '../../assets/images/cta4.png'
+import cta5 from '../../assets/images/cta5.png'
+import cta6 from '../../assets/images/cta6.png'
+import about from '../../assets/images/about.png'
+import { Menu } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import avatar from '../../assets/images/avatar.png'
+import { Link } from "react-router-dom";
 
 
-function Home() {
+
+
+function myHome() {
+
+    // const menu = (
+    //     <Menu>
+    //         <Menu.Item key="profile">Profile</Menu.Item>
+    //         <Menu.Item key="logout">Logout</Menu.Item>
+    //     </Menu>
+    // );
+
     return (
-        <section className="home__fluffy">
-            <div className="Heading">
-                <div className="Heading-global">
-                    <h1>Every student needs a</h1>
-                    <h2>mentor</h2>
-                    <a href>Why TutorMe?</a>
+        <div>
+            {/*-start header--*/}
+            <header>
+                <a href="" className="studenthome__logo">
+                    <h1 className='studenthome__logo1'>Fluffy</h1>
+                </a>
+                <div className="header-icons">
+                    <ul className='navbar'>
+                        <li><Link to="/signin">Sign in</Link></li>
+                        <li><Link to="/signup">Sign up</Link></li>
+                    </ul>
                 </div>
-                <img src={heading} alt="" className="Heading-img" />
-            </div>
-            {/* End Heading  */}
-            {/* Start Hero  */}
-            <div className="Hero">
-                <div className="Hero-section">
-                    <div className="Hero-wrapper">
-                        <h1>We take tutoring personally</h1>
-                        <p>Every student's success starts with a meaningful connection. We connect learners with the right tutors at the right time, creating a ripple effect of better outcomes for the entire community. </p>
+            </header>
+            {/*-start home section--*/}
+            <section className="home" id="home">
+                <div className="home-text">
+                    <h6>Best online learning platform</h6>
+                    <h1>Accessible Online Courses For All</h1>
+                    <p>Own your future learning new skills online</p>
+                    <div className="latter">
+                        <form>
+                            <input type="email" placeholder="Search Course" required />
+                            <input type="submit" defaultValue="Let's Start" required />
+                        </form>
                     </div>
-                    <div className="Hero-footer">
-                        <div className="Hero-grid">
-                            <h1 className="Hero-color1">1.1M+</h1>
-                            <p>Live sessions and Writing Lab submissions</p>
+                </div>
+                <div className="home-img">
+                    <img src={home} />
+                </div>
+            </section>
+            {/*-start container section--*/}
+            <section className="student__container">
+                <div className="container-box">
+                    <div className="container-img">
+                        <img src={con1} />
+                    </div>
+                    <div className="container-text">
+                        <h4>5K</h4>
+                        <p>Online Courses</p>
+                    </div>
+                </div>
+                <div className="container-box">
+                    <div className="container-img">
+                        <img src={con2} />
+                    </div>
+                    <div className="container-text">
+                        <h4>5K</h4>
+                        <p>Online Courses</p>
+                    </div>
+                </div>
+                <div className="container-box">
+                    <div className="container-img">
+                        <img src={con3} />
+                    </div>
+                    <div className="container-text">
+                        <h4>5K</h4>
+                        <p>Online Courses</p>
+                    </div>
+                </div>
+                <div className="container-box">
+                    <div className="container-img">
+                        <img src={con4} />
+                    </div>
+                    <div className="container-text">
+                        <h4>5K</h4>
+                        <p>Online Courses</p>
+                    </div>
+                </div>
+            </section>
+            {/*-start categories section--*/}
+            <section className="categories" id="categories">
+                <div className="center-text">
+                    <h5>CATEGORIES</h5>
+                    <h2>Popular Categories</h2>
+                </div>
+                <div className="categories-content">
+                    <div className="box">
+                        <img src={cate1} />
+                        <h3>Reading Development</h3>
+                        <p>6 Courses</p>
+                    </div>
+                    <div className="box">
+                        <img src={cate2} />
+                        <h3>Game Development</h3>
+                        <p>8 Courses</p>
+                    </div>
+                    <div className="box">
+                        <img src={cate3} />
+                        <h3>Book Development</h3>
+                        <p>6 Courses</p>
+                    </div>
+                    <div className="box">
+                        <img src={cate4} />
+                        <h3>Star Development</h3>
+                        <p>8 Courses</p>
+                    </div>
+                </div>
+                <div className="main-btn">
+                    <a href="" className="btn">All Categories</a>
+                </div>
+            </section>
+            {/*-start course section--*/}
+            {/* <section className="courses" id="courses">
+                <div className="center-text">
+                    <h5>COURSES</h5>
+                    <h2>Explore Popular Courses</h2>
+                </div>
+                <div className="grid-container">
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
                         </div>
-                        <div className="Hero-grid">
-                            <h1 className="Hero-color2">625K+</h1>
-                            <p>Hours of live, one-on-one connection</p>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
                         </div>
-                        <div className="Hero-grid">
-                            <h1 className="Hero-color3">4.8/5</h1>
-                            <p>Average rating students give their tutors</p>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <img src={hero} alt="" className="Hero-img" />
-            </div>
-            {/* End Hero  */}
-            {/* Start Padding  */}
-            <div className="Padding">
-                <div className="Padding-global">
-                    <h1>TutorMe connects students with highly qualified tutors for 1:1 support, whenever and wherever they need it the most.</h1>
-                </div>
-                <img src={padding} alt="" className="Padding-img" />
-            </div>
-            {/* End Padding  */}
-            {/* Start LearnMore  */}
-            <div className="LearnMore">
-                <div className="LearnMore1">
-                    <div className="LearnMore-one">
-                        <h2 className="LearnMore-text1">For schools and districts</h2>
-                        <p>Offer K-12 students additional 1:1 support, without placing more burden on your teachers and staff.</p>
-                        <button><a href>Learn More</a></button>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
                     </div>
-                    <div className="right">
-                        <img src={learn1} alt="" />
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src={course} alt="Course Image" />
+                        <div className="card-content">
+                            <h3 className="course-name">Introduction to Python Programming</h3>
+                            <h2 className="card__coin">2.300.000 VNĐ</h2>
+                            <div className="rate">
+                                <div className="card__p">
+                                    <p className="tutor-name">John Smith</p>
+                                </div>
+                                <div className="rating">
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                    <i className="bx bxs-star" />
+                                </div>
+                            </div>
+                            <p className="schedule"><i className="bx bxs-calendar" />Mondays, 2-4pm</p>
+                            <div className="buttons">
+                                <a href="#" className="btn btn-details">Details</a>
+                                <a href="#" className="btn btn-register">Register</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div className="main-btn">
+                    <a href="" className="btn">Buy Now</a>
+                </div>
+            </section> */}
+            {/*-start cta section--*/}
+            <section className="cta">
+                <div className="center-text">
+                    <h5>Trusted By</h5>
+                    <h2>500+ Leading Universities And Companies</h2>
+                </div>
+                <div className="cta-content">
+                    <div className="cta-img">
+                        <img src={cta1} />
+                    </div>
+                    <div className="cta-img">
+                        <img src={cta2} />
+                    </div>
+                    <div className="cta-img">
+                        <img src={cta3} />
+                    </div>
+                    <div className="cta-img">
+                        <img src={cta4} />
+                    </div>
+                    <div className="cta-img">
+                        <img src={cta5} />
+                    </div>
+                    <div className="cta-img">
+                        <img src={cta6} />
                     </div>
                 </div>
-                <div className="LearnMore2">
-                    <div className="left">
-                        <img src={learn2} alt="" />
+            </section>
+            {/*-start about section--*/}
+            <section className="about" id="about">
+                <div className="about-img">
+                    <img src={about} />
+                </div>
+                <div className="about-text">
+                    <h2>Want to share your knowledge? Join us a Mentor</h2>
+                    <p>High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.</p>
+                    <h4>Best Courses</h4>
+                    <h5>Top rated Instructors</h5>
+                    <a href="" className="btn">Read More</a>
+                </div>
+            </section>
+            {/*-start contact section--*/}
+            <section className="contact" id="contact">
+                <div className="main-contact">
+                    <div className="contact-content">
+                        <h1 className='studenthome__logo1'>Fluffy</h1>
+                        <li><a href="">Facebook</a></li>
+                        <li><a href="">Instagram</a></li>
+                        <li><a href="">Twitter</a></li>
                     </div>
-                    <div className="LearnMore-two">
-                        <h2 className="LearnMore-text2">For colleges and universities</h2>
-                        <p>Reimagine how your students access tutoring with around-the-clock availability in every subject.</p>
-                        <button><a href>Learn More</a></button>
+                    <div className="contact-content">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Courses</a></li>
+                        <li><a href="">Payment</a></li>
+                    </div>
+                    <div className="contact-content">
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">Login</a></li>
+                        <li><a href="">Register</a></li>
+                        <li><a href="">Instructor</a></li>
+                        <li><a href="">Dashboard</a></li>
+                    </div>
+                    <div className="contact-content">
+                        <li><a href="">DaNang,<br /> VietNam, VN 15101</a></li>
+                        <li><a href="">fluffy@example.com</a></li>
+                        <li><a href="">01646895741</a></li>
                     </div>
                 </div>
-            </div>
-            {/* End LearnMore */}
-            {/* Start Review  */}
-            <div className="Review">
-                <div className="Review-content">
-                    <h3>It's time to put your zone of genius to work</h3>
-                    <p>Somewhere there's a student who could use your 1:1 support. TutorMe is recreating the way students access and receive high-quality, personalized tutoring. Join our community of tutors to make a real difference in the lives of students and educators nationwide.</p>
-                    <div className="Text">
-                        <a href="./becomeatutor.html">Become a Tutor<i className="bx bx-right-arrow-alt" /></a>
-                    </div>
-                </div>
-                <div className="image">
-                    <img src={review} alt="" />
-                </div>
-            </div>
-            {/* End Review  */}
-            {/* Start Consultant  */}
-            <div className="Consultant">
-                <img src={consu} alt="" className="Consultant-img1" />
-                <div className="Consultant-content">
-                    <h2>Start providing better support to your students and educators today.</h2>
-                    <button><a href>Book A Call</a></button>
-                </div>
-                <img src={consu2} alt="" className="Consultant-img2" />
-            </div>
-        </section>
+            </section>
+            {/*-custom js link--*/}
+        </div>
 
     );
 }
 
-export default Home;
+export default myHome;

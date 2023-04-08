@@ -99,7 +99,7 @@ function OnBoard__Student() {
       </div>
       <div className="form-wrapper">
         <div className="content">
-          <h2 className="student__h2">Fluffy</h2>
+          <h2 className="student__heading">Fluffy</h2>
           <p className="welcome">Welcome! First things first ...</p>
           <Form
             name="normal"
