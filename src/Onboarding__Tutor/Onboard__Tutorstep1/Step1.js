@@ -1,7 +1,6 @@
 import '../../Onboarding__Tutor/Onboard__Tutorstep1/OnboardTutor__Step1.css'
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-import imgright from '../../assets/images/backgroundsignin.png';
 import { Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { Upload } from 'antd';

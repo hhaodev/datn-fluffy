@@ -9,6 +9,8 @@ import {
   Form,
   Select,
 } from 'antd';
+import { useSelector } from "react-redux";
+
 
 
 
@@ -16,37 +18,12 @@ import {
 function OnBoard__Student() {
   const { Option } = Select;
   const { RangePicker } = DatePicker;
-  const [schools, setSchools] = useState([])
   const navigate = useNavigate()
-
-  useEffect(() => {
-    client.query({
-      query: gql`
-      query getSchools($queryParams: QueryFilterDto!) {
-        getSchools(queryParams: $queryParams) {
-          items{
-            name
-            id
-            location
-          }
-        }
-      }
-    `,
-      variables: {
-        queryParams: {
-          limit: 10,
-          page: 1
-        }
-      }
-    })
-      .then(result => {
-        setSchools(result.data.getSchools.items)
-      })
-      .catch(error => {
-        console.error(error);
-      })
-  }, [])
+  const schoolsList = useSelector(state => state.schools.schoolsData)
+  
+  
   //mutation
+
   const CREATE_STUDENT_ON_BOARDING_MUTATION = gql`
     mutation createStudentOnBoarding($input: CreateStudentOnBoardingDto!) {
       createStudentOnBoarding(input: $input) {
@@ -121,7 +98,7 @@ function OnBoard__Student() {
               ]}
             >
               <Select placeholder="Select your school">
-                {schools.map(school => {
+                {schoolsList.map(school => {
                   return (
                     <Option key={school.id} value={school.id}>{school.name}</Option>
                   )

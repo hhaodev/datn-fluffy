@@ -6,10 +6,38 @@ import client from "./configGQL";
 import { gql } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "./Redux/features/userSlice";
+import { setSchools } from "./Redux/features/schoolsSlice";
 
 function App() {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user.currentUser)
+
+  useEffect(() => {
+    client.query({
+      query: gql`
+      query getSchools($queryParams: QueryFilterDto!) {
+        getSchools(queryParams: $queryParams) {
+          items{
+            name
+            id
+            location
+          }
+        }
+      }
+    `,
+      variables: {
+        queryParams: {
+          limit: 10,
+          page: 1
+        }
+      }
+    })
+      .then(result => {
+        dispatch(setSchools(result.data.getSchools.items))
+      })
+      .catch(error => {})
+  }, [])
+
 
   useEffect(() =>  {
     if (Object.values(currentUser).length === 0) 
@@ -28,9 +56,7 @@ function App() {
       }).then(result => {
         dispatch(setCurrentUser(result.data.getMe))
       })
-      .catch(error => {
-        console.error(error);
-      })
+      .catch(error => {})
     }
   }, [])
   
