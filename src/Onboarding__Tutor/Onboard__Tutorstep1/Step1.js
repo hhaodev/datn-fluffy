@@ -1,36 +1,34 @@
 import '../../Onboarding__Tutor/Onboard__Tutorstep1/OnboardTutor__Step1.css'
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-import imgright from '../../assets/images/backgroundsignin.png';
-import { Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import { Upload } from 'antd';
-import { Select } from 'antd';
-import { DatePicker, Space } from 'antd';
 import { Steps } from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Radio,
+  Select,
+  Cascader,
+  DatePicker,
+  InputNumber,
+  TreeSelect,
+  Switch,
+  Checkbox,
+  Upload,
+} from 'antd';
+import { useSelector } from 'react-redux';
+import { PlusOutlined } from '@ant-design/icons';
 
 
-const props = {
-  action: '//jsonplaceholder.typicode.com/posts/',
-  listType: 'picture',
-  previewFile(file) {
-    console.log('Your upload file:', file);
-    // Your process logic. Here we just mock to the same file
-    return fetch('https://next.json-generator.com/api/json/get/4ytyBoLK8', {
-      method: 'POST',
-      body: file,
-    })
-      .then((res) => res.json())
-      .then(({ thumbnail }) => thumbnail);
-  },
-};
+
 
 
 
 function OnboardTutor__Step1() {
+  const schoolsList = useSelector(state => state.schools.schoolsData)
+  const { Option } = Select;
   const { RangePicker } = DatePicker;
-
-  const description = 'Academic Level';
+  const description = '';
   const items = [
     {
       title: 'In Progress',
@@ -49,44 +47,20 @@ function OnboardTutor__Step1() {
       description,
     },
   ];
-  const [isDivVisible, setIsDivVisible] = useState(false);
-  function handleButtonClick() {
-    setIsDivVisible(true);
+
+
+  const onFinish = (values) => {
+    const rangeValue = values['range-picker'];
+    const fromYear = new Date(rangeValue[0].format('DD/MM/YYYY')).toISOString()
+    const toYear = new Date(rangeValue[1].format('DD/MM/YYYY')).toISOString()
+    
   }
-  const [school, setschool] = React.useState('');
-  const handleChange = (event) => {
-    setschool(event.target.value);
-  };
-  const props = {
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    listType: 'picture',
-    beforeUpload(file) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-          const img = document.createElement('img');
-          img.src = reader.result;
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            ctx.fillStyle = 'red';
-            ctx.textBaseline = 'middle';
-            ctx.font = '33px Arial';
-            ctx.fillText('Ant Design', 20, 20);
-            canvas.toBlob((result) => resolve(result));
-          };
-        };
-      });
-    },
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
   };
 
-  const onChange = (value) => {
-    console.log(`selected ${value}`);
-  };
+
 
   return (
     <div className="step1__body">
@@ -100,53 +74,79 @@ function OnboardTutor__Step1() {
         <div className="step1__content">
           <h2 className="step1__h2">Academic Level</h2>
           {/* <p className="welcome">Welcome! First things first ...</p> */}
-          <div className="step1__formdropdown">
-            <p className='step1__pheader'>Schools</p>
-            <Select className='step1__school'
-              style={{ width: 160 }}
-              placeholder="Select your school"
-              optionFilterProp="children"
-              onChange={onChange}
-              filterOption={(input, option) =>
-                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-              }
-              options={[
+          <Form
+            name="normal"
+            className="form__dropdown"
+            layout="vertical"
+            initialValues={{
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+          >
+            <Form.Item
+              name="schoolId"
+              label="School"
+              rules={[
                 {
-                  value: 'Duy Tan University',
-                  label: 'Duy Tan University',
-                },
-                {
-                  value: 'Bach Khoa',
-                  label: 'Bach Khoa',
+                  required: true,
+                  message: 'Please select school!',
                 },
               ]}
-            />
-            <p className='step1__year'>From year - To year</p>
-            <Space direction="vertical" size={12}>
-              <RangePicker className='step1__rangepicker' />
-            </Space>
-            <div className="step1__subject">
-              <p className="step1__psubject">What subject are you good at?</p>
-              <div className="step1__input">
-                <input type="text" className='step1__text' />
-              </div>
-            </div>
-            <p className='step1__textupload'>Update Academic here</p>
-            <Upload {...props}>
-              <Button icon={<UploadOutlined />}>Upload</Button>
-            </Upload>
-          </div>
-          <div>
-            <button className="step1__plus"><i class="fa-solid fa-circle-plus"></i></button>
-            
-          </div>
-          <div className='step1__footer'>
-            <Button type="primary" htmlType="submit" className="step1__buttonsub">
-              <Link to="/onboardtutorstep2">Submit</Link>
-              
+            >
+              <Select placeholder="Select your school">
+                {schoolsList.map(school => {
+                  return (
+                    <Option key={school.id} value={school.id}>{school.name}</Option>
+                  )
+                })}
+              </Select>
+            </Form.Item>
+            <Form.Item
+              name="range-picker"
+              label="RangePicker"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select time!',
+                },
+              ]}
+            >
+              <RangePicker />
+            </Form.Item>
+            <Form.Item
+              label="What subject are you good at ?"
+              name="yougood"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item 
+            label="Upload" 
+            valuePropName="fileList" 
+            rules={[
+                {
+                  required: true,
+                  message: 'Please upload!',
+                },
+              ]}>
+              <Upload action="/upload.do" listType="picture-card">
+                <div>
+                  <PlusOutlined />
+                  <div style={{ marginTop: 8 }}>Upload</div>
+                </div>
+              </Upload>
+            </Form.Item>
+            <Button type="primary" htmlType="submit" className="student__buttonsub">
+              Submit
             </Button>
-            <Link to="/onboardtutorstep2"><Button>Skip</Button></Link>
-          </div>
+            
+          </Form>
         </div>
       </div>
     </div>

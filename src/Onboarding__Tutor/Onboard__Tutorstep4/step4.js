@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../../Onboarding__Tutor/Onboard__Tutorstep4/OnboardTutor__Step4.css'
 import { Button, Steps } from 'antd';
 
 
 
 function OnboardTutor__Step4() {
-    const description = 'Academic Level';
+    const description = '';
     const items = [
         {
             title: 'Done',
@@ -33,7 +34,7 @@ function OnboardTutor__Step4() {
                 </>
             </div>
             <div className='step4__wrapper'>
-                <Button>Connect Stripe</Button>
+                <Link to=""><Button>Connect Stripe</Button></Link>
             </div>
         </div>
     );

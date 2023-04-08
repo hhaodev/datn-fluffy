@@ -1,12 +1,22 @@
 import React from 'react'
-import '../../Onboarding__Tutor/OnBoard__Tutorstep2/OnboardTutor__Step2.css'
 import { Link } from "react-router-dom";
-import imgright from '../../assets/images/onboarding1.png';
-import { Input } from 'antd';
-import { DatePicker, Space } from 'antd';
-import { Button } from 'antd';
-import { Select } from 'antd';
+import '../../Onboarding__Tutor/OnBoard__Tutorstep2/OnboardTutor__Step2.css'
 import { Steps } from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Radio,
+  Select,
+  Cascader,
+  DatePicker,
+  InputNumber,
+  TreeSelect,
+  Switch,
+  Checkbox,
+  Upload,
+} from 'antd';
+import { useSelector } from 'react-redux';
 
 
 
@@ -16,13 +26,10 @@ import { Steps } from 'antd';
 
 function OnboardTutor__Step2() {
   const { RangePicker } = DatePicker;
+  const schoolsList = useSelector(state => state.schools.schoolsData)
 
-  const [school, setschool] = React.useState('');
-  const handleChange = (event) => {
-    setschool(event.target.value);
-  };
 
-  const description = 'Academic Level';
+  const description = '';
   const items = [
     {
       title: 'Done',
@@ -41,76 +48,94 @@ function OnboardTutor__Step2() {
       description,
     },
   ];
+  const onFinish = (values) => {
+    const rangeValue = values['range-picker'];
+    const fromYear = new Date(rangeValue[0].format('DD/MM/YYYY')).toISOString()
+    const toYear = new Date(rangeValue[1].format('DD/MM/YYYY')).toISOString()
+    console.log(values);
 
+  }
 
-  const { TextArea } = Input;
-  const onChange = (e) => {
-    console.log('Change:', e.target.value);
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
   };
 
- 
+
+
   return (
     <div className="step2__body">
       <h1 className="step2__logo">Fluffy</h1>
 
       <div className='step2__step'>
-      <>
-        <Steps current={1} labelPlacement="vertical" items={items} className='step2__stepss' />
-      </>
+        <>
+          <Steps current={1} labelPlacement="vertical" items={items} className='step2__stepss' />
+        </>
       </div>
 
       <div className="step2__wrapper">
         <div className="step2__content">
           <h2 className="step2__h2">Work Experience</h2>
           {/* <p className="welcome">Welcome! First things first ...</p> */}
-          <div className="step2__formdropdown">
+          <Form
+            name="normal"
+            className="form__dropdown"
+            layout="vertical"
+            initialValues={{
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+          >
+            <Form.Item
+              label="Name Organization?"
+              name="origan"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select time!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Position"
+              name="position"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="range-picker"
+              label="RangePicker"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input!',
+                },
+              ]}
+            >
+              <RangePicker />
+            </Form.Item>
+            <Form.Item
+              name="describe"
+              label="Describe"
+              rules={[{ required: true, message: 'Please input' }]}
+            >
+              <Input.TextArea showCount maxLength={1000} />
+            </Form.Item>
 
-            <div className='step2__inputall'>
-              <div className='step2__input1'>
-                <p className='step2__pinput'>Name Organization</p>
-                <input type="text" className='step2__inputtext' />
-              </div>
-              <div className='step2__input2'>
-                <p className='step2__pinput'>Position</p>
-                <input type="text" className='step2__inputtext' />
-              </div>
-            </div>
 
-            <p className='step2__year'>From year - To year</p>
-
-            <Space direction="vertical" size={12}>
-              <RangePicker className='step2__rangepicker' />
-
-            </Space>
-
-            <div className='step2__describe'>
-              <>
-                <p className='step2__pdescribe'>Describe</p>
-                <TextArea
-                  showCount
-                  maxLength={1000}
-                  style={{
-                    height: 160,
-                    resize: 'none',
-                  }}
-                  onChange={onChange}
-                  placeholder="disable resize"
-                />
-              </>
-            </div>
-
-          
-          </div>
-
-          <div className="step2__bottom">
-          </div>
+            <Button type="primary" htmlType="submit" className="student__buttonsub">
+              Submit
+            </Button>
+            <Link to="onboardtutorstep3"><Button>Skip</Button></Link>
+          </Form>
         </div>
-        <div className='step2__footer'>
-              <Link to="/onboardtutorstep3"><Button type="primary" htmlType="submit" className="step2__buttonsub">
-                Submit
-              </Button></Link>
-              <Link to="/onboardtutorstep3"><Button>Skip</Button></Link>
-            </div>
       </div>
     </div>
   );
