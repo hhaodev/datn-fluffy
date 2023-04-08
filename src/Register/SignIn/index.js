@@ -6,12 +6,11 @@ import { useState } from "react";
 import "./SignIn.css"
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../Redux/features/userSlice";
-import imgsignin from '../../assets/images/backgroundsignin.png'
 
 function SignIn() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    
+
     const SIGNIN = gql`
     mutation signIn($input: SignInDto!) {
         signIn(input: $input  ) {  
@@ -26,14 +25,14 @@ function SignIn() {
     }
 `;
     const [signIn, { loading }] = useMutation(SIGNIN);
-    
+
     const onFinish = (values) => {
         const datatemp = {
             email: values.username,
             password: values.password
         }
         const getData = async () => {
-            
+
             try {
                 const result = await signIn({
                     variables: {
@@ -42,11 +41,11 @@ function SignIn() {
                 });
                 localStorage.setItem("token", result.data.signIn.token)
                 localStorage.setItem("refreshToken", result.data.signIn.refreshToken)
-               
+
                 let userData = {
-                    id: result.data.signIn.id, 
-                    lastName: result.data.signIn.lastName, 
-                    firstName: result.data.signIn.firstName, 
+                    id: result.data.signIn.id,
+                    lastName: result.data.signIn.lastName,
+                    firstName: result.data.signIn.firstName,
                     type: result.data.signIn.type
                 }
                 dispatch(setCurrentUser(userData))
@@ -66,81 +65,72 @@ function SignIn() {
     return (
         <section className="signin__gr">
             <div className="signin__all">
-            <div className="signin__logo">
-                <h1><Link to="/" className="logo__signin">Fluffy</Link></h1>
-            </div>
-            {/* <div className="img-signin">
-                <img src={imgsignin} alt="" className="img__bgsignin" />
-            </div> */}
-
-            <div className="box__signin">
-                <h1 className="signup-heading">Sign in</h1>
-                <button className="signin__social">
-                    <i className="bx bxl-google signin__social-icon " />
-                    <span className="signin__social-text">Sign in with google</span>
-                </button>
-                <div className="signin__or"><span>Or</span></div>
-                <Form
-                    name="normal_login"
-                    className="login-form"
-                    layout="vertical"
-                    initialValues={{
-                        remember: true,
-                    }}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
-                >
-                    <Form.Item
-                        label="Username"
-                        name="username"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your Username!',
-                            },
-                        ]}
+                <div className="signin__logo">
+                    <h1><Link to="/" className="logo__signin">Fluffy</Link></h1>
+                </div>
+                <div className="box__signin">
+                    <h1 className="signup-heading">Sign in</h1>
+                    <Form
+                        name="normal_login"
+                        className="login-form"
+                        layout="vertical"
+                        initialValues={{
+                            remember: true,
+                        }}
+                        onFinish={onFinish}
+                        onFinishFailed={onFinishFailed}
                     >
-                        <Input style={{ height: "50px" }} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-                    </Form.Item>
-                    <Form.Item
-                        label="Password"
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your password!',
-                            },
-                        ]}
-                    >
-                        <Input.Password
-                            style={{ height: "50px" }}
-                            prefix={<LockOutlined className="site-form-item-icon" />}
-                            type="password"
-                            placeholder="Password"
-                        />
-                    </Form.Item>
-                    <div className="signin__remem__forgot">
-                    <Form.Item>
-                        <Form.Item name="remember" valuePropName="checked" noStyle>
-                            <Checkbox className="signin__rememberme">Remember me</Checkbox>
+                        <Form.Item
+                            label="Username"
+                            name="username"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your Username!',
+                                },
+                            ]}
+                        >
+                            <Input style={{ height: "50px" }} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                         </Form.Item>
+                        <Form.Item
+                            label="Password"
+                            name="password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your password!',
+                                },
+                            ]}
+                        >
+                            <Input.Password
+                                style={{ height: "50px" }}
+                                prefix={<LockOutlined className="site-form-item-icon" />}
+                                type="password"
+                                placeholder="Password"
+                            />
+                        </Form.Item>
+                        <div className="signin__remem__forgot">
+                            <Form.Item>
+                                <Form.Item name="remember" valuePropName="checked" noStyle>
+                                    <Checkbox className="signin__rememberme">Remember me</Checkbox>
+                                </Form.Item>
 
-                        <Link className="login-form-forgot" to="/forgotpassword">
-                            Forgot password
-                        </Link>
-                    </Form.Item>
-                    </div>
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" className="signin__form__button">
-                            Log in
-                        </Button>
-                        Or <Link to="/signup" className="signin__form__regis">register now!</Link>
-                    </Form.Item>
-                    <div className="signin__wantr">
-                        <p className="signin__want_p">Want to become a tutor?</p>
-                        <button className="signin__wantbutton"><Link to="/applytutor">Apply today</Link></button>
-                    </div>
-                </Form>
+                                <Link className="login-form-forgot" to="/forgotpassword">
+                                    Forgot password
+                                </Link>
+                            </Form.Item>
+                        </div>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit" className="signin__form__button">
+                                Log in
+                            </Button>
+                            Or <Link to="/signup" className="signin__form__regis">register now!</Link>
+                        </Form.Item>
+                        <div className="signin__wantr">
+                            <p className="signin__want_p">Want to become a tutor?</p>
+                            <button className="signin__wantbutton"><Link to="/applytutor">Apply today</Link></button>
+                        </div>
+                    </Form>
                 </div>
             </div>
         </section>

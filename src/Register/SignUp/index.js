@@ -65,11 +65,6 @@ function SignUp() {
 
             <div className="signup__all">
                 <h1 className="signup__heading">Sign up</h1>
-                <button className="signup__social">
-                    <i className="bx bxl-google signup__social-icon " />
-                    <span className="signup_social-text">Sign up with google</span>
-                </button>
-                <div className="signup__or"><span>Or</span></div>
                 <Form
                     name="basic"
                     onFinish={onFinish}
