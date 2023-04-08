@@ -9,14 +9,14 @@ import OnboardTutor__Step2 from '../Onboarding__Tutor/OnBoard__Tutorstep2/Step2'
 import OnboardTutor__Step3 from '../Onboarding__Tutor/Onboard__Tutorstep3/step3';
 import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/step4';
 import Mycourse from '../StudentPages/MyCourse/Course';
-import Verifi from '../Register/Verifi';
+import Verify from '../Register/Verify';
 
 
 const publicRoutes = [
     { path: '/', component: Home },
     { path: '/signin', component: SignIn, layout: null},
     { path: '/signup', component: SignUp, layout: null},
-    { path: '/verifi', component: Verifi, layout: null},
+    { path: '/verify', component: Verify, layout: null},
     { path: '/applytutor', component: ApplyTutor, layout: null},
     { path: '/forgotpassword', component: ForgotPassWord, layout: null},
     { path: '/onboardstudent', component: Onboarding__Student, layout: null},
