@@ -53,7 +53,7 @@ function OnboardTutor__Step1() {
     const rangeValue = values['range-picker'];
     const fromYear = new Date(rangeValue[0].format('DD/MM/YYYY')).toISOString()
     const toYear = new Date(rangeValue[1].format('DD/MM/YYYY')).toISOString()
-    
+
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -71,7 +71,7 @@ function OnboardTutor__Step1() {
         </>
       </div>
       <div className="step1__wrapper">
-        <div className="step1__content">
+        <div className="box__step1">
           <h2 className="step1__h2">Academic Level</h2>
           {/* <p className="welcome">Welcome! First things first ...</p> */}
           <Form
@@ -126,10 +126,10 @@ function OnboardTutor__Step1() {
               <Input />
             </Form.Item>
 
-            <Form.Item 
-            label="Upload" 
-            valuePropName="fileList" 
-            rules={[
+            <Form.Item
+              label="Upload here"
+              valuePropName="fileList"
+              rules={[
                 {
                   required: true,
                   message: 'Please upload!',
@@ -143,9 +143,9 @@ function OnboardTutor__Step1() {
               </Upload>
             </Form.Item>
             <Button type="primary" htmlType="submit" className="student__buttonsub">
-              Submit
+              <Link to="/onboardtutorstep2">Submit</Link>
             </Button>
-            
+
           </Form>
         </div>
       </div>

@@ -130,7 +130,7 @@ function OnboardTutor__Step2() {
             </Form.Item>
 
 
-            <Button type="primary" htmlType="submit" className="student__buttonsub">
+            <Button type="primary" htmlType="submit" className="student__buttonsub2">
               Submit
             </Button>
             <Link to="onboardtutorstep3"><Button>Skip</Button></Link>
