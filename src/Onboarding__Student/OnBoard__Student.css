@@ -4,8 +4,8 @@
   padding-right: 40px;
   padding-left: 40px;
   background: url(../assets/images/background.png);
-	background-size: cover;
-	background-position: center;
+  background-size: cover;
+  background-position: center;
 }
 
 .student__logo {
@@ -42,7 +42,7 @@
 .student__heading {
   margin: 20px;
   font-size: 35px;
-  color: #f66962;  
+  color: #f66962;
 }
 
 .onboardstd__p {
@@ -72,3 +72,8 @@
   justify-content: space-evenly
 }
 
+.onboardstd__skip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
