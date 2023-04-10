@@ -1,23 +1,47 @@
-.step4__body .step4__logo{
-    position: absolute;
-    top: 20px;
-    left: 80px;
-    font-size: 55px;
-    font-family: 'Signika Negative', sans-serif;
-    text-shadow: 3px 3px 0px #22a2e1;
-    color: #2334e8;
-  }
+.step4__body {
+  width: 100%;
+  min-height: 100vh;
+  padding-right: 40px;
+  padding-left: 40px;
+  background: url(../../assets/images/background.png);
+  background-size: cover;
+  background-position: center;
+}
 
-  .step4__step {
-    width: 1000px;
-    position: relative;
-    top: 100px;
-    right: -280px;
-  }
+.step4__logo {
+  position: relative;
+  font-family: 'Lilita One', cursive;
+  font-weight: bold;
+  color: #f66962;
+  top: 22px;
+  font-size: 50px;
+}
 
-  .step4__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 250px;
-  }
+.step4__step {
+  margin: 50px 200px;
+}
+
+.step4__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box__step4 {
+  margin-bottom: 100px;
+  max-width: 100%;
+  width: 450px;
+  height: 600px;
+  padding: 30px;
+  border-radius: 50px;
+  background-color: #fff;
+}
+
+.step4__h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  align-items: center;
+  padding: 16px;
+  color: #c45852;
+}
