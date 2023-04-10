@@ -118,12 +118,12 @@ function OnBoard__Student() {
             >
               <RangePicker />
             </Form.Item>
-            <div className="onboardstd__bot">
+            {/* <div className="onboardstd__bot"> */}
               <Button type="primary" htmlType="submit" className="student__buttonsub">
                 Submit
               </Button>
-              <Link to=""><Button>Skip</Button></Link>
-            </div>
+              <Link to="" className="onboardstd__skip"><Button>Skip</Button></Link>
+            {/* </div> */}
           </Form>
         </div>
       </div>
