@@ -32,7 +32,6 @@ function myHome() {
                 </a>
                 <div className="header-icons">
                     <ul className='navbar'>
-
                         <li><Link to="/signin">Sign in</Link></li>
                         <li><Link to="/signup">Sign up</Link></li>
                     </ul>
@@ -47,7 +46,7 @@ function myHome() {
                     <div className="latter">
                         <form>
                             <input type="email" placeholder="Search Course" required />
-                            <input type="submit" defaultValue="Let's Start" required />
+                            <input type="button" defaultValue="Search" required />
                         </form>
                     </div>
                 </div>
