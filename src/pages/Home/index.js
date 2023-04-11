@@ -16,27 +16,12 @@ import cta4 from '../../assets/images/cta4.png'
 import cta5 from '../../assets/images/cta5.png'
 import cta6 from '../../assets/images/cta6.png'
 import about from '../../assets/images/about.png'
-import { Menu } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import avatar from '../../assets/images/avatar.png'
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 function myHome() {
-    
     return (
         <div>
-            {/*-start header--*/}
-            <header>
-                <a href="" className="studenthome__logo">
-                    <h1 className='studenthome__logo1'>Fluffy</h1>
-                </a>
-                <div className="header-icons">
-                    <ul className='navbar'>
-                        <li><Link to="/signin">Sign in</Link></li>
-                        <li><Link to="/signup">Sign up</Link></li>
-                    </ul>
-                </div>
-            </header>
             {/*-start home section--*/}
             <section className="home" id="home">
                 <div className="home-text">
