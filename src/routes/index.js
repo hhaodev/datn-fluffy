@@ -8,6 +8,7 @@ import OnboardTutor__Step1 from '../Onboarding__Tutor/Onboard__Tutorstep1/Step1'
 import OnboardTutor__Step2 from '../Onboarding__Tutor/OnBoard__Tutorstep2/Step2';
 import OnboardTutor__Step3 from '../Onboarding__Tutor/Onboard__Tutorstep3/step3';
 import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/step4';
+import stdHome from '../StudentPages/StudentHome/index';
 import Mycourse from '../StudentPages/MyCourse/Course';
 import Verify from '../Register/Verify';
 
@@ -24,6 +25,7 @@ const publicRoutes = [
     { path: '/onboardtutorstep2', component: OnboardTutor__Step2, layout: null},
     { path: '/onboardtutorstep3', component: OnboardTutor__Step3, layout: null},
     { path: '/onboardtutorstep4', component: OnboardTutor__Step4, layout: null},
+    { path: '/studenthome', component: stdHome, layout: null},
     { path: '/mycourse', component: Mycourse, layout: null},
 ];
 

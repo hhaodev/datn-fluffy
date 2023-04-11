@@ -20,8 +20,8 @@ function OnBoard__Student() {
   const { RangePicker } = DatePicker;
   const navigate = useNavigate()
   const schoolsList = useSelector(state => state.schools.schoolsData)
-  
-  
+
+
   //mutation
 
   const CREATE_STUDENT_ON_BOARDING_MUTATION = gql`
@@ -70,14 +70,14 @@ function OnBoard__Student() {
   return (
     <div className="body-onboarding">
       <h1 className="student__logo">Fluffy</h1>
-      <p className="p">Thank you for signing up for our account, let's start your goals with these steps</p>
-      <div>
-        {/* <img src={imgright} className="img_onboarding"></img> */}
-      </div>
       <div className="form-wrapper">
-        <div className="content">
-          <h2 className="student__heading">Fluffy</h2>
-          <p className="welcome">Welcome! First things first ...</p>
+        <div className="box__onboardstd">
+          <div className="onboard__heading">
+            <h2 className="student__heading">Onboarding</h2>
+          </div>
+          <div className="onboardstd__p">
+            <p className="onboardstd__welcome">Welcome! First things first ...</p>
+          </div>
           <Form
             name="normal"
             className="form__dropdown"
@@ -114,13 +114,16 @@ function OnBoard__Student() {
                   message: 'Please select time!',
                 },
               ]}
+              className="onboardstd__calendar"
             >
               <RangePicker />
             </Form.Item>
-            <Button type="primary" htmlType="submit" className="student__buttonsub">
-              Submit
-            </Button>
-            <Link to=""><Button>Skip</Button></Link>
+            {/* <div className="onboardstd__bot"> */}
+              <Button type="primary" htmlType="submit" className="student__buttonsub">
+                Submit
+              </Button>
+              <Link to="" className="onboardstd__skip"><Button>Skip</Button></Link>
+            {/* </div> */}
           </Form>
         </div>
       </div>

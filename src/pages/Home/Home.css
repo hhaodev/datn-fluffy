@@ -16,6 +16,12 @@
 	--h2-font: 2.6rem;
 	--p-font: 1.1rem;
 }
+
+/* body {
+	background: url(../../assets/images/background.png);
+	background-size: cover;
+	background-position: center;
+} */
 /* body{
 	background: var(--bg-color);
 	color: var(--text-color);
@@ -42,8 +48,7 @@ header{
 .studenthome__logo1 {
     font-family: 'Lilita One', cursive;
     font-weight: bold;
-    color: #22100d;
-
+    color: #f66962;
 }
 .navbar{
 	display: flex;
@@ -80,8 +85,6 @@ header{
 	cursor: pointer;
 	display: none;
 }
-
-
 
 .home, .student__container, .categories, .courses, .cta, .about, .contact {
 	padding: 80px 13%;

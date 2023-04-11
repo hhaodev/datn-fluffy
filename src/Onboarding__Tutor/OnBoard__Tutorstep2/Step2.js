@@ -73,7 +73,7 @@ function OnboardTutor__Step2() {
       </div>
 
       <div className="step2__wrapper">
-        <div className="step2__content">
+        <div className="box__step2">
           <h2 className="step2__h2">Work Experience</h2>
           {/* <p className="welcome">Welcome! First things first ...</p> */}
           <Form
@@ -127,13 +127,13 @@ function OnboardTutor__Step2() {
               rules={[{ required: true, message: 'Please input' }]}
             >
               <Input.TextArea showCount maxLength={1000} />
-            </Form.Item>
+            </Form.Item  >
 
 
-            <Button type="primary" htmlType="submit" className="student__buttonsub">
+            <Button type="primary" htmlType="submit" className="student__buttonsub2">
               Submit
             </Button>
-            <Link to="onboardtutorstep3"><Button>Skip</Button></Link>
+            <Link to="onboardtutorstep3" className="step2__skip"><Button >Skip</Button></Link>
           </Form>
         </div>
       </div>

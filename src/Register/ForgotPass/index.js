@@ -1,24 +1,83 @@
-import { Link } from "react-router-dom";
-import "../ForgotPass/ForgotPass.css"
+import "../../Register/ForgotPass/ForgotPass.css";
+import { Button, Form, Input, message, Select } from 'antd';
+import { setVerify } from "../../Redux/features/verifySlice";
+import { UserType, UserGender } from '../../constraint'
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate, } from "react-router-dom";
+
+
+
 
 
 
 function ForgotPassWord() {
+    const dispatch = useDispatch()
+
+
+    const [status, setStatus] = useState(false)
+    const onFinish = (user) => {
+        const datatemp = {
+            email: user.email,
+        }
+        const getData = async () => {
+            const result = await ForgotPassWord({
+                variables: {
+                    input: datatemp,
+                },
+            });
+            setStatus(result.data.signUp.success);
+            dispatch(setVerify(user.email))
+        }
+        getData()
+
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
     return (
-        <div className="container">
-            <div classname="navigation">
-                <h1 classname="logo"><Link to="/">Fluffy</Link></h1>
-            </div>
-            <div className="box__forgot">
-            <div classname="forgot">
-                <h1>Reset password</h1>
-                <p>Enter the email address associated with your account, and we'll email you a link to reset your password.</p>
-                <div classname="email">
-                    <label htmlFor="email" className="forgot-label">Email</label>
-                    <input type="email" id="email" className="forgot-input" placeholder="nguyenvana@gmail.com" />
+
+        <div className="forgot__pad">
+            <div className="forgot__gr">
+                <div className="forgot__logo">
+                    <h1 ><Link to="/" className="logo__signup">Fluffy</Link></h1>
                 </div>
-                <button classname="forgot-submit">Send reset link</button>
-            </div>
+                <div className="forgot__all">
+                    <div className="box__forgot">
+                        <div classname="forgot">
+                            <h1 className="forgot__heading">Reset password</h1>
+                            <p className="forgot__p">Enter the email address associated with your account, and we'll email you a link to reset your password.</p>
+                            <Form
+                             name="basic"
+                             onFinish={onFinish}
+                             onFinishFailed={onFinishFailed}
+                             autoComplete="off"
+                             layout="vertical"
+                         >
+                            <Form.Item
+                                    label="Email"
+                                    name="email"
+                                    hasFeedback
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your email!',
+                                        },
+                                        {
+                                            type: "email",
+                                            message: 'Email was wrong',
+                                        },
+                                    ]}
+                                >
+                                    <Input style={{ height: "35px" }} />
+                                </Form.Item>
+                                <Button type="primary" htmlType="submit" className="forgot__form__button">
+                                        Signup
+                                    </Button>
+                            </Form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

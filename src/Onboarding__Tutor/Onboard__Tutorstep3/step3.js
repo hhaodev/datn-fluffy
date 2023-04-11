@@ -59,9 +59,8 @@ function OnboardTutor__Step3() {
         </>
       </div>
       <div className="step3__wrapper">
-        <div className="step3__content">
+        <div className="box__step3">
           <h2 className="step3__h2">Certificate</h2>
-          {/* <p className="welcome">Welcome! First things first ...</p> */}
           <Form
             name="normal"
             className="form__dropdown"
@@ -83,16 +82,16 @@ function OnboardTutor__Step3() {
             >
               <Input />
             </Form.Item>
-            <Form.Item 
-            name="point"
-            rules={[
-              {
-                required: true,
-                message: 'Please input!',
-              },
-            ]}
-            label="Point">
-              <InputNumber />
+            <Form.Item
+              name="point"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input!',
+                },
+              ]}
+              label="Point">
+              <Input />
             </Form.Item>
             <Form.Item
               label="Upload"
@@ -111,10 +110,10 @@ function OnboardTutor__Step3() {
               </Upload>
             </Form.Item>
 
-            <Button type="primary" htmlType="submit" className="student__buttonsub">
+            <Button type="primary" htmlType="submit" className="student__buttonsub3">
               Submit
             </Button>
-            <Link to="onboardtutorstep4"><Button>Skip</Button></Link>
+            <Link to="onboardtutorstep4" className="step3__skip"><Button>Skip</Button></Link>
           </Form>
         </div>
       </div>
