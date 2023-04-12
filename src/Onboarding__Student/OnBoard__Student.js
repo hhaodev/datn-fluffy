@@ -13,8 +13,6 @@ import { useSelector } from "react-redux";
 
 
 
-
-
 function OnBoard__Student() {
   const { Option } = Select;
   const { RangePicker } = DatePicker;
@@ -69,7 +67,7 @@ function OnBoard__Student() {
   };
   return (
     <div className="body-onboarding">
-      <h1 className="student__logo">Fluffy</h1>
+      {/* <h1 className="student__logo">Fluffy</h1> */}
       <div className="form-wrapper">
         <div className="box__onboardstd">
           <div className="onboard__heading">
