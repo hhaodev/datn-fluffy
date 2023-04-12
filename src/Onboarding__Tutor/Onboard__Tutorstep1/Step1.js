@@ -21,8 +21,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
 import { setCurrentTutor, setCurrentTutor_educations } from '../../Redux/features/tutorSlice';
 
-
-
 function OnboardTutor__Step1() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
