@@ -73,7 +73,7 @@ function OnboardTutor__Step3() {
 
   return (
     <div className="step3__body">
-      <h1 className="step3__logo">Fluffy</h1>
+      {/* <h1 className="step3__logo">Fluffy</h1> */}
       <div className='step3__step'>
         <>
           <Steps current={2} labelPlacement="vertical" items={items} className='step3__stepss' />
