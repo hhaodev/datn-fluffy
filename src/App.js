@@ -10,7 +10,6 @@ import { setSchools } from "./Redux/features/schoolsSlice";
 
 function App() {
   const dispatch = useDispatch()
-  const currentUser = useSelector(state => state.user.currentUser)
 
   useEffect(() => {
     client.query({
@@ -39,8 +38,7 @@ function App() {
   }, [])
 
 
-  useEffect(() =>  {
-    if (Object.values(currentUser).length === 0) 
+  useEffect(() =>  { 
     {
       client.query({
         query: gql`

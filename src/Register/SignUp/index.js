@@ -6,7 +6,7 @@ import { useState } from "react";
 import "../../Register/SignUp/SignUp.css";
 import { useDispatch } from "react-redux";
 import { setVerify } from "../../Redux/features/verifySlice";
-import { } from "../../Redux/features/userSlice";
+import { setCurrentUser } from "../../Redux/features/userSlice";
 
 
 function SignUp() {
@@ -41,6 +41,7 @@ function SignUp() {
                 },
             });
             setStatus(result.data.signUp.success);
+            dispatch(setCurrentUser(datatemp))
             dispatch(setVerify(user.email))
         }
         getData()
@@ -53,7 +54,7 @@ function SignUp() {
     return (
         <div className="signup__pad">
             <div className="signup__gr">
-                {status && navigate("/verifi")}
+                {status && navigate("/verify")}
                 <div className="signup__logo">
                     <h1><Link to="/" className="logo__signup">Fluffy</Link></h1>
                 </div>

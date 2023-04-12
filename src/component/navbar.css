@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.navbar__phi {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 20px;
+}
+
+.navbar__button1 {
+    background-color: #f66962;
+    font-size: 15px;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    line-height: 10px;
+    border-radius: 10px;
+}

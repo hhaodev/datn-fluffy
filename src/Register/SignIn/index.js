@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { gql, useMutation } from '@apollo/client';
-import { useState } from "react";
 import "../../Register/SignIn/SignIn.css"
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../Redux/features/userSlice";

@@ -1,5 +1,5 @@
 import '../../Onboarding__Tutor/Onboard__Tutorstep1/OnboardTutor__Step1.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { Steps } from 'antd';
 import {
@@ -16,11 +16,14 @@ import {
   Checkbox,
   Upload,
 } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PlusOutlined } from '@ant-design/icons';
-
+import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
+import { setCurrentTutor, setCurrentTutor_educations } from '../../Redux/features/tutorSlice';
 
 function OnboardTutor__Step1() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const schoolsList = useSelector(state => state.schools.schoolsData)
   const { Option } = Select;
   const { RangePicker } = DatePicker;
@@ -43,13 +46,28 @@ function OnboardTutor__Step1() {
       description,
     },
   ];
-
-
+  const handleUploadImage = (options) => {
+    const { onSuccess, onError, file } = options;
+    // console.log(options);
+    uploadToCloudinary({
+      file,
+      fileType: "image",
+      successCallback: onSuccess,
+      failureCallback: onError,
+    });
+  };
   const onFinish = (values) => {
     const rangeValue = values['range-picker'];
-    const fromYear = new Date(rangeValue[0].format('DD/MM/YYYY')).toISOString()
-    const toYear = new Date(rangeValue[1].format('DD/MM/YYYY')).toISOString()
-
+    const fromYear = new Date(rangeValue[0]).toISOString()
+    const toYear = new Date(rangeValue[1]).toISOString()
+    const dataTutor = {
+      schoolId: values.schoolId,
+      toYear: toYear,
+      fromYear: fromYear,
+      scoreUrl: values.url
+    };
+    dispatch(setCurrentTutor_educations(dataTutor))
+    navigate("/onboardtutorstep2")
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -60,7 +78,7 @@ function OnboardTutor__Step1() {
 
   return (
     <div className="step1__body">
-      <h1 className="step1__logo">Fluffy</h1>
+      {/* <h1 className="step1__logo">Fluffy</h1> */}
       <div className='step1__step'>
         <>
           <Steps current={0} labelPlacement="vertical" items={items} className='step1__stepss' />
@@ -107,31 +125,23 @@ function OnboardTutor__Step1() {
                 },
               ]}
             >
-              <RangePicker />
+              <RangePicker format="DD/MM/YYYY" />
             </Form.Item>
-            <Form.Item
-              label="What subject are you good at ?"
-              name="yougood"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input!',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-
             <Form.Item
               label="Upload here"
-              valuePropName="fileList"
+              getValueFromEvent={(value) => value.file?.response}
+              name="url"
               rules={[
                 {
                   required: true,
                   message: 'Please upload!',
                 },
               ]}>
-              <Upload action="/upload.do" listType="picture-card">
+              <Upload
+                accept="image/*"
+                name="url"
+                customRequest={handleUploadImage}
+                listType="picture-card">
                 <div>
                   <PlusOutlined />
                   <div style={{ marginTop: 8 }}>Upload</div>
@@ -139,7 +149,7 @@ function OnboardTutor__Step1() {
               </Upload>
             </Form.Item>
             <Button type="primary" htmlType="submit" className="student__buttonsub">
-              <Link to="/onboardtutorstep2">Submit</Link>
+              Submit
             </Button>
 
           </Form>

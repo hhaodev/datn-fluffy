@@ -1,3 +1,4 @@
+import '../../Register/Verify/verify.css'
 import { Button, Form, Input } from 'antd';
 import { useNavigate, } from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -53,8 +54,13 @@ function Verifi() {
 
 
     return (
+        <div className='verify__body'>
+            {/* <h1 className="step4__logo">Fluffy</h1> */}
+            <div className='verify__wrapper'>
+                <div className='box__verify'>
+                <h2 className="verify__h2">Verify</h2>
         <>
-            {Object.keys(dataVerify).length > 0 && <span>vui long kiem tra email: {dataVerify}</span>}
+            {Object.keys(dataVerify).length > 0 && <span className='verify__sapns'>Please check your email: {dataVerify}</span>}
             <Form
                 name="basic"
                 labelCol={{
@@ -91,13 +97,15 @@ function Verifi() {
                         span: 16,
                     }}
                 >
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" className='verify__buttonsub'>
                         Submit
                     </Button>
                 </Form.Item>
             </Form>
         </>
-        // </div>
+        </div>
+        </div>
+     </div>
     );
 }
 

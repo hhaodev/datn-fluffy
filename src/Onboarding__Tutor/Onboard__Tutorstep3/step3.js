@@ -1,25 +1,31 @@
 import '../../Onboarding__Tutor/Onboard__Tutorstep3/OnboardTutor__Step3.css'
-import imgright from '../../assets/images/backgroundapply.png';
-import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
 import { Steps } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import {
   Form,
   Input,
   Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
   Upload,
 } from 'antd';
+import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
+import { useDispatch } from 'react-redux';
+import { setCurrentTutor_cetifications } from '../../Redux/features/tutorSlice';
+import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
 
 function OnboardTutor__Step3() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+//mutiton
+  const CREATE_TUTOR_ON_BOARDING_MUTATION = gql`
+    mutation createTutorOnboarding($input: CreateTutorOnboardingDto!) {
+      createTutorOnboarding(input: $input) {
+        id
+      }
+    }
+  `;
 
   const description = '';
   const items = [
@@ -40,10 +46,25 @@ function OnboardTutor__Step3() {
       description,
     },
   ];
-
+  const handleUploadImage = (options) => {
+    const { onSuccess, onError, file } = options;
+    // console.log(options);
+    uploadToCloudinary({
+      file,
+      fileType: "image",
+      successCallback: onSuccess,
+      failureCallback: onError,
+    });
+  };
 
   const onFinish = (values) => {
-
+    const dataTutor = {
+      organization: values.certificate,
+      score: values.point,
+      awardUrl: values.url,
+    }
+    dispatch(setCurrentTutor_cetifications(dataTutor))
+    
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -52,7 +73,7 @@ function OnboardTutor__Step3() {
 
   return (
     <div className="step3__body">
-      <h1 className="step3__logo">Fluffy</h1>
+      {/* <h1 className="step3__logo">Fluffy</h1> */}
       <div className='step3__step'>
         <>
           <Steps current={2} labelPlacement="vertical" items={items} className='step3__stepss' />
@@ -94,15 +115,20 @@ function OnboardTutor__Step3() {
               <Input />
             </Form.Item>
             <Form.Item
-              label="Upload"
-              valuePropName="fileList"
+              label="Upload here"
+              getValueFromEvent={(value) => value.file?.response}
+              name="url"
               rules={[
                 {
                   required: true,
                   message: 'Please upload!',
                 },
               ]}>
-              <Upload action="/upload.do" listType="picture-card">
+              <Upload
+                accept="image/*"
+                name="url"
+                customRequest={handleUploadImage}
+                listType="picture-card">
                 <div>
                   <PlusOutlined />
                   <div style={{ marginTop: 8 }}>Upload</div>

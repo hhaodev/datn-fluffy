@@ -13,8 +13,6 @@ import { useSelector } from "react-redux";
 
 
 
-
-
 function OnBoard__Student() {
   const { Option } = Select;
   const { RangePicker } = DatePicker;
@@ -34,8 +32,8 @@ function OnBoard__Student() {
   `;
   const onFinish = (values) => {
     const rangeValue = values['range-picker'];
-    const fromYear = new Date(rangeValue[0].format('DD/MM/YYYY')).toISOString()
-    const toYear = new Date(rangeValue[1].format('DD/MM/YYYY')).toISOString()
+    const fromYear = new Date(rangeValue[0]).toISOString()
+    const toYear = new Date(rangeValue[1]).toISOString()
     const dataStudent = {
       schoolId: values.schoolId,
       toYear: toYear,
@@ -69,7 +67,7 @@ function OnBoard__Student() {
   };
   return (
     <div className="body-onboarding">
-      <h1 className="student__logo">Fluffy</h1>
+      {/* <h1 className="student__logo">Fluffy</h1> */}
       <div className="form-wrapper">
         <div className="box__onboardstd">
           <div className="onboard__heading">
@@ -116,13 +114,13 @@ function OnBoard__Student() {
               ]}
               className="onboardstd__calendar"
             >
-              <RangePicker />
+              <RangePicker format="DD/MM/YYYY" />
             </Form.Item>
             {/* <div className="onboardstd__bot"> */}
               <Button type="primary" htmlType="submit" className="student__buttonsub">
                 Submit
               </Button>
-              <Link to="" className="onboardstd__skip"><Button>Skip</Button></Link>
+              <Link to="/studenthome" className="onboardstd__skip"><Button>Skip</Button></Link>
             {/* </div> */}
           </Form>
         </div>

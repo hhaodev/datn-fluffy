@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../../Onboarding__Tutor/OnBoard__Tutorstep2/OnboardTutor__Step2.css'
 import { Steps } from 'antd';
 import {
@@ -16,7 +16,8 @@ import {
   Checkbox,
   Upload,
 } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentTutor, setCurrentTutor_experiences } from '../../Redux/features/tutorSlice';
 
 
 
@@ -25,6 +26,8 @@ import { useSelector } from 'react-redux';
 
 
 function OnboardTutor__Step2() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { RangePicker } = DatePicker;
   const schoolsList = useSelector(state => state.schools.schoolsData)
 
@@ -50,9 +53,18 @@ function OnboardTutor__Step2() {
   ];
   const onFinish = (values) => {
     const rangeValue = values['range-picker'];
-    const fromYear = new Date(rangeValue[0].format('DD/MM/YYYY')).toISOString()
-    const toYear = new Date(rangeValue[1].format('DD/MM/YYYY')).toISOString()
+    const startTime = new Date(rangeValue[0]).toISOString()
+    const endTime = new Date(rangeValue[1]).toISOString()
     console.log(values);
+    const dataTutor = {
+      organization: values.organization,
+      description: values.description,
+      positions: values.positions,
+      startTime: startTime,
+      endTime: endTime
+    }
+    dispatch(setCurrentTutor_experiences(dataTutor))
+    navigate("/onboardtutorstep3")
 
   }
 
@@ -64,7 +76,7 @@ function OnboardTutor__Step2() {
 
   return (
     <div className="step2__body">
-      <h1 className="step2__logo">Fluffy</h1>
+      {/* <h1 className="step2__logo">Fluffy</h1> */}
 
       <div className='step2__step'>
         <>
@@ -87,7 +99,7 @@ function OnboardTutor__Step2() {
           >
             <Form.Item
               label="Name Organization?"
-              name="origan"
+              name="organization"
               rules={[
                 {
                   required: true,
@@ -119,11 +131,11 @@ function OnboardTutor__Step2() {
                 },
               ]}
             >
-              <RangePicker />
+              <RangePicker format="DD/MM/YYYY" />
             </Form.Item>
             <Form.Item
-              name="describe"
-              label="Describe"
+              name="description"
+              label="Description"
               rules={[{ required: true, message: 'Please input' }]}
             >
               <Input.TextArea showCount maxLength={1000} />
