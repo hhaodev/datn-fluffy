@@ -47,9 +47,6 @@ body {
 }
 
 
-
-
-
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
@@ -175,9 +172,6 @@ body {
 	left: 60px;
 }
 
-
-
-
 /* NAVBAR */
 #content nav {
 	height: 56px;
@@ -230,8 +224,8 @@ body {
 	flex-grow: 1;
 	padding: 0 16px;
 	height: 100%;
-	border: none;
-	background: var(--grey);
+	border: 1px solid black;
+	background: #fff;
 	border-radius: 36px 0 0 36px;
 	outline: none;
 	width: 100%;
@@ -311,6 +305,7 @@ body {
 	width: 100%;
 	padding: 36px 24px;
 	font-family: var(--poppins);
+	background-color: #f5f5f3;
 	max-height: calc(100vh - 56px);
 	overflow-y: auto;
 }
@@ -519,13 +514,6 @@ body {
 /* CONTENT */
 
 
-
-
-
-
-
-
-
 @media screen and (max-width: 768px) {
 	#sidebar {
 		width: 200px;
@@ -540,11 +528,6 @@ body {
 		display: none;
 	}
 }
-
-
-
-
-
 
 @media screen and (max-width: 576px) {
 	#content nav form .form-input input {
@@ -592,3 +575,133 @@ body {
 }
 
 /* -------------------------------------------------------------------------------- */
+.My__courses {
+	padding: 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.student__heading11 {
+	font-size: 2.5rem;
+    color: var(--black);
+    margin: 20px !important;
+    border-bottom: var(--border);
+    padding-bottom: 1.5rem;
+    text-transform: capitalize;
+}
+
+.student__box {
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.box__student {
+	border-radius: .5rem;
+    background-color: white;
+    padding: 10px;
+} 
+
+.student__tutor {
+	display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.student__img1 {
+	height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.student__h32 {
+	font-size: 16px;
+    color: var(--black);
+    margin-bottom: .2rem;
+}
+
+.student__info span {
+	font-size: 1.3rem;
+    color: var(--light-color);
+}
+
+.student__thumb {
+	position: relative;
+}
+
+.student__img2 {
+	width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
+.student__spana {
+	position: absolute;
+    top: 1rem;
+    left: 1rem;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    background-color: rgba(0,0,0,.3);
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.student__title {
+	font-size: 1rem;
+    color: var(--black);
+    padding-bottom: .5rem;
+    padding-top: 1rem;
+}
+
+.inline-btn, .inline-option-btn {
+	border-radius: .5rem;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 1rem;
+	background-color: #7eadf4;
+	display: inline-block;
+}
+
+.student__segmented {
+	width: 100%;
+	position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-segmented .ant-segmented-group {
+	position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    width: 100%;
+	background-color: #f1f5fd;
+	height: 40px;
+}
+
+.student__des {
+	padding-right: 20px;
+}
+
+/* :where(.css-dev-only-do-not-override-mxhywb).ant-segmented .ant-segmented-item-label {
+	min-height: 28px;
+    line-height: 28px;
+    padding: 0 11px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	display: flex;
+	justify-content: center !important;
+	align-items: center !important;
+} */
+

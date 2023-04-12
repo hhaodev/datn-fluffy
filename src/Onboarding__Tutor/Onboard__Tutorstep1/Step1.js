@@ -20,10 +20,6 @@ import { useSelector } from 'react-redux';
 import { PlusOutlined } from '@ant-design/icons';
 
 
-
-
-
-
 function OnboardTutor__Step1() {
   const schoolsList = useSelector(state => state.schools.schoolsData)
   const { Option } = Select;

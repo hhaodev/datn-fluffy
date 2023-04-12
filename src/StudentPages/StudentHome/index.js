@@ -1,4 +1,5 @@
 import '../../StudentPages/StudentHome/studenthome.css';
+import { Segmented } from 'antd';
 
 function stdHome() {
 
@@ -7,7 +8,7 @@ function stdHome() {
       {/* SIDEBAR */}
       <section id="sidebar">
         <a href="#" className="brand">
-        <i className='bx bx-home' ></i>
+          <i className='bx bx-home' ></i>
           <span className="text">Home</span>
         </a>
         <ul className="side-menu top">
@@ -62,13 +63,14 @@ function stdHome() {
         </nav>
         {/* NAVBAR */}
         {/* MAIN */}
+        
         <main>
           <div className="head-title">
             <div className="left">
-              <h1>Dashboard</h1>
+              <h1>Home Student</h1>
               <ul className="breadcrumb">
                 <li>
-                  <a href="#">Dashboard</a>
+                  <a href="#">My course</a>
                 </li>
                 <li><i className="bx bx-chevron-right" /></li>
                 <li>
@@ -77,8 +79,117 @@ function stdHome() {
               </ul>
             </div>
           </div>
+          {/* course */}
+          <div className="My__courses">
+          <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='student__segmented'/>
+            <h1 className="student__heading11">our courses</h1>
+            <div className="student__box">
 
-          
+              <div className="box__student">
+                <div className="student__thumb">
+                  <img src="images/thumb-1.png" alt="" className="student__img2"/>
+                  <span className="student__spana">10 unit</span>
+                </div>
+                <div className="student__tutor">
+                  <img src="images/pic-2.jpg" alt="" className="student__img1"/>
+                  <div className="student__info">
+                    <h3 className="student__h32">john deo</h3>
+                  </div>
+                </div>
+                <h3 className="student__title">complete HTML tutorial</h3>
+                <p className='student__des'>khoá học oke, học đi bro</p>
+                <a href="playlist.html" className="inline-btn">Learn More</a>
+              </div>
+
+              <div className="box__student">
+              <div className="student__thumb">
+                  <img src="images/thumb-2.png" alt="" className="student__img2"/>
+                  <span className="student__spana">10 unit</span>
+                </div>
+                <div className="student__tutor">
+                  <img src="images/pic-3.jpg" alt="" className="student__img1"/>
+                  <div className="student__info">
+                    <h3 className="student__h32">john deo</h3>
+                  </div>
+                </div>
+                <h3 className="student__title">complete CSS tutorial</h3>
+                <p className='student__des'>khoá học oke, học đi bro</p>
+                <a href="playlist.html" className="inline-btn">Learn More</a>
+              </div>
+
+              <div className="box__student">
+              <div className="student__thumb">
+                  <img src="images/thumb-3.png" alt="" className="student__img2"/>
+                  <span className="student__spana">10 Unit</span>
+                </div>
+                <div className="student__tutor">
+                  <img src="images/pic-4.jpg" alt="" className="student__img1"/>
+                  <div className="student__info">
+                    <h3 className="student__h32">john deo</h3>
+                  </div>
+                </div>
+                
+                <h3 className="student__title">complete JS tutorial</h3>
+                <p className='student__des'>khoá học oke, học đi bro</p>
+                <a href="playlist.html" className="inline-btn">Learn More</a>
+              </div>
+
+              <div className="box__student">
+              <div className="student__thumb">
+                  <img src="images/thumb-4.png" alt="" className="student__img2"/>
+                  <span className="student__spana">10 Unit</span>
+                </div>
+                <div className="student__tutor">
+                  <img src="images/pic-5.jpg" alt="" className="student__img1"/>
+                  <div className="student__info">
+                    <h3 className="student__h32">john deo</h3>
+                  </div>
+                </div>
+               
+                <h3 className="student__title">complete Boostrap tutorial</h3>
+                <p className='student__des'>khoá học oke, học đi bro</p>
+                <a href="playlist.html" className="inline-btn">Learn More</a>
+              </div>
+
+              <div className="box__student">
+              <div className="student__thumb">
+                  <img src="images/thumb-5.png" alt="" className="student__img2"/>
+                  <span className="student__spana">10 Unit</span>
+                </div>
+                <div className="student__tutor">
+                  <img src="images/pic-6.jpg" alt="" className="student__img1"/>
+                  <div className="student__info">
+                    <h3 className="student__h32">john deo</h3>
+                  </div>
+                </div>
+                
+                <h3 className="student__title">complete JQuery tutorial</h3>
+                <p className='student__des'>khoá học oke, học đi bro</p>
+                <a href="playlist.html" className="inline-btn">Learn More</a>
+              </div>
+
+              <div className="box__student">
+                
+                <div className="student__thumb">
+                  <img src="images/thumb-6.png" alt="" className="student__img2"/>
+                  <span className="student__spana">10 Unit</span>
+                </div>
+                <div className="student__tutor">
+                  <img src="images/pic-7.jpg" alt="" className="student__img1"/>
+                  <div className="student__info">
+                    <h3 className="student__h32">john deo</h3>
+                  </div>
+                </div>
+                <h3 className="student__title">complete SASS tutorial</h3>
+                <p className='student__des'>khoá học oke, học đi bro</p>
+                <a href="playlist.html" className="inline-btn">Learn More</a>
+              </div>
+
+            </div>
+            <div className="more-btn">
+              <a href="courses.html" className="inline-option-btn">view all courses</a>
+            </div>
+          </div>
         </main>
         {/* MAIN */}
       </section>
