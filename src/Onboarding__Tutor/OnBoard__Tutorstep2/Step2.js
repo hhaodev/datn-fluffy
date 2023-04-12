@@ -76,7 +76,7 @@ function OnboardTutor__Step2() {
 
   return (
     <div className="step2__body">
-      <h1 className="step2__logo">Fluffy</h1>
+      {/* <h1 className="step2__logo">Fluffy</h1> */}
 
       <div className='step2__step'>
         <>
