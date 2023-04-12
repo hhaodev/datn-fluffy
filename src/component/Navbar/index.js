@@ -1,6 +1,8 @@
 import React from 'react'
+import '../../component/Navbar/navbar.css'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+
 
 export default function Navbar() {
     const navigate = useNavigate()
@@ -21,8 +23,8 @@ export default function Navbar() {
                     <>
                         {!(Object.values(currentUser).length === 0) ? (
                             <>
-                                <p>Hi, {currentUser.lastName}</p>
-                                <button onClick={handleLogout}>Logout</button>
+                                <p className='navbar__phi'>Hi, {currentUser.lastName}</p>
+                                <button onClick={handleLogout} className='navbar__button1'>Logout</button>
                             </>
                         ) : (
                             <>
