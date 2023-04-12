@@ -6,6 +6,7 @@ import { useState } from "react";
 import "../ApplyTutor/ApplyTutor.css"
 import { useDispatch } from "react-redux";
 import { setVerify } from "../../Redux/features/verifySlice";
+import { setCurrentUser } from "../../Redux/features/userSlice";
 
 
 function ApplyTutor() {
@@ -39,6 +40,7 @@ function ApplyTutor() {
                 },
             });
             setStatus(result.data.signUp.success);
+            dispatch(setCurrentUser(datatemp))
             dispatch(setVerify(user.email))
         }
         getData()
@@ -50,7 +52,7 @@ function ApplyTutor() {
     return (
         <div className="apply__pad">
             <div className="apply_gr">
-                {status && navigate("/verifi")}
+                {status && navigate("/verify")}
                 <div className="apply__logo">
                     <h1><Link to="/" className="logo__apply">Fluffy</Link></h1>
                 </div>
@@ -199,14 +201,8 @@ function ApplyTutor() {
                                         <Option value={UserGender.MALE}>Male</Option>
                                         <Option value={UserGender.FEMALE}>Female</Option>
                                     </Select>
-
                                 </Form.Item>
-                                {/* </div>
-
-                    <div className="signup__gender"> */}
-
                             </div>
-
                             <div className="apply__submit">
                                 <Form.Item
                                     wrapperCol={{

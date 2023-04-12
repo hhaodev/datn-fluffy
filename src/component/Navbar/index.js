@@ -1,8 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function index() {
+export default function Navbar() {
+    const navigate = useNavigate()
+    const currentUser = useSelector(state => state.user.currentUser)
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("refreshToken")
+        navigate('/')
+        window.location.reload(false);
+    };
     return (
         <header>
             <a href="" className="studenthome__logo">
@@ -10,9 +18,19 @@ export default function index() {
             </a>
             <div className="header-icons">
                 <ul className='navbar'>
-
-                    <li><Link to="/signin">Sign in</Link></li>
-                    <li><Link to="/signup">Sign up</Link></li>
+                    <>
+                        {!(Object.values(currentUser).length === 0) ? (
+                            <>
+                                <p>Hi, {currentUser.lastName}</p>
+                                <button onClick={handleLogout}>Logout</button>
+                            </>
+                        ) : (
+                            <>
+                                <li><Link to="/signin">Sign in</Link></li>
+                                <li><Link to="/signup">Sign up</Link></li>
+                            </>
+                        )}
+                    </>
                 </ul>
             </div>
         </header>
