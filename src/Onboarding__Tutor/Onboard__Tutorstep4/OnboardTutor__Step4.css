@@ -3,18 +3,19 @@
   min-height: 100vh;
   padding-right: 40px;
   padding-left: 40px;
+  padding-top: 100px;
   background: url(../../assets/images/background.png);
   background-size: cover;
   background-position: center;
 }
 
 .step4__logo {
-  position: relative;
+  /* position: relative; */
   font-family: 'Lilita One', cursive;
   font-weight: bold;
   color: #f66962;
-  top: 22px;
-  font-size: 50px;
+  /* top: 22px; */
+  /* font-size: 50px; */
 }
 
 .step4__step {
@@ -31,7 +32,7 @@
   margin-bottom: 100px;
   max-width: 100%;
   width: 450px;
-  height: 600px;
+  height: 450px;
   padding: 30px;
   border-radius: 50px;
   background-color: #fff;
@@ -43,5 +44,12 @@
   font-size: 40px;
   align-items: center;
   padding: 16px;
+  margin-bottom: 25px;
   color: #c45852;
+}
+
+.step4__fot {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
