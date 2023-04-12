@@ -40,7 +40,7 @@ function OnboardTutor__Step4() {
 
     return (
         <div className='step4__body'>
-            <h1 className="step4__logo">Fluffy</h1>
+            {/* <h1 className="step4__logo">Fluffy</h1> */}
             <div className='step4__step'>
                 <>
                     <Steps current={3} labelPlacement="vertical" items={items} />
@@ -76,8 +76,10 @@ function OnboardTutor__Step4() {
                             Submit
                         </Button>
                     </Form>
+                    <div className='step4__fot'>
                     <p>Do not have an account?</p>
                     <Link to=""><Button>Create account</Button></Link>
+                    </div>
                 </div>
             </div>
         </div>
