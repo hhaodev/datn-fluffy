@@ -17,7 +17,6 @@ li {
 :root {
 	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
-
 	--light: #F9F9F9;
 	--blue: #3C91E6;
 	--light-blue: #CFE8FF;
@@ -44,6 +43,11 @@ body.dark {
 body {
 	background: var(--grey);
 	overflow-x: hidden;
+}
+
+.student__logos {
+	margin: 20px;
+	font-size: 45px;
 }
 
 
@@ -704,4 +708,94 @@ body {
 	justify-content: center !important;
 	align-items: center !important;
 } */
+
+/* home grid */
+
+.student__grid {
+	padding: 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.student__heading11 {
+	font-size: 2.5rem;
+    color: var(--black);
+    margin-bottom: 2.5rem;
+    border-bottom: var(--border);
+    padding-bottom: 1.5rem;
+    text-transform: capitalize;
+}
+
+.box__std {
+	display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.boxchild__std {
+	background-color: #fff;
+    border-radius: .5rem;
+    padding: 2rem;
+}
+
+.std__title {
+	font-size: 20px;
+    color: black;
+    text-transform: capitalize;
+}
+
+.std__like {
+	color:#AAAAAA;
+    font-size: 20px;
+    margin-top: 1.5rem;
+}
+
+.std__span1 {
+	color: blueviolet;
+}
+
+.std__inline {
+	background-color: #7eadf4;
+	display: inline-block;
+	border-radius: .5rem;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.std__flexs {
+	display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.std__aa {
+	background-color: #eee;
+    border-radius: .5rem;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+.std__tutors {
+	padding: 1rem 0;
+    font-size: 15px;
+    color: #888;
+    line-height: 2;
+}
+
+.fab, .fas {
+	margin-right: 1rem;
+    color: #888;
+}
+
+.spanx {
+	color: #060714;
+}
 
