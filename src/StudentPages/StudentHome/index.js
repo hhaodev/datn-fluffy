@@ -30,31 +30,30 @@ function stdHome() {
     <div>
       {/* SIDEBAR */}
       <section id="sidebar">
-        <a href="#" className="brand">
-          {/* <i className='bx bx-home' ></i> */}
+        <a href="" className="brand">
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="side-menu top">
           <li className="active">
-            <a href="#">
+            <a href="">
               <i className='bx bx-home' ></i>
               <span className="text">Home</span>
             </a>
           </li>
           <li>
-            <a href="#">
+          <a href="">
               <i className='bx bx-book-open'></i>
               <span className="text">My Courses</span>
-            </a>
+              </a>
           </li>
           <li>
-            <a href="#">
+            <a href="">
               <i className='bx bxs-calendar'></i>
               <span className="text">Schedule</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="">
               <i className='bx bx-credit-card' ></i>
               <span className="text">Payment</span>
             </a>
@@ -97,7 +96,7 @@ function stdHome() {
                 </li>
                 <li><i className="bx bx-chevron-right" /></li>
                 <li>
-                  <a className="active" href="#">Home</a>
+                  <a href="#">Home</a>
                 </li>
               </ul>
             </div>

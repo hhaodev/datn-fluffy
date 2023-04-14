@@ -5,6 +5,7 @@ import React from 'react';
 import { Avatar, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import user from '../../assets/images/user.jpg'
+import sidebar from '../../assets/images/sidebar.png';
 
 
 function myCourse() {
@@ -19,36 +20,40 @@ function myCourse() {
     <div>
       {/* SIDEBAR */}
       <section id="sidebar">
-        <a href="#" className="brand">
+        <a href="" className="brand">
           {/* <i className='bx bx-home' ></i> */}
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="side-menu top">
-          <li className="active">
-            <a href="#">
+          <li>
+            <a href="">
               <i className='bx bx-home' ></i>
               <span className="text">Home</span>
             </a>
           </li>
-          <li>
-            <a href="#">
+          <li className="active">
+            <a href="">
               <i className='bx bx-book-open'></i>
               <span className="text">My Courses</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="">
               <i className='bx bxs-calendar'></i>
               <span className="text">Schedule</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="">
               <i className='bx bx-credit-card' ></i>
               <span className="text">Payment</span>
             </a>
           </li>
+          
         </ul>
+        <div className='course__img'>
+        {/* <img src ={sidebar} ></img> */}
+        </div>
       </section>
       {/* SIDEBAR */}
       {/* CONTENT */}
@@ -56,8 +61,8 @@ function myCourse() {
         {/* NAVBAR */}
         <nav>
           <i className="bx bx-menu" />
-          <a href="#" className="nav-link">Categories</a>
-          <form action="#">
+          <a href="" className="nav-link">Categories</a>
+          <form action="">
             <div className="form-input">
               <input type="search" placeholder="Search..." />
               <button type="submit" className="search-btn"><i className="bx bx-search" /></button>
@@ -65,7 +70,7 @@ function myCourse() {
           </form>
           <input type="checkbox" id="switch-mode" hidden />
           <label htmlFor="switch-mode" className="switch-mode" />
-          <a href="#" className="notification">
+          <a href="" className="notification">
             <i className="bx bxs-bell" />
             <span className="num">8</span>
           </a>
@@ -82,11 +87,11 @@ function myCourse() {
               <h1>Home Student</h1>
               <ul className="breadcrumb">
                 <li>
-                  <a href="#">My course</a>
+                  <a href="">My course</a>
                 </li>
                 <li><i className="bx bx-chevron-right" /></li>
                 <li>
-                  <a className="active" href="#">Home</a>
+                  <a href="">Home</a>
                 </li>
               </ul>
             </div>
