@@ -31,7 +31,7 @@ function myHome() {
                     <div className="latter">
                         <form>
                             <input type="email" placeholder="Search Course" required />
-                            <input type="submit" defaultValue="Let's Start" required />
+                            <input type="button" defaultValue="Search" required />
                         </form>
                     </div>
                 </div>
