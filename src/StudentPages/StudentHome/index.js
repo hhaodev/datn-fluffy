@@ -19,7 +19,6 @@ import user from '../../assets/images/user.jpg'
 
 
 function stdHome() {
-
   const menu = (
     <Menu>
       <Menu.Item key="profile">Profile</Menu.Item>
@@ -85,7 +84,6 @@ function stdHome() {
         </nav>
         {/* NAVBAR */}
         {/* MAIN */}
-
         <main>
           <div className="head-title">
             <div className="left">

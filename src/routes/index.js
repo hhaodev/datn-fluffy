@@ -11,6 +11,10 @@ import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/step4'
 import stdHome from '../StudentPages/StudentHome/index';
 import Mycourse from '../StudentPages/MyCourse/Course';
 import Verify from '../Register/Verify';
+import myCoursestt from '../TutorPages/Courses/index';
+import addcourse from '../TutorPages/AddCourse/index';
+import sessionTutor from '../TutorPages/Session/index';
+import feedBack from '../TutorPages/Feedback/index';
 
 
 const publicRoutes = [
@@ -27,6 +31,10 @@ const publicRoutes = [
     { path: '/onboardtutorstep4', component: OnboardTutor__Step4},
     { path: '/studenthome', component: stdHome, layout: null},
     { path: '/mycourse', component: Mycourse, layout: null},
+    { path: '/mycoursett', component: myCoursestt, layout: null},
+    { path: '/addcourse', component: addcourse, layout: null},
+    { path: '/sessiontt', component: sessionTutor, layout: null},
+    { path: '/feedback', component: feedBack, layout: null},
 ];
 
 const privateRoutes = [
