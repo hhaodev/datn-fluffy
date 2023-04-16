@@ -10,22 +10,17 @@ import {
   Upload,
 } from 'antd';
 import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentTutor_cetifications } from '../../Redux/features/tutorSlice';
-import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
+import { gql, } from '@apollo/client';
+import client from '../../configGQL';
 
 function OnboardTutor__Step3() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-//mutiton
-  const CREATE_TUTOR_ON_BOARDING_MUTATION = gql`
-    mutation createTutorOnboarding($input: CreateTutorOnboardingDto!) {
-      createTutorOnboarding(input: $input) {
-        id
-      }
-    }
-  `;
+  const educations_r = useSelector(state => state.tutor.currentTutor.educations)
+  const experiences_r = useSelector(state => state.tutor.currentTutor.experiences)
+  const cetifications_r = useSelector(state => state.tutor.currentTutor.cetifications)
 
   const description = '';
   const items = [
@@ -57,14 +52,65 @@ function OnboardTutor__Step3() {
     });
   };
 
+
+  //mutiton
+  const CREATE_TUTOR_ON_BOARDING_MUTATION = gql`
+  mutation createTutorOnboarding($input: CreateTutorOnboardingDto!) {
+    createTutorOnboarding(input: $input) {
+      status
+    }
+  }`;
+
   const onFinish = (values) => {
     const dataTutor = {
-      organization: values.certificate,
+      organization: values.organization,
+      name: values.certificate,
       score: values.point,
       awardUrl: values.url,
     }
     dispatch(setCurrentTutor_cetifications(dataTutor))
-    
+    const createTutorOnboarding = async (client, input) => {
+      try {
+        const { data } = await client.mutate({
+          mutation: CREATE_TUTOR_ON_BOARDING_MUTATION,
+          variables: { input },
+        });
+        return data.createTutorOnboarding;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const educations = {
+      schoolId: educations_r.schoolId,
+      scoreUrl: educations_r.scoreUrl,
+      fromYear: educations_r.fromYear,
+      toYear: educations_r.toYear,
+    }
+    const experiences = {
+      organization: experiences_r.organization,
+      position: experiences_r.position,
+      description: experiences_r.description,
+      startTime: experiences_r.startTime,
+      endTime: experiences_r.endTime,
+    }
+    const cetifications = {
+      organization: cetifications_r.organization,
+      score: cetifications_r.score,
+      name: cetifications_r.name,
+      awardUrl: cetifications_r.awardUrl,
+    }
+    const input = {
+      educations: [educations],
+      experiences: [experiences],
+      certifications: [cetifications],
+    };
+    createTutorOnboarding(client, input)
+      .then((result) => {
+        if (result) {
+          navigate("/onboardtutorstep4")
+        }
+      })
+      .catch((error) => alert(error));
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -92,6 +138,18 @@ function OnboardTutor__Step3() {
             onFinishFailed={onFinishFailed}
           >
             <Form.Item
+              label="Name Organization?"
+              name="organization"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
               label="Name Certificate?"
               name="certificate"
               rules={[
@@ -112,7 +170,7 @@ function OnboardTutor__Step3() {
                 },
               ]}
               label="Point">
-              <Input />
+              <Input type='number' />
             </Form.Item>
             <Form.Item
               label="Upload here"
