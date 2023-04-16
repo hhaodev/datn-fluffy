@@ -1,11 +1,10 @@
-import '../../TutorPages/Session/session.css'
-import { Form } from 'antd'
-import { Link } from 'react-router-dom'
+import '../../TutorPages/Payment/paymentt.css'
+import {Link} from 'react-router-dom'
 
-function sessionTutor() {
-    return (
+function payMentTutor() {
+    return ( 
         <>
-             {/* SIDEBAR */}
+         {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
           <span className="student__logos">Fluffy</span>
@@ -51,7 +50,7 @@ function sessionTutor() {
       </section>
       {/* SIDEBAR */}
         </>
-    );
+     );
 }
 
-export default sessionTutor;
+export default payMentTutor;

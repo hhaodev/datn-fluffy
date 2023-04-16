@@ -2,6 +2,8 @@ import '../../TutorPages/Courses/courses.css'
 import { Avatar, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import user from '../../assets/images/user.jpg'
+import { Link } from 'react-router-dom'
+
 
 import React from 'react';
 import { Segmented } from 'antd';
@@ -55,7 +57,7 @@ function myCoursestt() {
           <li>
             <a href="">
               <i class='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
+              <Link to="/feedback"><span className="course__text">Feedback</span></Link>
             </a>
           </li>
         </ul>
@@ -118,6 +120,8 @@ function myCoursestt() {
               <div className="course">Course 9</div>
             </div>
           </div>
+
+          
 
 
         </main>

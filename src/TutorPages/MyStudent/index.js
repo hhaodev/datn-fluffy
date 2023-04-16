@@ -1,12 +1,12 @@
-import '../../TutorPages/Session/session.css'
-import { Form } from 'antd'
+import '../../TutorPages/MyStudent/mystudent.css'
 import { Link } from 'react-router-dom'
 
-function sessionTutor() {
-    return (
-        <>
-             {/* SIDEBAR */}
-      <section id="course__sidebar">
+
+function myStudent() {
+  return ( 
+    <>
+     {/* SIDEBAR */}
+     <section id="course__sidebar">
         <a href="" className="Course__brand">
           <span className="student__logos">Fluffy</span>
         </a>
@@ -44,14 +44,14 @@ function sessionTutor() {
           <li className="active">
             <a href="">
               <i className='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
+              <Link to="/feedback"><span className="course__text">Feedback</span></Link>
             </a>
           </li>
         </ul>
       </section>
       {/* SIDEBAR */}
-        </>
-    );
+    </>
+   );
 }
 
-export default sessionTutor;
+export default myStudent;
