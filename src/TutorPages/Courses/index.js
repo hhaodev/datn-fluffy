@@ -68,15 +68,15 @@ function myCoursestt() {
         {/* NAVBAR */}
         <nav>
           <i className="bx bx-menu" />
-          <a href="#" className="course__nav-link">Categories</a>
+          <a href="#" className="course__nav-link">Courses</a>
           <form action="#">
             <div className="course__form-input">
               <input type="search" placeholder="Search..." />
               <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
             </div>
           </form>
-          <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="course__switch-mode" />
+          {/* <input type="checkbox" id="switch-mode" hidden />
+          <label htmlFor="switch-mode" className="course__switch-mode" /> */}
           <a href="#" className="course__notification">
             <i className="bx bxs-bell" />
             <span className="course__num">8</span>

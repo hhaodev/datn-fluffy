@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Bree+Serif&family=Catamaran:wght@200&family=Lilita+One&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Poppins&family=Signika+Negative:wght@300&family=Signika:wght@300;500&display=swap');
 
-* {
+*{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -20,7 +20,6 @@ li {
 	--light: #F9F9F9;
 	--blue: #3C91E6;
 	--light-blue: #CFE8FF;
-	/* --grey: #eee; */
 	--dark-grey: #AAAAAA;
 	--dark: #342E37;
 	--red: #DB504A;
@@ -30,23 +29,14 @@ li {
 	--light-orange: #FFE0D3;
 }
 
-
-body.dark {
-	--light: #0C0C1E;
-	--grey: #060714;
-	--dark: #FBFBFB;
-}
-
-body {
-	background: var(--grey);
-	overflow-x: hidden;
-}
-
 .student__logos {
-	margin: 20px;
-	font-size: 45px;
+    font-family: 'Lilita One', cursive;
+    font-weight: bold;
+    color: #FD7238;
+    font-size: 50px;
+	margin-left: 50px;
+	padding-top: 50px;
 }
-
 
 /* SIDEBAR */
 #course__sidebar {
@@ -62,9 +52,9 @@ body {
 	overflow-x: hidden;
 	scrollbar-width: none;
 }
-#course__sidebar::--webkit-scrollbar {
+/* #course__sidebar::--webkit-scrollbar {
 	display: none;
-}
+} */
 #sidecourse__sidebarbar.hide {
 	width: 60px;
 }
@@ -83,98 +73,44 @@ body {
 	padding-bottom: 20px;
 	box-sizing: content-box;
 }
-#course__sidebar .Course__brand .bx {
-	min-width: 60px;
-	display: flex;
-	justify-content: center;
-}
+
 #course__sidebar .course__side-menu {
 	width: 100%;
 	margin-top: 48px;
 }
+
 #course__sidebar .course__side-menu li {
-	height: 48px;
+	height: 66px;
 	background: transparent;
 	margin-left: 6px;
-	border-radius: 48px 0 0 48px;
+	/* border-radius: 48px 0 0 48px; */
 	padding: 4px;
 }
-#course__sidebar .course__side-menu li.active {
-	background: var(--grey);
-	position: relative;
-}
 
-.course__side-menu .active {
 
-}
-/* #sidebar .side-menu li.active::before {
-	content: '';
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	top: -40px;
-	right: 0;
-	box-shadow: 20px 20px 0 var(--grey);
-	z-index: -1;
-}
-#sidebar .side-menu li.active::after {
-	content: '';
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	bottom: -40px;
-	right: 0;
-	box-shadow: 20px -20px 0 var(--grey);
-	z-index: -1;
-} */
+
+/* radius active */
 #course__sidebar .course__side-menu li a {
-	width: 100%;
+	width: 90%;
 	height: 100%;
 	background: var(--light);
 	display: flex;
 	align-items: center;
-	border-radius: 48px;
+	border-radius: 10px;
 	font-size: 16px;
 	color: var(--dark);
-	white-space: nowrap;
 	overflow-x: hidden;
 }
 #course__sidebar .course__side-menu.top li.active a {
 	background-color: #3C91E6;
 	color: #fff;
 }
-#course__sidebar.hide .course__side-menu li a {
-	width: calc(48px - (4px * 2));
-	transition: width .3s ease;
-}
-#course__sidebar .course__side-menu li a.logout {
-	color: red;
-}
-#course__sidebar .course__side-menu.top li a:hover {
-	color: blue;
-}
-#course__sidebar .course__side-menu li a .bx {
-	min-width: calc(60px  - ((4px + 6px) * 2));
-	display: flex;
-	justify-content: center;
-}
-
-.active {
-	background-color: #3C91E6;
-	border-radius: 20px;
-}
 
 .bx-home, .bx-book-open, .bx-credit-card, .bx-male-female, .bxs-objects-horizontal-left, .bxs-message-minus  {
 	margin-left: 20px;
-	font-size: 32px;
+	font-size: 24px;
 }
 /* SIDEBAR */
-
-
-
-
 
 /* CONTENT */
 #content {
@@ -240,7 +176,7 @@ body {
 	flex-grow: 1;
 	padding: 0 16px;
 	height: 100%;
-	border: 1px solid black;
+	border: 1px solid rgb(182, 182, 182);
 	background: #fff;
 	border-radius: 36px 0 0 36px;
 	outline: none;
@@ -287,29 +223,7 @@ body {
 	object-fit: cover;
 	border-radius: 50%;
 }
-#content nav .course__switch-mode {
-	display: block;
-	min-width: 50px;
-	height: 25px;
-	border-radius: 25px;
-	background: var(--grey);
-	cursor: pointer;
-	position: relative;
-}
-#content nav .course__switch-mode::before {
-	content: '';
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	bottom: 2px;
-	width: calc(25px - 4px);
-	background: var(--blue);
-	border-radius: 50%;
-	transition: all .3s ease;
-}
-#content nav #course__switch-mode:checked + .course__switch-mode::before {
-	left: calc(100% - (25px - 4px) - 2px);
-}
+
 /* NAVBAR */
 
 
