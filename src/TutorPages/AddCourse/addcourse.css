@@ -1,0 +1,81 @@
+.add__all {
+    display: flex;
+    padding-left: 150px;
+    align-items: center;
+    justify-content: center;
+    background-color: cadetblue;
+    background: url(../../assets/images/background.png);
+	background-size: cover;
+	background-position: center;
+    min-height: 100vh;
+}
+
+.add__infomation {
+    width: 440px;
+    padding: 20px;
+    border: none;
+    background-color: #fff;
+    border-radius: 26px;
+}
+
+.add__program {
+    width: 600px;
+    height: 740px;
+    margin: 50px;
+    padding: 20px;
+    border: none;
+    background-color: #fff;
+    border-radius: 26px;
+}
+
+.add__box1 {
+
+}
+
+.add__box2 {
+    /* margin-top: -140px; */
+}
+
+.add__tag {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add__h1 {
+    padding-bottom: 20px;
+}
+
+.addcourse__a {
+}
+
+.add__addtomore {
+    background-color: #f66962;
+    margin-right: 20px;
+}
+
+.add__addtomore:hover {
+    background-color: #c45852 !important;
+}
+
+.add__savecancel {
+    display: flex;
+    padding-left: 122px;
+}
+
+.add {
+    margin-left: 224px;
+}
+
+.add__h1course {
+    padding-bottom: 10px;
+}
+
+.add__session1 {
+
+}
+
+.add__phase {
+    padding-bottom: 40px;
+    position: relative;
+    bottom: -20px;
+}
