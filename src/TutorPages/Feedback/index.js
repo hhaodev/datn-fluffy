@@ -6,6 +6,11 @@ import { DownOutlined } from '@ant-design/icons';
 import user from '../../assets/images/user.jpg'
 import { Link } from 'react-router-dom'
 import avtfeedback from '../../assets/images/avtfeedback1.png'
+import avtfeedback2 from '../../assets/images/avt1.jpg'
+import avtfeedback3 from '../../assets/images/avt2.jpg'
+import avtfeedback4 from '../../assets/images/avt3.jpg'
+import avtfeedback5 from '../../assets/images/avt4.jpg'
+import avtfeedback6 from '../../assets/images/avt5.jpg'
 
 const { confirm } = Modal;
 
@@ -82,8 +87,8 @@ const CourseBox = () => {
         {/* NAVBAR */}
         <nav>
           <i className="bx bx-menu" />
-          <a href="#" className="course__nav-link">Categories</a>
-          <form action="#">
+          <a href="" className="course__nav-link">Feedback</a>
+          <form action="">
             <div className="course__form-input">
               <input type="search" placeholder="Search..." />
               <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
@@ -91,7 +96,7 @@ const CourseBox = () => {
           </form>
           <input type="checkbox" id="switch-mode" hidden />
           <label htmlFor="switch-mode" className="course__switch-mode" />
-          <a href="#" className="course__notification">
+          <a href="" className="course__notification">
             <i className="bx bxs-bell" />
             <span className="course__num">8</span>
           </a>
@@ -109,7 +114,7 @@ const CourseBox = () => {
             </li>
             <li><i className="bx bx-chevron-right" /></li>
             <li>
-              <a href="">Home</a>
+              <a href="">Tutor</a>
             </li>
           </ul>
         </div>
@@ -120,6 +125,141 @@ const CourseBox = () => {
             <div className='feedback__box1'>
               <div className="course-box" onClick={() => setVisible(true)}>
                 <div>
+                  <img src={avtfeedback4} alt="Avatar" className='feedback__boxavt' />
+                </div>
+                <div className="course-box-info">
+                  <h3 className="course-box-title">Duck</h3>
+                  <p className="course-box-subtitle">ReactJs for Developer</p>
+                </div>
+                <div className="course-box-rating">
+                  <i class='bx bxs-star star__form'></i>
+                  <p className='feedback__star'>4.5</p>
+                </div>
+              </div>
+              <Modal
+                visible={visible}
+                onCancel={showConfirm}
+                footer={[
+                  <Button key="cancel" onClick={showConfirm}>
+                    Close
+                  </Button>,
+                ]}
+              >
+                <div className="course-box-modal">
+                  <div className='feedback__boxall'>
+                    <div className="course-box-avatar">
+                      <img src={avtfeedback2} alt="Avatar" className='feedback__formavt' />
+                    </div>
+                    <div className="feedback__tittle">
+                      <h3 className="course-box-title">Duck</h3>
+                      <p className="course-box-subtitle">Reactjs for Developer</p>
+                    </div>
+                    <div className="feedback__rating">
+                      <i class='bx bxs-star star__form'></i>
+                      <p className='feedback__star'>4.5</p>
+                    </div>
+                  </div>
+                  <p className="course-box-description">
+                    Greattttt!!!!!, The teacher is so best, hehe
+                  </p>
+
+                </div>
+              </Modal>
+            </div>
+
+            <div className='feedback__box1'>
+              <div className="course-box" onClick={() => setVisible(true)}>
+                <div>
+                  <img src={avtfeedback3} alt="Avatar" className='feedback__boxavt' />
+                </div>
+                <div className="course-box-info">
+                  <h3 className="course-box-title">Duck</h3>
+                  <p className="course-box-subtitle">ReactJs for Developer</p>
+                </div>
+                <div className="course-box-rating">
+                  <i class='bx bxs-star star__form'></i>
+                  <p className='feedback__star'>4.5</p>
+                </div>
+              </div>
+              <Modal
+                visible={visible}
+                onCancel={showConfirm}
+                footer={[
+                  <Button key="cancel" onClick={showConfirm}>
+                    Close
+                  </Button>,
+                ]}
+              >
+                <div className="course-box-modal">
+                  <div className='feedback__boxall'>
+                    <div className="course-box-avatar">
+                      <img src={avtfeedback4} alt="Avatar" className='feedback__formavt' />
+                    </div>
+                    <div className="feedback__tittle">
+                      <h3 className="course-box-title">Duck</h3>
+                      <p className="course-box-subtitle">Reactjs for Developer</p>
+                    </div>
+                    <div className="feedback__rating">
+                      <i class='bx bxs-star star__form'></i>
+                      <p className='feedback__star'>4.5</p>
+                    </div>
+                  </div>
+                  <p className="course-box-description">
+                    Greattttt!!!!!, The teacher is so best, hehe
+                  </p>
+
+                </div>
+              </Modal>
+            </div>
+
+            <div className='feedback__box1'>
+              <div className="course-box" onClick={() => setVisible(true)}>
+                <div>
+                  <img src={avtfeedback5} alt="Avatar" className='feedback__boxavt' />
+                </div>
+                <div className="course-box-info">
+                  <h3 className="course-box-title">Duck</h3>
+                  <p className="course-box-subtitle">ReactJs for Developer</p>
+                </div>
+                <div className="course-box-rating">
+                  <i class='bx bxs-star star__form'></i>
+                  <p className='feedback__star'>4.5</p>
+                </div>
+              </div>
+              <Modal
+                visible={visible}
+                onCancel={showConfirm}
+                footer={[
+                  <Button key="cancel" onClick={showConfirm}>
+                    Close
+                  </Button>,
+                ]}
+              >
+                <div className="course-box-modal">
+                  <div className='feedback__boxall'>
+                    <div className="course-box-avatar">
+                      <img src={avtfeedback6} alt="Avatar" className='feedback__formavt' />
+                    </div>
+                    <div className="feedback__tittle">
+                      <h3 className="course-box-title">Duck</h3>
+                      <p className="course-box-subtitle">Reactjs for Developer</p>
+                    </div>
+                    <div className="feedback__rating">
+                      <i class='bx bxs-star star__form'></i>
+                      <p className='feedback__star'>4.5</p>
+                    </div>
+                  </div>
+                  <p className="course-box-description">
+                    Greattttt!!!!!, The teacher is so best, hehe
+                  </p>
+
+                </div>
+              </Modal>
+            </div>
+
+            <div className='feedback__box1'>
+              <div className="course-box" onClick={() => setVisible(true)}>
+                <div>
                   <img src={avtfeedback} alt="Avatar" className='feedback__boxavt' />
                 </div>
                 <div className="course-box-info">
@@ -143,7 +283,52 @@ const CourseBox = () => {
                 <div className="course-box-modal">
                   <div className='feedback__boxall'>
                     <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
+                      <img src={avtfeedback2} alt="Avatar" className='feedback__formavt' />
+                    </div>
+                    <div className="feedback__tittle">
+                      <h3 className="course-box-title">Duck</h3>
+                      <p className="course-box-subtitle">Reactjs for Developer</p>
+                    </div>
+                    <div className="feedback__rating">
+                      <i class='bx bxs-star star__form'></i>
+                      <p className='feedback__star'>4.5</p>
+                    </div>
+                  </div>
+                  <p className="course-box-description">
+                    Greattttt!!!!!, The teacher is so best, hehe
+                  </p>
+
+                </div>
+              </Modal>
+            </div>
+
+            <div className='feedback__box1'>
+              <div className="course-box" onClick={() => setVisible(true)}>
+                <div>
+                  <img src={avtfeedback4} alt="Avatar" className='feedback__boxavt' />
+                </div>
+                <div className="course-box-info">
+                  <h3 className="course-box-title">Duck</h3>
+                  <p className="course-box-subtitle">ReactJs for Developer</p>
+                </div>
+                <div className="course-box-rating">
+                  <i class='bx bxs-star star__form'></i>
+                  <p className='feedback__star'>4.5</p>
+                </div>
+              </div>
+              <Modal
+                visible={visible}
+                onCancel={showConfirm}
+                footer={[
+                  <Button key="cancel" onClick={showConfirm}>
+                    Close
+                  </Button>,
+                ]}
+              >
+                <div className="course-box-modal">
+                  <div className='feedback__boxall'>
+                    <div className="course-box-avatar">
+                      <img src={avtfeedback5} alt="Avatar" className='feedback__formavt' />
                     </div>
                     <div className="feedback__tittle">
                       <h3 className="course-box-title">Duck</h3>
@@ -233,7 +418,7 @@ const CourseBox = () => {
                 <div className="course-box-modal">
                   <div className='feedback__boxall'>
                     <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
+                      <img src={avtfeedback3} alt="Avatar" className='feedback__formavt' />
                     </div>
                     <div className="feedback__tittle">
                       <h3 className="course-box-title">Duck</h3>
@@ -241,7 +426,7 @@ const CourseBox = () => {
                     </div>
                     <div className="feedback__rating">
                       <i class='bx bxs-star star__form'></i>
-                      <p className='feedback__star'>4.5</p>
+                      <p className='feedback__star'>4.5</p>   
                     </div>
                   </div>
                   <p className="course-box-description">
@@ -255,7 +440,7 @@ const CourseBox = () => {
             <div className='feedback__box1'>
               <div className="course-box" onClick={() => setVisible(true)}>
                 <div>
-                  <img src={avtfeedback} alt="Avatar" className='feedback__boxavt' />
+                  <img src={avtfeedback3} alt="Avatar" className='feedback__boxavt' />
                 </div>
                 <div className="course-box-info">
                   <h3 className="course-box-title">Duck</h3>
@@ -278,7 +463,7 @@ const CourseBox = () => {
                 <div className="course-box-modal">
                   <div className='feedback__boxall'>
                     <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
+                      <img src={avtfeedback4} alt="Avatar" className='feedback__formavt' />
                     </div>
                     <div className="feedback__tittle">
                       <h3 className="course-box-title">Duck</h3>
@@ -300,7 +485,7 @@ const CourseBox = () => {
             <div className='feedback__box1'>
               <div className="course-box" onClick={() => setVisible(true)}>
                 <div>
-                  <img src={avtfeedback} alt="Avatar" className='feedback__boxavt' />
+                  <img src={avtfeedback4} alt="Avatar" className='feedback__boxavt' />
                 </div>
                 <div className="course-box-info">
                   <h3 className="course-box-title">Duck</h3>
@@ -323,187 +508,7 @@ const CourseBox = () => {
                 <div className="course-box-modal">
                   <div className='feedback__boxall'>
                     <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
-                    </div>
-                    <div className="feedback__tittle">
-                      <h3 className="course-box-title">Duck</h3>
-                      <p className="course-box-subtitle">Reactjs for Developer</p>
-                    </div>
-                    <div className="feedback__rating">
-                      <i class='bx bxs-star star__form'></i>
-                      <p className='feedback__star'>4.5</p>
-                    </div>
-                  </div>
-                  <p className="course-box-description">
-                    Greattttt!!!!!, The teacher is so best, hehe
-                  </p>
-
-                </div>
-              </Modal>
-            </div>
-
-            <div className='feedback__box1'>
-              <div className="course-box" onClick={() => setVisible(true)}>
-                <div>
-                  <img src={avtfeedback} alt="Avatar" className='feedback__boxavt' />
-                </div>
-                <div className="course-box-info">
-                  <h3 className="course-box-title">Duck</h3>
-                  <p className="course-box-subtitle">ReactJs for Developer</p>
-                </div>
-                <div className="course-box-rating">
-                  <i class='bx bxs-star star__form'></i>
-                  <p className='feedback__star'>4.5</p>
-                </div>
-              </div>
-              <Modal
-                visible={visible}
-                onCancel={showConfirm}
-                footer={[
-                  <Button key="cancel" onClick={showConfirm}>
-                    Close
-                  </Button>,
-                ]}
-              >
-                <div className="course-box-modal">
-                  <div className='feedback__boxall'>
-                    <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
-                    </div>
-                    <div className="feedback__tittle">
-                      <h3 className="course-box-title">Duck</h3>
-                      <p className="course-box-subtitle">Reactjs for Developer</p>
-                    </div>
-                    <div className="feedback__rating">
-                      <i class='bx bxs-star star__form'></i>
-                      <p className='feedback__star'>4.5</p>
-                    </div>
-                  </div>
-                  <p className="course-box-description">
-                    Greattttt!!!!!, The teacher is so best, hehe
-                  </p>
-
-                </div>
-              </Modal>
-            </div>
-
-            <div className='feedback__box1'>
-              <div className="course-box" onClick={() => setVisible(true)}>
-                <div>
-                  <img src={avtfeedback} alt="Avatar" className='feedback__boxavt' />
-                </div>
-                <div className="course-box-info">
-                  <h3 className="course-box-title">Duck</h3>
-                  <p className="course-box-subtitle">ReactJs for Developer</p>
-                </div>
-                <div className="course-box-rating">
-                  <i class='bx bxs-star star__form'></i>
-                  <p className='feedback__star'>4.5</p>
-                </div>
-              </div>
-              <Modal
-                visible={visible}
-                onCancel={showConfirm}
-                footer={[
-                  <Button key="cancel" onClick={showConfirm}>
-                    Close
-                  </Button>,
-                ]}
-              >
-                <div className="course-box-modal">
-                  <div className='feedback__boxall'>
-                    <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
-                    </div>
-                    <div className="feedback__tittle">
-                      <h3 className="course-box-title">Duck</h3>
-                      <p className="course-box-subtitle">Reactjs for Developer</p>
-                    </div>
-                    <div className="feedback__rating">
-                      <i class='bx bxs-star star__form'></i>
-                      <p className='feedback__star'>4.5</p>
-                    </div>
-                  </div>
-                  <p className="course-box-description">
-                    Greattttt!!!!!, The teacher is so best, hehe
-                  </p>
-
-                </div>
-              </Modal>
-            </div>
-
-            <div className='feedback__box1'>
-              <div className="course-box" onClick={() => setVisible(true)}>
-                <div>
-                  <img src={avtfeedback} alt="Avatar" className='feedback__boxavt' />
-                </div>
-                <div className="course-box-info">
-                  <h3 className="course-box-title">Duck</h3>
-                  <p className="course-box-subtitle">ReactJs for Developer</p>
-                </div>
-                <div className="course-box-rating">
-                  <i class='bx bxs-star star__form'></i>
-                  <p className='feedback__star'>4.5</p>
-                </div>
-              </div>
-              <Modal
-                visible={visible}
-                onCancel={showConfirm}
-                footer={[
-                  <Button key="cancel" onClick={showConfirm}>
-                    Close
-                  </Button>,
-                ]}
-              >
-                <div className="course-box-modal">
-                  <div className='feedback__boxall'>
-                    <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
-                    </div>
-                    <div className="feedback__tittle">
-                      <h3 className="course-box-title">Duck</h3>
-                      <p className="course-box-subtitle">Reactjs for Developer</p>
-                    </div>
-                    <div className="feedback__rating">
-                      <i class='bx bxs-star star__form'></i>
-                      <p className='feedback__star'>4.5</p>
-                    </div>
-                  </div>
-                  <p className="course-box-description">
-                    Greattttt!!!!!, The teacher is so best, hehe
-                  </p>
-
-                </div>
-              </Modal>
-            </div>
-
-            <div className='feedback__box1'>
-              <div className="course-box" onClick={() => setVisible(true)}>
-                <div>
-                  <img src={avtfeedback} alt="Avatar" className='feedback__boxavt' />
-                </div>
-                <div className="course-box-info">
-                  <h3 className="course-box-title">Duck</h3>
-                  <p className="course-box-subtitle">ReactJs for Developer</p>
-                </div>
-                <div className="course-box-rating">
-                  <i class='bx bxs-star star__form'></i>
-                  <p className='feedback__star'>4.5</p>
-                </div>
-              </div>
-              <Modal
-                visible={visible}
-                onCancel={showConfirm}
-                footer={[
-                  <Button key="cancel" onClick={showConfirm}>
-                    Close
-                  </Button>,
-                ]}
-              >
-                <div className="course-box-modal">
-                  <div className='feedback__boxall'>
-                    <div className="course-box-avatar">
-                      <img src={avtfeedback} alt="Avatar" className='feedback__formavt' />
+                      <img src={avtfeedback5} alt="Avatar" className='feedback__formavt' />
                     </div>
                     <div className="feedback__tittle">
                       <h3 className="course-box-title">Duck</h3>
