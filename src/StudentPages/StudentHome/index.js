@@ -155,8 +155,9 @@ function stdHome() {
 
           {/* course */}
           <div className="My__courses">
-            <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='student__segmented' />
             <h1 className="student__heading11">our courses</h1>
+            <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='student__segmented' />
+
             <div className="student__box">
 
               <div className="box__student">

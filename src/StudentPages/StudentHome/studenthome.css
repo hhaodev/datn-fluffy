@@ -694,7 +694,7 @@ body {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    width: 100%;
+	margin-bottom: 20px;
 }
 
 :where(.css-dev-only-do-not-override-mxhywb).ant-segmented .ant-segmented-group {
@@ -703,8 +703,10 @@ body {
     align-items: stretch;
     justify-content: space-evenly;
     width: 100%;
-	background-color: #f1f5fd;
+	background-color: #6792ea;
 	height: 40px;
+	border-radius: 10px;
+
 }
 
 .student__des {
