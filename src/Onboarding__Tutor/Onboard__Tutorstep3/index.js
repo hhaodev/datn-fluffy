@@ -11,7 +11,6 @@ import {
 } from 'antd';
 import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentTutor_cetifications } from '../../Redux/features/tutorSlice';
 import { gql, } from '@apollo/client';
 import client from '../../configGQL';
 
@@ -98,9 +97,9 @@ function OnboardTutor__Step3() {
     };
     createTutorOnboarding(client, input)
       .then((result) => {
-        if (result) {
+        // if (result) {
           navigate("/onboardtutorstep4")
-        }
+        // }
       })
       .catch((error) => alert(error));
   }
