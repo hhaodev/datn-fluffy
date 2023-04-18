@@ -1,56 +1,57 @@
 import '../../TutorPages/Payment/paymentt.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function payMentTutor() {
-    return ( 
-        <>
-         {/* SIDEBAR */}
+  return (
+    <>
+      {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="course__side-menu top">
           <li>
-            <a href="">
+            <Link to="/dashboardtt">
               <i className='bx bx-home' ></i>
-              <Link to="/dashboardtt"><span className="course__text">Dashboard</span></Link>
-            </a>
+              <span className="course__text">Dashboard</span>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="/mycoursett">
               <i className='bx bx-book-open'></i>
-              <Link to="/mycoursett"><span className="course__text">Courses</span></Link>
-            </a>
+              <span className="course__text">Courses</span>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="/mystudent">
               <i className='bx bx-male-female'></i>
-              <Link to="/mystudent"><span className="course__text">My Student</span></Link>
-            </a>
+              <span className="course__text">My Student</span>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="/sessiontt">
               <i className='bx bxs-objects-horizontal-left'></i>
-             <Link to="/sessiontt"><span className="course__text">Session</span></Link>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <i className='bx bx-credit-card' ></i>
-              <Link to="/paymenttutor"><span className="course__text">Payment</span></Link>
-            </a>
+              <span className="course__text">Session</span>
+            </Link>
           </li>
           <li className="active">
-            <a href="">
+            <Link to="">
+              <i className='bx bx-credit-card' ></i>
+              <span className="course__text">Payment</span>
+            </Link>
+          </li>
+          <li >
+            <Link to="/feedback">
               <i className='bx bxs-message-minus' ></i>
               <span className="course__text">Feedback</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </section>
       {/* SIDEBAR */}
-        </>
-     );
+      
+    </>
+  );
 }
 
 export default payMentTutor;

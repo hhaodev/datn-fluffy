@@ -31,40 +31,40 @@ function sessionTutor() {
         </a>
         <ul className="course__side-menu top">
           <li>
-            <a href="">
+            <Link to="">
               <i className='bx bx-home' ></i>
               <span className="course__text">Dashboard</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <i className='bx bx-book-open'></i>
               <span className="course__text">Courses</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <i class='bx bx-male-female'></i>
               <span className="course__text">My Student</span>
-            </a>
+            </Link>
           </li>
           <li className="active">
-            <a href="">
+            <Link to="">
               <i class='bx bxs-objects-horizontal-left'></i>
               <span className="course__text">Session</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="/paymenttutor">
               <i className='bx bx-credit-card' ></i>
               <span className="course__text">Payment</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="/feedback">
               <i class='bx bxs-message-minus' ></i>
-              <Link to="/feedback"><span className="course__text">Feedback</span></Link>
-            </a>
+              <span className="course__text">Feedback</span>
+            </Link>
           </li>
         </ul>
       </section>

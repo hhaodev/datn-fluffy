@@ -1,7 +1,4 @@
 import '../../TutorPages/Courses/courses.css'
-import { Avatar, Dropdown, Menu } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import user from '../../assets/images/user.jpg'
 import { Link } from 'react-router-dom'
 import React from 'react';
 import { Segmented } from 'antd';
@@ -17,15 +14,10 @@ import courses1 from '../../assets/images/courses1.jpg'
 import courses3 from '../../assets/images/courses3.jpg'
 import courses5 from '../../assets/images/courses5.jpg'
 import courses6 from '../../assets/images/courses6.jpg'
+import Navbar from '../component/Header';
 
 
 function myCoursestt() {
-  const menu = (
-    <Menu>
-      <Menu.Item key="profile">Profile</Menu.Item>
-      <Menu.Item key="logout">Logout</Menu.Item>
-    </Menu>
-  );
   return (
     <div>
       {/* SIDEBAR */}
@@ -35,40 +27,40 @@ function myCoursestt() {
         </a>
         <ul className="course__side-menu top">
           <li>
-            <a href="">
+            <Link to="">
               <i className='bx bx-home' ></i>
               <span className="course__text">Dashboard</span>
-            </a>
+            </Link>
           </li>
           <li className="active">
-            <a href="">
+            <Link to="">
               <i className='bx bx-book-open'></i>
               <span className="course__text">Courses</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <i class='bx bx-male-female'></i>
               <span className="course__text">My Student</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <i class='bx bxs-objects-horizontal-left'></i>
               <span className="course__text">Session</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <i className='bx bx-credit-card' ></i>
               <span className="course__text">Payment</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="/feedback">
               <i class='bx bxs-message-minus' ></i>
-              <Link to="/feedback"><span className="course__text">Feedback</span></Link>
-            </a>
+              <span className="course__text">Feedback</span>
+            </Link>
           </li>
         </ul>
       </section>
@@ -76,25 +68,7 @@ function myCoursestt() {
       {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
-        <nav>
-          <i className="bx bx-menu" />
-          <a href="#" className="course__nav-link">Courses</a>
-          <form action="#">
-            <div className="course__form-input">
-              <input type="search" placeholder="Search..." />
-              <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
-            </div>
-          </form>
-          {/* <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="course__switch-mode" /> */}
-          <a href="#" className="course__notification">
-            <i className="bx bxs-bell" />
-            <span className="course__num">8</span>
-          </a>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-          </Dropdown>
-        </nav>
+        <Navbar/>
         {/* NAVBAR */}
         {/* MAIN */}
         <main>

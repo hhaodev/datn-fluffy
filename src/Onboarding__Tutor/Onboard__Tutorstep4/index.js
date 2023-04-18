@@ -34,7 +34,7 @@ function OnboardTutor__Step4() {
         },
     ];
     const onFinish = (values) => {
-        
+        console.log(values);
     }
 
     const onFinishFailed = (errorInfo) => {
@@ -53,7 +53,7 @@ function OnboardTutor__Step4() {
         .then(result => {
             window.location.href = result.data.connectStripeAccount.connectedAccountUrl
         })
-        .catch(error => { })
+        .catch(error => {console.log(error);})
         
     }
 
