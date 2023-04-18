@@ -1,15 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import '../../Onboarding__Tutor/Onboard__Tutorstep4/OnboardTutor__Step4.css'
 import { Button, Steps } from 'antd';
 import {
     Form,
     Input,
 } from 'antd';
+import client from '../../configGQL';
+import { gql } from '@apollo/client';
 
 
 
 function OnboardTutor__Step4() {
+
+
+
     const description = '';
     const items = [
         {
@@ -30,13 +34,28 @@ function OnboardTutor__Step4() {
         },
     ];
     const onFinish = (values) => {
-        console.log(values);
+        
     }
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
 
+    const handleCreate = () => {
+        client.query({
+        query: gql`
+        query connectStripeAccount{
+            connectStripeAccount{
+                connectedAccountUrl
+            }
+        }`
+        })
+        .then(result => {
+            window.location.href = result.data.connectStripeAccount.connectedAccountUrl
+        })
+        .catch(error => { })
+        
+    }
 
     return (
         <div className='step4__body'>
@@ -52,7 +71,7 @@ function OnboardTutor__Step4() {
                     <Form
                         name="normal"
                         className="form__dropdown"
-                        
+
                         initialValues={{
                         }}
                         onFinish={onFinish}
@@ -77,8 +96,8 @@ function OnboardTutor__Step4() {
                         </Button>
                     </Form>
                     <div className='step4__fot'>
-                    <p>Do not have an account?</p>
-                    <Link to=""><Button>Create account</Button></Link>
+                        <p>Do not have an account?</p>
+                        <Button onClick={()=>handleCreate()}>Create account</Button>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,6 @@ function OnboardTutor__Step3() {
   const dispatch = useDispatch()
   const educations_r = useSelector(state => state.tutor.currentTutor.educations)
   const experiences_r = useSelector(state => state.tutor.currentTutor.experiences)
-  const cetifications_r = useSelector(state => state.tutor.currentTutor.cetifications)
 
   const description = '';
   const items = [
@@ -55,20 +54,13 @@ function OnboardTutor__Step3() {
 
   //mutiton
   const CREATE_TUTOR_ON_BOARDING_MUTATION = gql`
-  mutation createTutorOnboarding($input: CreateTutorOnboardingDto!) {
-    createTutorOnboarding(input: $input) {
-      status
-    }
-  }`;
+    mutation createTutorOnboarding($input: CreateTutorOnboardingDto!) {
+      createTutorOnboarding(input: $input) {
+        status
+      }
+    }`;
 
   const onFinish = (values) => {
-    const dataTutor = {
-      organization: values.organization,
-      name: values.certificate,
-      score: values.point,
-      awardUrl: values.url,
-    }
-    dispatch(setCurrentTutor_cetifications(dataTutor))
     const createTutorOnboarding = async (client, input) => {
       try {
         const { data } = await client.mutate({
@@ -94,10 +86,10 @@ function OnboardTutor__Step3() {
       endTime: experiences_r.endTime,
     }
     const cetifications = {
-      organization: cetifications_r.organization,
-      score: cetifications_r.score,
-      name: cetifications_r.name,
-      awardUrl: cetifications_r.awardUrl,
+      organization: values.organization,
+      name: values.certificate,
+      score: parseFloat(values.point),
+      awardUrl: values.url,
     }
     const input = {
       educations: [educations],
