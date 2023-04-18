@@ -1,5 +1,7 @@
 import '../../TutorPages/Payment/paymentt.css'
 import { Link } from 'react-router-dom'
+import Navbar from '../component/Header';
+
 
 function payMentTutor() {
   return (
@@ -49,6 +51,30 @@ function payMentTutor() {
         </ul>
       </section>
       {/* SIDEBAR */}
+      <section id="content">
+        {/* NAVBAR */}
+        <Navbar/>
+        {/* NAVBAR */}
+        {/* MAIN */}
+        <main>
+          <div className="course__head-title">
+            <div className="course__left">
+              <h1>Tutor</h1>
+              <ul className="course__breadcrumb">
+                <li>
+                  <a href="">Dashboard</a>
+                </li>
+                <li><i className="bx bx-chevron-right" /></li>
+                <li>
+                  <a href="">Course</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </main>
+        {/* MAIN */}
+      </section>
+      {/* CONTENT */}
       
     </>
   );

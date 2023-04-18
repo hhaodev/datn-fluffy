@@ -1,0 +1,18 @@
+.session__date {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.session__select {
+    width: 170px;
+}
+
+.session__filter {
+    background-color: #f66962;
+}
+
+.session__booked {
+    color: #f66962;
+}
