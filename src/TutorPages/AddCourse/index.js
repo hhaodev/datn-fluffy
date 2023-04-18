@@ -14,6 +14,7 @@ function addcourse() {
     };
     return (
         <div className='add__all'>
+            <h1 className='add__logo'>Fluffy</h1>
             <div className='add__infomation'>
                 <div className='add__box1'>
                     <h1 className='add__h1course'>Course Information</h1>
