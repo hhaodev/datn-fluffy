@@ -3,14 +3,21 @@ import SignIn from '../Register/SignIn';
 import SignUp from '../Register/SignUp';
 import ApplyTutor from '../Register/ApplyTutor';
 import ForgotPassWord from '../Register/ForgotPass';
-import Onboarding__Student from '../Onboarding__Student/OnBoard__Student';
-import OnboardTutor__Step1 from '../Onboarding__Tutor/Onboard__Tutorstep1/Step1';
-import OnboardTutor__Step2 from '../Onboarding__Tutor/OnBoard__Tutorstep2/Step2';
-import OnboardTutor__Step3 from '../Onboarding__Tutor/Onboard__Tutorstep3/step3';
-import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/step4';
+import Onboarding__Student from '../Onboarding__Student';
+import OnboardTutor__Step1 from '../Onboarding__Tutor/Onboard__Tutorstep1/index';
+import OnboardTutor__Step2 from '../Onboarding__Tutor/OnBoard__Tutorstep2/index';
+import OnboardTutor__Step3 from '../Onboarding__Tutor/Onboard__Tutorstep3/index';
+import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/index';
 import stdHome from '../StudentPages/StudentHome/index';
-import Mycourse from '../StudentPages/MyCourse/Course';
+import myCourse from '../StudentPages/MyCourse/index'
 import Verify from '../Register/Verify';
+import myCoursestt from '../TutorPages/Courses/index';
+import addcourse from '../TutorPages/AddCourse/index';
+import sessionTutor from '../TutorPages/Session/index';
+import feedBack from '../TutorPages/Feedback/index';
+import myStudent from '../TutorPages/MyStudent/index';
+import dashBoardtutor from '../TutorPages/Dashboard/index';
+import payMentTutor from '../TutorPages/Payment/index';
 
 
 const publicRoutes = [
@@ -26,7 +33,14 @@ const publicRoutes = [
     { path: '/onboardtutorstep3', component: OnboardTutor__Step3},
     { path: '/onboardtutorstep4', component: OnboardTutor__Step4},
     { path: '/studenthome', component: stdHome, layout: null},
-    { path: '/mycourse', component: Mycourse, layout: null},
+    { path: '/mycourse', component: myCourse, layout: null},
+    { path: '/mycoursett', component: myCoursestt, layout: null},
+    { path: '/addcourse', component: addcourse, layout: null},
+    { path: '/sessiontt', component: sessionTutor, layout: null},
+    { path: '/feedback', component: feedBack, layout: null},
+    { path: '/mystudent', component: myStudent, layout: null},
+    { path: '/dashboardtt', component: dashBoardtutor, layout: null},
+    { path: '/paymenttutor', component: payMentTutor, layout: null},
 ];
 
 const privateRoutes = [

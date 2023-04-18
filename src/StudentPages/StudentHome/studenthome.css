@@ -50,7 +50,6 @@ body {
 	font-size: 45px;
 }
 
-
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
@@ -171,6 +170,7 @@ body {
 
 .bx-home, .bx-book-open, .bxs-calendar, .bx-credit-card {
 	margin-left: 20px;
+	font-size: 32px;
 }
 /* SIDEBAR */
 

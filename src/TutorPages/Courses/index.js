@@ -1,24 +1,25 @@
-import '../../StudentPages/StudentHome/studenthome.css';
+import '../../TutorPages/Courses/courses.css'
+import { Avatar, Dropdown, Menu } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import user from '../../assets/images/user.jpg'
+import { Link } from 'react-router-dom'
+import React from 'react';
 import { Segmented } from 'antd';
-import courses1 from '../../assets/images/courses1.jpg'
 import avt1 from '../../assets/images/avt1.jpg'
 import avt2 from '../../assets/images/avt2.jpg'
 import avt3 from '../../assets/images/avt3.jpg'
 import avt4 from '../../assets/images/avt4.jpg'
 import avt5 from '../../assets/images/avt5.jpg'
 import avt6 from '../../assets/images/avt6.jpg'
-import courses2 from '../../assets/images/courses2.jpg'
 import courses4 from '../../assets/images/courses4.jpg'
+import courses2 from '../../assets/images/courses2.jpg'
+import courses1 from '../../assets/images/courses1.jpg'
 import courses3 from '../../assets/images/courses3.jpg'
 import courses5 from '../../assets/images/courses5.jpg'
 import courses6 from '../../assets/images/courses6.jpg'
-import React from 'react';
-import { Avatar, Dropdown, Menu } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import user from '../../assets/images/user.jpg'
 
 
-function stdHome() {
+function myCoursestt() {
   const menu = (
     <Menu>
       <Menu.Item key="profile">Profile</Menu.Item>
@@ -28,33 +29,45 @@ function stdHome() {
   return (
     <div>
       {/* SIDEBAR */}
-      <section id="sidebar">
-        <a href="" className="brand">
+      <section id="course__sidebar">
+        <a href="" className="Course__brand">
           <span className="student__logos">Fluffy</span>
         </a>
-        <ul className="side-menu top">
-          <li className="active">
+        <ul className="course__side-menu top">
+          <li>
             <a href="">
               <i className='bx bx-home' ></i>
-              <span className="text">Home</span>
+              <span className="course__text">Dashboard</span>
+            </a>
+          </li>
+          <li className="active">
+            <a href="">
+              <i className='bx bx-book-open'></i>
+              <span className="course__text">Courses</span>
             </a>
           </li>
           <li>
-          <a href="">
-              <i className='bx bx-book-open'></i>
-              <span className="text">My Courses</span>
-              </a>
+            <a href="">
+              <i class='bx bx-male-female'></i>
+              <span className="course__text">My Student</span>
+            </a>
           </li>
           <li>
             <a href="">
-              <i className='bx bxs-calendar'></i>
-              <span className="text">Schedule</span>
+              <i class='bx bxs-objects-horizontal-left'></i>
+              <span className="course__text">Session</span>
             </a>
           </li>
           <li>
             <a href="">
               <i className='bx bx-credit-card' ></i>
-              <span className="text">Payment</span>
+              <span className="course__text">Payment</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class='bx bxs-message-minus' ></i>
+              <Link to="/feedback"><span className="course__text">Feedback</span></Link>
             </a>
           </li>
         </ul>
@@ -65,18 +78,18 @@ function stdHome() {
         {/* NAVBAR */}
         <nav>
           <i className="bx bx-menu" />
-          <a href="#" className="nav-link">Categories</a>
+          <a href="#" className="course__nav-link">Courses</a>
           <form action="#">
-            <div className="form-input">
+            <div className="course__form-input">
               <input type="search" placeholder="Search..." />
-              <button type="submit" className="search-btn"><i className="bx bx-search" /></button>
+              <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
             </div>
           </form>
-          <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="switch-mode" />
-          <a href="#" className="notification">
+          {/* <input type="checkbox" id="switch-mode" hidden />
+          <label htmlFor="switch-mode" className="course__switch-mode" /> */}
+          <a href="#" className="course__notification">
             <i className="bx bxs-bell" />
-            <span className="num">8</span>
+            <span className="course__num">8</span>
           </a>
           <Dropdown overlay={menu} placement="bottomRight">
             <Avatar className="avatar" src={user} icon={<DownOutlined />} />
@@ -85,78 +98,28 @@ function stdHome() {
         {/* NAVBAR */}
         {/* MAIN */}
         <main>
-          <div className="head-title">
-            <div className="left">
-              <h1>Home Student</h1>
-              <ul className="breadcrumb">
+          <div className="course__head-title">
+            <div className="course__left">
+              <h1>Tutor</h1>
+              <ul className="course__breadcrumb">
                 <li>
-                  <a href="#">My course</a>
+                  <a href="">Dashboard</a>
                 </li>
                 <li><i className="bx bx-chevron-right" /></li>
                 <li>
-                  <a href="#">Home</a>
+                  <a href="">Course</a>
                 </li>
               </ul>
             </div>
           </div>
-          {/* Home grid */}
-          <div class="student__grid">
 
-            <h1 class="student__heading11">quick options</h1>
-
-            <div class="box__std">
-
-              <div class="boxchild__std">
-                <h3 class="std__title">likes and comments</h3>
-                <p class="std__like">total likes : <span className='std__span1'>25</span></p>
-                <a href="" class="std__inline">view likes</a>
-                <p class="std__like">total comments : <span className='std__span1'>12</span></p>
-                <a href="" class="std__inline">view comments</a>
-                <p class="std__like">saved playlists : <span className='std__span1'>4</span></p>
-                <a href="" class="std__inline">view playlists</a>
-              </div>
-
-              <div class="boxchild__std">
-                <h3 class="std__title">top categories</h3>
-                <div class="std__flexs">
-                  <a href="#" className='std__aa'><i class="fas fa-code"></i><span className='spanx'>development</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-chart-simple"></i><span className='spanx'>business</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-pen"></i><span className='spanx'>design</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-chart-line"></i><span className='spanx'>marketing</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-music"></i><span className='spanx'>music</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-camera"></i><span className='spanx'>photography</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-cog"></i><span className='spanx'>software</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-vial"></i><span className='spanx'>science</span></a>
-                </div>
-              </div>
-
-              <div class="boxchild__std">
-                <h3 class="std__title">popular topics</h3>
-                <div class="std__flexs">
-                  <a href="#" className='std__aa'><i class="fab fa-html5"></i><span className='spanx'>HTML</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-css3"></i><span className='spanx'>CSS</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-js"></i><span className='spanx'>javascript</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-react"></i><span className='spanx'>react</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-php"></i><span className='spanx'>PHP</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-bootstrap"></i><span className='spanx'>bootstrap</span></a>
-                </div>
-              </div>
-
-              <div class="boxchild__std">
-                <h3 class="std__title">become a tutor</h3>
-                <p class="std__tutors"> I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle.</p>
-                <a href="teachers.html" class="std__inline">get started</a>
-              </div>
-
+          <div className="course-container">
+            <div className="title-container">
+              <h1 className='course__h1tittle'>Teaching Course</h1>
+              <Link to="/addcourse"><button className="add-course">Add Course</button></Link>
             </div>
-
-          </div>
-
-
-          {/* course */}
-          <div className="My__courses">
-            <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='student__segmented' />
-            <h1 className="student__heading11">our courses</h1>
+            {/* <div className='course__padding'> */}   
+            <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='course__segmented' />
             <div className="student__box">
 
               <div className="box__student">
@@ -259,11 +222,47 @@ function stdHome() {
                 <a href="playlist.html" className="inline-btn">Learn More</a>
               </div>
 
+              <div className="box__student">
+
+                  <div className="student__thumb">
+                    <img src={courses6} alt="" className="student__img2" />
+                    <span className="student__spana">10 Unit</span>
+                  </div>
+                  <div className="student__tutor">
+                    <img src={avt6} alt="" className="student__img1" />
+                    <div className="student__info">
+                      <h3 className="student__h32">Mark</h3>
+                    </div>
+                  </div>
+                  <h3 className="student__title">complete SASS tutorial</h3>
+                  <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
+                  <a href="playlist.html" className="inline-btn">Learn More</a>
+                  </div>
+
+                  <div className="box__student">
+
+                  <div className="student__thumb">
+                    <img src={courses6} alt="" className="student__img2" />
+                    <span className="student__spana">10 Unit</span>
+                  </div>
+                  <div className="student__tutor">
+                    <img src={avt6} alt="" className="student__img1" />
+                    <div className="student__info">
+                      <h3 className="student__h32">Mark</h3>
+                    </div>
+                  </div>
+                  <h3 className="student__title">complete SASS tutorial</h3>
+                  <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
+                  <a href="playlist.html" className="inline-btn">Learn More</a>
+                  </div>
+
             </div>
-            <div className="more-btn">
-              <a href="courses.html" className="inline-option-btn">view all courses</a>
-            </div>
+            {/* </div> */}
           </div>
+
+          
+
+
         </main>
         {/* MAIN */}
       </section>
@@ -273,4 +272,4 @@ function stdHome() {
   );
 }
 
-export default stdHome;
+export default myCoursestt;
