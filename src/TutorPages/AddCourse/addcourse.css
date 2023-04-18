@@ -11,6 +11,16 @@
     min-height: 100vh;
 }
 
+.add__logo {
+    position: absolute;
+    font-family: 'Lilita One', cursive;
+    font-weight: bold;
+    color: #f66962;
+    font-size: 50px;
+    top: 20px;
+    left: 50px;
+}
+
 .add__infomation {
     width: 440px;
     padding: 20px;
@@ -29,9 +39,6 @@
     border-radius: 26px;
 }
 
-.add__box2 {
-    /* margin-top: -140px; */
-}
 
 .add__tag {
     display: flex;
