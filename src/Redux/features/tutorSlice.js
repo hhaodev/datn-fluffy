@@ -4,7 +4,7 @@ const initialState = {
     currentTutor: {
         educations: [],
         experiences: [],
-        cetifications: [],
+       
     }
 }
 
@@ -18,13 +18,11 @@ export const tutorSlice = createSlice({
         setCurrentTutor_experiences: (state, action) => {
             state.currentTutor.experiences = action.payload
         },
-        setCurrentTutor_cetifications: (state, action) => {
-            state.currentTutor.cetifications = action.payload
-        },
+    
 
     },
 })
 
-export const { setCurrentTutor_educations ,setCurrentTutor_experiences, setCurrentTutor_cetifications } = tutorSlice.actions
+export const { setCurrentTutor_educations ,setCurrentTutor_experiences,  } = tutorSlice.actions
 
 export default tutorSlice.reducer

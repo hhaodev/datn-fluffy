@@ -23,7 +23,7 @@ export default function Navbar() {
                     <>
                         {!(Object.values(currentUser).length === 0) ? (
                             <>
-                                <p className='navbar__phi'>Hi, {currentUser.lastName}</p>
+                                <p className='navbar__phi'>Hi, {currentUser.firstName} {currentUser.lastName}</p>
                                 <button onClick={handleLogout} className='navbar__button1'>Logout</button>
                             </>
                         ) : (

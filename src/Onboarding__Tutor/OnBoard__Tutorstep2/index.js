@@ -55,11 +55,10 @@ function OnboardTutor__Step2() {
     const rangeValue = values['range-picker'];
     const startTime = new Date(rangeValue[0]).toISOString()
     const endTime = new Date(rangeValue[1]).toISOString()
-    console.log(values);
     const dataTutor = {
       organization: values.organization,
       description: values.description,
-      positions: values.positions,
+      position: values.position,
       startTime: startTime,
       endTime: endTime
     }
