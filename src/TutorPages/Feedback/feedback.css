@@ -1,6 +1,3 @@
-.course__head-title {
-    padding: 32px;
-}
 .feedback__box1 {
     width: 386px;
     height: 90px;
@@ -28,7 +25,8 @@
 .feedback__box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 50px;
+    margin-top: 50px;;
 }
 
 .course-box {
@@ -81,13 +79,6 @@
     border-radius: 20px;
 }
 
-.feedback__head-title {
-    display: flex;
-	align-items: center;
-	justify-content: space-between;
-	grid-gap: 16px;
-	flex-wrap: wrap;
-}
 
 .feedback__left h1 {
     font-size: 36px;
