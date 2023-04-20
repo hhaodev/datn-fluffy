@@ -684,7 +684,7 @@ body {
     padding: 1rem 3rem;
     text-align: center;
     margin-top: 1rem;
-	background-color: #7eadf4;
+	background-color: #f66962;
 	display: inline-block;
 }
 
@@ -694,7 +694,7 @@ body {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    width: 100%;
+	margin-bottom: 20px;
 }
 
 :where(.css-dev-only-do-not-override-mxhywb).ant-segmented .ant-segmented-group {
@@ -703,8 +703,10 @@ body {
     align-items: stretch;
     justify-content: space-evenly;
     width: 100%;
-	background-color: #f1f5fd;
+	background-color: #f07872;
 	height: 40px;
+	border-radius: 10px;
+
 }
 
 .student__des {

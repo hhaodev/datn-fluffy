@@ -1,0 +1,57 @@
+.dashboard__part {
+    width: 320px;
+}
+
+.dashboard__trum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard__tik {
+    height: 284px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard__size {
+    margin-bottom: 90px;
+    margin-top: 68px;
+}
+
+.bxs-circle {
+    color: dodgerblue;
+}
+
+.dashboard__tieude {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard__welh1 {
+    font-size: 45px;
+    color: brown;
+}
+
+.dashboard__span {
+    color: rgb(14, 123, 225);
+}
+
+.dashboard__welcome {
+      display: flex;
+}
+
+.dashboard__img {
+    width: 300px;
+    height: 300px;
+}
+
+.dashboard__working {
+    color: rgb(67, 123, 219);
+    font-weight: bold;
+}

@@ -28,8 +28,6 @@ export default function Navbar() {
                     <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
                 </div>
             </form>
-            {/* <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="course__switch-mode" /> */}
             <a href="#" className="course__notification">
                 <i className="bx bxs-bell" />
                 <span className="course__num">8</span>
