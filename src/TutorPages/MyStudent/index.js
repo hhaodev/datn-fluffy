@@ -23,7 +23,7 @@ function myStudent() {
              <span className="course__text">Courses</span>
             </Link>
           </li>
-          <li>
+          <li className="active">
             <Link to="/mystudent">
               <i className='bx bx-male-female'></i>
               <span className="course__text">My Student</span>
@@ -41,7 +41,7 @@ function myStudent() {
               <span className="course__text">Payment</span>
             </Link>
           </li>
-          <li className="active">
+          <li>
             <Link to="/feedback">
               <i className='bx bxs-message-minus' ></i>
               <span className="course__text">Feedback</span>

@@ -7,6 +7,7 @@ import React from 'react';
 import { DatePicker, Space } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import Navbar from '../component/Header';
 
 
 
@@ -31,25 +32,25 @@ function sessionTutor() {
         </a>
         <ul className="course__side-menu top">
           <li>
-            <Link to="">
+            <Link to="/dashboardtt">
               <i className='bx bx-home' ></i>
               <span className="course__text">Dashboard</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/mycoursett">
               <i className='bx bx-book-open'></i>
               <span className="course__text">Courses</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/mystudent">
               <i class='bx bx-male-female'></i>
               <span className="course__text">My Student</span>
             </Link>
           </li>
           <li className="active">
-            <Link to="">
+            <Link to="/sessiontt">
               <i class='bx bxs-objects-horizontal-left'></i>
               <span className="course__text">Session</span>
             </Link>
@@ -72,25 +73,7 @@ function sessionTutor() {
       {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
-        <nav>
-          <i className="bx bx-menu" />
-          <a href="#" className="course__nav-link">Session</a>
-          <form action="#">
-            <div className="course__form-input">
-              <input type="search" placeholder="Search..." />
-              <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
-            </div>
-          </form>
-          {/* <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="course__switch-mode" /> */}
-          <a href="#" className="course__notification">
-            <i className="bx bxs-bell" />
-            <span className="course__num">8</span>
-          </a>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-          </Dropdown>
-        </nav>
+        <Navbar/>
         {/* NAVBAR */}
         {/* MAIN */}
         <main>

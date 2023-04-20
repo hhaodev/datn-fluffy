@@ -3,12 +3,17 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { gql, useMutation } from '@apollo/client';
 import "../../Register/SignIn/SignIn.css"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../../Redux/features/userSlice";
+import client from "../../configGQL";
+import { useEffect, useState } from "react";
+import Pending from "../../pages/Pending";
 
 function SignIn() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const status = useSelector(state => state.user.currentUser.tutorProfile?.status)
+    const [penDing,setPenDing] = useState("")
 
     const SIGNIN = gql`
     mutation signIn($input: SignInDto!) {
@@ -23,7 +28,7 @@ function SignIn() {
     }
     }
 `;
-    const [signIn, { loading }] = useMutation(SIGNIN);
+    const [signIn] = useMutation(SIGNIN);
 
     const onFinish = (values) => {
         const datatemp = {
@@ -48,10 +53,46 @@ function SignIn() {
                     type: result.data.signIn.type
                 }
                 dispatch(setCurrentUser(userData))
-                navigate("/")
+
+                // client.query({
+                //     query: gql`
+                //     query {
+                //     getMe{
+                //         id
+                //         email
+                //         lastName
+                //         firstName
+                //         tutorProfile{
+                //             status
+                //             educations{
+                //                 id
+                //             }
+                //             experiences{
+                //                 id
+                //             }
+                //             certifications{
+                //                 id
+                //             }
+                //         }
+                //         studentProfile{
+                //         studentEducations{
+                //             id
+                //         }
+                //         }
+                //     }
+                //     }`
+                // }).then(result => {
+                //     dispatch(setCurrentUser(result.data.getMe))
+                //     setPenDing(result.data.getMe.tutorProfile.status)
+                // })
+                //     .catch(error => { })
+                if (result.data.signIn.type === "STUDENT") {
+                    navigate("/studenthome")
+                } else if (result.data.signIn.type === "TUTOR") {
+                    navigate("/pending")
+                }
             } catch (error) {
                 alert(error.message);
-
             }
         }
         getData()

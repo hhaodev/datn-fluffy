@@ -4,12 +4,50 @@ import { Fragment, useEffect } from "react";
 import DefaultLayout from "./layout/DefaultLayout";
 import client from "./configGQL";
 import { gql } from "@apollo/client";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./Redux/features/userSlice";
 import { setSchools } from "./Redux/features/schoolsSlice";
 
+
 function App() {
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    client.query({
+      query: gql`
+      query {
+        getMe{
+          id
+          email
+          lastName
+          firstName
+          tutorProfile{
+            status
+            educations{
+              id
+            }
+            experiences{
+              id
+            }
+            certifications{
+              id
+            }
+          }
+          studentProfile{
+            studentEducations{
+              id
+            }
+          }
+        }
+      }
+    `
+    }).then(result => {
+      dispatch(setCurrentUser(result.data.getMe))
+    })
+      .catch(error => { })
+  }, [])
+
+
 
   useEffect(() => {
     client.query({
@@ -34,30 +72,12 @@ function App() {
       .then(result => {
         dispatch(setSchools(result.data.getSchools.items))
       })
-      .catch(error => {})
+      .catch(error => { })
   }, [])
 
 
-  useEffect(() =>  { 
-    {
-      client.query({
-        query: gql`
-        query {
-          getMe{
-            id
-            email
-            lastName
-            firstName
-          }
-        }
-      `
-      }).then(result => {
-        dispatch(setCurrentUser(result.data.getMe))
-      })
-      .catch(error => {})
-    }
-  }, [])
-  
+
+
 
   return (
     <Routes>

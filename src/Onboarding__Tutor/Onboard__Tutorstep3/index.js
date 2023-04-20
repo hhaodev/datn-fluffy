@@ -97,9 +97,9 @@ function OnboardTutor__Step3() {
     };
     createTutorOnboarding(client, input)
       .then((result) => {
-        // if (result) {
+        if (result) {
           navigate("/onboardtutorstep4")
-        // }
+        }
       })
       .catch((error) => alert(error));
   }

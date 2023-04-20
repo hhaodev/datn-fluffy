@@ -1,17 +1,43 @@
 import '../../TutorPages/AddCourse/addcourse.css'
 import { Button, Form, Input, message, Select, Upload } from 'antd';
-import { useState } from "react";
-import { Checkbox } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
+import { useNavigate } from 'react-router-dom';
 
-function addcourse() {
-    const onFinish = (values) => {
-        console.log('Success:', values);
+function Addcourse() {
+
+    const navigate = useNavigate()
+
+    const handleUploadImage = (options) => {
+        const { onSuccess, onError, file } = options;
+        // console.log(options);
+        uploadToCloudinary({
+            file,
+            fileType: "image",
+            successCallback: onSuccess,
+            failureCallback: onError,
+        });
     };
 
-    const onFinishFailed = (errorInfo) => {
+    const onFinish1 = (values) => {
+        console.log(values);
+    };
+
+    const handleCancel = () => {
+        navigate('/mycoursett')
+    }
+
+    const onFinishFailed1 = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const onFinish2 = (values) => {
+        console.log(values);
+    };
+    const onFinishFailed2 = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
+
     return (
         <div className='add__all'>
             <h1 className='add__logo'>Fluffy</h1>
@@ -20,13 +46,13 @@ function addcourse() {
                     <h1 className='add__h1course'>Course Information</h1>
                     <Form
                         name="basic"
-                        onFinish={onFinish}
-                        onFinishFailed={onFinishFailed}
+                        onFinish={onFinish1}
+                        onFinishFailed={onFinishFailed1}
                         autoComplete="off"
                         layout="vertical"
                     >
                         <Form.Item
-                            name="coursename"
+                            name="name"
                             label="Course Name"
                             rules={[
                                 {
@@ -38,7 +64,7 @@ function addcourse() {
                             <Input style={{ height: "35px" }} />
                         </Form.Item>
                         <Form.Item
-                            name="category"
+                            name="categoryId"
                             label="Category"
                             rules={[
                                 {
@@ -47,9 +73,7 @@ function addcourse() {
                                 },
                             ]}
                         >
-                            <Select>
-                                <Select.Option value="demo">Demo</Select.Option>
-                            </Select>
+                            <Input />
                         </Form.Item>
                         <Form.Item
                             name="description"
@@ -73,25 +97,8 @@ function addcourse() {
                             </Select>
                         </Form.Item>
                         <Form.Item
-                            label="Upload here"
-                            getValueFromEvent={(value) => value.file?.response}
-                            name="url"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please upload!',
-                                },
-                            ]}>
-                            <Upload action="/upload.do" listType="picture-card">
-                                <div>
-                                    <PlusOutlined />
-                                    <div style={{ marginTop: 8 }}>Upload</div>
-                                </div>
-                            </Upload>
-                        </Form.Item>
-                        <Form.Item
-                            name="Total"
-                            label="total"
+                            name="spendTime"
+                            label="Total"
                             rules={[
                                 {
                                     required: true,
@@ -99,13 +106,34 @@ function addcourse() {
                                 },
                             ]}
                         >
-                            <Input style={{ height: "35px" }} />
+                            <Input type='number' style={{ height: "35px" }} />
+                        </Form.Item>
+                        <Form.Item
+                            label="Upload here"
+                            getValueFromEvent={(value) => value.file?.response}
+                            name="imageUrl"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please upload!',
+                                },
+                            ]}>
+                            <Upload
+                                accept="image/*"
+                                name="url"
+                                customRequest={handleUploadImage}
+                                listType="picture-card">
+                                <div>
+                                    <PlusOutlined />
+                                    <div style={{ marginTop: 8 }}>Upload</div>
+                                </div>
+                            </Upload>
                         </Form.Item>
                         <div className='add__savecancel'>
                             <Button type="primary" htmlType="submit" className='add__addtomore'>
                                 Save
                             </Button>
-                            <Button type="default" htmlType="submit">
+                            <Button onClick={handleCancel}>
                                 Cancel
                             </Button>
                         </div>
@@ -123,8 +151,34 @@ function addcourse() {
                         </Button>
                     </div>
 
-                    <Form>
+                    <Form
+                        name="basic"
+                        onFinish={onFinish2}
+                        onFinishFailed={onFinishFailed2}
+                        autoComplete="off"
+                    >
                         <div className='addcourse__all'>
+                            <Form.Item
+                                label="Upload here"
+                                getValueFromEvent={(value) => value.file?.response}
+                                name="overviewUrl"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please upload!',
+                                    },
+                                ]}>
+                                <Upload
+                                    accept="image/*"
+                                    name="url"
+                                    customRequest={handleUploadImage}
+                                    listType="picture-card">
+                                    <div>
+                                        <PlusOutlined />
+                                        <div style={{ marginTop: 8 }}>Upload</div>
+                                    </div>
+                                </Upload>
+                            </Form.Item>
                             <Form.Item
                                 name="programname"
                                 label="Program Name"
@@ -148,7 +202,7 @@ function addcourse() {
                                 <h1 className='add__phase'>Phase</h1>
                                 <h2 className='add__session1'>Session 1</h2>
                                 <Form.Item
-                                    name="order"
+                                    name="order1"
                                     label="Order"
                                     rules={[
                                         {
@@ -160,7 +214,7 @@ function addcourse() {
                                     <Input style={{ height: "35px" }} />
                                 </Form.Item>
                                 <Form.Item
-                                    name="name"
+                                    name="name1"
                                     label="Name"
                                     rules={[
                                         {
@@ -173,7 +227,7 @@ function addcourse() {
                                 </Form.Item>
                                 <h2>Session 2</h2>
                                 <Form.Item
-                                    name="order"
+                                    name="order2"
                                     label="Order"
                                     rules={[
                                         {
@@ -185,7 +239,7 @@ function addcourse() {
                                     <Input style={{ height: "35px" }} />
                                 </Form.Item>
                                 <Form.Item
-                                    name="name"
+                                    name="name2"
                                     label="Name"
                                     rules={[
                                         {
@@ -212,4 +266,4 @@ function addcourse() {
     );
 }
 
-export default addcourse;
+export default Addcourse;
