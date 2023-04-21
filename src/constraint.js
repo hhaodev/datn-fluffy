@@ -3,12 +3,18 @@ const UserType = {
     STUDENT: 'STUDENT',
     TUTOR: 'TUTOR'
 }
-const UserGender ={
+const UserGender = {
     MALE: 'MALE',
     FEMALE: 'FEMALE'
+}
+const Duration = {
+    MONTH: 'MONTH',
+    DAY: 'DAY',
+    HOUR: 'HOUR'
 }
 
 export {
     UserType,
-    UserGender
+    UserGender,
+    Duration,
 }

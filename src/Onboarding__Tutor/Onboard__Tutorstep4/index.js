@@ -6,7 +6,7 @@ import {
     Input,
 } from 'antd';
 import client from '../../configGQL';
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -32,8 +32,14 @@ function OnboardTutor__Step4() {
         }).catch(error => { })
     }, []);
 
-
-
+    const GET_STATUS = gql`
+    query {
+        getTutorProfile(input:$input){
+            isStripeVerified
+        }
+    }
+    `
+    const [getData] = useQuery(GET_STATUS)
     const description = '';
     const items = [
         {
@@ -54,20 +60,33 @@ function OnboardTutor__Step4() {
         },
     ];
     const onFinish = (values) => {
-        if (status === true ) {
+        if (status === true) {
             navigate("/pending")
         } else {
-            client.query({
-                query: gql`
-            query {
-                getTutorProfile(accountId:$input){
-                    
-                    isStripeVerified
+            const get = async () => {
+                try {
+                    const result = await getData({
+                        variables: {
+                            input: values,
+                        },
+                    })
+                    setStatus(result.data.getTutorProfile.isStripeVerified)
                 }
-            }`
-            }).then(result => {
-                setStatus(result.data.getTutorProfile.isStripeVerified)
-            }).catch(error => { })
+                catch (error) {
+                    alert(error.message);
+                }
+            }
+        get()
+            // client.query({
+            // query: gql`
+            // query {
+            //     getTutorProfile(accountId:$input){
+            //         isStripeVerified
+            //     }
+            // }`
+            // }).then(result => {
+            //     setStatus(result.data.getTutorProfile.isStripeVerified)
+            // }).catch(error => { })
         }
     }
 
@@ -101,9 +120,9 @@ function OnboardTutor__Step4() {
             </div>
             <div className='step4__wrapper'>
                 <div className="box__step4">
-                
+
                     <h2 className="step4__h2">Stripe</h2>
-                    
+
 
                     <Form
                         name="normal"
@@ -117,18 +136,18 @@ function OnboardTutor__Step4() {
                             name="idStripe"
                             rules={[
                                 {
-                                    required: (status===true)?false:true,
+                                    required: (status === true) ? false : true,
                                     message: 'Please input!',
                                 },
                             ]}
                         >
                             <Input name='name' placeholder={id} />
                         </Form.Item>
-                        {(status===true) ? <span>CONFIRMED</span> : <span>FAILED! PLEASE TRY AGAIN!</span>}
+                        {(status === true) ? <span>CONFIRMED</span> : <span>FAILED! PLEASE TRY AGAIN!</span>}
                         <Button type="primary" htmlType="submit" className="student__buttonsub3">
                             Submit
                         </Button>
-                        
+
                     </Form>
                     <div className='step4__fot'>
                         <p>Do not have an account?</p>

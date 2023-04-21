@@ -96,7 +96,6 @@ function SignIn() {
             }
         }
         getData()
-
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
