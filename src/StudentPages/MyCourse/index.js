@@ -6,6 +6,7 @@ import { Avatar, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import user from '../../assets/images/user.jpg'
 import sidebar from '../../assets/images/sidebar.png';
+import Navbar from '../component/Navbar';
 
 
 function myCourse() {
@@ -59,25 +60,7 @@ function myCourse() {
       {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
-        <nav>
-          <i className="bx bx-menu" />
-          <a href="" className="nav-link">Categories</a>
-          <form action="">
-            <div className="form-input">
-              <input type="search" placeholder="Search..." />
-              <button type="submit" className="search-btn"><i className="bx bx-search" /></button>
-            </div>
-          </form>
-          <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="switch-mode" />
-          <a href="" className="notification">
-            <i className="bx bxs-bell" />
-            <span className="num">8</span>
-          </a>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-          </Dropdown>
-        </nav>
+        <Navbar/>
         {/* NAVBAR */}
         {/* MAIN */}
 

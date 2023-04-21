@@ -27,31 +27,31 @@ function myCoursestt() {
         </a>
         <ul className="course__side-menu top">
           <li>
-            <Link to="">
+            <Link to="/dashboardtt">
               <i className='bx bx-home' ></i>
               <span className="course__text">Dashboard</span>
             </Link>
           </li>
           <li className="active">
-            <Link to="">
+            <Link to="/mycoursett">
               <i className='bx bx-book-open'></i>
               <span className="course__text">Courses</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/mystudent">
               <i class='bx bx-male-female'></i>
               <span className="course__text">My Student</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/sessiontt">
               <i class='bx bxs-objects-horizontal-left'></i>
               <span className="course__text">Session</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/paymenttutor">
               <i className='bx bx-credit-card' ></i>
               <span className="course__text">Payment</span>
             </Link>

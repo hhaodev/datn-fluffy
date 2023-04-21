@@ -1,12 +1,8 @@
+
 import '../../TutorPages/Dashboard/dashboard.css'
-import { Avatar, Dropdown, Menu } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import user from '../../assets/images/user.jpg'
 import { Link } from 'react-router-dom'
 import React from 'react';
 import { DatePicker, Space } from 'antd';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { Select, Button, Table } from 'antd'
 import Navbar from '../component/Header';
 import { List } from 'antd';
@@ -15,7 +11,7 @@ import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import { Card, Col, Row, Statistic } from 'antd';
 import welcomett from '../../assets/images/welcome-removebg-preview.png'
 
-function dashBoardtutor() {
+function DashBoardtutor() {
 
   const handleChange = (value) => {
     console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
@@ -46,25 +42,25 @@ function dashBoardtutor() {
         </a>
         <ul className="course__side-menu top">
           <li className="active">
-            <Link to="">
+            <Link to="/dashboardtt">
               <i className='bx bx-home' ></i>
               <span className="course__text">Dashboard</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/mycoursett">
               <i className='bx bx-book-open'></i>
               <span className="course__text">Courses</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/mystudent">
               <i class='bx bx-male-female'></i>
               <span className="course__text">My Student</span>
             </Link>
           </li>
           <li>
-            <Link to="">
+            <Link to="/sessiontt">
               <i class='bx bxs-objects-horizontal-left'></i>
               <span className="course__text">Session</span>
             </Link>
@@ -215,4 +211,4 @@ function dashBoardtutor() {
   );
 }
 
-export default dashBoardtutor;
+export default DashBoardtutor;

@@ -1,8 +1,7 @@
 import '../../TutorPages/Feedback/feedback.css'
 import React, { useState } from "react";
 import { Card, Rate, Button, Modal } from "antd";
-import { Avatar, Dropdown, Menu } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+
 import user from '../../assets/images/user.jpg'
 import { Link } from 'react-router-dom'
 import avtfeedback from '../../assets/images/avtfeedback1.png'
@@ -11,6 +10,7 @@ import avtfeedback3 from '../../assets/images/avt2.jpg'
 import avtfeedback4 from '../../assets/images/avt3.jpg'
 import avtfeedback5 from '../../assets/images/avt4.jpg'
 import avtfeedback6 from '../../assets/images/avt5.jpg'
+import Navbar from '../component/Header';
 
 const { confirm } = Modal;
 
@@ -26,12 +26,7 @@ const CourseBox = () => {
     });
   };
 
-  const menu = (
-    <Menu>
-      <Menu.Item key="profile">Profile</Menu.Item>
-      <Menu.Item key="logout">Logout</Menu.Item>
-    </Menu>
-  );
+
 
   return (
     <>
@@ -85,25 +80,7 @@ const CourseBox = () => {
 
       <section id="content">
         {/* NAVBAR */}
-        <nav>
-          <i className="bx bx-menu" />
-          <a href="" className="course__nav-link">Feedback</a>
-          <form action="">
-            <div className="course__form-input">
-              <input type="search" placeholder="Search..." />
-              <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
-            </div>
-          </form>
-          <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="course__switch-mode" />
-          <a href="" className="course__notification">
-            <i className="bx bxs-bell" />
-            <span className="course__num">8</span>
-          </a>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-          </Dropdown>
-        </nav>
+        <Navbar/>
         {/* NAVBAR */}
         <div className="feedback__head-title">
           <div className="feedback__left">
