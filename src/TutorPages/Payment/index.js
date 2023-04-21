@@ -4,6 +4,7 @@ import Navbar from '../component/Header';
 
 
 function payMentTutor() {
+
   return (
     <>
       {/* SIDEBAR */}
@@ -53,29 +54,30 @@ function payMentTutor() {
       {/* SIDEBAR */}
       <section id="content">
         {/* NAVBAR */}
-        <Navbar/>
+        <Navbar />
         {/* NAVBAR */}
         {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>Tutor</h1>
+              <h1>Payment</h1>
               <ul className="course__breadcrumb">
                 <li>
                   <a href="">Dashboard</a>
                 </li>
                 <li><i className="bx bx-chevron-right" /></li>
                 <li>
-                  <a href="">Course</a>
+                  <a href="">Payment</a>
                 </li>
               </ul>
             </div>
           </div>
+
         </main>
         {/* MAIN */}
       </section>
       {/* CONTENT */}
-      
+
     </>
   );
 }
