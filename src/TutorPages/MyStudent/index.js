@@ -1,8 +1,80 @@
 import '../../TutorPages/MyStudent/mystudent.css'
 import { Link } from 'react-router-dom'
+import { Table, Modal, Button, Form, Input } from 'antd';
+import Navbar from '../component/Header';
+import React, { useState } from 'react';
 
 
-function myStudent() {
+const MyStudenttutor = () => {
+  // Table       
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [form] = Form.useForm();
+
+  const handleViewMoreClick = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    form.submit();
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const onFinish = (values) => {
+    console.log(values);
+    setIsModalVisible(false);
+  };
+
+  const dataSource = [
+    {
+      purchase: '1',
+      subtotal: 'John Brown',
+      Fee: 32,
+      total: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '2',
+      name: 'Jim Green',
+      age: 42,
+      address: 'London No. 1 Lake Park',
+    },
+    {
+      key: '3',
+      name: 'Joe Black',
+      age: 32,
+      address: 'Sidney No. 1 Lake Park',
+    },
+  ];
+
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+    },
+    {
+      title: 'Detail',
+      key: 'detail',
+      render: (text, record) => (
+        <Button type="primary" onClick={handleViewMoreClick} className='view__payment'>
+             More
+        </Button>
+      ),
+    },
+  ];
+  // end Table
   return ( 
     <>
      {/* SIDEBAR */}
@@ -50,8 +122,44 @@ function myStudent() {
         </ul>
       </section>
       {/* SIDEBAR */}
+      <section id="content">
+        {/* NAVBAR */}
+        <Navbar />
+        {/* NAVBAR */}
+        {/* MAIN */}
+        <main>
+          <div className="course__head-title">
+            <div className="course__left">
+              <h1>My student</h1>
+              <ul className="course__breadcrumb">
+                <li>
+                  <a href="">Dashboard</a>
+                </li>
+                <li><i className="bx bx-chevron-right" /></li>
+                <li>
+                  <a href="">My Student</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className='mystdtutor__content'>
+          <Table dataSource={dataSource} columns={columns} />
+      <Modal title="Profile" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <Form form={form} name="view-more-form" onFinish={onFinish}>
+          
+        </Form>
+      </Modal>
+          </div>
+
+         
+
+        </main>
+        {/* MAIN */}
+      </section>
+      {/* CONTENT */}
     </>
    );
 }
 
-export default myStudent;
+export default MyStudenttutor;

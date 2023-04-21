@@ -84,6 +84,7 @@ function Addcourse() {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
                 layout="vertical"
+                className='add__form'
             >
                 <div className='add__infomation'>
                     <div className='add__box1'>
@@ -170,6 +171,7 @@ function Addcourse() {
                         </Form.Item>
                     </div>
                 </div>
+
                 <div className='add__program'>
                     <div className='add__box2'>
                         <div className='add__tag'>
@@ -247,17 +249,19 @@ function Addcourse() {
                                     <Input style={{ height: "35px" }} />
                                 </Form.Item>
                             </div>
+                            <div className='add__savecancel'>
+                                <Button type="primary" htmlType="submit" className='add__addtomore'>
+                                    Save
+                                </Button>
+                                <Button onClick={handleCancel}>
+                                    Cancel
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className='add__savecancel'>
-                    <Button type="primary" htmlType="submit" className='add__addtomore'>
-                        Save
-                    </Button>
-                    <Button onClick={handleCancel}>
-                        Cancel
-                    </Button>
-                </div>
+
+
             </Form>
         </div>
     );
