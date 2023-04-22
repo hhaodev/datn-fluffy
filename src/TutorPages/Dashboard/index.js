@@ -99,21 +99,21 @@ function DashBoardtutor() {
                 <i class='bx bxs-calendar-check' ></i>
                 <span class="text">
                   <h3>129</h3>
-                  <p>Course</p>
+                  <p className='dashboard__rightp'>Course</p>
                 </span>
               </li>
               <li>
                 <i class='bx bxs-group' ></i>
                 <span class="text">
                   <h3>260</h3>
-                  <p>Student</p>
+                  <p className='dashboard__rightp'>Student</p>
                 </span>
               </li>
               <li>
                 <i class='bx bxs-dollar-circle' ></i>
                 <span class="text">
                   <h3>$2543</h3>
-                  <p>Total Money</p>
+                  <p className='dashboard__rightp'>Total Money</p>
                 </span>
               </li>
             </ul>

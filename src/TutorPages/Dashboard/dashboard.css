@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Bree+Serif&family=Catamaran:wght@200&family=Karla:wght@200&family=Lilita+One&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Poppins&family=Signika+Negative:wght@300&family=Signika:wght@300;500&family=Ysabeau:wght@600&display=swap');
 .dashboard__part {
     width: 320px;
 }
@@ -36,6 +37,7 @@
 .dashboard__welh1 {
     font-size: 45px;
     color: brown;
+    font-family: 'Ysabeau', sans-serif;
 }
 
 .dashboard__span {
@@ -53,5 +55,17 @@
 
 .dashboard__working {
     color: rgb(67, 123, 219);
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.dashboard__rightp {
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+}
+
+.dashboard__circle {
+    font-family: 'Karla', sans-serif !important;
     font-weight: bold;
 }

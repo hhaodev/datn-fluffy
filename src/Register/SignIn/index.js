@@ -164,7 +164,7 @@ function SignIn() {
                                     <Button type="primary" htmlType="submit" className="signin__form__button">
                                         Login
                                     </Button>
-                                    <p>Don't have account <Link to="/signup" className="signin__form__regis">register now!</Link></p>
+                                    <p>Don't have account <Link to="/signup" className="signin__form__regis">Register now!</Link></p>
 
                                 </div>
                             </Form.Item>
