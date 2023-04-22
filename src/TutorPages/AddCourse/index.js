@@ -1,14 +1,16 @@
 import '../../TutorPages/AddCourse/addcourse.css'
-import { Button, Form, Input, message, Select, Upload } from 'antd';
+import { Button, Form, Input, Select, Upload } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
 import { useNavigate } from 'react-router-dom';
 import { Duration } from '../../constraint';
 import { gql } from '@apollo/client';
 import client from '../../configGQL';
+import { useEffect, useState } from 'react';
+
 
 function Addcourse() {
-
+    const { Option } = Select;
     const navigate = useNavigate()
     const handleUploadImage = (options) => {
         const { onSuccess, onError, file } = options;
@@ -20,6 +22,31 @@ function Addcourse() {
             failureCallback: onError,
         });
     };
+    const [category, setCategory] = useState([]);
+    useEffect(() => {
+        client.query({
+        query: gql`
+        query getCategories ($queryParams: QueryFilterDto!) {
+            getCategories(queryParams: $queryParams) {
+                items{
+                    name
+                    id
+                }
+            }
+        }`,
+            variables: {
+                queryParams: {
+                    limit: 10,
+                    page: 1
+                }
+            }
+        })
+            .then(result => {
+                setCategory(result.data.getCategories.items)
+            })
+            .catch(error => { })
+    }, [])
+
 
     const CREATE_COURSE = gql`
         mutation createCourse($input: CourseDto!){
@@ -57,12 +84,14 @@ function Addcourse() {
             categoryId: values.categoryId,
             spendTime: parseFloat(values.spendTime),
             duration: values.duration,
+            numberOfProgramRequired: 1,
+            
             coursePrograms: [coursePrograms]
         }
         createCourse(client, input)
             .then((result) => {
                 if (result)
-                    console.log(result);
+                    navigate("/mycoursett")
             })
             .catch((error) => alert(error));
     };
@@ -111,7 +140,13 @@ function Addcourse() {
                                 },
                             ]}
                         >
-                            <Input style={{ height: "35px" }} />
+                            <Select placeholder="Select category">
+                                {category.map(category => {
+                                    return (
+                                        <Option key={category.id} value={category.id}>{category.name}</Option>
+                                    )
+                                })}
+                            </Select>
                         </Form.Item>
                         <Form.Item
                             name="description_course"

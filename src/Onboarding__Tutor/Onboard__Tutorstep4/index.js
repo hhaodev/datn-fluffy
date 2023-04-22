@@ -12,10 +12,28 @@ import { useNavigate } from 'react-router-dom';
 
 
 function OnboardTutor__Step4() {
+    const description = '';
+    const items = [
+        {
+            title: 'Done',
+            description,
+        },
+        {
+            title: 'Done',
+            description,
+        },
+        {
+            title: 'Done',
+            description,
+        },
+        {
+            title: 'Waiting',
+            description,
+        },
+    ];
     const navigate = useNavigate()
-
     const [id, setId] = useState("")
-    const [status, setStatus] = useState()
+    const [status, setStatus] = useState(false)
 
     useEffect(() => {
         client.query({
@@ -37,32 +55,12 @@ function OnboardTutor__Step4() {
         getTutorProfile(input:$input){
             isStripeVerified
         }
-    }
-    `
-    const [getData] = useQuery(GET_STATUS)
-    const description = '';
-    const items = [
-        {
-            title: 'Done',
-            description,
-        },
-        {
-            title: 'Done',
-            description,
-        },
-        {
-            title: 'Done',
-            description,
-        },
-        {
-            title: 'Waiting',
-            description,
-        },
-    ];
+    }`
+    const { getData } = useQuery(GET_STATUS);
     const onFinish = (values) => {
         if (status === true) {
             navigate("/pending")
-        } else {
+        } else if (status === false) {
             const get = async () => {
                 try {
                     const result = await getData({
@@ -76,17 +74,7 @@ function OnboardTutor__Step4() {
                     alert(error.message);
                 }
             }
-        get()
-            // client.query({
-            // query: gql`
-            // query {
-            //     getTutorProfile(accountId:$input){
-            //         isStripeVerified
-            //     }
-            // }`
-            // }).then(result => {
-            //     setStatus(result.data.getTutorProfile.isStripeVerified)
-            // }).catch(error => { })
+            get()
         }
     }
 
@@ -123,7 +111,6 @@ function OnboardTutor__Step4() {
 
                     <h2 className="step4__h2">Stripe</h2>
 
-
                     <Form
                         name="normal"
                         className="form__dropdown"
@@ -147,7 +134,6 @@ function OnboardTutor__Step4() {
                         <Button type="primary" htmlType="submit" className="student__buttonsub3">
                             Submit
                         </Button>
-
                     </Form>
                     <div className='step4__fot'>
                         <p>Do not have an account?</p>
