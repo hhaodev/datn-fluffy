@@ -1,0 +1,15 @@
+.payment__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.payment__forms {
+    width: 150px;
+    font-size: 30px;
+}
+
+.view__payment {
+    color: #fff;
+    background-color: #f66962;
+}

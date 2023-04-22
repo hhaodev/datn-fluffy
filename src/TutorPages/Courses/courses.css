@@ -226,9 +226,6 @@ li {
 
 /* NAVBAR */
 
-
-
-
 /* MAIN */
 #content main {
 	width: 100%;
@@ -237,6 +234,7 @@ li {
 	background-color: #f3f4f5;
 	max-height: calc(100vh - 56px);
 	overflow-y: auto;
+	min-height: 100vh;
 }
 #content main .course__head-title {
 	display: flex;
