@@ -13,7 +13,7 @@ import { Radio, Select } from 'antd';
 const PaymentTutor = () => {
 
 
-  
+
   // search
   // const renderTitle = (title) => (
   //   <span>
@@ -205,6 +205,12 @@ const PaymentTutor = () => {
               <span className="course__text">Feedback</span>
             </Link>
           </li>
+          <li>
+            <Link to="/viewprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
+          </li>
         </ul>
       </section>
       {/* SIDEBAR */}
@@ -248,9 +254,9 @@ const PaymentTutor = () => {
 
               {/* Datepicker */}
               <div className=''>
-                <Space direction="vertical"style={{
-                    width: 250,
-                  }} size={12}>
+                <Space direction="vertical" style={{
+                  width: 250,
+                }} size={12}>
                   <DatePicker defaultValue={dayjs('21/04/2023', dateFormatList[0])} format={dateFormatList} />
                 </Space>
               </div>
@@ -291,7 +297,7 @@ const PaymentTutor = () => {
               <Table dataSource={dataSource} columns={columns} />
               <Modal title="Bill" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                 <Form form={form} name="view-more-form" onFinish={onFinish}>
-                  
+
                 </Form>
               </Modal>
             </div>

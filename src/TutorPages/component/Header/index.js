@@ -3,6 +3,7 @@ import { Avatar, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import user from '../../../assets/images/user.jpg'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function Navbar() {
@@ -15,8 +16,8 @@ export default function Navbar() {
     };
     const menu = (
         <Menu>
-            <Menu.Item key="profile">Profile</Menu.Item>
-            <Menu.Item key="logout" onClick={()=>{handleLogout()}}>Logout</Menu.Item>
+            <Menu.Item key="profile"><Link to='/viewprofile'>View Profile</Link></Menu.Item>
+            <Menu.Item key="logout" onClick={() => { handleLogout() }}>Log out</Menu.Item>
         </Menu>
     );
     return (
@@ -28,10 +29,6 @@ export default function Navbar() {
                     <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
                 </div>
             </form>
-            <a href="#" className="course__notification">
-                <i className="bx bxs-bell" />
-                <span className="course__num">8</span>
-            </a>
             <Dropdown overlay={menu} placement="bottomRight">
                 <Avatar className="avatar" src={user} icon={<DownOutlined />} />
             </Dropdown>

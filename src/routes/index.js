@@ -19,6 +19,7 @@ import myStudent from '../TutorPages/MyStudent/index';
 import dashBoardtutor from '../TutorPages/Dashboard/index';
 import payMentTutor from '../TutorPages/Payment/index';
 import Pending from '../pages/Pending';
+import ViewProfile from '../TutorPages/ViewProfile/index';
 
 
 const publicRoutes = [
@@ -48,6 +49,7 @@ const publicRoutes = [
     { path: '/mystudent', component: myStudent, layout: null},
     { path: '/dashboardtt', component: dashBoardtutor, layout: null},
     { path: '/paymenttutor', component: payMentTutor, layout: null},
+    { path: '/viewprofile', component: ViewProfile, layout: null},
 
     //pending
     { path: '/pending', component: Pending, layout: null},

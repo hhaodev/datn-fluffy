@@ -106,7 +106,7 @@ li {
 	color: #fff;
 }
 
-.bx-home, .bx-book-open, .bx-credit-card, .bx-male-female, .bxs-objects-horizontal-left, .bxs-message-minus  {
+.bx-home, .bx-book-open, .bx-credit-card, .bx-male-female, .bxs-objects-horizontal-left, .bxs-message-minus, .bxs-user-circle  {
 	margin-left: 20px;
 	font-size: 24px;
 }
@@ -500,6 +500,38 @@ li {
 	display: flex !important;
 	justify-content: center !important;
 	align-items: center !important;
+  }
+
+  .title-container {
+	display: flex;
+	justify-content: space-between;
+  }
+
+  .add__plus {
+	font-size: 15px;
+  }
+
+  .add-course {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+
+  .inline-btn__course {
+	border-radius: .5rem;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 1rem 1rem;
+    text-align: center;
+    margin-top: 1rem;
+	background-color: #f66962;
+	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 90px;
   }
 
 

@@ -1,0 +1,54 @@
+.view__upload {
+    background-color: #f66962;
+}
+
+.view__upload:hover {
+    background-color: #a96460 !important;
+}
+
+.view__form {
+    width: 600px;
+    margin: 30px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.view__firsts {
+    display: flex;
+}
+
+.view__firsts1 {
+    margin-right: 20px;
+}
+
+.view__email {
+    display: flex;
+}
+
+.view__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.view__dis {
+    margin-right: 10px;
+}
+
+.view__allform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.view__htitle {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.view__avt2 {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
