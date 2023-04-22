@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
     const menu = (
         <Menu>
-            
+
             <Menu.Item key="profile">Profile</Menu.Item>
-            <Menu.Item key="logout" onClick={()=>handleLogout()}>Logout</Menu.Item>
+            <Menu.Item key="logout" onClick={() => handleLogout()}>Logout</Menu.Item>
         </Menu>
     );
     const navigate = useNavigate()
@@ -18,6 +18,7 @@ export default function Navbar() {
         localStorage.removeItem("refreshToken")
         navigate('/')
         window.location.reload(false);
+
     };
     return (
         <nav>
