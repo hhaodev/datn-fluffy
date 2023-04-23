@@ -20,6 +20,7 @@ import dashBoardtutor from '../TutorPages/Dashboard/index';
 import payMentTutor from '../TutorPages/Payment/index';
 import Pending from '../pages/Pending';
 import ViewProfile from '../TutorPages/ViewProfile/index';
+import StudentFeedback from '../StudentPages/StudentFeedback/index';
 
 
 const publicRoutes = [
@@ -40,6 +41,7 @@ const publicRoutes = [
 //home studen
     { path: '/studenthome', component: stdHome, layout: null},
     { path: '/mycourse', component: myCourse, layout: null},
+    { path: '/studentfeedback', component: StudentFeedback, layout: null},
 
 //tutor
     { path: '/mycoursett', component: myCoursestt, layout: null},

@@ -4,6 +4,9 @@ import { Table, Modal, Button, Form, Input } from 'antd';
 import Navbar from '../component/Header';
 import React, { useState } from 'react';
 import userstudent from '../../assets/images/avt1.jpg';
+import { Avatar } from 'antd';
+import avt from '../../../src/assets/images/avt1.jpg';
+
 
 
 const MyStudenttutor = () => {
@@ -176,10 +179,34 @@ const MyStudenttutor = () => {
             <Table dataSource={dataSource} columns={columns} />
             <Modal title="Profile" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
               <Form form={form} name="view-more-form" onFinish={onFinish}>
-                <img src={userstudent}></img>
-                <h2>Nguyen thi Huyen</h2>
-                <h2>15/20/2001</h2>
-                <h2>Duy Tan University</h2>
+
+                <div className='mystdtt__avtt'>
+                  <Avatar
+                    size={{
+                      xs: 24,
+                      sm: 32,
+                      md: 40,
+                      lg: 64,
+                      xl: 80,
+                      xxl: 100,
+                    }}
+                    src={avt}
+                    className='view__avt2'
+                  />
+                  <p className='mystdtt__name'>Le My Duyen</p>
+                </div>
+                <div className='ag1'>
+                  <p className='mystdtt__age'>Age:</p>
+                  <p>22</p>
+                </div>
+                <div className='school1'>
+                  <p className='mystdtt__school'>School:</p>
+                  <p>Duy Tan University</p>
+                </div>
+                <div className='courses1'>
+                  <p className='mystdtt__courses'>Courses:</p>
+                  <p>GraphQL with React: The Complete Developers Guide</p>
+                </div>
               </Form>
             </Modal>
           </div>
