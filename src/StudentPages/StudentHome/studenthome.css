@@ -242,7 +242,7 @@ body {
 	flex-grow: 1;
 	padding: 0 16px;
 	height: 100%;
-	border: 1px solid black;
+	border: 1px solid rgb(176, 176, 176);
 	background: #fff;
 	border-radius: 36px 0 0 36px;
 	outline: none;
@@ -255,13 +255,14 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: var(--blue);
+	background: #f66962;
 	color: var(--light);
 	font-size: 18px;
 	border: none;
 	outline: none;
 	border-radius: 0 36px 36px 0;
 	cursor: pointer;
+	
 }
 #content nav .notification {
 	font-size: 20px;

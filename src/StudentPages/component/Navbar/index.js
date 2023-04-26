@@ -30,11 +30,6 @@ export default function Navbar() {
                 </div>
             </form>
             <input type="checkbox" id="switch-mode" hidden />
-            <label htmlFor="switch-mode" className="switch-mode" />
-            <a href="#" className="notification">
-                <i className="bx bxs-bell" />
-                <span className="num">8</span>
-            </a>
             <Dropdown overlay={menu} placement="bottomRight">
                 <Avatar className="avatar" src={user} icon={<DownOutlined />} />
             </Dropdown>
