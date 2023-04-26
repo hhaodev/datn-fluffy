@@ -5,3 +5,8 @@
 :where(.css-dev-only-do-not-override-mxhywb).ant-picker-calendar.ant-picker-calendar-full .ant-picker-calendar-date-today {
     border-color: #f66962;
 }
+
+.schedule__calen {
+    border-radius: 20px;
+    padding: 30px;
+}

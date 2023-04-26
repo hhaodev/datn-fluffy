@@ -194,7 +194,7 @@ function StudentSchedule() {
 
 
                     <div className='schedule__app'>
-                        <Calendar cellRender={cellRender} />;
+                        <Calendar cellRender={cellRender}  className='schedule__calen'/>
                     </div>
 
 

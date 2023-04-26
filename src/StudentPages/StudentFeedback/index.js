@@ -65,7 +65,7 @@ function FeedBackStudent() {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/studentschedule">
               <i class='bx bx-calendar' ></i>
               <span className="course__text">Schedule</span>
             </Link>
