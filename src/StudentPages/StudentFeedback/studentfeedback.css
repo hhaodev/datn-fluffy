@@ -1,0 +1,40 @@
+.bx-home, .bx-book-open, .bx-calendar, .bx-credit-card, .bxs-message-minus, .bxs-user-circle {
+	margin-left: 20px;
+	font-size: 24px;
+}
+
+.feedbstudent__allform {
+    width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.feedbstudent__all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedbstudent__formh1 {
+    text-align: center;
+}
+
+.feedbstudent__search {
+    width: 100% !important;
+}
+
+.feedbstudent__rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedbstudent__submit {
+    display: flex;
+    justify-content: center;
+}
+
+.feedbstudent__subs {
+    margin-right: 20px;
+}

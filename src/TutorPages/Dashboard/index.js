@@ -77,6 +77,12 @@ function DashBoardtutor() {
               <span className="course__text">Feedback</span>
             </Link>
           </li>
+          <li>
+            <Link to="/viewprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
+          </li>
         </ul>
       </section>
       {/* SIDEBAR */}
@@ -93,21 +99,21 @@ function DashBoardtutor() {
                 <i class='bx bxs-calendar-check' ></i>
                 <span class="text">
                   <h3>129</h3>
-                  <p>Course</p>
+                  <p className='dashboard__rightp'>Course</p>
                 </span>
               </li>
               <li>
                 <i class='bx bxs-group' ></i>
                 <span class="text">
                   <h3>260</h3>
-                  <p>Student</p>
+                  <p className='dashboard__rightp'>Student</p>
                 </span>
               </li>
               <li>
                 <i class='bx bxs-dollar-circle' ></i>
                 <span class="text">
                   <h3>$2543</h3>
-                  <p>Total Money</p>
+                  <p className='dashboard__rightp'>Total Money</p>
                 </span>
               </li>
             </ul>
@@ -118,14 +124,14 @@ function DashBoardtutor() {
                   <h1 className='dashboard__welh1'>Welcome back, John!</h1>
                   <p className='dashboard__rightp'>Your students completed <span className='dashboard__span'> 94% </span>of the tasks Progress is very good!</p>
                 </div>
-                 <img src={welcomett} className='dashboard__img'></img>
+                <img src={welcomett} className='dashboard__img'></img>
               </div>
 
               <div className='dashboard__part'>
                 <div className='dashboard__trum'>
                   <div className='dashboard__work'>
                     <p className='dashboard__working'>
-                       Working hours
+                      Working hours
                     </p>
                   </div>
                   <div className='dashboard__select'>
@@ -164,38 +170,7 @@ function DashBoardtutor() {
 
               </div>
 
-              <div >
-                <Row gutter={16}>
-                  <Col span={12}>
-                    <Card bordered={false}>
-                      <Statistic
-                        title="Active"
-                        value={11.28}
-                        precision={2}
-                        valueStyle={{
-                          color: '#3f8600',
-                        }}
-                        prefix={<ArrowUpOutlined />}
-                        suffix="%"
-                      />
-                    </Card>
-                  </Col>
-                  <Col span={12}>
-                    <Card bordered={false}>
-                      <Statistic
-                        title="Idle"
-                        value={9.3}
-                        precision={2}
-                        valueStyle={{
-                          color: '#cf1322',
-                        }}
-                        prefix={<ArrowDownOutlined />}
-                        suffix="%"
-                      />
-                    </Card>
-                  </Col>
-                </Row>
-              </div>
+
             </div>
 
 

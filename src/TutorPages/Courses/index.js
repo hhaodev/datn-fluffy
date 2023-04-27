@@ -91,6 +91,12 @@ function MyCoursestt() {
               <span className="course__text">Feedback</span>
             </Link>
           </li>
+          <li>
+            <Link to="/viewprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
+          </li>
         </ul>
       </section>
       {/* SIDEBAR */}
@@ -103,7 +109,7 @@ function MyCoursestt() {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>Course</h1>
+              {/* <h1>Tutor</h1>
               <ul className="course__breadcrumb">
                 <li>
                   <a href="">Dashboard</a>
@@ -112,14 +118,14 @@ function MyCoursestt() {
                 <li>
                   <a href="">Course</a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
 
           <div className="course-container">
             <div className="title-container">
               <h1 className='course__h1tittle'>Teaching Course</h1>
-              <Link to="/addcourse"><button className="add-course">Add Course</button></Link>
+              <Link to="/addcourse"><button className="add-course"><i class='bx bx-plus add__plus'></i>Add Course</button></Link>
             </div>
             {/* <div className='course__padding'> */}
             <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='course__segmented' />

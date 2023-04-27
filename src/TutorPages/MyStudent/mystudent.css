@@ -1,3 +1,59 @@
 .ant-table-cell {
     text-align: center !important;
 }
+
+.mystdtt__avtt {
+    display: flex;
+}
+
+.view__avt2 {
+
+}
+
+.mystdtt__name {
+    position: relative;
+    bottom: -25px;
+    font-size: 25px;
+}
+
+.mystdtt__age {
+    margin: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mystdtt__school {
+    margin: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.mystdtt__courses {
+    margin: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ag1 {
+    display: flex;
+    align-items: center;
+}
+
+.school1 {
+    display: flex;
+    align-items: center;
+}
+
+.courses1 {
+    display: flex;
+    align-items: center;
+}
+
+.ant-btn-primary {
+    background-color: #f66962;
+}
+
+.ant-btn-primary:hover {
+    background-color: #ba605b !important;
+}

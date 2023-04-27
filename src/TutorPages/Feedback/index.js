@@ -72,6 +72,12 @@ const CourseBox = () => {
               <span className="course__text">Feedback</span>
             </Link>
           </li>
+          <li>
+            <Link to="/viewprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
+          </li>
         </ul>
       </section>
       {/* SIDEBAR */}
@@ -80,21 +86,12 @@ const CourseBox = () => {
 
       <section id="content">
         {/* NAVBAR */}
-        <Navbar/>
+        <Navbar />
         {/* NAVBAR */}
         <div className="feedback__head-title">
           <div className="feedback__left">
-          <h1>Tutor</h1>
-          <ul className="feedback__breadcrumb">
-            <li>
-              <a href="">Dashboard</a>
-            </li>
-            <li><i className="bx bx-chevron-right" /></li>
-            <li>
-              <a href="">Tutor</a>
-            </li>
-          </ul>
-        </div>
+            <h1>Feedback</h1>
+          </div>
           {/* <h1 className='feedback__h1'>FeedBack</h1> */}
 
           <div className='feedback__box'>
@@ -403,7 +400,7 @@ const CourseBox = () => {
                     </div>
                     <div className="feedback__rating">
                       <i class='bx bxs-star star__form'></i>
-                      <p className='feedback__star'>4.5</p>   
+                      <p className='feedback__star'>4.5</p>
                     </div>
                   </div>
                   <p className="course-box-description">

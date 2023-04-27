@@ -125,20 +125,26 @@ function sessionTutor() {
               <span className="course__text">Feedback</span>
             </Link>
           </li>
+          <li>
+            <Link to="/viewprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
+          </li>
         </ul>
       </section>
       {/* SIDEBAR */}
       {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
-        <Navbar/>
+        <Navbar />
         {/* NAVBAR */}
         {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left">
               <h1>Session</h1>
-              <ul className="course__breadcrumb">
+              {/* <ul className="course__breadcrumb">
                 <li>
                   <a href="">Dashboard</a>
                 </li>
@@ -146,7 +152,7 @@ function sessionTutor() {
                 <li>
                   <a href="">Session</a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
 
@@ -269,14 +275,14 @@ function sessionTutor() {
             </div>
 
 
-              <Table
-                columns={columns}
-                dataSource={data}
-                scroll={{
-                  x: 1500,
-                  y: 300,
-                }}
-              />
+            <Table
+              columns={columns}
+              dataSource={data}
+              scroll={{
+                x: 1500,
+                y: 300,
+              }}
+            />
 
           </div>
         </main>

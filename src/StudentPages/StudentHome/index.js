@@ -14,41 +14,54 @@ import courses5 from '../../assets/images/courses5.jpg'
 import courses6 from '../../assets/images/courses6.jpg'
 import React from 'react';
 import Navbar from '../component/Navbar';
+import { Link } from 'react-router-dom'
 
 
 function stdHome() {
-  
+
   return (
     <div>
       {/* SIDEBAR */}
-      <section id="sidebar">
-        <a href="" className="brand">
+      <section id="course__sidebar">
+        <a href="" className="Course__brand">
           <span className="student__logos">Fluffy</span>
         </a>
-        <ul className="side-menu top">
+        <ul className="course__side-menu top">
           <li className="active">
-            <a href="">
+            <Link to="/studenthome">
               <i className='bx bx-home' ></i>
-              <span className="text">Home</span>
-            </a>
+              <span className="course__text">Home</span>
+            </Link>
           </li>
           <li>
-          <a href="">
+            <Link to="/studentmycourse">
               <i className='bx bx-book-open'></i>
-              <span className="text">My Courses</span>
-              </a>
+              <span className="course__text">My Courses</span>
+            </Link>
           </li>
           <li>
-            <a href="">
-              <i className='bx bxs-calendar'></i>
-              <span className="text">Schedule</span>
-            </a>
+            <Link to="/studentschedule">
+              <i class='bx bx-calendar' ></i>
+              <span className="course__text">Schedule</span>
+            </Link>
           </li>
           <li>
-            <a href="">
-              <i className='bx bx-credit-card' ></i>
-              <span className="text">Payment</span>
-            </a>
+            <Link to="/studentpayment">
+              <i className='bx bx-credit-card'></i>
+              <span className="course__text">Payment</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/studentfeedback">
+              <i className='bx bxs-message-minus' ></i>
+              <span className="course__text">Feedback</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/studentprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
           </li>
         </ul>
       </section>
@@ -56,7 +69,7 @@ function stdHome() {
       {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
-        <Navbar/>
+        <Navbar />
         {/* NAVBAR */}
         {/* MAIN */}
         <main>

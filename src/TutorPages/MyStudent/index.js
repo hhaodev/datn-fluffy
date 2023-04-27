@@ -1,8 +1,12 @@
-import '../../TutorPages/MyStudent/mystudent.css'
-import { Link } from 'react-router-dom'
+import '../../TutorPages/MyStudent/mystudent.css';
+import { Link } from 'react-router-dom';
 import { Table, Modal, Button, Form, Input } from 'antd';
 import Navbar from '../component/Navbar';
 import React, { useState } from 'react';
+import userstudent from '../../assets/images/avt1.jpg';
+import { Avatar } from 'antd';
+import avt from '../../../src/assets/images/avt1.jpg';
+
 
 
 const MyStudenttutor = () => {
@@ -29,22 +33,44 @@ const MyStudenttutor = () => {
 
   const dataSource = [
     {
-      purchase: '1',
-      subtotal: 'John Brown',
-      Fee: 32,
-      total: 'New York No. 1 Lake Park',
+      id: '1323',
+      name: 'John Brown',
+      status: 'Done',
     },
     {
-      key: '2',
+      id: '2232',
       name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
+      status: 'To Do',
     },
     {
-      key: '3',
+      id: '3232',
       name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
+      status: 'Inprogress',
+    },
+    {
+      id: '6663',
+      name: 'John Brown',
+      status: 'To Do',
+    },
+    {
+      id: '9981',
+      name: 'John Brown',
+      status: 'Done',
+    },
+    {
+      id: '6512',
+      name: 'John Brown',
+      status: 'To Do',
+    },
+    {
+      id: '8872',
+      name: 'John Brown',
+      status: 'Done',
+    },
+    {
+      id: '6652',
+      name: 'John Brown',
+      status: 'Done',
     },
   ];
 
@@ -69,16 +95,16 @@ const MyStudenttutor = () => {
       key: 'detail',
       render: (text, record) => (
         <Button type="primary" onClick={handleViewMoreClick} className='view__payment'>
-             More
+          More
         </Button>
       ),
     },
   ];
   // end Table
-  return ( 
+  return (
     <>
-     {/* SIDEBAR */}
-     <section id="course__sidebar">
+      {/* SIDEBAR */}
+      <section id="course__sidebar">
         <a href="" className="Course__brand">
           <span className="student__logos">Fluffy</span>
         </a>
@@ -92,7 +118,7 @@ const MyStudenttutor = () => {
           <li>
             <Link to="/mycoursett">
               <i className='bx bx-book-open'></i>
-             <span className="course__text">Courses</span>
+              <span className="course__text">Courses</span>
             </Link>
           </li>
           <li className="active">
@@ -104,7 +130,7 @@ const MyStudenttutor = () => {
           <li>
             <Link to="/sessiontt">
               <i className='bx bxs-objects-horizontal-left'></i>
-             <span className="course__text">Session</span>
+              <span className="course__text">Session</span>
             </Link>
           </li>
           <li>
@@ -119,6 +145,12 @@ const MyStudenttutor = () => {
               <span className="course__text">Feedback</span>
             </Link>
           </li>
+          <li>
+            <Link to="/viewprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
+          </li>
         </ul>
       </section>
       {/* SIDEBAR */}
@@ -131,7 +163,7 @@ const MyStudenttutor = () => {
           <div className="course__head-title">
             <div className="course__left">
               <h1>My student</h1>
-              <ul className="course__breadcrumb">
+              {/* <ul className="course__breadcrumb">
                 <li>
                   <a href="">Dashboard</a>
                 </li>
@@ -139,27 +171,52 @@ const MyStudenttutor = () => {
                 <li>
                   <a href="">My Student</a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
 
           <div className='mystdtutor__content'>
-          <Table dataSource={dataSource} columns={columns} />
-      <Modal title="Profile" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <Form form={form} name="view-more-form" onFinish={onFinish}>
-          
-        </Form>
-      </Modal>
-          </div>
+            <Table dataSource={dataSource} columns={columns} />
+            <Modal title="Profile" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+              <Form form={form} name="view-more-form" onFinish={onFinish}>
 
-         
+                <div className='mystdtt__avtt'>
+                  <Avatar
+                    size={{
+                      xs: 24,
+                      sm: 32,
+                      md: 40,
+                      lg: 64,
+                      xl: 80,
+                      xxl: 100,
+                    }}
+                    src={avt}
+                    className='view__avt2'
+                  />
+                  <p className='mystdtt__name'>Le My Duyen</p>
+                </div>
+                <div className='ag1'>
+                  <p className='mystdtt__age'>Age:</p>
+                  <p>22</p>
+                </div>
+                <div className='school1'>
+                  <p className='mystdtt__school'>School:</p>
+                  <p>Duy Tan University</p>
+                </div>
+                <div className='courses1'>
+                  <p className='mystdtt__courses'>Courses:</p>
+                  <p>GraphQL with React: The Complete Developers Guide</p>
+                </div>
+              </Form>
+            </Modal>
+          </div>
 
         </main>
         {/* MAIN */}
       </section>
       {/* CONTENT */}
     </>
-   );
+  );
 }
 
 export default MyStudenttutor;
