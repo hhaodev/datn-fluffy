@@ -10,7 +10,7 @@ import avtfeedback3 from '../../assets/images/avt2.jpg'
 import avtfeedback4 from '../../assets/images/avt3.jpg'
 import avtfeedback5 from '../../assets/images/avt4.jpg'
 import avtfeedback6 from '../../assets/images/avt5.jpg'
-import Navbar from '../component/Header';
+import Navbar from '../component/Navbar';
 
 const { confirm } = Modal;
 

@@ -2,7 +2,7 @@ import { ApolloClient, createHttpLink, InMemoryCache, } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-    uri: 'https://fluffy-production.up.railway.app/client',
+    uri: 'https://fluffy-server-production.up.railway.app/client',
 });
 
 const authLink = setContext((_, { headers }) => {

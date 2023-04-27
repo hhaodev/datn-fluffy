@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 import { Select, Button, Table } from 'antd'
-import Navbar from '../component/Header';
+import Navbar from "../component/Navbar"
 import { List } from 'antd';
 import { Progress } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';

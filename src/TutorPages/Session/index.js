@@ -8,7 +8,7 @@ import { DatePicker, Space } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { Select, Button, Table } from 'antd'
-import Navbar from '../component/Header';
+import Navbar from '../component/Navbar';
 
 
 

@@ -1,7 +1,7 @@
 import '../../TutorPages/MyStudent/mystudent.css'
 import { Link } from 'react-router-dom'
 import { Table, Modal, Button, Form, Input } from 'antd';
-import Navbar from '../component/Header';
+import Navbar from '../component/Navbar';
 import React, { useState } from 'react';
 
 

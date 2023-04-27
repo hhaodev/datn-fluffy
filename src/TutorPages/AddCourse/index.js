@@ -52,6 +52,9 @@ function Addcourse() {
         mutation createCourse($input: CourseDto!){
         createCourse(input: $input){
             id
+            coursePrograms{
+                id
+            }
         }
         }`;
     const onFinish = (values) => {
@@ -63,7 +66,7 @@ function Addcourse() {
                 });
                 return data.createCourse;
             } catch (error) {
-                console.log(error);
+                alert(error);
             }
         };
         let courseProgramPhases = {
@@ -85,7 +88,7 @@ function Addcourse() {
             spendTime: parseFloat(values.spendTime),
             duration: values.duration,
             numberOfProgramRequired: 1,
-            
+
             coursePrograms: [coursePrograms]
         }
         createCourse(client, input)

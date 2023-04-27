@@ -1,6 +1,6 @@
 import '../../TutorPages/Payment/paymentt.css'
 import { Link } from 'react-router-dom'
-import Navbar from '../component/Header';
+import Navbar from '../component/Navbar';
 import React, { useState } from 'react';
 import { Table, Modal, Button, Form, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
