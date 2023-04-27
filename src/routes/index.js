@@ -9,7 +9,7 @@ import OnboardTutor__Step2 from '../Onboarding__Tutor/OnBoard__Tutorstep2/index'
 import OnboardTutor__Step3 from '../Onboarding__Tutor/Onboard__Tutorstep3/index';
 import OnboardTutor__Step4 from '../Onboarding__Tutor/Onboard__Tutorstep4/index';
 import stdHome from '../StudentPages/StudentHome/index';
-import myCourse from '../StudentPages/MyCourse/index';
+import myCourse from '../StudentPages/StudentMyCourse/index';
 import Verify from '../Register/Verify';
 import myCoursestt from '../TutorPages/Courses/index';
 import addcourse from '../TutorPages/AddCourse/index';
@@ -22,7 +22,8 @@ import Pending from '../pages/Pending';
 import ViewProfile from '../TutorPages/ViewProfile/index';
 import StudentFeedback from '../StudentPages/StudentFeedback/index';
 import StudentSchedule from '../StudentPages/StudentSchedule/index';
-
+import StudentPayment from '../StudentPages/StudentPayment/index';
+import StudentProfile from '../StudentPages/StudentProfile/index';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -41,9 +42,11 @@ const publicRoutes = [
 
 //home studen
     { path: '/studenthome', component: stdHome, layout: null},
-    { path: '/mycourse', component: myCourse, layout: null},
+    { path: '/studentmycourse', component: myCourse, layout: null},
     { path: '/studentfeedback', component: StudentFeedback, layout: null},
     { path: '/studentschedule', component: StudentSchedule, layout: null},
+    { path: '/studentpayment', component: StudentPayment, layout: null},
+    { path: '/studentprofile', component: StudentProfile, layout: null},
 
 //tutor
     { path: '/mycoursett', component: myCoursestt, layout: null},

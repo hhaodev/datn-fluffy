@@ -15,9 +15,24 @@ import courses3 from '../../assets/images/courses3.jpg'
 import courses5 from '../../assets/images/courses5.jpg'
 import courses6 from '../../assets/images/courses6.jpg'
 import Navbar from '../component/Header';
+import { useState } from 'react';
+
+import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
+import { Tabs } from 'antd';
+
+function MyCoursestt() {
+
+  const [activeTab, setActiveTab] = useState('1');
+  const { TabPane } = Tabs;
+  // Tab
+  // const { TabPane } = Tabs;
+  // const [activeTabKey, setActiveTabKey] = useState('1');
+  // const handleTabChange = (key) => {
+  //   setActiveTabKey(key);
+  // };
+  // end tab
 
 
-function myCoursestt() {
   return (
     <div>
       {/* SIDEBAR */}
@@ -99,142 +114,171 @@ function myCoursestt() {
               <Link to="/addcourse"><button className="add-course"><i class='bx bx-plus add__plus'></i>Add Course</button></Link>
             </div>
             {/* <div className='course__padding'> */}
-            <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='course__segmented' />
-            <div className="student__box">
-
-              <div className="box__student">
-                <div className="student__thumb">
-                  <img src={courses1} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt1} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">Rebecca</h3>
+            <Tabs activeKey={activeTab} onChange={key => setActiveTab(key)}>
+              <TabPane tab="Technology" key="1">
+                <p>Nội dung khoá học về Technology</p>
+              </TabPane>
+              <TabPane tab="Languages" key="2">
+                <p>Nội dung khoá học về Languages</p>
+              </TabPane>
+              <TabPane tab="Economics" key="3">
+                <p>Nội dung khoá học về Economics</p>
+              </TabPane>
+              <TabPane tab="Marketing" key="4">
+                <p>Nội dung khoá học về Marketing</p>
+              </TabPane>
+              <TabPane tab="Design" key="5">
+                <p>Nội dung khoá học về Design</p>
+              </TabPane>
+            </Tabs>
+            {/* <Tabs activeKey={activeTabKey} onChange={handleTabChange}>
+            
+              <TabPane key="1" tab="Technology">
+                <div className="student__box">
+                  <div className="box__student">
+                    <div className="student__thumb">
+                      <img src={courses1} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt1} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">Rebecca</h3>
+                      </div>
+                    </div>
+                    <h3 className="student__title">Learn Ethical Hacking From Scratch</h3>
+                    <p className='student__des'>Become an ethical hacker that can hack computer systems like black hat hackers and secure them like security experts.</p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
-                <h3 className="student__title">Learn Ethical Hacking From Scratch</h3>
-                <p className='student__des'>Become an ethical hacker that can hack computer systems like black hat hackers and secure them like security experts.</p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
 
-              <div className="box__student">
-                <div className="student__thumb">
-                  <img src={courses2} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt2} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">David</h3>
+                  <div className="box__student">
+                    <div className="student__thumb">
+                      <img src={courses2} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt2} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">David</h3>
+                      </div>
+                    </div>
+                    <h3 className="student__title">complete CSS tutorial</h3>
+                    <p className='student__des'>then you sure as hell don't deserve me at my best</p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
-                <h3 className="student__title">complete CSS tutorial</h3>
-                <p className='student__des'>then you sure as hell don't deserve me at my best</p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
 
-              <div className="box__student">
-                <div className="student__thumb">
-                  <img src={courses3} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt3} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">Christopher</h3>
+                  <div className="box__student">
+                    <div className="student__thumb">
+                      <img src={courses3} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt3} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">Christopher</h3>
+                      </div>
+                    </div>
+
+                    <h3 className="student__title">complete JS tutorial</h3>
+                    <p className='student__des'>You've gotta dance like there's nobody watching</p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
 
-                <h3 className="student__title">complete JS tutorial</h3>
-                <p className='student__des'>You've gotta dance like there's nobody watching</p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
+                  <div className="box__student">
+                    <div className="student__thumb">
+                      <img src={courses4} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt4} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">John</h3>
+                      </div>
+                    </div>
 
-              <div className="box__student">
-                <div className="student__thumb">
-                  <img src={courses4} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt4} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">John</h3>
+                    <h3 className="student__title">complete Boostrap tutorial</h3>
+                    <p className='student__des'>You only live once, but if you do it right, once is enough.</p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
 
-                <h3 className="student__title">complete Boostrap tutorial</h3>
-                <p className='student__des'>You only live once, but if you do it right, once is enough.</p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
+                  <div className="box__student">
+                    <div className="student__thumb">
+                      <img src={courses5} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt5} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">Kevin</h3>
+                      </div>
+                    </div>
 
-              <div className="box__student">
-                <div className="student__thumb">
-                  <img src={courses5} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt5} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">Kevin</h3>
+                    <h3 className="student__title">complete JQuery tutorial</h3>
+                    <p className='student__des'>In three words I can sum up everything I’ve learned about life</p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
 
-                <h3 className="student__title">complete JQuery tutorial</h3>
-                <p className='student__des'>In three words I can sum up everything I’ve learned about life</p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
+                  <div className="box__student">
 
-              <div className="box__student">
-
-                <div className="student__thumb">
-                  <img src={courses6} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt6} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">Mark</h3>
+                    <div className="student__thumb">
+                      <img src={courses6} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt6} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">Mark</h3>
+                      </div>
+                    </div>
+                    <h3 className="student__title">complete SASS tutorial</h3>
+                    <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
-                <h3 className="student__title">complete SASS tutorial</h3>
-                <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
 
-              <div className="box__student">
+                  <div className="box__student">
 
-                <div className="student__thumb">
-                  <img src={courses6} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt6} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">Mark</h3>
+                    <div className="student__thumb">
+                      <img src={courses6} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt6} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">Mark</h3>
+                      </div>
+                    </div>
+                    <h3 className="student__title">complete SASS tutorial</h3>
+                    <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
-                <h3 className="student__title">complete SASS tutorial</h3>
-                <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
 
-              <div className="box__student">
+                  <div className="box__student">
 
-                <div className="student__thumb">
-                  <img src={courses6} alt="" className="student__img2" />
-                </div>
-                <div className="student__tutor">
-                  <img src={avt6} alt="" className="student__img1" />
-                  <div className="student__info">
-                    <h3 className="student__h32">Mark</h3>
+                    <div className="student__thumb">
+                      <img src={courses6} alt="" className="student__img2" />
+                    </div>
+                    <div className="student__tutor">
+                      <img src={avt6} alt="" className="student__img1" />
+                      <div className="student__info">
+                        <h3 className="student__h32">Mark</h3>
+                      </div>
+                    </div>
+                    <h3 className="student__title">complete SASS tutorial</h3>
+                    <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
+                    <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
                   </div>
-                </div>
-                <h3 className="student__title">complete SASS tutorial</h3>
-                <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
-                <a href="playlist.html" className="inline-btn__course"><i class='bx bxs-chevrons-right'></i>Learn More</a>
-              </div>
 
-            </div>
+                </div>
+              </TabPane>
+              <TabPane key="2" tab="Economics">
+                <p>Here are some programming courses:</p>
+              </TabPane>
+              <TabPane key="3" tab="Marketing">
+                <p>Here are some programming courses:</p>
+              </TabPane>
+              <TabPane key="4" tab="Design">
+                <p>Here are some programming courses:</p>
+              </TabPane>
+              <TabPane key="5" tab="Languages">
+                <p>Here are some programming courses:</p>
+              </TabPane>
+            </Tabs> */}
+            {/* <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='course__segmented' /> */}
             {/* </div> */}
           </div>
-
-
-
-
         </main>
         {/* MAIN */}
       </section>
@@ -244,4 +288,4 @@ function myCoursestt() {
   );
 }
 
-export default myCoursestt;
+export default MyCoursestt;

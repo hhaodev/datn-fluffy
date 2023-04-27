@@ -137,19 +137,19 @@ function StudentSchedule() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/mycourse">
+                        <Link to="/studentmycourse">
                             <i className='bx bx-book-open'></i>
                             <span className="course__text">My Courses</span>
                         </Link>
                     </li>
                     <li className="active">
-                        <Link to="/">
+                        <Link to="/studentschedule">
                             <i class='bx bx-calendar' ></i>
                             <span className="course__text">Schedule</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/">
+                        <Link to="/studentpayment">
                             <i className='bx bx-credit-card'></i>
                             <span className="course__text">Payment</span>
                         </Link>
@@ -161,7 +161,7 @@ function StudentSchedule() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/">
+                        <Link to="/studentprofile">
                             <i class='bx bxs-user-circle'></i>
                             <span className="course__text">Profile</span>
                         </Link>

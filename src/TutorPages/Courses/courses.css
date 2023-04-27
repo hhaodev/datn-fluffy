@@ -540,4 +540,53 @@ li {
 	margin: 20px 90px;
   }
 
+  :where(.css-dev-only-do-not-override-mxhywb).ant-tabs >.ant-tabs-nav .ant-tabs-nav-wrap, :where(.css-dev-only-do-not-override-mxhywb).ant-tabs >div>.ant-tabs-nav .ant-tabs-nav-wrap {
+    display: flex !important;
+	justify-content: space-between !important;
+    white-space: nowrap;
+    transform: translate(0);
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs >.ant-tabs-nav .ant-tabs-nav-list, :where(.css-dev-only-do-not-override-mxhywb).ant-tabs >div>.ant-tabs-nav .ant-tabs-nav-list {
+    display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+
+/* tab */
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab+.ant-tabs-tab {
+    margin: 0 0 0 32px;
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab+.ant-tabs-tab {
+    margin: 0 0 0 32px;
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 0;
+    font-size: 14px;
+    background: transparent;
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 0;
+    font-size: 14px;
+
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab-btn {
+    outline: none;
+	padding: 10px;
+	width: 100px;
+	text-align: center;
+	border-radius: 10px;
+	background-color: #DB504A;
+}
+
 

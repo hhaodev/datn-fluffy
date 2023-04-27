@@ -1,5 +1,5 @@
 import '../../StudentPages/StudentFeedback/studentfeedback.css'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import Navbar from '../../TutorPages/component/Header';
 import { DownOutlined } from '@ant-design/icons';
 import user from '../../assets/images/user.jpg'
@@ -59,7 +59,7 @@ function FeedBackStudent() {
             </Link>
           </li>
           <li>
-            <Link to="/mycourse">
+            <Link to="/studentmycourse">
               <i className='bx bx-book-open'></i>
               <span className="course__text">My Courses</span>
             </Link>
@@ -71,7 +71,7 @@ function FeedBackStudent() {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/studentpayment">
               <i className='bx bx-credit-card'></i>
               <span className="course__text">Payment</span>
             </Link>
@@ -83,7 +83,7 @@ function FeedBackStudent() {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/studentprofile">
               <i class='bx bxs-user-circle'></i>
               <span className="course__text">Profile</span>
             </Link>

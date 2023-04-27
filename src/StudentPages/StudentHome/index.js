@@ -18,11 +18,11 @@ import { Link } from 'react-router-dom'
 
 
 function stdHome() {
-  
+
   return (
     <div>
-       {/* SIDEBAR */}
-       <section id="course__sidebar">
+      {/* SIDEBAR */}
+      <section id="course__sidebar">
         <a href="" className="Course__brand">
           <span className="student__logos">Fluffy</span>
         </a>
@@ -34,7 +34,7 @@ function stdHome() {
             </Link>
           </li>
           <li>
-            <Link to="/mycourse">
+            <Link to="/studentmycourse">
               <i className='bx bx-book-open'></i>
               <span className="course__text">My Courses</span>
             </Link>
@@ -46,7 +46,7 @@ function stdHome() {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/studentpayment">
               <i className='bx bx-credit-card'></i>
               <span className="course__text">Payment</span>
             </Link>
@@ -58,7 +58,7 @@ function stdHome() {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/studentprofile">
               <i class='bx bxs-user-circle'></i>
               <span className="course__text">Profile</span>
             </Link>
@@ -69,7 +69,7 @@ function stdHome() {
       {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
-        <Navbar/>
+        <Navbar />
         {/* NAVBAR */}
         {/* MAIN */}
         <main>
