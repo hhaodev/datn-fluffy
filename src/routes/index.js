@@ -24,6 +24,7 @@ import StudentFeedback from '../StudentPages/StudentFeedback/index';
 import StudentSchedule from '../StudentPages/StudentSchedule/index';
 import StudentPayment from '../StudentPages/StudentPayment/index';
 import StudentProfile from '../StudentPages/StudentProfile/index';
+import ViewCourse from '../TutorPages/ViewCourse/index'
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -57,6 +58,7 @@ const publicRoutes = [
     { path: '/dashboardtt', component: dashBoardtutor, layout: null},
     { path: '/paymenttutor', component: payMentTutor, layout: null},
     { path: '/viewprofile', component: ViewProfile, layout: null},
+    { path: '/viewcourse', component: ViewCourse, layout: null},
 
     //pending
     { path: '/pending', component: Pending, layout: null},

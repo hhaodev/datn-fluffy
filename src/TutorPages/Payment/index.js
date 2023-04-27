@@ -11,7 +11,6 @@ import { Radio, Select } from 'antd';
 import { Button, Input, Form, message, Typography, Divider } from 'antd';
 import copy from 'copy-to-clipboard';
 
-
 const PaymentTutor = () => {
   // form bill
   const { Title } = Typography;

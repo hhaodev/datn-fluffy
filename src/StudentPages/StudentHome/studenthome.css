@@ -677,16 +677,22 @@ body {
 }
 
 .inline-btn, .inline-option-btn {
-	border-radius: .5rem;
+	border-radius: 10px;
     color: #fff;
     font-size: 15px;
     cursor: pointer;
     text-transform: capitalize;
-    padding: 1rem 3rem;
+	padding: 5px;
     text-align: center;
     margin-top: 1rem;
 	background-color: #f66962;
 	display: inline-block;
+	width: 100px;
+}
+
+.course__buttonlink {
+	display: flex;
+	justify-content: space-between;
 }
 
 .student__segmented {

@@ -7,13 +7,16 @@ import client from '../../configGQL';
 import { gql } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import Courses from '../component/course';
-
+import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
+import { Tabs } from 'antd';
 
 function MyCoursestt() {
   const [courseList, setCourseList] = useState([])
   const userId = useSelector(state => state.user.currentUser.id)
 
-  
+  const [activeTab, setActiveTab] = useState('1');
+  const { TabPane } = Tabs;
+
   useEffect(() => {
     client.query({
       query: gql`
@@ -41,11 +44,8 @@ function MyCoursestt() {
         tutorId: `${userId}`
       }
     })
-      .then(result => {setCourseList(result.data.getCoursesByTutorId.items)})
+      .then(result => { setCourseList(result.data.getCoursesByTutorId.items) })
   }, [userId]);
-
-
-
 
   return (
     <div>
@@ -128,22 +128,33 @@ function MyCoursestt() {
               <Link to="/addcourse"><button className="add-course"><i class='bx bx-plus add__plus'></i>Add Course</button></Link>
             </div>
             {/* <div className='course__padding'> */}
-            <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='course__segmented' />
-            <div className="student__box">
-            {courseList.map((data) => {
-                return (
-                  <Courses
-                  data={data}
-                  />
-                );
-              })}
-            </div>
+            <Tabs activeKey={activeTab} onChange={key => setActiveTab(key)}>
+              <TabPane tab="Technology" key="1">
+                <div className="student__box">
+                  {courseList.map((data) => {
+                    return (
+                      <Courses
+                        data={data}
+                      />
+                    );
+                  })}
+                </div>
+              </TabPane>
+              <TabPane tab="Languages" key="2">
+                <p>Nội dung khoá học về Languages</p>
+              </TabPane>
+              <TabPane tab="Economics" key="3">
+                <p>Nội dung khoá học về Economics</p>
+              </TabPane>
+              <TabPane tab="Marketing" key="4">
+                <p>Nội dung khoá học về Marketing</p>
+              </TabPane>
+              <TabPane tab="Design" key="5">
+                <p>Nội dung khoá học về Design</p>
+              </TabPane>
+            </Tabs>
             {/* </div> */}
           </div>
-
-
-
-
         </main>
         {/* MAIN */}
       </section>
