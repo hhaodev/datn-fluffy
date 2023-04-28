@@ -69,7 +69,7 @@ function ApplyTutor() {
                         >
                             <div className="apply__firstlast">
                                 <Form.Item
-                                    label="Firstname"
+                                    label="First name"
                                     name="firstName"
                                     rules={[
                                         {
@@ -79,10 +79,10 @@ function ApplyTutor() {
                                     ]}
                                     className="apply__first"
                                 >
-                                    <Input style={{ height: "35px" }} />
+                                    <Input style={{ height: "40px", width: "250px" }} />
                                 </Form.Item>
                                 <Form.Item
-                                    label="Lastname"
+                                    label="Last name"
                                     name="lastName"
                                     rules={[
                                         {
@@ -91,7 +91,7 @@ function ApplyTutor() {
                                         },
                                     ]}
                                 >
-                                    <Input style={{ height: "35px" }} />
+                                    <Input style={{ height: "40px", width: "250px" }} />
                                 </Form.Item >
                             </div >
 
@@ -111,7 +111,7 @@ function ApplyTutor() {
                                         },
                                     ]}
                                 >
-                                    <Input style={{ height: "35px" }} />
+                                    <Input style={{ height: "40px" }} />
                                 </Form.Item>
                             </div>
 
@@ -128,7 +128,7 @@ function ApplyTutor() {
                                     ]}
                                     className="apply__pass"
                                 >
-                                    <Input.Password style={{ height: "40px" }} />
+                                    <Input.Password style={{ height: "40px", width: "250px" }} />
                                 </Form.Item>
                                 <Form.Item
                                     name="confirm"
@@ -151,7 +151,7 @@ function ApplyTutor() {
                                     ]}
                                     className="apply__pass"
                                 >
-                                    <Input.Password style={{ height: "40px" }} />
+                                    <Input.Password style={{ height: "40px", width: "250px" }} />
                                 </Form.Item >
                             </div >
 
@@ -181,7 +181,7 @@ function ApplyTutor() {
                                     <Input
 
                                         style={{
-                                            height: '40px',
+                                            height: "40px", width: "250px"
                                         }}
 
                                     />
@@ -197,7 +197,9 @@ function ApplyTutor() {
                                         },
                                     ]}
                                 >
-                                    <Select placeholder="select your gender">
+                                    <Select placeholder="Select your gender" style={{
+                                            height: "40px", width: "250px"
+                                        }}>
                                         <Option value={UserGender.MALE}>Male</Option>
                                         <Option value={UserGender.FEMALE}>Female</Option>
                                     </Select>

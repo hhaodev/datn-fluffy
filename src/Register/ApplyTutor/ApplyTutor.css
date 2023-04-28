@@ -35,11 +35,12 @@
 
 .box__apply {
     max-width: 100%;
-    width: 450px;
+    width: 600px;
     height: 644px;
     padding: 30px;
     border-radius: 50px;
     background-color: #fff;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .logo__apply {
@@ -70,16 +71,17 @@
 }
 
 .apply__pass {
-    width: 185px; 
+    
 }
 
 .apply__phone {
     display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .apply__phonepadding {
-    margin-right: 25px;
+    margin-right: 35px;
 }
 
 .apply__heading {
@@ -93,15 +95,14 @@
 
 .apply__form__button {
     margin-bottom: 25px;
-    width: 100%;
+    width: 186px;
     background-color: #f66962;
     font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    left: -60px;
     padding: 20px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .apply__form__button:hover {
