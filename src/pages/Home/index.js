@@ -105,10 +105,20 @@ function myHome() {
                         <h3>Star Development</h3>
                         <p>8 Courses</p>
                     </div>
+                    <div className="box">
+                        <img src={cate4} />
+                        <h3>Star Development</h3>
+                        <p>8 Courses</p>
+                    </div>
+                    <div className="box">
+                        <img src={cate4} />
+                        <h3>Orther</h3>
+                        <p>8 Courses</p>
+                    </div>
                 </div>
-                <div className="main-btn">
+                {/* <div className="main-btn">
                     <a href="" className="btn">All Categories</a>
-                </div>
+                </div> */}
             </section>
             
             <section className="cta">

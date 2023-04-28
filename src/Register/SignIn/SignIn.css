@@ -39,7 +39,9 @@
    background-color: #fff;
    padding: 30px;
    border-radius: 50px;
+   box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
+
 
 .signin__heading {
     display: flex;
@@ -81,15 +83,16 @@
 }
 
 .signin__form__button {
-    margin-top: 40px;
-    margin-bottom: 10px;
-    width: 66%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    width: 172px;
     background-color: #f66962;
     font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .signin__form__button:hover {
@@ -111,7 +114,7 @@
 .signin__wantr {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     position: relative;
     top: -30px;
 }
@@ -122,6 +125,7 @@
     border-radius: 15px;
     border: none;
     background-color: #f66962;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .signin__wantbutton:hover {
