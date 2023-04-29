@@ -1,26 +1,21 @@
-import "../Onboarding__Student/OnBoard__Student.css"
+import "../Onboarding__Student/OnBoard__Student.css";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
-import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
+import React, { useState } from "react";
+import { gql } from "@apollo/client";
 import client from "../configGQL";
-import {
-  DatePicker,
-  Button,
-  Form,
-  Select,
-} from 'antd';
+import { DatePicker, Button, Form, Select } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
-
-
+import dayjs from "dayjs";
 
 function OnBoard__Student() {
+  const [formList, setFormList] = useState([
+    { schoolId: null, fromYear: null, toYear: null },
+  ]);
+
   const { Option } = Select;
-  const { RangePicker } = DatePicker;
-  const navigate = useNavigate()
-  const schoolsList = useSelector(state => state.schools.schoolsData)
-
-
-  //mutation
+  const navigate = useNavigate();
+  const schoolsList = useSelector((state) => state.schools.schoolsData);
 
   const CREATE_STUDENT_ON_BOARDING_MUTATION = gql`
     mutation createStudentOnBoarding($input: CreateStudentOnBoardingDto!) {
@@ -30,15 +25,22 @@ function OnBoard__Student() {
       }
     }
   `;
-  const onFinish = (values) => {
-    const rangeValue = values['range-picker'];
-    const fromYear = new Date(rangeValue[0]).toISOString()
-    const toYear = new Date(rangeValue[1]).toISOString()
-    const dataStudent = {
-      schoolId: values.schoolId,
-      toYear: toYear,
-      fromYear: fromYear
+
+  const onChangeValue = (indexForm, field, value) => {
+    const newForm = formList[indexForm];
+    newForm[field] = value;
+
+    const newFormList = formList.filter((el, index) => index !== indexForm);
+    newFormList.push(newForm);
+
+    setFormList(newFormList);
+  };
+
+  const onSubmitForm = () => {
+    const input = {
+      studentEducations: formList,
     };
+
     const createStudentOnBoarding = async (client, input) => {
       try {
         const { data } = await client.mutate({
@@ -51,20 +53,30 @@ function OnBoard__Student() {
         console.error(error);
       }
     };
-    const input = { studentEducations: [dataStudent] };
+
     createStudentOnBoarding(client, input)
       .then((result) => {
         if (result.success) {
-          navigate("/")
+          navigate("/studenthome");
         }
       })
       .catch((error) => alert(error));
-  }
-
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
   };
+
+  const handleDeleteForm = (index) => {
+    const newFormList = formList.filter((el, i) => index !== i);
+    setFormList(newFormList);
+  };
+
+  const handleAddForm = () => {
+    const newFormList = formList.concat({
+      schoolId: null,
+      fromYear: null,
+      toYear: null,
+    });
+    setFormList(newFormList);
+  };
+
   return (
     <div className="body-onboarding">
       {/* <h1 className="student__logo">Fluffy</h1> */}
@@ -72,62 +84,111 @@ function OnBoard__Student() {
         <div className="box__onboardstd">
           <div className="onboard__heading">
             <h2 className="student__heading">Onboarding</h2>
+            <p className="onboardstd__welcome">
+              Welcome! First things first ...
+            </p>
           </div>
-          <div className="onboardstd__p">
-            <p className="onboardstd__welcome">Welcome! First things first ...</p>
+          <div className="student-form-container">
+            <div className="student-onboarding-form">
+              {formList.map((el, index) => (
+                <div className="form__dropdown">
+                  <Form
+                    name="normal"
+                    layout="vertical"
+                    key={index}
+                    style={{ border: "1px solid #ccc;" }}
+                  >
+                    <Form.Item
+                      name="schoolId"
+                      label="School"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please select school!",
+                        },
+                      ]}
+                    >
+                      <Select
+                        placeholder="Select your school"
+                        onChange={(e) => onChangeValue(index, "schoolId", e)}
+                      >
+                        {schoolsList.map((school) => {
+                          return (
+                            <Option key={school.id} value={school.id}>
+                              {school.name}
+                            </Option>
+                          );
+                        })}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item
+                      name="range-picker"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please select time!",
+                        },
+                      ]}
+                      className="onboardstd__calendar"
+                    >
+                      <div className="onboardstd__calendar">
+                        <div style={{ width: "45%" }}>
+                          <label>From Year</label>
+                          <DatePicker
+                            onChange={(e) =>
+                              onChangeValue(
+                                index,
+                                "fromYear",
+                                dayjs(e).format("YYYY-MM-DD")
+                              )
+                            }
+                          />
+                        </div>
+                        <div style={{ width: "45%" }}>
+                          <label>To Year</label>
+                          <DatePicker
+                            onChange={(e) =>
+                              onChangeValue(
+                                index,
+                                "toYear",
+                                dayjs(e).format("YYYY-MM-DD")
+                              )
+                            }
+                          />
+                        </div>
+                      </div>
+                    </Form.Item>
+                    {formList.length > 1 && index !== 0 ? (
+                      <MinusCircleOutlined
+                        className="dynamic-delete-button"
+                        onClick={() => handleDeleteForm(index)}
+                      />
+                    ) : null}
+                  </Form>
+                </div>
+              ))}
+            </div>
+            <Button onClick={handleAddForm} className="student-add-form">
+              <PlusOutlined /> Add form
+            </Button>
           </div>
-          <Form
-            name="normal"
-            className="form__dropdown"
-            layout="vertical"
-            initialValues={{
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-          >
-            <Form.Item
-              name="schoolId"
-              label="School"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select school!',
-                },
-              ]}
+          <div className="submit-form-student">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="button-submit"
+              onClick={onSubmitForm}
             >
-              <Select placeholder="Select your school">
-                {schoolsList.map(school => {
-                  return (
-                    <Option key={school.id} value={school.id}>{school.name}</Option>
-                  )
-                })}
-              </Select>
-            </Form.Item>
-            <Form.Item
-              name="range-picker"
-              label="RangePicker"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select time!',
-                },
-              ]}
-              className="onboardstd__calendar"
-            >
-              <RangePicker format="DD/MM/YYYY" />
-            </Form.Item>
-            {/* <div className="onboardstd__bot"> */}
-              <Button type="primary" htmlType="submit" className="student__buttonsub">
-                Submit
-              </Button>
-              <Link to="/studenthome" className="onboardstd__skip"><Button>Skip</Button></Link>
-            {/* </div> */}
-          </Form>
+              Submit
+            </Button>
+            <Link to="/studenthome" className="onboardstd__skip">
+              Skip onboarding for student
+            </Link>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
 
 export default OnBoard__Student;
