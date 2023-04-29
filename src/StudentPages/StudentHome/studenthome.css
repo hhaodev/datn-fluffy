@@ -677,17 +677,21 @@ body {
 }
 
 .inline-btn, .inline-option-btn {
-	border-radius: 10px;
+	border-radius: 5px;
     color: #fff;
     font-size: 15px;
     cursor: pointer;
     text-transform: capitalize;
-	padding: 5px;
+	padding: 10px;
     text-align: center;
     margin-top: 1rem;
 	background-color: #f66962;
 	display: inline-block;
-	width: 100px;
+	width: 200px;
+}
+
+.inline-btn, .inline-option-btn:hover {
+	color: #fff !important;
 }
 
 .course__buttonlink {
@@ -759,8 +763,9 @@ body {
 
 .boxchild__std {
 	background-color: #fff;
-    border-radius: .5rem;
+    border-radius: 20px;
     padding: 2rem;
+	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .std__title {

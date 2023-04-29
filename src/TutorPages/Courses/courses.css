@@ -1,8 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Bree+Serif&family=Catamaran:wght@200&family=Karla:wght@200&family=Lilita+One&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Poppins&family=Signika+Negative:wght@300&family=Signika:wght@300;500&family=Ysabeau:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Bree+Serif&family=Catamaran:wght@200&family=Karla:wght@200&family=Lilita+One&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Pathway+Extreme&family=Poppins&family=Roboto&family=Rubik&family=Signika+Negative:wght@300&family=Signika:wght@300;500&family=Ysabeau:wght@600&display=swap');
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+h1, h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+	font-family: 'Karla', sans-serif;
+	font-weight: bold;
+}
+
+h3 {
+	font-family: 'Rubik', sans-serif;
 }
 
 a {
@@ -106,7 +119,7 @@ li {
 	color: #fff;
 }
 
-.bx-home, .bx-book-open, .bx-credit-card, .bx-male-female, .bxs-objects-horizontal-left, .bxs-message-minus, .bxs-user-circle  {
+.bx-home, .bx-book-open, .bx-credit-card, .bx-male-female, .bxs-objects-horizontal-left, .bxs-message-minus, .bxs-user-circle, .bx-calendar  {
 	margin-left: 20px;
 	font-size: 24px;
 }
@@ -462,6 +475,7 @@ li {
   .course__h1tittle {
 	margin-right: 20px;
 	font-family: 'Ysabeau', sans-serif;
+	font-size: 37px;
   }
   
   .course-list {

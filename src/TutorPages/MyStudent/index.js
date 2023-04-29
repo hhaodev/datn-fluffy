@@ -193,7 +193,7 @@ const MyStudenttutor = () => {
                     src={avt}
                     className='view__avt2'
                   />
-                  <p className='mystdtt__name'>Le My Duyen</p>
+                  <p className='mystdtt__name'>Tran Thanh Hoang</p>
                 </div>
                 <div className='ag1'>
                   <p className='mystdtt__age'>Age:</p>

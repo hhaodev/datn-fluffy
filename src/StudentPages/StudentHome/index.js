@@ -52,12 +52,6 @@ function stdHome() {
             </Link>
           </li>
           <li>
-            <Link to="/studentfeedback">
-              <i className='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
-            </Link>
-          </li>
-          <li>
             <Link to="/studentprofile">
               <i class='bx bxs-user-circle'></i>
               <span className="course__text">Profile</span>
@@ -74,18 +68,9 @@ function stdHome() {
         {/* MAIN */}
         <main>
           <div className="head-title">
-            <div className="left">
+            {/* <div className="left">
               <h1>Home Student</h1>
-              <ul className="breadcrumb">
-                <li>
-                  <a href="#">My course</a>
-                </li>
-                <li><i className="bx bx-chevron-right" /></li>
-                <li>
-                  <a href="#">Home</a>
-                </li>
-              </ul>
-            </div>
+            </div> */}
           </div>
           {/* Home grid */}
           <div class="student__grid">
@@ -117,25 +102,6 @@ function stdHome() {
                   <a href="#" className='std__aa'><i class="fas fa-vial"></i><span className='spanx'>science</span></a>
                 </div>
               </div>
-
-              <div class="boxchild__std">
-                <h3 class="std__title">popular topics</h3>
-                <div class="std__flexs">
-                  <a href="#" className='std__aa'><i class="fab fa-html5"></i><span className='spanx'>HTML</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-css3"></i><span className='spanx'>CSS</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-js"></i><span className='spanx'>javascript</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-react"></i><span className='spanx'>react</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-php"></i><span className='spanx'>PHP</span></a>
-                  <a href="#" className='std__aa'><i class="fab fa-bootstrap"></i><span className='spanx'>bootstrap</span></a>
-                </div>
-              </div>
-
-              <div class="boxchild__std">
-                <h3 class="std__title">become a tutor</h3>
-                <p class="std__tutors"> I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle.</p>
-                <a href="teachers.html" class="std__inline">get started</a>
-              </div>
-
             </div>
 
           </div>

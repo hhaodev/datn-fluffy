@@ -72,12 +72,6 @@ function StudentMyCourse() {
             </Link>
           </li>
           <li>
-            <Link to="/studentfeedback">
-              <i className='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
-            </Link>
-          </li>
-          <li>
             <Link to="/studentprofile">
               <i class='bx bxs-user-circle'></i>
               <span className="course__text">Profile</span>

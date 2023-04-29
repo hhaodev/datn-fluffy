@@ -21,7 +21,6 @@ export default function Courses({ data }) {
         <div className="box__student">
             <div className="student__thumb">
                 <img src={imageUrl} alt="" className="student__img2" />
-                <span className="student__spana">{spendTime} unit</span>
             </div>
             <div className="student__tutor">
                 <img src={avt1} alt="" className="student__img1" />
@@ -32,9 +31,9 @@ export default function Courses({ data }) {
             <h3 className="student__title">{name}</h3>
             <p className='student__des'>{description}</p>
             <div className='course__buttonlink'>
-                <Link className="inline-btn" to="/viewcourse">Learn More</Link>
-                <Link className="inline-btn" to={`/editcourse/${id}`}>edit</Link>
-                <Link className="inline-btn">Delete</Link>
+                <Link className="inline-btn" to="/viewcourse"><i class='bx bxs-chevrons-right'></i>Learn More</Link>
+                {/* <Link className="inline-btn" to={`/editcourse/${id}`}>edit</Link>
+                <Link className="inline-btn">Delete</Link> */}
             </div>
         </div>
     )

@@ -109,22 +109,12 @@ function MyCoursestt() {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              {/* <h1>Tutor</h1>
-              <ul className="course__breadcrumb">
-                <li>
-                  <a href="">Dashboard</a>
-                </li>
-                <li><i className="bx bx-chevron-right" /></li>
-                <li>
-                  <a href="">Course</a>
-                </li>
-              </ul> */}
             </div>
           </div>
 
           <div className="course-container">
             <div className="title-container">
-              <h1 className='course__h1tittle'>Teaching Course</h1>
+              <h1 className='course__h1tittle'>Courses</h1>
               <Link to="/addcourse"><button className="add-course"><i class='bx bx-plus add__plus'></i>Add Course</button></Link>
             </div>
             {/* <div className='course__padding'> */}

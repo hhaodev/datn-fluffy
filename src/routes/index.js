@@ -20,7 +20,6 @@ import dashBoardtutor from '../TutorPages/Dashboard/index';
 import payMentTutor from '../TutorPages/Payment/index';
 import Pending from '../pages/Pending';
 import ViewProfile from '../TutorPages/ViewProfile/index';
-import StudentFeedback from '../StudentPages/StudentFeedback/index';
 import StudentSchedule from '../StudentPages/StudentSchedule/index';
 import StudentPayment from '../StudentPages/StudentPayment/index';
 import StudentProfile from '../StudentPages/StudentProfile/index';
@@ -44,7 +43,6 @@ const publicRoutes = [
 //home studen
     { path: '/studenthome', component: stdHome, layout: null},
     { path: '/studentmycourse', component: myCourse, layout: null},
-    { path: '/studentfeedback', component: StudentFeedback, layout: null},
     { path: '/studentschedule', component: StudentSchedule, layout: null},
     { path: '/studentpayment', component: StudentPayment, layout: null},
     { path: '/studentprofile', component: StudentProfile, layout: null},

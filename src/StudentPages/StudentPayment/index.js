@@ -31,43 +31,9 @@ function StudentPayment() {
     const onFinishes = (values) => {
         console.log(values); // do something with form values
     };
-
     // end form bill
 
-    // search
-    // const renderTitle = (title) => (
-    //   <span>
-    //     {title}
-    //     <a
-    //       style={{
-    //         float: 'right',
-    //       }}
-    //       href="https://www.google.com/search?q=antd"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       more
-    //     </a>
-    //   </span>
-    // );
-    // const renderItem = (title, count) => ({
-    //   value: title,
-    //   label: (
-    //     <div
-    //       style={{
-    //         display: 'flex',
-    //         justifyContent: 'space-between',
-    //       }}
-    //     >
-    //       {title}
-    //       <span>
-    //         <UserOutlined /> {count}
-    //       </span>
-    //     </div>
-    //   ),
-    // });
-    // end search
-
+    
     // datapicker
     const dateFormatList = ['DD/MM/YYYY'];
     // End datapicker
@@ -227,12 +193,6 @@ function StudentPayment() {
                         <Link to="/studentpayment">
                             <i className='bx bx-credit-card'></i>
                             <span className="course__text">Payment</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/studentfeedback">
-                            <i className='bx bxs-message-minus' ></i>
-                            <span className="course__text">Feedback</span>
                         </Link>
                     </li>
                     <li>
