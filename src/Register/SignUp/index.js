@@ -70,29 +70,29 @@ function SignUp() {
                         >
                             <div className="signup__firstlast">
                                 <Form.Item
-                                    label="Firstname"
+                                    label="First name"
                                     name="firstName"
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Please input your firstname!',
+                                            message: 'Please input your first name!',
                                         },
                                     ]}
                                     className="signup__first"
                                 >
-                                    <Input style={{ height: "35px" }} />
+                                    <Input style={{ height: "40px", width: "250px" }} />
                                 </Form.Item>
                                 <Form.Item
-                                    label="Lastname"
+                                    label="Last name"
                                     name="lastName"
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Please input your lastname!',
+                                            message: 'Please input your last name!',
                                         },
                                     ]}
                                 >
-                                    <Input style={{ height: "35px" }} />
+                                    <Input style={{ height: "40px", width: "250px" }} />
                                 </Form.Item>
                             </div>
 
@@ -112,7 +112,7 @@ function SignUp() {
                                         },
                                     ]}
                                 >
-                                    <Input style={{ height: "35px" }} />
+                                    <Input style={{ height: "40px" }} />
                                 </Form.Item>
                             </div>
                             <div className="signup__password">
@@ -127,7 +127,7 @@ function SignUp() {
                                     ]}
                                     className="signup__pass"
                                 >
-                                    <Input.Password style={{ height: "40px" }} />
+                                    <Input.Password style={{ height: "40px", width: "250px" }} />
                                 </Form.Item>
                                 <Form.Item
                                     name="confirm"
@@ -150,7 +150,7 @@ function SignUp() {
                                     ]}
                                     className="signup__pass"
                                 >
-                                    <Input.Password style={{ height: "40px" }} />
+                                    <Input.Password style={{ height: "40px", width: "250px" }} />
                                 </Form.Item>
                             </div>
                             <div className="signup__phone">
@@ -176,7 +176,7 @@ function SignUp() {
                                 >
                                     <Input
                                         style={{
-                                            height: '40px',
+                                            height: "40px", width: "250px"
                                         }}
                                     />
                                 </Form.Item>
@@ -190,8 +190,11 @@ function SignUp() {
                                             message: 'Please select gender!',
                                         },
                                     ]} 
+                                    
                                 >
-                                    <Select placeholder="select your gender">
+                                    <Select placeholder="Select your gender" style={{
+                                            height: "40px", width: "250px"
+                                        }}>
                                         <Option value={UserGender.MALE}>Male</Option>
                                         <Option value={UserGender.FEMALE}>Female</Option>
                                     </Select>
@@ -208,7 +211,7 @@ function SignUp() {
                                     }}
                                 >
                                     <Button type="primary" htmlType="submit" className="signup__form__button">
-                                        Signup
+                                        Sign Up
                                     </Button>
                                 </Form.Item>
                         
