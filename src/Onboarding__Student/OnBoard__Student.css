@@ -1,17 +1,19 @@
 .body-onboarding {
   padding-top: 100px;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   padding-right: 40px;
   padding-left: 40px;
   background: url(../assets/images/background.png);
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: center;
 }
 
 .student__logo {
   position: relative;
-  font-family: 'Lilita One', cursive;
+  font-family: "Lilita One", cursive;
   font-weight: bold;
   color: #f66962;
   top: 22px;
@@ -21,9 +23,9 @@
 .box__onboardstd {
   margin: 100px 0;
   max-width: 100%;
-  width: 600px;
-  height: 490px;
-  padding: 68px;
+  width: 100%;
+  height: 100%;
+  padding: 30px 50px;
   border-radius: 50px;
   background-color: #fff;
 }
@@ -31,13 +33,27 @@
 .form-wrapper {
   display: flex;
   align-items: center;
+  height: 85%;
   justify-content: center;
+  width: 60%;
 }
-
+.student-form-container {
+  margin-top: 30px;
+  overflow: hidden;
+  height: 80%;
+  position: relative;
+}
+.student-onboarding-form {
+  width: 100%;
+  margin-top: 40px;
+  height: 70%;
+  overflow-y: auto;
+}
 .onboard__heading {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .student__heading {
@@ -53,13 +69,22 @@
 }
 
 .onboardstd__welcome {
-  margin: 10px;
+  margin: 0px 10px 10px 10px;
   font-size: 20px;
   color: #f66962;
 }
 
 .onboardstd__calendar {
   width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+.form__dropdown {
+  margin-bottom: 50px;
+  border: 2px dashed #ccc;
+  border-radius: 30px;
+  position: relative;
+  padding: 25px 20px;
 }
 
 .ant-picker {
@@ -70,11 +95,37 @@
   margin: 0 90px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly
+  justify-content: space-evenly;
 }
 
 .onboardstd__skip {
+  position: absolute;
+  bottom: 50px;
+  text-decoration: underline;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #ff6699;
+}
+
+.dynamic-delete-button {
+  position: absolute;
+  font-size: 20px;
+  right: 0;
+  top: -30px;
+}
+.submit-form-student {
+  margin-top: -70px;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+.student-add-form {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  background-color: #fff;
+}
+.button-submit {
+  font-size: 20px;
+  min-width: 130px;
+  min-height: 40px;
 }
