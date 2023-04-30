@@ -41,14 +41,7 @@ li {
 	--light-orange: #FFE0D3;
 }
 
-.student__logos {
-    font-family: 'Lilita One', cursive;
-    font-weight: bold;
-    color: #FD7238;
-    font-size: 50px;
-	margin-left: 50px;
-	padding-top: 50px;
-}
+
 
 /* SIDEBAR */
 #course__sidebar {
@@ -71,19 +64,24 @@ li {
 	width: 60px;
 }
 #course__sidebar .Course__brand {
-	font-size: 24px;
-	font-weight: 700;
-	height: 56px;
 	display: flex;
+	flex-direction: row;
+	justify-content: center;
 	align-items: center;
-	color: var(--blue);
-	position: sticky;
-	top: 0;
-	left: 0;
-	background: var(--light);
-	z-index: 500;
-	padding-bottom: 20px;
-	box-sizing: content-box;
+}
+
+.student__logos {
+    font-family: 'Lilita One', cursive;
+    font-weight: bold;
+    color: #FD7238;
+    font-size: 42px;
+	position: relative;
+	left: -20px;
+}
+
+.student__imglogo {
+	width: 100px;
+	height: 90px;
 }
 
 #course__sidebar .course__side-menu {
@@ -117,6 +115,7 @@ li {
 #course__sidebar .course__side-menu.top li.active a {
 	background-color: #f66962;
 	color: #fff;
+	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .bx-home, .bx-book-open, .bx-credit-card, .bx-male-female, .bxs-objects-horizontal-left, .bxs-message-minus, .bxs-user-circle, .bx-calendar  {

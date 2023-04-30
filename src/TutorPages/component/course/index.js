@@ -1,11 +1,8 @@
 import React from 'react'
 import avt1 from '../../../assets/images/avt1.jpg'
-import courses1 from '../../../assets/images/courses1.jpg'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Modal } from 'antd'
 import '../course/navcourse.css'
-import { useState, Form } from 'react';
 
 export default function Courses({ data }) {
     const lastName = useSelector(state => state.user.currentUser.lastName)

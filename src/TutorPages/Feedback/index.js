@@ -7,10 +7,12 @@ import { Link } from 'react-router-dom'
 import avtfeedback2 from '../../assets/images/avt1.jpg'
 // import avtfeedback3 from '../../assets/images/avt2.jpg'
 import avtfeedback4 from '../../assets/images/avt3.jpg'
-// import avtfeedback5 from '../../assets/images/avt4.jpg'
+import avtfeedback5 from '../../assets/images/avt4.jpg'
 // import avtfeedback6 from '../../assets/images/avt5.jpg'
 import Navbar from '../component/Navbar';
 import { Avatar, Space } from 'antd';
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+
 
 
 const CourseBox = () => {
@@ -32,6 +34,7 @@ const CourseBox = () => {
       {/* SIDEBAR */}
       <section id="course__sidebar">
         <Link to="" className="Course__brand">
+          <img src={sidebarlogo} className='student__imglogo'></img>
           <span className="student__logos">Fluffy</span>
         </Link>
         <ul className="course__side-menu top">
@@ -87,6 +90,7 @@ const CourseBox = () => {
         {/* NAVBAR */}
         <Navbar />
         {/* NAVBAR */}
+      
         <div className="feedback__head-title">
           <div className="feedback__left">
             <h1>Feedback</h1>
@@ -118,7 +122,7 @@ const CourseBox = () => {
                   <div className='feedback__boxall'>
                     <div className="course-box-avatar">
                     <Space size={16} wrap>
-                    <Avatar src={avtfeedback2} alt="Avatar" className='feedback__formavt'/>
+                    <Avatar src={avtfeedback4} alt="Avatar" className='feedback__formavt'/>
                     </Space>
                     </div>
                     <div className="feedback__tittle">
@@ -136,8 +140,6 @@ const CourseBox = () => {
                 </div>
               </Modal>
             </div>
-            
-           
           </div>
         </div>
       </section>

@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Col, InputNumber, Row, Slider, Space } from 'antd';
 import { Progress, Tooltip } from 'antd';
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function StudentMyCourse() {
 
@@ -44,6 +45,7 @@ function StudentMyCourse() {
       {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
+          <img src={sidebarlogo} className='student__imglogo'></img>
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="course__side-menu top">

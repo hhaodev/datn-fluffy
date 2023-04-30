@@ -1,15 +1,12 @@
-
 import '../../TutorPages/Dashboard/dashboard.css'
 import { Link } from 'react-router-dom'
 import React from 'react';
-import { DatePicker, Space } from 'antd';
-import { Select, Button, Table } from 'antd'
+import { Space } from 'antd';
+import { Select} from 'antd'
 import Navbar from "../component/Navbar"
-import { List } from 'antd';
 import { Progress } from 'antd';
-import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
-import { Card, Col, Row, Statistic } from 'antd';
 import welcomett from '../../assets/images/welcome-removebg-preview.png'
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function DashBoardtutor() {
 
@@ -38,6 +35,7 @@ function DashBoardtutor() {
       {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
+          <img src={sidebarlogo} className='student__imglogo'></img>
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="course__side-menu top">

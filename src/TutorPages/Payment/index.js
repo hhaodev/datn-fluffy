@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import { Radio, Select } from 'antd';
 import { Button, Input, Form, message, Typography, Divider } from 'antd';
 import copy from 'copy-to-clipboard';
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 const PaymentTutor = () => {
   // form bill
@@ -182,6 +183,7 @@ const PaymentTutor = () => {
       {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
+          <img src={sidebarlogo} className='student__imglogo'></img>
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="course__side-menu top">

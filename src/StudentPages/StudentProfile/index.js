@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import user from '../../assets/images/user.jpg'
 import { DownOutlined } from '@ant-design/icons';
-
-
-
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function StudentProfile() {
     // avt
@@ -31,6 +29,7 @@ function StudentProfile() {
            {/* SIDEBAR */}
            <section id="course__sidebar">
                 <a href="" className="Course__brand">
+                    <img src={sidebarlogo} className='student__imglogo'></img>
                     <span className="student__logos">Fluffy</span>
                 </a>
                 <ul className="course__side-menu top">

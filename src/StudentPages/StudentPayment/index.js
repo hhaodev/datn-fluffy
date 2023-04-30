@@ -12,8 +12,7 @@ import { DatePicker, Space } from 'antd';
 import { AutoComplete } from 'antd';
 import React, { useState } from 'react';
 import copy from 'copy-to-clipboard';
-
-
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function StudentPayment() {
     // form bill
@@ -168,6 +167,7 @@ function StudentPayment() {
             {/* SIDEBAR */}
             <section id="course__sidebar">
                 <a href="" className="Course__brand">
+                    <img src={sidebarlogo} className='student__imglogo'></img>
                     <span className="student__logos">Fluffy</span>
                 </a>
                 <ul className="course__side-menu top">

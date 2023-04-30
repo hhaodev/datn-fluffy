@@ -618,9 +618,10 @@ body {
 }
 
 .box__student {
-	border-radius: .5rem;
+	border-radius: 16px;
     background-color: white;
     padding: 10px;
+	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 } 
 
 .student__tutor {
@@ -677,7 +678,7 @@ body {
 }
 
 .inline-btn, .inline-option-btn {
-	border-radius: 5px;
+	border-radius: 22px;
     color: #fff;
     font-size: 15px;
     cursor: pointer;
@@ -688,6 +689,7 @@ body {
 	background-color: #f66962;
 	display: inline-block;
 	width: 200px;
+	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .inline-btn, .inline-option-btn:hover {
@@ -696,7 +698,8 @@ body {
 
 .course__buttonlink {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+	align-items: center;
 }
 
 .student__segmented {

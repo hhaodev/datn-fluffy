@@ -4,15 +4,12 @@ import { Avatar, Dropdown, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { DownOutlined } from '@ant-design/icons';
 import user from '../../../src/assets/images/user.jpg'
-import { AntDesignOutlined } from '@ant-design/icons';
 import avt from '../../../src/assets/images/avt1.jpg';
 import { Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import { message, Upload } from 'antd';
-import { Checkbox, Form, Input } from 'antd';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Form, Input } from 'antd';
 import { DatePicker, Space } from 'antd';
 import dayjs from 'dayjs';
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function ViewProfile() {
     const navigate = useNavigate()
@@ -47,6 +44,7 @@ function ViewProfile() {
             {/* SIDEBAR */}
             <section id="course__sidebar">
                 <a href="" className="Course__brand">
+                    <img src={sidebarlogo} className='student__imglogo'></img>
                     <span className="student__logos">Fluffy</span>
                 </a>
                 <ul className="course__side-menu top">

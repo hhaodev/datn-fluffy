@@ -15,7 +15,7 @@ import courses6 from '../../assets/images/courses6.jpg'
 import React from 'react';
 import Navbar from '../component/Navbar';
 import { Link } from 'react-router-dom'
-
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function stdHome() {
 
@@ -24,6 +24,7 @@ function stdHome() {
       {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
+          <img src={sidebarlogo} className='student__imglogo'></img>
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="course__side-menu top">

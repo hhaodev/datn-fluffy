@@ -1,14 +1,11 @@
 import '../ViewCourse/viewcourse.css'
 import { Link } from 'react-router-dom';
 import Navbar from '../component/Navbar';
-
 import React from 'react'
-
 import { useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { useState, Form } from 'react';
-
-
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function ViewCourse() {
     return (
@@ -16,6 +13,7 @@ function ViewCourse() {
             {/* SIDEBAR */}
             <section id="course__sidebar">
                 <Link to="" className="Course__brand">
+                    <img src={sidebarlogo} className='student__imglogo'></img>
                     <span className="student__logos">Fluffy</span>
                 </Link>
                 <ul className="course__side-menu top">

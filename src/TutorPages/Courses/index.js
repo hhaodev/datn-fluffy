@@ -8,7 +8,8 @@ import { gql } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import Courses from '../component/course';
 import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
-import { Tabs } from 'antd';
+import { Tabs } from 'antd'
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 function MyCoursestt() {
   const [courseList, setCourseList] = useState([])
@@ -52,6 +53,7 @@ function MyCoursestt() {
       {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
+          <img src={sidebarlogo} className='student__imglogo'></img>
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="course__side-menu top">

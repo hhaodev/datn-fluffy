@@ -6,8 +6,7 @@ import React, { useState } from 'react';
 import userstudent from '../../assets/images/avt1.jpg';
 import { Avatar } from 'antd';
 import avt from '../../../src/assets/images/avt1.jpg';
-
-
+import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 
 const MyStudenttutor = () => {
   // Table       
@@ -106,6 +105,7 @@ const MyStudenttutor = () => {
       {/* SIDEBAR */}
       <section id="course__sidebar">
         <a href="" className="Course__brand">
+        <img src={sidebarlogo} className='student__imglogo'></img>
           <span className="student__logos">Fluffy</span>
         </a>
         <ul className="course__side-menu top">
