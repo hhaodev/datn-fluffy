@@ -1,151 +1,191 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import '../../Onboarding__Tutor/OnBoard__Tutorstep2/OnboardTutor__Step2.css'
-import { Steps } from 'antd';
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
-  Upload,
-} from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentTutor, setCurrentTutor_experiences } from '../../Redux/features/tutorSlice';
+import "../../Onboarding__Tutor/OnBoard__Tutorstep2/OnboardTutor__Step2.css";
+import { Steps } from "antd";
+import { Form, Input, Button } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentTutor_experiences } from "../../Redux/features/tutorSlice";
+import { DatePicker } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
 
+const { RangePicker } = DatePicker;
 
-
-
-
-
+const description = "";
+const items = [
+  {
+    title: "Done",
+    description,
+  },
+  {
+    title: "In Progress",
+    description,
+  },
+  {
+    title: "Waiting",
+    description,
+  },
+  {
+    title: "Waiting",
+    description,
+  },
+];
 
 function OnboardTutor__Step2() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const { RangePicker } = DatePicker;
-  const schoolsList = useSelector(state => state.schools.schoolsData)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const [formList, setFormList] = useState([
+    {
+      organization: null,
+      position: null,
+      description: null,
+      startTime: null,
+      endTime: null,
+    },
+  ]);
 
-  const description = '';
-  const items = [
-    {
-      title: 'Done',
-      description,
-    },
-    {
-      title: 'In Progress',
-      description,
-    },
-    {
-      title: 'Waiting',
-      description,
-    },
-    {
-      title: 'Waiting',
-      description,
-    },
-  ];
-  const onFinish = (values) => {
-    const rangeValue = values['range-picker'];
-    const startTime = new Date(rangeValue[0]).toISOString()
-    const endTime = new Date(rangeValue[1]).toISOString()
-    const dataTutor = {
-      organization: values.organization,
-      description: values.description,
-      position: values.position,
-      startTime: startTime,
-      endTime: endTime
-    }
-    dispatch(setCurrentTutor_experiences(dataTutor))
-    navigate("/onboardtutorstep3")
+  const onChangeValue = (indexForm, field, value) => {
+    const newForm = formList[indexForm];
 
-  }
+    newForm[field] = value || null;
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    const newFormList = formList.filter((el, index) => index !== indexForm);
+
+    newFormList.push(newForm);
+
+    setFormList(newFormList);
   };
 
+  const handleDeleteForm = (index) => {
+    const newFormList = formList.filter((el, i) => index !== i);
+    setFormList(newFormList);
+  };
 
+  const handleAddForm = () => {
+    const newFormList = formList.concat({
+      organization: null,
+      position: null,
+      description: null,
+      startTime: null,
+      endTime: null,
+    });
+    setFormList(newFormList);
+  };
+
+  const handleSubmitNextStep = () => {
+    let isValidated = true;
+    formList.forEach((el) => {
+      if (
+        !el.organization ||
+        !el.position ||
+        !el.startTime ||
+        !el.endTime ||
+        !el.description
+      ) {
+        isValidated = false;
+      }
+    });
+
+    if (isValidated) {
+      dispatch(setCurrentTutor_experiences(formList));
+      navigate("/onboardtutorstep3");
+    } else {
+      alert("Please fill in all fields");
+    }
+  };
 
   return (
-    <div className="step2__body">
-      {/* <h1 className="step2__logo">Fluffy</h1> */}
-
-      <div className='step2__step'>
+    <div className="step1__body step2__body">
+      <div className="step1__step">
         <>
-          <Steps current={1} labelPlacement="vertical" items={items} className='step2__stepss' />
+          <Steps
+            current={1}
+            labelPlacement="vertical"
+            items={items}
+            className="step1__stepss"
+          />
         </>
       </div>
 
-      <div className="step2__wrapper">
-        <div className="box__step2">
-          <h2 className="step2__h2">Work Experience</h2>
-          {/* <p className="welcome">Welcome! First things first ...</p> */}
-          <Form
-            name="normal"
-            className="form__dropdown"
-            layout="vertical"
-            initialValues={{
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-          >
-            <Form.Item
-              label="Name Organization?"
-              name="organization"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select time!',
-                },
-              ]}
+      <div className="form-wrapper">
+        <div className="box__onboardstd">
+          <h2 className="step2__h2">Experiences</h2>
+          <div className="student-form-container">
+            <div className="student-onboarding-form">
+              {formList?.map((el, index) => (
+                <Form className="form__dropdown" layout="vertical">
+                  <Form.Item label="Organization Name" name="organization">
+                    <Input
+                      onChange={(e) =>
+                        onChangeValue(index, "organization", e.target.value)
+                      }
+                    />
+                  </Form.Item>
+                  <Form.Item label="Position" name="position">
+                    <Input
+                      required
+                      onChange={(e) =>
+                        onChangeValue(index, "position", e.target.value)
+                      }
+                    />
+                  </Form.Item>
+                  <Form.Item label="RangePicker">
+                    <RangePicker
+                      onChange={(e) => {
+                        onChangeValue(
+                          index,
+                          "startTime",
+                          e && dayjs(e[0]).format("YYYY-MM-DD")
+                        );
+                        onChangeValue(
+                          index,
+                          "endTime",
+                          e && dayjs(e[1]).format("YYYY-MM-DD")
+                        );
+                      }}
+                    />
+                  </Form.Item>
+                  <Form.Item name="description" label="Description">
+                    <Input.TextArea
+                      required
+                      showCount
+                      defaultValue={el.description}
+                      maxLength={1000}
+                      onChange={(e) =>
+                        onChangeValue(index, "description", e.target.value)
+                      }
+                    />
+                  </Form.Item>
+                  {formList.length > 1 && index !== 0 ? (
+                    <MinusCircleOutlined
+                      className="dynamic-delete-button"
+                      onClick={() => handleDeleteForm(index)}
+                    />
+                  ) : null}
+                </Form>
+              ))}
+              <Button onClick={handleAddForm} className="student-add-form">
+                <PlusOutlined /> Add form
+              </Button>
+            </div>
+            <div className="tutor-button">
+              <div>
+            <Button
+              type="primary"
+              className="button-submit1"
+              onClick={handleSubmitNextStep}
             >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Position"
-              name="position"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input!',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="range-picker"
-              label="RangePicker"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input!',
-                },
-              ]}
-            >
-              <RangePicker format="DD/MM/YYYY" />
-            </Form.Item>
-            <Form.Item
-              name="description"
-              label="Description"
-              rules={[{ required: true, message: 'Please input' }]}
-            >
-              <Input.TextArea showCount maxLength={1000} />
-            </Form.Item  >
-
-
-            <Button type="primary" htmlType="submit" className="student__buttonsub2">
-              Submit
+              Next
             </Button>
-            <Link to="onboardtutorstep3" className="step2__skip"><Button >Skip</Button></Link>
-          </Form>
+            </div>
+            <div>
+            <Link to="/onboardtutorstep3" >
+              <Button danger>Skip</Button>
+            </Link>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
