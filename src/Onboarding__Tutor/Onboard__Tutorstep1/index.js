@@ -1,54 +1,74 @@
-import '../../Onboarding__Tutor/Onboard__Tutorstep1/OnboardTutor__Step1.css'
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
-import { Steps } from 'antd';
+import "../../Onboarding__Tutor/Onboard__Tutorstep1/OnboardTutor__Step1.css";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Steps } from "antd";
+import { Form, Button, Select, DatePicker, Upload } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { uploadToCloudinary } from "../../cloudinary/cloudinaryHelper";
 import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
-  Upload,
-} from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { PlusOutlined } from '@ant-design/icons';
-import { uploadToCloudinary } from '../../cloudinary/cloudinaryHelper';
-import { setCurrentTutor, setCurrentTutor_educations } from '../../Redux/features/tutorSlice';
+  MinusCircleOutlined,
+  PlusOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
+import { setCurrentTutor_educations } from "../../Redux/features/tutorSlice";
+import dayjs from "dayjs";
+
+const description = "";
+const items = [
+  {
+    title: "In Progress",
+    description,
+  },
+  {
+    title: "Waiting",
+    description,
+  },
+  {
+    title: "Waiting",
+    description,
+  },
+  {
+    title: "Waiting",
+    description,
+  },
+];
 
 function OnboardTutor__Step1() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const schoolsList = useSelector(state => state.schools.schoolsData)
+  const data = useSelector((state) => state.tutor.currentTutor.educations);
+  const navigate = useNavigate();
+
+  const [formList, setFormList] = useState(null);
+
+  useEffect(() => {
+    if (data.length) {
+      setFormList(data);
+    } else {
+      setFormList([
+        { schoolId: null, fromYear: null, toYear: null, scoreUrl: null },
+      ]);
+    }
+  }, [data]);
+
+  const schoolsList = useSelector((state) => state.schools.schoolsData);
+  const dispatch = useDispatch();
+
   const { Option } = Select;
-  const { RangePicker } = DatePicker;
-  const description = '';
-  const items = [
-    {
-      title: 'In Progress',
-      description,
-    },
-    {
-      title: 'Waiting',
-      description,
-    },
-    {
-      title: 'Waiting',
-      description,
-    },
-    {
-      title: 'Waiting',
-      description,
-    },
-  ];
+
+  const onChangeValue = (indexForm, field, value) => {
+    const newForm = formList[indexForm];
+
+    newForm[field] = value || null;
+
+    const newFormList = formList.filter((el, index) => index !== indexForm);
+
+    newFormList.push(newForm);
+
+    setFormList(newFormList);
+  };
+
   const handleUploadImage = (options) => {
     const { onSuccess, onError, file } = options;
-    // console.log(options);
+
     uploadToCloudinary({
       file,
       fileType: "image",
@@ -56,102 +76,174 @@ function OnboardTutor__Step1() {
       failureCallback: onError,
     });
   };
-  const onFinish = (values) => {
-    const rangeValue = values['range-picker'];
-    const fromYear = new Date(rangeValue[0]).toISOString()
-    const toYear = new Date(rangeValue[1]).toISOString()
-    const dataTutor = {
-      schoolId: values.schoolId,
-      toYear: toYear,
-      fromYear: fromYear,
-      scoreUrl: values.url
-    };
-    dispatch(setCurrentTutor_educations(dataTutor))
-    navigate("/onboardtutorstep2")
-  }
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const handleDeleteForm = (index) => {
+    const newFormList = formList.filter((el, i) => index !== i);
+    setFormList(newFormList);
   };
 
+  const handleAddForm = () => {
+    const newFormList = formList.concat({
+      schoolId: null,
+      fromYear: null,
+      toYear: null,
+      scoreUrl: null,
+    });
+    setFormList(newFormList);
+  };
 
+  const onSubmitStep1 = () => {
+    let isValidated = true;
+    formList.forEach((el) => {
+      if (!el.toYear || !el.schoolId || !el.scoreUrl || !el.fromYear) {
+        isValidated = false;
+      }
+    });
+
+    if (!isValidated) {
+      alert("Please fill in all fields");
+    } else {
+      dispatch(setCurrentTutor_educations(formList));
+      navigate("/onboardtutorstep2");
+    }
+  };
 
   return (
     <div className="step1__body">
-      {/* <h1 className="step1__logo">Fluffy</h1> */}
-      <div className='step1__step'>
+      <div className="step1__step">
         <>
-          <Steps current={0} labelPlacement="vertical" items={items} className='step1__stepss' />
+          <Steps
+            current={0}
+            labelPlacement="vertical"
+            items={items}
+            className="step1__stepss"
+          />
         </>
       </div>
-      <div className="step1__wrapper">
-        <div className="box__step1">
-          <h2 className="step1__h2">Academic Level</h2>
-          {/* <p className="welcome">Welcome! First things first ...</p> */}
-          <Form
-            name="normal"
-            className="form__dropdown"
-            layout="vertical"
-            initialValues={{
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-          >
-            <Form.Item
-              name="schoolId"
-              label="School"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select school!',
-                },
-              ]}
-            >
-              <Select placeholder="Select your school">
-                {schoolsList.map(school => {
-                  return (
-                    <Option key={school.id} value={school.id}>{school.name}</Option>
-                  )
-                })}
-              </Select>
-            </Form.Item>
-            <Form.Item
-              name="range-picker"
-              label="RangePicker"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select time!',
-                },
-              ]}
-            >
-              <RangePicker format="DD/MM/YYYY" />
-            </Form.Item>
-            <Form.Item
-              label="Upload here"
-              getValueFromEvent={(value) => value.file?.response}
-              name="url"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please upload!',
-                },
-              ]}>
-              <Upload
-                accept="image/*"
-                name="url"
-                customRequest={handleUploadImage}
-                listType="picture-card">
-                <div>
-                  <PlusOutlined />
-                  <div style={{ marginTop: 8 }}>Upload</div>
+      <div className="form-wrapper">
+        <div className="box__onboardstd">
+          <h2 className="step1__h2">Educations</h2>
+
+          <div className="student-form-container">
+            <div className="student-onboarding-form">
+              {formList?.map((el, index) => (
+                <div className="form__dropdown">
+                  <Form
+                    name="normal"
+                    layout="vertical"
+                    key={index}
+                    style={{ border: "1px solid #ccc;" }}
+                  >
+                    <Form.Item
+                      name="schoolId"
+                      label="School"
+                      style={{ height: "30px;" }}
+                    >
+                      <Select
+                        placeholder="Select your school"
+                        onChange={(e) => onChangeValue(index, "schoolId", e)}
+                        defaultValue={el.schoolId}
+                      >
+                        {schoolsList.map((school) => {
+                          return (
+                            <Option key={school.id} value={school.id}>
+                              {school.name}
+                            </Option>
+                          );
+                        })}
+                      </Select>
+                    </Form.Item>
+                    <Form.Item
+                      className="onboardstd__calendar"
+                      style={{ height: "30px;" }}
+                    >
+                      <div className="onboardstd__calendar">
+                        <div style={{ width: "45%" }}>
+                          <label>From Year</label>
+                          <DatePicker
+                            defaultValue={
+                              el.fromYear && dayjs(el.fromYear, "YYYY-MM-DD")
+                            }
+                            onChange={(e) =>
+                              onChangeValue(
+                                index,
+                                "fromYear",
+                                dayjs(e).format("YYYY-MM-DD")
+                              )
+                            }
+                          />
+                        </div>
+                        <div style={{ width: "45%" }}>
+                          <label>To Year</label>
+                          <DatePicker
+                            defaultValue={
+                              el.toYear && dayjs(el.toYear, "YYYY-MM-DD")
+                            }
+                            onChange={(e) =>
+                              onChangeValue(
+                                index,
+                                "toYear",
+                                dayjs(e).format("YYYY-MM-DD")
+                              )
+                            }
+                          />
+                        </div>
+                      </div>
+                    </Form.Item>
+                    <Form.Item label="Score Image" name="url">
+                      <Upload
+                        listType="picture"
+                        customRequest={handleUploadImage}
+                        defaultFileList={
+                          el.scoreUrl ? [{ uid: index, url: el.scoreUrl }] : []
+                        }
+                        onChange={(e) =>
+                          onChangeValue(index, "scoreUrl", e.file.response)
+                        }
+                        onRemove={() => onChangeValue(index, "scoreUrl", null)}
+                      >
+                        <Button
+                          icon={<UploadOutlined />}
+                          style={
+                            el.scoreUrl
+                              ? {
+                                  opacity: 0,
+                                  duration: "0.5s",
+                                  position: "absolute",
+                                }
+                              : {
+                                  position: "absolute",
+                                  opacity: "1",
+                                  left: "45%",
+                                  top: "45%",
+                                }
+                          }
+                        >
+                          Upload
+                        </Button>
+                      </Upload>
+                    </Form.Item>
+                    {formList.length > 1 && index !== 0 ? (
+                      <MinusCircleOutlined
+                        className="dynamic-delete-button"
+                        onClick={() => handleDeleteForm(index)}
+                      />
+                    ) : null}
+                  </Form>
                 </div>
-              </Upload>
-            </Form.Item>
-            <Button type="primary" htmlType="submit" className="student__buttonsub">
-              Submit
+              ))}
+            </div>
+            <Button onClick={handleAddForm} className="student-add-form">
+              <PlusOutlined /> Add form
             </Button>
-          </Form>
+          </div>
+          <Button
+            type="primary"
+            onClick={onSubmitStep1}
+            className="button-submit"
+          >
+            Next
+          </Button>
         </div>
       </div>
     </div>

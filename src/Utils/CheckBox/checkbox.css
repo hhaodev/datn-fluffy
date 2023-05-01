@@ -1,0 +1,36 @@
+.checkbox-p {
+  font-size: 18px;
+  font-family: "Courier New", Courier, monospace;
+}
+.checkbox-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  transition: 2s;
+  margin: 15px 0;
+}
+.checkbox-stick {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.checkbox-checked .checkbox-stick {
+  color: #00ff33;
+  border: 2px solid #00ff33;
+  background-color: #00ff3325;
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+}
+.checkbox-unchecked .checkbox-stick {
+  color: #dc1616;
+  border: 2px solid #d70707;
+  background-color: #ff000025;
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+}
