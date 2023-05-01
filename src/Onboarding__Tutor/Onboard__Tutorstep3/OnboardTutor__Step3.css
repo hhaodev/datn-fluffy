@@ -1,0 +1,26 @@
+.tutor-button1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
+  }
+  
+  .button-submit2 {
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding:20px 25px;
+    margin-right: 20px;
+  }
+
+  .form__dropdown1 {
+    border: 2px dashed #ccc;
+    border-radius: 30px;
+    position: relative;
+    padding: 25px 20px;
+    height: 450px;
+    margin-bottom: 40px;
+  }
+  

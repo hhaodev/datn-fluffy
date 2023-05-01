@@ -169,16 +169,22 @@ function OnboardTutor__Step2() {
                 <PlusOutlined /> Add form
               </Button>
             </div>
+            <div className="tutor-button">
+              <div>
             <Button
               type="primary"
-              className="button-submit"
+              className="button-submit1"
               onClick={handleSubmitNextStep}
             >
               Next
             </Button>
-            <Link to="/onboardtutorstep3" className="step2__skip">
+            </div>
+            <div>
+            <Link to="/onboardtutorstep3" >
               <Button danger>Skip</Button>
             </Link>
+            </div>
+            </div>
           </div>
         </div>
       </div>

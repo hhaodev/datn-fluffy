@@ -143,7 +143,7 @@ function OnboardTutor__Step3() {
           <div className="student-form-container">
             <div className="student-onboarding-form">
               {formList.map((el, index) => (
-                <Form className="form__dropdown" layout="vertical">
+                <Form className="form__dropdown1" layout="vertical">
                   <Form.Item label="Organization Name" name="organization">
                     <Input
                       onChange={(e) =>
@@ -211,16 +211,22 @@ function OnboardTutor__Step3() {
                 <PlusOutlined /> Add form
               </Button>
             </div>
+            <div className="tutor-button1">
+              <div>
             <Button
               type="primary"
-              className="button-submit"
+              className="button-submit2"
               onClick={onSubmitStep1}
             >
               Next
             </Button>
+            </div>
+            <div>
             <Link to="/onboardtutorstep4" className="step2__skip">
               <Button danger>Skip</Button>
             </Link>
+            </div>
+            </div>
           </div>
         </div>
       </div>
