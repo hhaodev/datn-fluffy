@@ -2,13 +2,54 @@ import '../../TutorPages/MyStudent/mystudent.css';
 import { Link } from 'react-router-dom';
 import { Table, Modal, Button, Form, Input } from 'antd';
 import Navbar from '../component/Navbar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import userstudent from '../../assets/images/avt1.jpg';
 import { Avatar } from 'antd';
 import avt from '../../../src/assets/images/avt1.jpg';
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import client from '../../configGQL';
+import { gql } from '@apollo/client';
+
 
 const MyStudenttutor = () => {
+  const [studentList, setstudentList] = useState([])
+
+  useEffect(() =>  {
+    client.query({
+      query: gql`
+      query getStudent {
+        getMyStudents(query: {
+          limit: 10,
+          page: 1
+        }){
+          items {
+            id
+            email
+            firstName
+            lastName
+            phoneNumber
+            gender
+            studentProfile {
+              studentId
+              studentEducations {
+                fromYear
+              }
+            }
+          }
+        }
+      }`,
+      variables: {
+        query: {
+          page: 1,
+          limit: 10,
+        },
+      }
+    })
+    .then(result => {setstudentList(result.data.getMyStudents.items)})
+  })
+  
+
+
   // Table       
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
@@ -30,48 +71,15 @@ const MyStudenttutor = () => {
     setIsModalVisible(false);
   };
 
-  const dataSource = [
-    {
-      id: '1323',
-      name: 'John Brown',
-      status: 'Done',
-    },
-    {
-      id: '2232',
-      name: 'Jim Green',
-      status: 'To Do',
-    },
-    {
-      id: '3232',
-      name: 'Joe Black',
-      status: 'Inprogress',
-    },
-    {
-      id: '6663',
-      name: 'John Brown',
-      status: 'To Do',
-    },
-    {
-      id: '9981',
-      name: 'John Brown',
-      status: 'Done',
-    },
-    {
-      id: '6512',
-      name: 'John Brown',
-      status: 'To Do',
-    },
-    {
-      id: '8872',
-      name: 'John Brown',
-      status: 'Done',
-    },
-    {
-      id: '6652',
-      name: 'John Brown',
-      status: 'Done',
-    },
-  ];
+  // const dataSource = [
+  //     {
+  //       id: '1323',
+  //       firstName: 'jajs',
+  //       lastName: 'ssdsd',
+  //       phonenumber: '611212',
+  //       gender: 'male',
+  //     }
+  // ];
 
   const columns = [
     {
@@ -80,19 +88,39 @@ const MyStudenttutor = () => {
       key: 'id',
     },
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: 'First name',
+      dataIndex: 'firstname',
+      key: 'firstname',
+    },
+    {
+      title: 'Last name',
+      dataIndex: 'lastname',
+      key: 'lastname',
+    },
+    {
+      title: 'Avatar',
+      dataIndex: 'avatar',
+      key: 'avatar',
+    },
+    {
+      title: 'Phone number',
+      dataIndex: 'phonenumber',
+      key: 'phonenumber',
+    },
+    {
+      title: 'Gender',
+      dataIndex: 'gender',
+      key: 'gender',
     },
     {
       title: 'Detail',
       key: 'detail',
-      render: (text, record) => (
+      render: () => (
         <Button type="primary" onClick={handleViewMoreClick} className='view__payment'>
           More
         </Button>
@@ -176,7 +204,17 @@ const MyStudenttutor = () => {
           </div>
 
           <div className='mystdtutor__content'>
-            <Table dataSource={dataSource} columns={columns} />
+            <Table  dataSource={studentList.map((data) => {
+              console.log(data);
+                        return (
+                          {
+                            id:data.id, email:data.email,  firstname:data.firstName, lastname:data.lastName, avatar:data.avatar, phonenumber:data.phoneNumber, gender:data.gender
+                          }
+                        )
+            })} columns={columns}
+            />
+
+            
             <Modal title="Profile" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
               <Form form={form} name="view-more-form" onFinish={onFinish}>
 

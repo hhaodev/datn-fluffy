@@ -1,13 +1,11 @@
 import '../../TutorPages/Courses/courses.css'
 import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
-import { Segmented } from 'antd';
 import Navbar from '../component/Navbar';
 import client from '../../configGQL';
 import { gql } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import Courses from '../component/course';
-import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd'
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 

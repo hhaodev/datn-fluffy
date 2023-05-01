@@ -23,7 +23,7 @@ function ViewCourse() {
                             <span className="course__text">Dashboard</span>
                         </Link>
                     </li>
-                    <li>
+                    <li className="active">
                         <Link to="/mycoursett">
                             <i className='bx bx-book-open'></i>
                             <span className="course__text">Courses</span>
@@ -47,7 +47,7 @@ function ViewCourse() {
                             <span className="course__text">Payment</span>
                         </Link>
                     </li>
-                    <li className="active">
+                    <li>
                         <Link to="" >
                             <i className='bx bxs-message-minus' ></i>
                             <span className="course__text">Feedback</span>

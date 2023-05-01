@@ -9,7 +9,6 @@ export default function Courses({ data }) {
     const firstName = useSelector(state => state.user.currentUser.firstName)
     const {
         id,
-        spendTime,
         name,
         description,
         imageUrl,
