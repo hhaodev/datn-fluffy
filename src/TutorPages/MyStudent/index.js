@@ -1,15 +1,15 @@
-import '../../TutorPages/MyStudent/mystudent.css';
-import { Link } from 'react-router-dom';
-import { Table, Modal, Button, Form, Input } from 'antd';
-import Navbar from '../component/Navbar';
-import React, { useState } from 'react';
-import userstudent from '../../assets/images/avt1.jpg';
-import { Avatar } from 'antd';
-import avt from '../../../src/assets/images/avt1.jpg';
-import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import "../../TutorPages/MyStudent/mystudent.css";
+import { Link } from "react-router-dom";
+import { Table, Modal, Button, Form, Input } from "antd";
+import Navbar from "../component/Navbar";
+import React, { useState } from "react";
+import userstudent from "../../assets/images/avt1.jpg";
+import { Avatar } from "antd";
+import avt from "../../../src/assets/images/avt1.jpg";
+import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 const MyStudenttutor = () => {
-  // Table       
+  // Table
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
 
@@ -32,68 +32,72 @@ const MyStudenttutor = () => {
 
   const dataSource = [
     {
-      id: '1323',
-      name: 'John Brown',
-      status: 'Done',
+      id: "1323",
+      name: "John Brown",
+      status: "Done",
     },
     {
-      id: '2232',
-      name: 'Jim Green',
-      status: 'To Do',
+      id: "2232",
+      name: "Jim Green",
+      status: "To Do",
     },
     {
-      id: '3232',
-      name: 'Joe Black',
-      status: 'Inprogress',
+      id: "3232",
+      name: "Joe Black",
+      status: "Inprogress",
     },
     {
-      id: '6663',
-      name: 'John Brown',
-      status: 'To Do',
+      id: "6663",
+      name: "John Brown",
+      status: "To Do",
     },
     {
-      id: '9981',
-      name: 'John Brown',
-      status: 'Done',
+      id: "9981",
+      name: "John Brown",
+      status: "Done",
     },
     {
-      id: '6512',
-      name: 'John Brown',
-      status: 'To Do',
+      id: "6512",
+      name: "John Brown",
+      status: "To Do",
     },
     {
-      id: '8872',
-      name: 'John Brown',
-      status: 'Done',
+      id: "8872",
+      name: "John Brown",
+      status: "Done",
     },
     {
-      id: '6652',
-      name: 'John Brown',
-      status: 'Done',
+      id: "6652",
+      name: "John Brown",
+      status: "Done",
     },
   ];
 
   const columns = [
     {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
     },
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
     },
     {
-      title: 'Detail',
-      key: 'detail',
+      title: "Detail",
+      key: "detail",
       render: (text, record) => (
-        <Button type="primary" onClick={handleViewMoreClick} className='view__payment'>
+        <Button
+          type="primary"
+          onClick={handleViewMoreClick}
+          className="view__payment"
+        >
           More
         </Button>
       ),
@@ -102,58 +106,6 @@ const MyStudenttutor = () => {
   // end Table
   return (
     <>
-      {/* SIDEBAR */}
-      <section id="course__sidebar">
-        <a href="" className="Course__brand">
-        <img src={sidebarlogo} className='student__imglogo'></img>
-          <span className="student__logos">Fluffy</span>
-        </a>
-        <ul className="course__side-menu top">
-          <li>
-            <Link to="/dashboardtt">
-              <i className='bx bx-home' ></i>
-              <span className="course__text">Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/mycoursett">
-              <i className='bx bx-book-open'></i>
-              <span className="course__text">Courses</span>
-            </Link>
-          </li>
-          <li className="active">
-            <Link to="/mystudent">
-              <i className='bx bx-male-female'></i>
-              <span className="course__text">My Student</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/sessiontt">
-              <i className='bx bxs-objects-horizontal-left'></i>
-              <span className="course__text">Session</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/paymenttutor">
-              <i className='bx bx-credit-card' ></i>
-              <span className="course__text">Payment</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/feedback">
-              <i className='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/viewprofile">
-              <i class='bx bxs-user-circle'></i>
-              <span className="course__text">Profile</span>
-            </Link>
-          </li>
-        </ul>
-      </section>
-      {/* SIDEBAR */}
       <section id="content">
         {/* NAVBAR */}
         <Navbar />
@@ -175,12 +127,16 @@ const MyStudenttutor = () => {
             </div>
           </div>
 
-          <div className='mystdtutor__content'>
+          <div className="mystdtutor__content">
             <Table dataSource={dataSource} columns={columns} />
-            <Modal title="Profile" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            <Modal
+              title="Profile"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
               <Form form={form} name="view-more-form" onFinish={onFinish}>
-
-                <div className='mystdtt__avtt'>
+                <div className="mystdtt__avtt">
                   <Avatar
                     size={{
                       xs: 24,
@@ -191,32 +147,31 @@ const MyStudenttutor = () => {
                       xxl: 100,
                     }}
                     src={avt}
-                    className='view__avt2'
+                    className="view__avt2"
                   />
-                  <p className='mystdtt__name'>Tran Thanh Hoang</p>
+                  <p className="mystdtt__name">Tran Thanh Hoang</p>
                 </div>
-                <div className='ag1'>
-                  <p className='mystdtt__age'>Age:</p>
+                <div className="ag1">
+                  <p className="mystdtt__age">Age:</p>
                   <p>22</p>
                 </div>
-                <div className='school1'>
-                  <p className='mystdtt__school'>School:</p>
+                <div className="school1">
+                  <p className="mystdtt__school">School:</p>
                   <p>Duy Tan University</p>
                 </div>
-                <div className='courses1'>
-                  <p className='mystdtt__courses'>Courses:</p>
+                <div className="courses1">
+                  <p className="mystdtt__courses">Courses:</p>
                   <p>GraphQL with React: The Complete Developers Guide</p>
                 </div>
               </Form>
             </Modal>
           </div>
-
         </main>
         {/* MAIN */}
       </section>
       {/* CONTENT */}
     </>
   );
-}
+};
 
 export default MyStudenttutor;

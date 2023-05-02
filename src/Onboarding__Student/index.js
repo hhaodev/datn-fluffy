@@ -57,7 +57,7 @@ function OnBoard__Student() {
     createStudentOnBoarding(client, input)
       .then((result) => {
         if (result.success) {
-          navigate("/studenthome");
+          navigate("/dashboard");
         }
       })
       .catch((error) => alert(error));
@@ -181,7 +181,7 @@ function OnBoard__Student() {
             >
               Submit
             </Button>
-            <Link to="/studenthome" className="onboardstd__skip">
+            <Link to="/dashboard" className="onboardstd__skip">
               Skip onboarding for student
             </Link>
           </div>

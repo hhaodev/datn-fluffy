@@ -1,89 +1,35 @@
-import '../../TutorPages/Dashboard/dashboard.css'
-import { Link } from 'react-router-dom'
-import React from 'react';
-import { Space } from 'antd';
-import { Select} from 'antd'
-import Navbar from "../component/Navbar"
-import { Progress } from 'antd';
-import welcomett from '../../assets/images/welcome-removebg-preview.png'
-import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import "../../TutorPages/Dashboard/dashboard.css";
+import { Link } from "react-router-dom";
+import React from "react";
+import { Space } from "antd";
+import { Select } from "antd";
+import Navbar from "../component/Navbar";
+import { Progress } from "antd";
+import welcomett from "../../assets/images/welcome-removebg-preview.png";
+import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 function DashBoardtutor() {
-
   const handleChange = (value) => {
     console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
   };
 
   const data = [
     {
-      title: 'Ant Design Title 1',
+      title: "Ant Design Title 1",
     },
     {
-      title: 'Ant Design Title 2',
+      title: "Ant Design Title 2",
     },
     {
-      title: 'Ant Design Title 3',
+      title: "Ant Design Title 3",
     },
     {
-      title: 'Ant Design Title 4',
+      title: "Ant Design Title 4",
     },
   ];
 
-
   return (
     <div>
-      {/* SIDEBAR */}
-      <section id="course__sidebar">
-        <a href="" className="Course__brand">
-          <img src={sidebarlogo} className='student__imglogo'></img>
-          <span className="student__logos">Fluffy</span>
-        </a>
-        <ul className="course__side-menu top">
-          <li className="active">
-            <Link to="/dashboardtt">
-              <i className='bx bx-home' ></i>
-              <span className="course__text">Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/mycoursett">
-              <i className='bx bx-book-open'></i>
-              <span className="course__text">Courses</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/mystudent">
-              <i class='bx bx-male-female'></i>
-              <span className="course__text">My Student</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/sessiontt">
-              <i class='bx bxs-objects-horizontal-left'></i>
-              <span className="course__text">Session</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/paymenttutor">
-              <i className='bx bx-credit-card' ></i>
-              <span className="course__text">Payment</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/feedback">
-              <i class='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/viewprofile">
-              <i class='bx bxs-user-circle'></i>
-              <span className="course__text">Profile</span>
-            </Link>
-          </li>
-        </ul>
-      </section>
-      {/* SIDEBAR */}
       {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
@@ -91,53 +37,55 @@ function DashBoardtutor() {
         {/* NAVBAR */}
         {/* MAIN */}
         <main>
-          <div className='dashboard__all'>
+          <div className="dashboard__all">
             <ul class="box-info">
               <li>
-                <i class='bx bxs-calendar-check' ></i>
+                <i class="bx bxs-calendar-check"></i>
                 <span class="text">
                   <h3>129</h3>
-                  <p className='dashboard__rightp'>Course</p>
+                  <p className="dashboard__rightp">Course</p>
                 </span>
               </li>
               <li>
-                <i class='bx bxs-group' ></i>
+                <i class="bx bxs-group"></i>
                 <span class="text">
                   <h3>260</h3>
-                  <p className='dashboard__rightp'>Student</p>
+                  <p className="dashboard__rightp">Student</p>
                 </span>
               </li>
               <li>
-                <i class='bx bxs-dollar-circle' ></i>
+                <i class="bx bxs-dollar-circle"></i>
                 <span class="text">
                   <h3>$2543</h3>
-                  <p className='dashboard__rightp'>Total Money</p>
+                  <p className="dashboard__rightp">Total Money</p>
                 </span>
               </li>
             </ul>
 
             <div className="table-data">
-              <div className='dashboard__welcome'>
-                <div className='dashboard__tieude'>
-                  <h1 className='dashboard__welh1'>Welcome back, John!</h1>
-                  <p className='dashboard__rightp'>Your students completed <span className='dashboard__span'> 94% </span>of the tasks Progress is very good!</p>
+              <div className="dashboard__welcome">
+                <div className="dashboard__tieude">
+                  <h1 className="dashboard__welh1">Welcome back, John!</h1>
+                  <p className="dashboard__rightp">
+                    Your students completed{" "}
+                    <span className="dashboard__span"> 94% </span>of the tasks
+                    Progress is very good!
+                  </p>
                 </div>
-                <img src={welcomett} className='dashboard__img'></img>
+                <img src={welcomett} className="dashboard__img"></img>
               </div>
 
-              <div className='dashboard__part'>
-                <div className='dashboard__trum'>
-                  <div className='dashboard__work'>
-                    <p className='dashboard__working'>
-                      Working hours
-                    </p>
+              <div className="dashboard__part">
+                <div className="dashboard__trum">
+                  <div className="dashboard__work">
+                    <p className="dashboard__working">Working hours</p>
                   </div>
-                  <div className='dashboard__select'>
+                  <div className="dashboard__select">
                     <Select
                       labelInValue
                       defaultValue={{
-                        value: 'today',
-                        label: 'Today',
+                        value: "today",
+                        label: "Today",
                       }}
                       style={{
                         width: 120,
@@ -145,37 +93,35 @@ function DashBoardtutor() {
                       onChange={handleChange}
                       options={[
                         {
-                          value: 'tomorrow',
-                          label: 'Tomorrow',
+                          value: "tomorrow",
+                          label: "Tomorrow",
                         },
                         {
-                          value: 'last week',
-                          label: 'Last week',
+                          value: "last week",
+                          label: "Last week",
                         },
                       ]}
                     />
                   </div>
                 </div>
 
-                <div className='dashboard__tik'>
-                  <Space wrap >
-                    <Progress type="circle" percent={75} className='dashboard__size' />
+                <div className="dashboard__tik">
+                  <Space wrap>
+                    <Progress
+                      type="circle"
+                      percent={75}
+                      className="dashboard__size"
+                    />
                   </Space>
-                  <div className='dashboard__circle'><i class='bx bxs-circle'></i>Done</div>
-
+                  <div className="dashboard__circle">
+                    <i class="bx bxs-circle"></i>Done
+                  </div>
                 </div>
-
-
               </div>
-
-
             </div>
 
-
-            <div className='dashboard__box2'></div>
+            <div className="dashboard__box2"></div>
           </div>
-
-
         </main>
         {/* MAIN */}
       </section>

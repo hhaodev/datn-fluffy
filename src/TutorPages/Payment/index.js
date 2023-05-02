@@ -1,16 +1,16 @@
-import '../../TutorPages/Payment/paymentt.css'
-import { Link } from 'react-router-dom'
-import Navbar from '../component/Navbar';
-import React, { useState } from 'react';
-import { Table, Modal } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import { AutoComplete } from 'antd';
-import { DatePicker, Space } from 'antd';
-import dayjs from 'dayjs';
-import { Radio, Select } from 'antd';
-import { Button, Input, Form, message, Typography, Divider } from 'antd';
-import copy from 'copy-to-clipboard';
-import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import "../../TutorPages/Payment/paymentt.css";
+import { Link } from "react-router-dom";
+import Navbar from "../component/Navbar";
+import React, { useState } from "react";
+import { Table, Modal } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { AutoComplete } from "antd";
+import { DatePicker, Space } from "antd";
+import dayjs from "dayjs";
+import { Radio, Select } from "antd";
+import { Button, Input, Form, message, Typography, Divider } from "antd";
+import copy from "copy-to-clipboard";
+import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 const PaymentTutor = () => {
   // form bill
@@ -19,7 +19,7 @@ const PaymentTutor = () => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyClick = () => {
-    const code = 'pi_3Mvek7IHWASmV6k...'; // replace with your bill code
+    const code = "pi_3Mvek7IHWASmV6k..."; // replace with your bill code
     copy(code);
     setIsCopied(true);
     message.success("Code has been copied to clipboard!");
@@ -66,7 +66,7 @@ const PaymentTutor = () => {
   // end search
 
   // datapicker
-  const dateFormatList = ['DD/MM/YYYY'];
+  const dateFormatList = ["DD/MM/YYYY"];
   // End datapicker
 
   // sort by price
@@ -81,13 +81,13 @@ const PaymentTutor = () => {
     console.log(`Selected: ${value}`);
   };
 
-  const [size, setSize] = useState('middle');
+  const [size, setSize] = useState("middle");
   const handleSizeChange = (e) => {
     setSize(e.target.value);
   };
   // end sort by price
 
-  // Table       
+  // Table
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
 
@@ -110,66 +110,70 @@ const PaymentTutor = () => {
 
   const dataSource = [
     {
-      purchase: '1',
-      subtotal: 'John Brown',
+      purchase: "1",
+      subtotal: "John Brown",
       Fee: 32,
-      total: 'New York No. 1 Lake Park',
+      total: "New York No. 1 Lake Park",
     },
     {
-      key: '2',
-      name: 'Jim Green',
+      key: "2",
+      name: "Jim Green",
       age: 42,
-      address: 'London No. 1 Lake Park',
+      address: "London No. 1 Lake Park",
     },
     {
-      key: '3',
-      name: 'Joe Black',
+      key: "3",
+      name: "Joe Black",
       age: 32,
-      address: 'Sidney No. 1 Lake Park',
+      address: "Sidney No. 1 Lake Park",
     },
   ];
 
   const columns = [
     {
-      title: 'Purchase date',
-      dataIndex: 'purchasedate',
-      key: 'purchasedate',
+      title: "Purchase date",
+      dataIndex: "purchasedate",
+      key: "purchasedate",
     },
     {
-      title: 'Subtotal',
-      dataIndex: 'subtotal',
-      key: 'subtotal',
+      title: "Subtotal",
+      dataIndex: "subtotal",
+      key: "subtotal",
     },
     {
-      title: 'Fee',
-      dataIndex: 'fee',
-      key: 'fee',
+      title: "Fee",
+      dataIndex: "fee",
+      key: "fee",
     },
     {
-      title: 'Total',
-      dataIndex: 'total',
-      key: 'total',
+      title: "Total",
+      dataIndex: "total",
+      key: "total",
     },
     {
-      title: 'Currency',
-      dataIndex: 'currency',
-      key: 'currency',
+      title: "Currency",
+      dataIndex: "currency",
+      key: "currency",
     },
     {
-      title: 'Payment Method',
-      dataIndex: 'paymentmethod',
-      key: 'paymentmethod',
+      title: "Payment Method",
+      dataIndex: "paymentmethod",
+      key: "paymentmethod",
     },
     {
-      title: 'Payment ID',
-      dataIndex: 'paymentid',
-      key: 'paymentid',
+      title: "Payment ID",
+      dataIndex: "paymentid",
+      key: "paymentid",
     },
     {
-      title: 'Action',
-      key: 'action',
+      title: "Action",
+      key: "action",
       render: (text, record) => (
-        <Button type="primary" onClick={handleViewMoreClick} className='view__payment'>
+        <Button
+          type="primary"
+          onClick={handleViewMoreClick}
+          className="view__payment"
+        >
           View more
         </Button>
       ),
@@ -177,61 +181,8 @@ const PaymentTutor = () => {
   ];
   // end Table
 
-
   return (
     <>
-      {/* SIDEBAR */}
-      <section id="course__sidebar">
-        <a href="" className="Course__brand">
-          <img src={sidebarlogo} className='student__imglogo'></img>
-          <span className="student__logos">Fluffy</span>
-        </a>
-        <ul className="course__side-menu top">
-          <li>
-            <Link to="/dashboardtt">
-              <i className='bx bx-home' ></i>
-              <span className="course__text">Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/mycoursett">
-              <i className='bx bx-book-open'></i>
-              <span className="course__text">Courses</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/mystudent">
-              <i className='bx bx-male-female'></i>
-              <span className="course__text">My Student</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/sessiontt">
-              <i className='bx bxs-objects-horizontal-left'></i>
-              <span className="course__text">Session</span>
-            </Link>
-          </li>
-          <li className="active">
-            <Link to="">
-              <i className='bx bx-credit-card' ></i>
-              <span className="course__text">Payment</span>
-            </Link>
-          </li>
-          <li >
-            <Link to="/feedback">
-              <i className='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/viewprofile">
-              <i class='bx bxs-user-circle'></i>
-              <span className="course__text">Profile</span>
-            </Link>
-          </li>
-        </ul>
-      </section>
-      {/* SIDEBAR */}
       <section id="content">
         {/* NAVBAR */}
         <Navbar />
@@ -253,53 +204,68 @@ const PaymentTutor = () => {
             </div>
           </div>
 
-          <div className='payment__container'>
-            <div className='payment__header'>
-
+          <div className="payment__container">
+            <div className="payment__header">
               {/* Search */}
-              <div className=''>
+              <div className="">
                 <AutoComplete
                   popupClassName="certain-category-search-dropdown"
                   dropdownMatchSelectWidth={500}
                   style={{
                     width: 250,
                   }}
-                  className='payment__searchs'
+                  className="payment__searchs"
                 >
-                  <Input.Search size="large" placeholder="Search by payment ID" />
+                  <Input.Search
+                    size="large"
+                    placeholder="Search by payment ID"
+                  />
                 </AutoComplete>
               </div>
               {/* end Search */}
 
               {/* Datepicker */}
-              <div className=''>
-                <Space direction="vertical" style={{
-                  width: 250,
-                }} size={12}>
-                  <DatePicker placeholder='Purchase date' defaultValue={dayjs('21/04/2023', dateFormatList[0])} format={dateFormatList} className='payment__spaces' />
+              <div className="">
+                <Space
+                  direction="vertical"
+                  style={{
+                    width: 250,
+                  }}
+                  size={12}
+                >
+                  <DatePicker
+                    placeholder="Purchase date"
+                    defaultValue={dayjs("21/04/2023", dateFormatList[0])}
+                    format={dateFormatList}
+                    className="payment__spaces"
+                  />
                 </Space>
               </div>
               {/* end Datepicker */}
 
               {/* sort by price */}
-              <div className=''>
+              <div className="">
                 <Select
                   showSearch
                   style={{ width: 200 }}
                   placeholder="Sort by price"
                   optionFilterProp="children"
-                  filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "").includes(input)
+                  }
                   filterSort={(optionA, optionB) =>
-                    (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                    (optionA?.label ?? "")
+                      .toLowerCase()
+                      .localeCompare((optionB?.label ?? "").toLowerCase())
                   }
                   options={[
                     {
-                      value: '1',
-                      label: 'Not Identified',
+                      value: "1",
+                      label: "Not Identified",
                     },
                     {
-                      value: '2',
-                      label: 'Closed',
+                      value: "2",
+                      label: "Closed",
                     },
                   ]}
                 />
@@ -307,66 +273,102 @@ const PaymentTutor = () => {
               {/* end sort by price */}
 
               {/* sort by purchase date */}
-              <div className=''>
-              <Select
+              <div className="">
+                <Select
                   showSearch
                   style={{ width: 200 }}
                   placeholder="Sort by purchase date"
                   optionFilterProp="children"
-                  filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "").includes(input)
+                  }
                   filterSort={(optionA, optionB) =>
-                    (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                    (optionA?.label ?? "")
+                      .toLowerCase()
+                      .localeCompare((optionB?.label ?? "").toLowerCase())
                   }
                   options={[
                     {
-                      value: '1',
-                      label: 'Not Identified',
+                      value: "1",
+                      label: "Not Identified",
                     },
                     {
-                      value: '2',
-                      label: 'Closed',
+                      value: "2",
+                      label: "Closed",
                     },
                   ]}
                 />
               </div>
               {/* end sort by purchase date */}
-
             </div>
 
             {/* form click */}
-            <div className='payment__table'>
+            <div className="payment__table">
               <Table dataSource={dataSource} columns={columns} />
-              <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} className='payment__modal'>
-                <Form form={form} name="view-more-form" onFinish={onFinish} >
-                  <div >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
-                      <div style={{ flex: 1, marginRight: 24 }} className='payment__bill1'>
-                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }} className='bill__copy'>
-                          <div className='bill__ma'>
-                            <div className='bill__codema'>pi_3Mvek7IHWASmV6k....</div>
-                            <div className='bill__atm'>Visa **** **** **** 4242</div>
+              <Modal
+                visible={isModalVisible}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                className="payment__modal"
+              >
+                <Form form={form} name="view-more-form" onFinish={onFinish}>
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        marginBottom: 24,
+                      }}
+                    >
+                      <div
+                        style={{ flex: 1, marginRight: 24 }}
+                        className="payment__bill1"
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            marginBottom: 16,
+                          }}
+                          className="bill__copy"
+                        >
+                          <div className="bill__ma">
+                            <div className="bill__codema">
+                              pi_3Mvek7IHWASmV6k....
+                            </div>
+                            <div className="bill__atm">
+                              Visa **** **** **** 4242
+                            </div>
                           </div>
-                          <Button onClick={handleCopyClick}><i class='bx bx-copy'></i>{isCopied ? 'Copied!' : 'Copy'}</Button>
+                          <Button onClick={handleCopyClick}>
+                            <i class="bx bx-copy"></i>
+                            {isCopied ? "Copied!" : "Copy"}
+                          </Button>
                         </div>
-                        <div style={{ marginBottom: 16 }} className='payment__flex'>
-                          <div className='flex1'>
-                            <p className='payment__purchase'>Purchase date: </p>
-                            <p className='payment__2023'>2023-04-23<span>11:37 PM</span></p>
+                        <div
+                          style={{ marginBottom: 16 }}
+                          className="payment__flex"
+                        >
+                          <div className="flex1">
+                            <p className="payment__purchase">Purchase date: </p>
+                            <p className="payment__2023">
+                              2023-04-23<span>11:37 PM</span>
+                            </p>
                           </div>
-                          <div className='flex2'>
-                            <p className='payment__subtotal'>Subtotal: </p>
+                          <div className="flex2">
+                            <p className="payment__subtotal">Subtotal: </p>
                             <p>$100.00</p>
                           </div>
-                          <div className='flex3'>
-                            <p className='payment__total'>Total: </p>
+                          <div className="flex3">
+                            <p className="payment__total">Total: </p>
                             <p>$110.00</p>
                           </div>
-                          <div className='flex4'>
-                            <p className='payment__fee'>Fee: </p>
+                          <div className="flex4">
+                            <p className="payment__fee">Fee: </p>
                             <p>$10.00</p>
                           </div>
-                          <div className='flex5'>
-                            <p className='payment__currency'>Currency: </p>
+                          <div className="flex5">
+                            <p className="payment__currency">Currency: </p>
                             <p>USD</p>
                           </div>
                         </div>
@@ -374,39 +376,53 @@ const PaymentTutor = () => {
 
                       <div style={{ flex: 1 }}>
                         <div style={{ marginBottom: 16 }}>
-                          <h2 className='payment__tutoring'>Tutoring session</h2>
+                          <h2 className="payment__tutoring">
+                            Tutoring session
+                          </h2>
                         </div>
                         <div>
-                          <Form onFinish={onFinish} className='payment__right'>
-                            <div className='payment__li1'>
-                              <h4 className='payment__sub'><i className='bx bxs-book-bookmark' ></i>Subject:</h4>
-                              <p>Units 3/4  Literature</p>
+                          <Form onFinish={onFinish} className="payment__right">
+                            <div className="payment__li1">
+                              <h4 className="payment__sub">
+                                <i className="bx bxs-book-bookmark"></i>Subject:
+                              </h4>
+                              <p>Units 3/4 Literature</p>
                             </div>
 
-                            <div className='payment__ttli1'>
-                              <div className='payment__li2'>
-                                <h4 className='payment__tutors'><i class='bx bxs-id-card' ></i>Tutor:</h4>
+                            <div className="payment__ttli1">
+                              <div className="payment__li2">
+                                <h4 className="payment__tutors">
+                                  <i class="bx bxs-id-card"></i>Tutor:
+                                </h4>
                                 <p>Tutor19 Van</p>
                               </div>
-                              <div className='payment__li3'>
-                                <h4 className='payment__prices'><i class='bx bxs-coin'></i>Price:</h4>
+                              <div className="payment__li3">
+                                <h4 className="payment__prices">
+                                  <i class="bx bxs-coin"></i>Price:
+                                </h4>
                                 <p>$150</p>
                               </div>
                             </div>
 
-                            <div className='payment__ttli2'>
-                              <div className='payment__li4'>
-                                <h4 className='payment__sessiondates'><i class='bx bx-calendar' ></i>Session date:</h4>
+                            <div className="payment__ttli2">
+                              <div className="payment__li4">
+                                <h4 className="payment__sessiondates">
+                                  <i class="bx bx-calendar"></i>Session date:
+                                </h4>
                                 <p>Apr 12,2023</p>
                               </div>
-                              <div className='payment__li5'>
-                                <h4 className='payment__duration'><i class='bx bx-alarm'></i>Duration</h4>
+                              <div className="payment__li5">
+                                <h4 className="payment__duration">
+                                  <i class="bx bx-alarm"></i>Duration
+                                </h4>
                                 <p>1 hour</p>
                               </div>
                             </div>
 
-                            <div className='payment__li6'>
-                              <h4 className='payment__times'><i class='bx bx-hourglass' ></i>Session time:</h4>
+                            <div className="payment__li6">
+                              <h4 className="payment__times">
+                                <i class="bx bx-hourglass"></i>Session time:
+                              </h4>
                               <p>01:00 PM - 02:00 PM</p>
                             </div>
                           </Form>
@@ -420,14 +436,12 @@ const PaymentTutor = () => {
             </div>
             {/* end from click */}
           </div>
-
         </main>
         {/* MAIN */}
       </section>
       {/* CONTENT */}
-
     </>
   );
-}
+};
 
 export default PaymentTutor;

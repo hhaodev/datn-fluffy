@@ -117,7 +117,7 @@ function OnboardTutor__Step3() {
       createTutorOnboarding(client, tutorData)
         .then((result) => {
           if (result) {
-            navigate("/onboardtutorstep4");
+            navigate("/onboarding/step-4");
           }
         })
         .catch((error) => alert(error));
@@ -213,19 +213,19 @@ function OnboardTutor__Step3() {
             </div>
             <div className="tutor-button1">
               <div>
-            <Button
-              type="primary"
-              className="button-submit2"
-              onClick={onSubmitStep1}
-            >
-              Next
-            </Button>
-            </div>
-            <div>
-            <Link to="/onboardtutorstep4" className="step2__skip">
-              <Button danger>Skip</Button>
-            </Link>
-            </div>
+                <Button
+                  type="primary"
+                  className="button-submit2"
+                  onClick={onSubmitStep1}
+                >
+                  Next
+                </Button>
+              </div>
+              <div>
+                <Link to="/onboarding/step-4" className="step2__skip">
+                  <Button danger>Skip</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -104,7 +104,7 @@ function OnboardTutor__Step1() {
       alert("Please fill in all fields");
     } else {
       dispatch(setCurrentTutor_educations(formList));
-      navigate("/onboardtutorstep2");
+      navigate("/onboarding/step-2");
     }
   };
 

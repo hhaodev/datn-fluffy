@@ -1,55 +1,55 @@
-import '../../TutorPages/Session/session.css'
-import { Avatar, Dropdown, Menu } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import user from '../../assets/images/user.jpg'
-import { Link } from 'react-router-dom'
-import React from 'react';
-import { DatePicker, Space } from 'antd';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import { Select, Button, Table } from 'antd'
-import Navbar from '../component/Navbar';
-import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import "../../TutorPages/Session/session.css";
+import { Avatar, Dropdown, Menu } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import user from "../../assets/images/user.jpg";
+import { Link } from "react-router-dom";
+import React from "react";
+import { DatePicker, Space } from "antd";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import { Select, Button, Table } from "antd";
+import Navbar from "../component/Navbar";
+import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 function sessionTutor() {
   const columns = [
     {
-      title: 'Date',
+      title: "Date",
       width: 60,
-      dataIndex: 'date',
-      key: 'date',
-      fixed: 'left',
+      dataIndex: "date",
+      key: "date",
+      fixed: "left",
     },
     {
-      title: 'Time',
-      dataIndex: 'time',
-      key: '1',
-      width: 60,
-    },
-    {
-      title: 'Location',
-      dataIndex: 'location',
-      key: '2',
+      title: "Time",
+      dataIndex: "time",
+      key: "1",
       width: 60,
     },
     {
-      title: 'Session',
-      dataIndex: 'session',
-      key: '3',
+      title: "Location",
+      dataIndex: "location",
+      key: "2",
       width: 60,
     },
     {
-      title: 'Tutor',
-      dataIndex: 'tutor',
-      key: '4',
+      title: "Session",
+      dataIndex: "session",
+      key: "3",
+      width: 60,
+    },
+    {
+      title: "Tutor",
+      dataIndex: "tutor",
+      key: "4",
       width: 100,
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: '5',
-      fixed: 'right',
-      render: () => <a className='session__booked'>Booked</a>,
+      title: "Status",
+      dataIndex: "status",
+      key: "5",
+      fixed: "right",
+      render: () => <a className="session__booked">Booked</a>,
       width: 50,
     },
   ];
@@ -63,12 +63,11 @@ function sessionTutor() {
     });
   }
 
-
   const onChange = (value) => {
     console.log(`selected ${value}`);
   };
   const onSearch = (value) => {
-    console.log('search:', value);
+    console.log("search:", value);
   };
 
   const menu = (
@@ -79,62 +78,9 @@ function sessionTutor() {
   );
 
   dayjs.extend(customParseFormat);
-  const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY', 'DD-MM-YYYY', 'DD-MM-YY'];
+  const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   return (
     <div>
-      {/* SIDEBAR */}
-      <section id="course__sidebar">
-        <a href="" className="Course__brand">
-        <img src={sidebarlogo} className='student__imglogo'></img>
-          <span className="student__logos">Fluffy</span>
-        </a>
-        <ul className="course__side-menu top">
-          <li>
-            <Link to="/dashboardtt">
-              <i className='bx bx-home' ></i>
-              <span className="course__text">Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/mycoursett">
-              <i className='bx bx-book-open'></i>
-              <span className="course__text">Courses</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/mystudent">
-              <i class='bx bx-male-female'></i>
-              <span className="course__text">My Student</span>
-            </Link>
-          </li>
-          <li className="active">
-            <Link to="/sessiontt">
-              <i class='bx bxs-objects-horizontal-left'></i>
-              <span className="course__text">Session</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/paymenttutor">
-              <i className='bx bx-credit-card' ></i>
-              <span className="course__text">Payment</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/feedback">
-              <i class='bx bxs-message-minus' ></i>
-              <span className="course__text">Feedback</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/viewprofile">
-              <i class='bx bxs-user-circle'></i>
-              <span className="course__text">Profile</span>
-            </Link>
-          </li>
-        </ul>
-      </section>
-      {/* SIDEBAR */}
-      {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
         <Navbar />
@@ -156,15 +102,21 @@ function sessionTutor() {
             </div>
           </div>
 
-          <div className='session__all'>
-            <div className='session__date'>
+          <div className="session__all">
+            <div className="session__date">
               <p>From</p>
               <Space direction="vertical" size={12}>
-                <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
+                <DatePicker
+                  defaultValue={dayjs("01/01/2015", dateFormatList[0])}
+                  format={dateFormatList}
+                />
               </Space>
               <p>To</p>
               <Space direction="vertical" size={12}>
-                <DatePicker defaultValue={dayjs('01/01/2015', dateFormatList[0])} format={dateFormatList} />
+                <DatePicker
+                  defaultValue={dayjs("01/01/2015", dateFormatList[0])}
+                  format={dateFormatList}
+                />
               </Space>
 
               <Select
@@ -174,28 +126,29 @@ function sessionTutor() {
                 onChange={onChange}
                 onSearch={onSearch}
                 filterOption={(input, option) =>
-                  (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                  (option?.label ?? "")
+                    .toLowerCase()
+                    .includes(input.toLowerCase())
                 }
                 options={[
                   {
-                    value: 'reactjs',
-                    label: 'ReactJs',
+                    value: "reactjs",
+                    label: "ReactJs",
                   },
                   {
-                    value: 'bootstrap',
-                    label: 'Bootstrap',
+                    value: "bootstrap",
+                    label: "Bootstrap",
                   },
                   {
-                    value: 'gamedesign',
-                    label: 'Game Design',
+                    value: "gamedesign",
+                    label: "Game Design",
                   },
                   {
-                    value: 'codeuniy',
-                    label: 'Code Unity',
+                    value: "codeuniy",
+                    label: "Code Unity",
                   },
                 ]}
                 className="session__select"
-
               />
 
               <Select
@@ -205,30 +158,30 @@ function sessionTutor() {
                 onChange={onChange}
                 onSearch={onSearch}
                 filterOption={(input, option) =>
-                  (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                  (option?.label ?? "")
+                    .toLowerCase()
+                    .includes(input.toLowerCase())
                 }
                 options={[
                   {
-                    value: 'david',
-                    label: 'David',
+                    value: "david",
+                    label: "David",
                   },
                   {
-                    value: 'statham',
-                    label: 'Statham',
+                    value: "statham",
+                    label: "Statham",
                   },
                   {
-                    value: 'ciniver',
-                    label: 'Ciniver',
+                    value: "ciniver",
+                    label: "Ciniver",
                   },
                   {
-                    value: 'evon',
-                    label: 'Evon',
+                    value: "evon",
+                    label: "Evon",
                   },
                 ]}
                 className="session__select"
-
               />
-
 
               <Select
                 showSearch
@@ -237,43 +190,47 @@ function sessionTutor() {
                 onChange={onChange}
                 onSearch={onSearch}
                 filterOption={(input, option) =>
-                  (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                  (option?.label ?? "")
+                    .toLowerCase()
+                    .includes(input.toLowerCase())
                 }
                 options={[
                   {
-                    value: 'begin',
-                    label: 'Begin',
+                    value: "begin",
+                    label: "Begin",
                   },
                   {
-                    value: 'in progress',
-                    label: 'In Progress',
+                    value: "in progress",
+                    label: "In Progress",
                   },
                   {
-                    value: 'finish',
-                    label: 'Finish',
+                    value: "finish",
+                    label: "Finish",
                   },
                   {
-                    value: 'to do',
-                    label: 'To Do',
+                    value: "to do",
+                    label: "To Do",
                   },
                   {
-                    value: 'Done',
-                    label: 'Done',
+                    value: "Done",
+                    label: "Done",
                   },
                 ]}
                 className="session__select"
-
               />
 
-              <Button type="primary" htmlType="submit" className='session__filter'>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="session__filter"
+              >
                 Filter
               </Button>
 
-              <Button type="default" htmlType="submit" className=''>
+              <Button type="default" htmlType="submit" className="">
                 Clear
               </Button>
             </div>
-
 
             <Table
               columns={columns}
@@ -283,14 +240,12 @@ function sessionTutor() {
                 y: 300,
               }}
             />
-
           </div>
         </main>
         {/* MAIN */}
       </section>
       {/* CONTENT */}
     </div>
-
   );
 }
 

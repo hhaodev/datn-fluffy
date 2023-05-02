@@ -89,7 +89,7 @@ function OnboardTutor__Step2() {
 
     if (isValidated) {
       dispatch(setCurrentTutor_experiences(formList));
-      navigate("/onboardtutorstep3");
+      navigate("/onboarding/step-3");
     } else {
       alert("Please fill in all fields");
     }
@@ -171,19 +171,19 @@ function OnboardTutor__Step2() {
             </div>
             <div className="tutor-button">
               <div>
-            <Button
-              type="primary"
-              className="button-submit1"
-              onClick={handleSubmitNextStep}
-            >
-              Next
-            </Button>
-            </div>
-            <div>
-            <Link to="/onboardtutorstep3" >
-              <Button danger>Skip</Button>
-            </Link>
-            </div>
+                <Button
+                  type="primary"
+                  className="button-submit1"
+                  onClick={handleSubmitNextStep}
+                >
+                  Next
+                </Button>
+              </div>
+              <div>
+                <Link to="onboarding/step-3">
+                  <Button danger>Skip</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
