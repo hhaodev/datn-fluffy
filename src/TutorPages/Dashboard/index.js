@@ -1,36 +1,33 @@
 import "../../TutorPages/Dashboard/dashboard.css";
-import { Link } from "react-router-dom";
 import React from "react";
 import { Space } from "antd";
 import { Select } from "antd";
 import Navbar from "../component/Navbar";
 import { Progress } from "antd";
 import welcomett from "../../assets/images/welcome-removebg-preview.png";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 function DashBoardtutor() {
   const handleChange = (value) => {
     console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
   };
 
-  const data = [
-    {
-      title: "Ant Design Title 1",
-    },
-    {
-      title: "Ant Design Title 2",
-    },
-    {
-      title: "Ant Design Title 3",
-    },
-    {
-      title: "Ant Design Title 4",
-    },
-  ];
+  // const data = [
+  //   {
+  //     title: "Ant Design Title 1",
+  //   },
+  //   {
+  //     title: "Ant Design Title 2",
+  //   },
+  //   {
+  //     title: "Ant Design Title 3",
+  //   },
+  //   {
+  //     title: "Ant Design Title 4",
+  //   },
+  // ];
 
   return (
     <div>
-      {/* CONTENT */}
       <section id="content">
         {/* NAVBAR */}
         <Navbar />
@@ -125,7 +122,6 @@ function DashBoardtutor() {
         </main>
         {/* MAIN */}
       </section>
-      {/* CONTENT */}
     </div>
   );
 }

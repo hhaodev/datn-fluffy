@@ -69,20 +69,30 @@ li {
   align-items: center;
 }
 
-.student__logos {
-  font-family: "Lilita One", cursive;
-  font-weight: bold;
-  color: #fd7238;
-  font-size: 42px;
-  position: relative;
-  left: -20px;
-}
-
 .student__imglogo {
   width: 100px;
   height: 90px;
 }
-
+#course__sidebar {
+  /* background: rgb(63, 94, 251);
+  background: linear-gradient(
+    180deg,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(162, 82, 180, 1) 49%,
+    rgba(252, 70, 107, 1) 100%
+  ); */
+  background: #eecda3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #ef629f,
+    #eecda3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ef629f,
+    #eecda3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 #course__sidebar .course__side-menu {
   width: 100%;
   margin-top: 48px;
@@ -97,22 +107,16 @@ li {
 }
 
 /* radius active */
-#course__sidebar .course__side-menu li a {
+.course__side-menu li a {
   width: 90%;
   height: 100%;
-  background: var(--light);
   display: flex;
   align-items: center;
   border-radius: 10px;
   font-size: 16px;
-  color: var(--dark);
+  color: white;
   overflow-x: hidden;
   font-family: "Ysabeau", sans-serif !important;
-}
-#course__sidebar .course__side-menu.top li.active a {
-  background-color: #f66962;
-  color: #fff;
-  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .bx-home,

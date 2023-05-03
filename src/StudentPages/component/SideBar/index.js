@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import sidebarlogo from "../../../assets/images/logo-removebg-preview.png";
 import { UserType } from "../../../constraint";
-
+import "./index.css";
 export const SideBarLayout = ({ children, type }) => {
   if (!type) {
     return;
@@ -10,63 +10,103 @@ export const SideBarLayout = ({ children, type }) => {
   return (
     <>
       <section id="course__sidebar">
-        <Link href="/home" className="Course__brand">
+        <Link href="/dashboard" className="Course__brand">
           <img src={sidebarlogo} className="student__imglogo"></img>
           <span className="student__logos">Fluffy</span>
         </Link>
         <ul className="course__side-menu top">
-          <li className="active">
-            <Link to="/dashboard">
+          <li>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active_link" : ""
+              }
+            >
               <i className="bx bx-home"></i>
               <span className="course__text">Home</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/courses">
+            <NavLink
+              to="/courses"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active_link" : ""
+              }
+            >
               <i className="bx bx-book-open"></i>
               <span className="course__text">My Courses</span>
-            </Link>
+            </NavLink>
           </li>
           {type === UserType.TUTOR && (
             <>
               <li>
-                <Link to="/students">
+                <NavLink
+                  to="/students"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active_link" : ""
+                  }
+                >
                   <i class="bx bx-male-female"></i>
                   <span className="course__text">My Student</span>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/sessions">
+                <NavLink
+                  to="/sessions"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active_link" : ""
+                  }
+                >
                   <i class="bx bxs-objects-horizontal-left"></i>
                   <span className="course__text">Session</span>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/feedbacks">
+                <NavLink
+                  to="/feedbacks"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active_link" : ""
+                  }
+                >
                   <i class="bx bxs-message-minus"></i>
                   <span className="course__text">Feedback</span>
-                </Link>
+                </NavLink>
               </li>
             </>
           )}
 
           <li>
-            <Link to="/schedules">
+            <NavLink
+              to="/schedules"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active_link" : ""
+              }
+            >
               <i class="bx bx-calendar"></i>
               <span className="course__text">Schedule</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/payments">
+            <NavLink
+              to="/payments"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active_link" : ""
+              }
+            >
               <i className="bx bx-credit-card"></i>
               <span className="course__text">Payment</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/profile">
+            <NavLink
+              to="/profile"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active_link" : ""
+              }
+            >
               <i class="bx bxs-user-circle"></i>
               <span className="course__text">Profile</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </section>

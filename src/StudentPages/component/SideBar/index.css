@@ -1,0 +1,18 @@
+#course__sidebar a.active_link {
+  color: red;
+  background-color: antiquewhite;
+}
+
+.student__logos {
+  font-family: "Lilita One", cursive;
+  font-weight: bold;
+  color: black;
+  font-size: 42px;
+  position: relative;
+  left: -20px;
+}
+
+.student__logos {
+  margin: 20px;
+  font-size: 45px;
+}

@@ -27,9 +27,6 @@ export default function Navbar() {
                 <p className="navbar__phi">
                   Hi, {currentUser.firstName} {currentUser.lastName}
                 </p>
-                <Link className="navbar__phi" to={"/onboarding"}>
-                  onboarding
-                </Link>
                 <button onClick={handleLogout} className="navbar__button1">
                   Logout
                 </button>
