@@ -24,6 +24,10 @@ import StudentPayment from "../StudentPages/StudentPayment/index";
 import StudentProfile from "../StudentPages/StudentProfile/index";
 import SideBarLayout from "../component/SideBar";
 import Navbar from "../component/Navbar";
+import ViewCourse from "../TutorPages/ViewCourse/index";
+import Addcourse from "../TutorPages/AddCourse/index";
+import Schedulestt from "../TutorPages/Schedules/index";
+import Viewcourse from "../StudentPages/Viewcourse/index";
 
 const publicRoutes = [
   { path: "/", component: Home },
@@ -64,6 +68,12 @@ export const routerStudent = [
   {
     path: "/profile",
     component: StudentProfile,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/viewcourse",
+    component: Viewcourse,
     layout: SideBarLayout,
     layout2: Navbar,
   },
@@ -118,9 +128,19 @@ export const routerTutor = [
   },
   {
     path: "/schedules",
-    component: ViewProfile,
+    component: Schedulestt,
     layout: SideBarLayout,
     layout2: Navbar,
+  },
+  {
+    path: "/viewcourses",
+    component: ViewCourse,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/addcourses",
+    component: Addcourse,
   },
   //   { path: "/viewcourse", component: ViewCourse, layout: null },
 ];

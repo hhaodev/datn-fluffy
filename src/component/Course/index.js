@@ -1,4 +1,7 @@
 import "./index.css";
+import { Link } from 'react-router-dom'
+
+
 const CourseComponent = ({ course }) => {
   return (
     <div className="course_box">
@@ -8,7 +11,6 @@ const CourseComponent = ({ course }) => {
           alt=""
           className="course_image"
         />
-        <span className="course_program_number">10 Unit</span>
       </div>
       <div className="course_box_content">
         <h3 className="course_box_content_title">Metaverse For Beginners</h3>
@@ -32,9 +34,9 @@ const CourseComponent = ({ course }) => {
             renders a TouchableHighlight
           </p>
         </div>
-        <a href="playlist.html" className="inline-btn">
+        <Link to="/viewcourses" className="inline-btn">
           See detail
-        </a>
+        </Link>
       </div>
     </div>
   );

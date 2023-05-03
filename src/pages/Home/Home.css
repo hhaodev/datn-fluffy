@@ -51,7 +51,7 @@ header {
 .studenthome__logo1 {
   font-family: "Lilita One", cursive;
   font-weight: bold;
-  color: #f66962;
+  color: #f66962 !important;
 }
 .navbar {
   display: flex;
@@ -706,9 +706,14 @@ header.sticky {
   }
 
   .home__logo1 {
-    font-family: 'Lilita One', cursive;
-    font-weight: bold;
-    color: #f66962;
+  font-family: 'Lilita One', cursive;
+  font-weight: bold;
+  color: #f66962 !important;
 	font-size: 35px;
+}
+
+.home-accessible {
+  color: black !important;
+  font-weight: 400 !important;
 }
 

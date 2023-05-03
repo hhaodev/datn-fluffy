@@ -51,9 +51,11 @@
 }
 
 .ant-btn-primary {
-    background-color: #f66962;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #ef629f, #eecda3 );
 }
 
 .ant-btn-primary:hover {
-    background-color: #ba605b !important;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #ed1c77, #db902d );
 }

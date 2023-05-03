@@ -8,6 +8,7 @@
 }
 
 .add__logo {
+    display: none;
     position: absolute;
     font-family: 'Lilita One', cursive;
     font-weight: bold;
@@ -16,67 +17,18 @@
     top: 20px;
     left: 50px;
 }
-/* 
-.add__infomation {
-    width: 440px;
-    padding: 20px;
-    border: none;
-    background-color: #fff;
-    border-radius: 26px;
-}
 
-.add__program {
-    width: 600px;
-    height: 740px;
-    margin: 50px;
-    padding: 20px;
-    border: none;
-    background-color: #fff;
-    border-radius: 26px;
-}
-
-
-.add__tag {
-    display: flex;
-    justify-content: space-between;
+.add__h1course {
+    color: #f66962 !important;
 }
 
 .add__h1 {
-    padding-bottom: 20px;
-}
-
-.add__addtomore {
-    background-color: #f66962;
-    margin-right: 20px;
-}
-
-.add__addtomore:hover {
-    background-color: #c45852 !important;
-}
-
-.add__savecancel {
-    display: flex;
-    padding-left: 122px;
-}
-
-.add {
-    margin-left: 224px;
-}
-
-.add__h1course {
-    padding-bottom: 10px;
+    color: #f66962 !important;
 }
 
 .add__phase {
-    padding-bottom: 40px;
-    position: relative;
-    bottom: -20px;
-} */
-
-/* .add__savecancel {
-    position: relative;
-    bottom: 20px;
-} */
+    color: #f66962 !important;
+}
 
 .add__form {
     display: flex;
@@ -101,6 +53,10 @@
     border: none;
     background-color: #fff;
     border-radius: 26px;
+}
+
+.add__session1 {
+    color: #f66962 !important;
 }
 
 .add__savecancel {

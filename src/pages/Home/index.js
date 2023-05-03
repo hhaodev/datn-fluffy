@@ -24,7 +24,7 @@ function myHome() {
       <section className="home" id="home">
         <div className="home-text">
           <h6>Best online learning platform</h6>
-          <h1>Accessible Online Courses For All</h1>
+          <h1 className="home-accessible">Accessible Online Courses For All</h1>
           <p>Own your future learning new skills online</p>
           <div className="latter">
             <form>

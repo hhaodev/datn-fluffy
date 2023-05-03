@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
 import { useSelector } from "react-redux";
-import Courses from "../component/course";
 import { Tabs } from "antd";
+import CourseComponent from "../../component/Course";
 
 function MyCoursestt() {
   const [courseList, setCourseList] = useState([]);
@@ -62,7 +62,7 @@ function MyCoursestt() {
           <div className="course-container">
             <div className="title-container">
               <h1 className="course__h1tittle">Courses</h1>
-              <Link to="/addcourse">
+              <Link to="/addcourses">
                 <button className="add-course">
                   <i class="bx bx-plus add__plus"></i>Add Course
                 </button>
@@ -73,7 +73,7 @@ function MyCoursestt() {
               <TabPane tab="Technology" key="1">
                 <div className="student__box">
                   {courseList.map((data) => {
-                    return <Courses data={data} />;
+                    return <CourseComponent data={data} />;
                   })}
                 </div>
               </TabPane>

@@ -1,7 +1,7 @@
 .feedback__box1 {
     width: 386px;
     height: 90px;
-    border: 1px solid rgb(209, 209, 209);
+    border: 1px solid #ef629f;
     border-radius: 20px;
     display: flex;
     justify-content: flex-start;
@@ -35,7 +35,7 @@
 
 .course-box-info {
     margin: 6px 20px;
-    border-right: 1px solid black;
+    border-right: 1px solid #ef629f;
     padding-right: 20px;
 }
 
@@ -72,6 +72,7 @@
 }
 
 .course-box-description {
+    margin-top: 20px;
     width: 450px;
     height: 90px;
     border: 1px dashed black;

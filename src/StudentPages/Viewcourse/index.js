@@ -1,24 +1,21 @@
-import "../ViewCourse/viewcourse.css";
+import '../Viewcourse/viewcourses.css'
 import React from "react";
 import { Button, Collapse } from "antd";
 import { Rate } from 'antd';
 import courses1 from '../../assets/images/courses2.jpg'
 import avt1 from '../../assets/images/avtfeedback1.png'
 
-
-function ViewCourse() {
+function Viewcourse() {
     const { Panel } = Collapse;
     const onChange = (key) => {
     };
-  
-  return (
-    <>
-      <section id="content">
+    return ( 
+        <>
+             <section id="content">
         <main>
           <div className="feedback__head-title">
             <div className="feedback__left led1">
               <h1>View Course</h1>
-              <Button type="default" className="inline-btn1">Publish Course</Button>
             </div>
             {/* <h1 className='feedback__h1'>FeedBack</h1> */}
           </div>
@@ -53,8 +50,8 @@ function ViewCourse() {
         </div>
         <h3 className="dollar-h3">72<i className='bx bx-dollar'></i></h3>
         <div className="all__button2">
-        <Button type="default" className="inline-btn1">Edit</Button>
-        <Button type="default" className="inline-btn1">Delete</Button>
+        <Button type="default" className="inline-btn1">Start Trial Lesson</Button>
+        <Button type="default" className="inline-btn1">Buy now</Button>
         </div>
       </div>
           </div>
@@ -63,8 +60,6 @@ function ViewCourse() {
           <div className='view__content'>
                         <div className='view__but212'>
                             <h1 className='view__h2r'>Content Course</h1>
-                              <Button type="default" className="inline-btn1">Edit</Button>
-                              <Button type="default" className="inline-btn1">Delete</Button>
                         </div>
                         <Collapse defaultActiveKey={['1']} onChange={onChange}>
                             <Panel header="Introduction" key="1">
@@ -101,8 +96,8 @@ function ViewCourse() {
                     </div>
         </main>
       </section>
-    </>
-  );
+        </>
+     );
 }
 
-export default ViewCourse;
+export default Viewcourse;

@@ -1,0 +1,9 @@
+.profile__all {
+    padding: 20px 50px !important;
+}
+
+.view__allform1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
