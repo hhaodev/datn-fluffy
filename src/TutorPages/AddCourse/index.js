@@ -7,9 +7,12 @@ import { Duration } from '../../constraint';
 import { gql } from '@apollo/client';
 import client from '../../configGQL';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 
 
 function Addcourse() {
+    const dispatch = useDispatch()
     const { Option } = Select;
     const navigate = useNavigate()
     const handleUploadImage = (options) => {
@@ -25,7 +28,7 @@ function Addcourse() {
     const [category, setCategory] = useState([]);
     useEffect(() => {
         client.query({
-        query: gql`
+            query: gql`
         query getCategories ($queryParams: QueryFilterDto!) {
             getCategories(queryParams: $queryParams) {
                 items{
@@ -64,7 +67,7 @@ function Addcourse() {
                     mutation: CREATE_COURSE,
                     variables: { input },
                 });
-                return data.createCourse;
+                return data;
             } catch (error) {
                 alert(error);
             }
@@ -93,8 +96,9 @@ function Addcourse() {
         }
         createCourse(client, input)
             .then((result) => {
-                if (result)
-                    navigate("/mycoursett")
+                if (result.createCourse.id)
+                alert("Thêm course thành công")
+                navigate("/mycoursett")
             })
             .catch((error) => alert(error));
     };
@@ -104,7 +108,7 @@ function Addcourse() {
     }
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        
     };
 
     return (

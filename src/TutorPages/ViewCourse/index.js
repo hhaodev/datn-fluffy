@@ -1,13 +1,56 @@
 import '../ViewCourse/viewcourse.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../component/Navbar';
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Modal } from 'antd'
-import { useState, Form } from 'react';
+import React, { useEffect, useState } from 'react'
+import { Button } from 'antd'
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import avt1 from "../../assets/images/avt1.jpg"
+import { gql } from '@apollo/client';
+import client from '../../configGQL';
+
+
 
 function ViewCourse() {
+    const { id } = useParams()
+    const navigate = useNavigate()
+
+    
+
+    const DELETECOURSEBYID = gql`
+    mutation deleteCourseById($courseId: String!) {
+        deleteCourseById(courseId: $courseId) {
+            message
+            success
+        }
+    }
+    `
+
+    const handleEditCourse = () => {
+    
+    }
+    const handleDeleteCourse = () => {
+        let input = { courseId: id }
+        const deteleCourseById = async (client, input) => {
+            try {
+                const { data } = await client.mutate({
+                    mutation: DELETECOURSEBYID,
+                    variables: input,
+                });
+                return data;
+            } catch (error) {
+                alert(error);
+            }
+        };
+        deteleCourseById(client, input)
+            .then((result) => {
+                if (result.deleteCourseById.success) {
+                    alert("Xoá course thành công")
+                    navigate('/mycoursett')
+                }
+            }
+            )
+            .catch((error) => alert(error));
+    }
     return (
         <>
             {/* SIDEBAR */}
@@ -23,7 +66,7 @@ function ViewCourse() {
                             <span className="course__text">Dashboard</span>
                         </Link>
                     </li>
-                    <li>
+                    <li className='active'>
                         <Link to="/mycoursett">
                             <i className='bx bx-book-open'></i>
                             <span className="course__text">Courses</span>
@@ -47,7 +90,7 @@ function ViewCourse() {
                             <span className="course__text">Payment</span>
                         </Link>
                     </li>
-                    <li className="active">
+                    <li>
                         <Link to="" >
                             <i className='bx bxs-message-minus' ></i>
                             <span className="course__text">Feedback</span>
@@ -61,8 +104,6 @@ function ViewCourse() {
                     </li>
                 </ul>
             </section>
-            {/* SIDEBAR */}
-
             {/* SIDEBAR */}
 
             <section id="content">
@@ -80,20 +121,19 @@ function ViewCourse() {
                     <div className='course__alls'>
                         <div className="box__student">
                             <div className="student__thumb">
-                                <img alt="" className="student__img2" />
-                                
+                                <img  alt="" className="student__img2" />
                             </div>
                             <div className="student__tutor">
-                                <img alt="" className="student__img1" />
+                                <img src={avt1} alt="" className="student__img1" />
                                 <div className="student__info">
                                     <h3 className="student__h32"></h3>
                                 </div>
                             </div>
-                            <h3 className="student__title">úuausdadad</h3>
-                            <p className='student__des'>sdssdsfs</p>
+                            <h3 className="student__title">aaaa</h3>
+                            <p className='student__des'>aaaa</p>
                             <div className='course__buttonlink'>
-                                <Link className="inline-btn">edit</Link>
-                                <Link className="inline-btn">Delete</Link>
+                                <Button onClick={handleEditCourse} className="inline-btn">Edit</Button>
+                                <Button onClick={handleDeleteCourse} className="inline-btn">Delete</Button>
                             </div>
                         </div>
                     </div>

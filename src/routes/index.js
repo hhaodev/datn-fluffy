@@ -56,7 +56,7 @@ const publicRoutes = [
     { path: '/dashboardtt', component: dashBoardtutor, layout: null},
     { path: '/paymenttutor', component: payMentTutor, layout: null},
     { path: '/viewprofile', component: ViewProfile, layout: null},
-    { path: '/viewcourse', component: ViewCourse, layout: null},
+    { path: '/viewcourse/:id', component: ViewCourse, layout: null},
 
     //pending
     { path: '/pending', component: Pending, layout: null},

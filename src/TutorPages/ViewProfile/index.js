@@ -26,11 +26,10 @@ function ViewProfile() {
         </Menu>
     );
 
+
+
+    
     const onFinish = (values) => {
-        const datatemp = {
-            email: values.username,
-            password: values.password
-        }
     };
 
     const onFinishFailed = (errorInfo) => {
