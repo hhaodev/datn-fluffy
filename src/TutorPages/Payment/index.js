@@ -1,16 +1,12 @@
 import "../../TutorPages/Payment/paymentt.css";
-import { Link } from "react-router-dom";
-import Navbar from "../component/Navbar";
 import React, { useState } from "react";
 import { Table, Modal } from "antd";
-import { UserOutlined } from "@ant-design/icons";
 import { AutoComplete } from "antd";
 import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
-import { Radio, Select } from "antd";
+import { Select } from "antd";
 import { Button, Input, Form, message, Typography, Divider } from "antd";
 import copy from "copy-to-clipboard";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 const PaymentTutor = () => {
   // form bill
@@ -184,10 +180,6 @@ const PaymentTutor = () => {
   return (
     <>
       <section id="content">
-        {/* NAVBAR */}
-        <Navbar />
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left">

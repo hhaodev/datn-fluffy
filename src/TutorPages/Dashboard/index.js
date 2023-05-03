@@ -2,7 +2,6 @@ import "../../TutorPages/Dashboard/dashboard.css";
 import React from "react";
 import { Space } from "antd";
 import { Select } from "antd";
-import Navbar from "../component/Navbar";
 import { Progress } from "antd";
 import welcomett from "../../assets/images/welcome-removebg-preview.png";
 
@@ -29,10 +28,6 @@ function DashBoardtutor() {
   return (
     <div>
       <section id="content">
-        {/* NAVBAR */}
-        <Navbar />
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="dashboard__all">
             <ul class="box-info">

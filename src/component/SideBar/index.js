@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import sidebarlogo from "../../../assets/images/logo-removebg-preview.png";
-import { UserType } from "../../../constraint";
+import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
+import { UserType } from "../../constraint";
 import "./index.css";
+
 export const SideBarLayout = ({ children, type }) => {
   if (!type) {
     return;

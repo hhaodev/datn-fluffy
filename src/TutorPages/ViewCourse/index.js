@@ -1,25 +1,11 @@
 import "../ViewCourse/viewcourse.css";
 import { Link } from "react-router-dom";
-import Navbar from "../component/Navbar";
 import React from "react";
-import { useSelector } from "react-redux";
-import { Modal } from "antd";
-import { useState, Form } from "react";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 function ViewCourse() {
   return (
     <>
-      {/* SIDEBAR */}
-
-      {/* SIDEBAR */}
-
-      {/* SIDEBAR */}
-
       <section id="content">
-        {/* NAVBAR */}
-        <Navbar />
-        {/* NAVBAR */}
         <main>
           <div className="feedback__head-title">
             <div className="feedback__left">

@@ -1,17 +1,10 @@
 import "../../TutorPages/Feedback/feedback.css";
 import React, { useState } from "react";
-import { Card, Rate, Button, Modal } from "antd";
-// import user from '../../assets/images/user.jpg'
-import { Link } from "react-router-dom";
-// import avtfeedback from '../../assets/images/avtfeedback1.png'
-import avtfeedback2 from "../../assets/images/avt1.jpg";
-// import avtfeedback3 from '../../assets/images/avt2.jpg'
+import { Modal } from "antd";
+
 import avtfeedback4 from "../../assets/images/avt3.jpg";
-import avtfeedback5 from "../../assets/images/avt4.jpg";
-// import avtfeedback6 from '../../assets/images/avt5.jpg'
-import Navbar from "../component/Navbar";
+
 import { Avatar, Space } from "antd";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 const CourseBox = () => {
   const [open, setOpen] = useState(false);
@@ -29,10 +22,6 @@ const CourseBox = () => {
       {/* SIDEBAR */}
 
       <section id="content">
-        {/* NAVBAR */}
-        <Navbar />
-        {/* NAVBAR */}
-
         <div className="feedback__head-title">
           <div className="feedback__left">
             <h1>Feedback</h1>

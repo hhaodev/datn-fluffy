@@ -1,15 +1,10 @@
 import "../../TutorPages/Session/session.css";
-import { Avatar, Dropdown, Menu } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import user from "../../assets/images/user.jpg";
-import { Link } from "react-router-dom";
+import { Menu } from "antd";
 import React from "react";
 import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { Select, Button, Table } from "antd";
-import Navbar from "../component/Navbar";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 function sessionTutor() {
   const columns = [
@@ -82,10 +77,6 @@ function sessionTutor() {
   return (
     <div>
       <section id="content">
-        {/* NAVBAR */}
-        <Navbar />
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left">

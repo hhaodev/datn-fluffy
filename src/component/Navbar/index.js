@@ -1,13 +1,20 @@
 import React from "react";
-import "../../component/Navbar/navbar.css";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Avatar, Dropdown, Menu } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import user from "../../assets/images/user.jpg";
+import { useNavigate } from "react-router-dom";
+import "./index.css";
 
 export default function Navbar() {
+  const menu = (
+    <Menu>
+      <Menu.Item key="profile">Profile</Menu.Item>
+      <Menu.Item key="logout" onClick={() => handleLogout()}>
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
   const navigate = useNavigate();
-
-  const currentUser = useSelector((state) => state.user.currentUser);
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
@@ -15,35 +22,20 @@ export default function Navbar() {
     window.location.reload(false);
   };
   return (
-    <header>
-      <a href="" className="studenthome__logo">
-        <h1 className="studenthome__logo1">Fluffy</h1>
-      </a>
-      <div className="header-icons">
-        <ul className="navbar">
-          <>
-            {!(Object.values(currentUser).length === 0) ? (
-              <>
-                <p className="navbar__phi">
-                  Hi, {currentUser.firstName} {currentUser.lastName}
-                </p>
-                <button onClick={handleLogout} className="navbar__button1">
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/sign-in">Sign in</Link>
-                </li>
-                <li>
-                  <Link to="/sign-up">Sign up</Link>
-                </li>
-              </>
-            )}
-          </>
-        </ul>
-      </div>
-    </header>
+    <nav className="nav-header">
+      <i className="bx bx-menu" />
+      <form action="#">
+        <div className="form-input">
+          <input type="search" placeholder="Search..." />
+          <button type="submit" className="search-btn">
+            <i className="bx bx-search" />
+          </button>
+        </div>
+      </form>
+      <input type="checkbox" id="switch-mode" hidden />
+      <Dropdown overlay={menu} placement="bottomRight">
+        <Avatar className="avatar" src={user} icon={<DownOutlined />} />
+      </Dropdown>
+    </nav>
   );
 }

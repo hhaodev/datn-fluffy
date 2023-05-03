@@ -1,10 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  redirect,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, redirect, useNavigate } from "react-router-dom";
 import { publicRoutes } from "./routes";
 import { Fragment, useEffect, useState } from "react";
 import DefaultLayout from "./layout/DefaultLayout";
@@ -14,13 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSchools } from "./Redux/features/schoolsSlice";
 import { UserType } from "./constraint";
 import { routerStudent, routerTutor } from "./routes/index";
-import { Navigate } from "react-router-dom";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.user.currentUser);
-  console.log("🚀 ~ file: App.js:20 ~ App ~ currentUser:", currentUser);
+
   const [type, setType] = useState(null);
 
   useEffect(() => {
@@ -112,6 +106,7 @@ function App() {
                 path={route.path}
                 element={
                   <Layout type={type}>
+                    {route.layout2 && <route.layout2 />}
                     <Page />
                   </Layout>
                 }
@@ -137,6 +132,7 @@ function App() {
                 path={route.path}
                 element={
                   <Layout type={type}>
+                    {route.layout2 && <route.layout2 />}
                     <Page />
                   </Layout>
                 }

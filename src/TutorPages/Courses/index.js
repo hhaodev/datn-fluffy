@@ -1,13 +1,11 @@
 import "../../TutorPages/Courses/courses.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Navbar from "../component/Navbar";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
 import { useSelector } from "react-redux";
 import Courses from "../component/course";
 import { Tabs } from "antd";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 function MyCoursestt() {
   const [courseList, setCourseList] = useState([]);
@@ -56,10 +54,6 @@ function MyCoursestt() {
   return (
     <div>
       <section id="content">
-        {/* NAVBAR */}
-        <Navbar />
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left"></div>

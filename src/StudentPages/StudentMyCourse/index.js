@@ -1,30 +1,13 @@
 import "../StudentMyCourse/studentmycourse.css";
 import React from "react";
-import { Avatar, Dropdown, Menu } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import user from "../../assets/images/user.jpg";
+import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Col, InputNumber, Row, Slider, Space } from "antd";
 import { Progress, Tooltip } from "antd";
 
 function StudentMyCourse() {
-  // avt
-  const menu = (
-    <Menu>
-      <Menu.Item key="profile">Profile</Menu.Item>
-      <Menu.Item key="logout" onClick={() => handleLogout()}>
-        Logout
-      </Menu.Item>
-    </Menu>
-  );
   const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
-    navigate("/");
-    window.location.reload(false);
-  };
   //  end avt
 
   const [inputValue, setInputValue] = useState(1);
@@ -35,23 +18,6 @@ function StudentMyCourse() {
   return (
     <>
       <section id="content">
-        {/* NAVBAR */}
-        <nav>
-          <i className="bx bx-menu" />
-          <form action="#">
-            <div className="form-input">
-              <input type="search" placeholder="Search..." />
-              <button type="submit" className="search-btn">
-                <i className="bx bx-search" />
-              </button>
-            </div>
-          </form>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-          </Dropdown>
-        </nav>
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left">

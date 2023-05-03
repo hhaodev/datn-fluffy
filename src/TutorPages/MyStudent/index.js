@@ -1,12 +1,8 @@
 import "../../TutorPages/MyStudent/mystudent.css";
-import { Link } from "react-router-dom";
-import { Table, Modal, Button, Form, Input } from "antd";
-import Navbar from "../component/Navbar";
+import { Table, Modal, Button, Form } from "antd";
 import React, { useState } from "react";
-import userstudent from "../../assets/images/avt1.jpg";
 import { Avatar } from "antd";
 import avt from "../../../src/assets/images/avt1.jpg";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 
 const MyStudenttutor = () => {
   // Table
@@ -107,10 +103,6 @@ const MyStudenttutor = () => {
   return (
     <>
       <section id="content">
-        {/* NAVBAR */}
-        <Navbar />
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left">

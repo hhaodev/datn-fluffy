@@ -122,23 +122,6 @@ function StudentSchedule() {
   return (
     <>
       <section id="content">
-        {/* NAVBAR */}
-        <nav>
-          <i className="bx bx-menu" />
-          <form action="#">
-            <div className="form-input">
-              <input type="search" placeholder="Search..." />
-              <button type="submit" className="search-btn">
-                <i className="bx bx-search" />
-              </button>
-            </div>
-          </form>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-          </Dropdown>
-        </nav>
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="course__head-title">
             <div className="course__left">
@@ -150,7 +133,6 @@ function StudentSchedule() {
             <Calendar cellRender={cellRender} className="schedule__calen" />
           </div>
         </main>
-        {/* MAIN */}
       </section>
       {/* CONTENT */}
     </>

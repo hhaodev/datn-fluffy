@@ -8,7 +8,7 @@ import OnboardTutor__Step1 from "../Onboarding__Tutor/Onboard__Tutorstep1/index"
 import OnboardTutor__Step2 from "../Onboarding__Tutor/OnBoard__Tutorstep2/index";
 import OnboardTutor__Step3 from "../Onboarding__Tutor/Onboard__Tutorstep3/index";
 import OnboardTutor__Step4 from "../Onboarding__Tutor/Onboard__Tutorstep4/index";
-import stdHome from "../StudentPages/StudentHome/index";
+import HomeComponent from "../StudentPages/StudentHome/index";
 import myCourse from "../StudentPages/StudentMyCourse/index";
 import Verify from "../Register/Verify";
 import myCoursestt from "../TutorPages/Courses/index";
@@ -22,7 +22,8 @@ import ViewProfile from "../TutorPages/ViewProfile/index";
 import StudentSchedule from "../StudentPages/StudentSchedule/index";
 import StudentPayment from "../StudentPages/StudentPayment/index";
 import StudentProfile from "../StudentPages/StudentProfile/index";
-import SideBarLayout from "../StudentPages/component/SideBar";
+import SideBarLayout from "../component/SideBar";
+import Navbar from "../component/Navbar";
 
 const publicRoutes = [
   { path: "/", component: Home },
@@ -36,26 +37,91 @@ const publicRoutes = [
 
 export const routerStudent = [
   { path: "/onboarding", component: Onboarding__Student },
-  { path: "/dashboard", component: stdHome, layout: SideBarLayout },
-  { path: "/courses", component: myCourse, layout: SideBarLayout },
-  { path: "/schedules", component: StudentSchedule, layout: SideBarLayout },
-  { path: "/payments", component: StudentPayment, layout: SideBarLayout },
-  { path: "/profile", component: StudentProfile, layout: SideBarLayout },
+  {
+    path: "/dashboard",
+    component: HomeComponent,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/courses",
+    component: myCourse,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/schedules",
+    component: StudentSchedule,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/payments",
+    component: StudentPayment,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/profile",
+    component: StudentProfile,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
 ];
 export const routerTutor = [
   { path: "/onboarding/step-1", component: OnboardTutor__Step1 },
   { path: "/onboarding/step-2", component: OnboardTutor__Step2 },
   { path: "/onboarding/step-3", component: OnboardTutor__Step3 },
   { path: "/onboarding/step-4", component: OnboardTutor__Step4 },
-  { path: "/courses", component: myCoursestt, layout: SideBarLayout },
+  {
+    path: "/courses",
+    component: myCoursestt,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
   //   { path: "/courses/new-course", component: addcourse, layout: null },
-  { path: "/sessions", component: sessionTutor, layout: SideBarLayout },
-  { path: "/feedbacks", component: feedBack, layout: SideBarLayout },
-  { path: "/students", component: myStudent, layout: SideBarLayout },
-  { path: "/dashboard", component: dashBoardtutor, layout: SideBarLayout },
-  { path: "/payments", component: payMentTutor, layout: SideBarLayout },
-  { path: "/profile", component: ViewProfile, layout: SideBarLayout },
-  { path: "/schedules", component: ViewProfile, layout: SideBarLayout },
+  {
+    path: "/sessions",
+    component: sessionTutor,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/feedbacks",
+    component: feedBack,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/students",
+    component: myStudent,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/dashboard",
+    component: dashBoardtutor,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/payments",
+    component: payMentTutor,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/profile",
+    component: ViewProfile,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/schedules",
+    component: ViewProfile,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
   //   { path: "/viewcourse", component: ViewCourse, layout: null },
 ];
 

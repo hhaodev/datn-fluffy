@@ -50,16 +50,6 @@ function ViewProfile() {
   return (
     <div className="view__all">
       <section id="content">
-        {/* NAVBAR */}
-        <nav>
-          <i className="bx bx-menu" />
-          <form action="#"></form>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-          </Dropdown>
-        </nav>
-        {/* NAVBAR */}
-        {/* MAIN */}
         <main>
           <div className="course__head-title__view">
             <div className="course__left">
