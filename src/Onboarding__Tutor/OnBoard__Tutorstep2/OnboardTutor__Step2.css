@@ -1,6 +1,6 @@
 .step2__body {
   width: 100%;
-  min-height: 150vh;
+  min-height: 100vh;
   padding-right: 40px;
   padding-left: 40px;
   padding-top: 100px;
@@ -63,13 +63,13 @@
 .student__buttonsub2:hover {
   background-color: #c45852 !important;
 }
-/* 
+
 .step2__skip {
   position: absolute;
   right: 0;
   bottom: 14%;
   transform: translateY(-13%);
-} */
+}
 
 .step2__body .form-wrapper {
   margin: auto;
@@ -78,7 +78,7 @@
 }
 
 .step2__body .box__onboardstd {
-  margin-top: 90px;
+  margin-top: 0;
 }
 
 .step2__body .student-form-container {
@@ -86,27 +86,13 @@
   height: 100%;
 }
 .step2__body .form__dropdown {
-  height: 400px;
+  height: 370px;
 }
 
 :where(.css-dev-only-do-not-override-1e3x2xa).ant-form-item {
   margin-bottom: 10px;
 }
 
-
-.tutor-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  margin-top: 10px;
-}
-
-.button-submit1 {
-  font-size: 20px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding:20px 25px;
-  margin-right: 20px;
+.step2__body .button-submit {
+  bottom: 20px;
 }

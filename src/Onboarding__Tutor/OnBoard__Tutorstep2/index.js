@@ -173,7 +173,7 @@ function OnboardTutor__Step2() {
               <div>
                 <Button
                   type="primary"
-                  className="button-submit1"
+                  className="button-submit"
                   onClick={handleSubmitNextStep}
                 >
                   Next
