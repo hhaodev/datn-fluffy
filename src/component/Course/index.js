@@ -3,17 +3,16 @@ import { Link } from 'react-router-dom'
 
 
 const CourseComponent = ({ course }) => {
+  console.log("🚀 ~ file: index.js:3 ~ CourseComponent ~ course:", course);
+  const { firstName, lastName } = course.tutorProfile.tutor;
   return (
     <div className="course_box">
       <div className="course_thumnail">
-        <img
-          src="https://i.pinimg.com/564x/8b/c7/35/8bc735de0ba302f32f3fa1bebe361b67.jpg"
-          alt=""
-          className="course_image"
-        />
+        <img src={course.imageUrl} alt="" className="course_image" />
+        <span className="course_program_number">10 Unit</span>
       </div>
       <div className="course_box_content">
-        <h3 className="course_box_content_title">Metaverse For Beginners</h3>
+        <h3 className="course_box_content_title">{course.name}</h3>
         <div className="course_author">
           <div className="course_author_image">
             <img
@@ -21,18 +20,11 @@ const CourseComponent = ({ course }) => {
               alt=""
             />
           </div>
-          <p className="course_author_info">Christopher</p>
+          <p className="course_author_info">{`${firstName} ${lastName}`}</p>
         </div>
 
         <div className="course_box_content_des">
-          <p>
-            an element that lets the user navigate to another view by tapping
-            it, similar to how a elements work in a web app. In
-            react-router-native, a link renders a TouchableHighlight an element
-            that lets the user navigate to another view by tapping it, similar
-            to how a elements work in a web app. In react-router-native, a link
-            renders a TouchableHighlight
-          </p>
+          <p>{course.description}</p>
         </div>
         <Link to="/viewcourses" className="inline-btn">
           See detail

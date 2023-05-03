@@ -1,15 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit'
-import userSlice from './features/userSlice'
-import verifySlice from './features/verifySlice'
-import schoolsSlice from './features/schoolsSlice'
-import tutorSlice from './features/tutorSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import userSlice from "./features/userSlice";
+import verifySlice from "./features/verifySlice";
+import schoolsSlice from "./features/schoolsSlice";
+import tutorSlice from "./features/tutorSlice";
+import notificationSlice from "./features/notificationSlice";
 
 export const store = configureStore({
-  reducer: 
-  {
+  reducer: {
     verify: verifySlice,
-    user : userSlice,
+    user: userSlice,
     schools: schoolsSlice,
-    tutor: tutorSlice
+    tutor: tutorSlice,
+    error: notificationSlice,
   },
-})
+});
