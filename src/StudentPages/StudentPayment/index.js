@@ -13,6 +13,7 @@ import { AutoComplete } from 'antd';
 import React, { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import Navbar from '../component/Navbar';
 
 function StudentPayment() {
     // form bill
@@ -78,22 +79,28 @@ function StudentPayment() {
 
     const dataSource = [
         {
-            purchase: '1',
+            purchasedate: '15/5/2023',
             subtotal: 'John Brown',
-            Fee: 32,
-            total: 'New York No. 1 Lake Park',
+            total: '230',
+            currency: 'USD',
+            paymentmethod: 'Credit card',
+            paymentid: 1,
         },
         {
-            key: '2',
-            name: 'Jim Green',
-            age: 42,
-            address: 'London No. 1 Lake Park',
+            purchasedate: '16/5/2023',
+            subtotal: 'Ma Jack',
+            total: '129',
+            currency: 'USD',
+            paymentmethod: 'Credit card',
+            paymentid: 2,
         },
         {
-            key: '3',
-            name: 'Joe Black',
-            age: 32,
-            address: 'Sidney No. 1 Lake Park',
+            purchasedate: '25/5/2023',
+            subtotal: 'Stephonwn',
+            total: '62',
+            currency: 'USD',
+            paymentmethod: 'Credit card',
+            paymentid: 3,
         },
     ];
 
@@ -107,11 +114,6 @@ function StudentPayment() {
             title: 'Subtotal',
             dataIndex: 'subtotal',
             key: 'subtotal',
-        },
-        {
-            title: 'Fee',
-            dataIndex: 'fee',
-            key: 'fee',
         },
         {
             title: 'Total',
@@ -206,18 +208,7 @@ function StudentPayment() {
             {/* SIDEBAR */}
             <section id="content">
                 {/* NAVBAR */}
-                <nav>
-                    <i className="bx bx-menu" />
-                    <form action="#">
-                        <div className="form-input">
-                            <input type="search" placeholder="Search..." />
-                            <button type="submit" className="search-btn"><i className="bx bx-search" /></button>
-                        </div>
-                    </form>
-                    <Dropdown overlay={menu} placement="bottomRight">
-                        <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-                    </Dropdown>
-                </nav>
+                <Navbar/>
                 {/* NAVBAR */}
                 {/* MAIN */}
                 <main>
@@ -335,10 +326,10 @@ function StudentPayment() {
                                                         <p className='payment__total'>Total: </p>
                                                         <p>$110.00</p>
                                                     </div>
-                                                    <div className='flex4'>
+                                                    {/* <div className='flex4'>
                                                         <p className='payment__fee'>Fee: </p>
                                                         <p>$10.00</p>
-                                                    </div>
+                                                    </div> */}
                                                     <div className='flex5'>
                                                         <p className='payment__currency'>Currency: </p>
                                                         <p>USD</p>
@@ -370,11 +361,11 @@ function StudentPayment() {
 
                                                         <div className='payment__ttli2'>
                                                             <div className='payment__li4'>
-                                                                <h4 className='payment__sessiondates'><i class='bx bx-calendar' ></i>Session date:</h4>
+                                                                <h4 className='payment__sessiondates'><i class='bx bxs-calendar-week' ></i>Session date:</h4>
                                                                 <p>Apr 12,2023</p>
                                                             </div>
                                                             <div className='payment__li5'>
-                                                                <h4 className='payment__duration'><i class='bx bx-alarm'></i>Duration</h4>
+                                                                <h4 className='payment__duration'><i class='bx bx-alarm'></i>Duration:</h4>
                                                                 <p>1 hour</p>
                                                             </div>
                                                         </div>

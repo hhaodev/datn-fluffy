@@ -8,7 +8,6 @@ import cate1 from '../../assets/images/undraw_Educator_re_ju47.png'
 import cate2 from '../../assets/images/undraw_Male_avatar_g98d.png'
 import cate3 from '../../assets/images/undraw_Traveling_yhxq.png'
 import cate4 from '../../assets/images/undraw_Ready_for_waves_vlke.png'
-import course4 from '../../assets/images/course4.jpg'
 import cta1 from '../../assets/images/cta1.png'
 import cta2 from '../../assets/images/cta2.png'
 import cta3 from '../../assets/images/cta3.png'
@@ -16,8 +15,7 @@ import cta4 from '../../assets/images/cta4.png'
 import cta5 from '../../assets/images/cta5.png'
 import cta6 from '../../assets/images/cta6.png'
 import about from '../../assets/images/about.png'
-import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function myHome() {
     return (
@@ -164,10 +162,13 @@ function myHome() {
             <section className="contact" id="contact">
                 <div className="main-contact">
                     <div className="contact-content">
-                        <h1 className='studenthome__logo1'>Fluffy</h1>
-                        <li><a href="">Facebook</a></li>
-                        <li><a href="">Instagram</a></li>
-                        <li><a href="">Twitter</a></li>
+                        <h1 className='home__logo1'>Fluffy</h1>
+                         <ul className='home__icon'>
+                         <li><Link to=""><i className='bx bxl-facebook-circle'></i></Link></li>
+                         <li><Link to=""><i className='bx bxl-instagram-alt' ></i></Link></li>
+                         <li><Link to=""><i className='bx bxl-github' ></i></Link></li>
+                         <li><Link to=""><i className='bx bxl-twitter' ></i></Link></li>
+                         </ul>
                     </div>
                     <div className="contact-content">
                         <li><a href="">Home</a></li>

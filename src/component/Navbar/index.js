@@ -16,16 +16,16 @@ export default function Navbar() {
     return (
         <header>
             <a href="" className="studenthome__logo">
-                <h1 className='studenthome__logo1'>Fluffy</h1>
+                <h1 className='home__logo1'>Fluffy</h1>
             </a>
             <div className="header-icons">
                 <ul className='navbar'>
                     <>
                         {!(Object.values(currentUser).length === 0) ? (
-                            <>
+                            <div className='navbar__fix'>
                                 <p className='navbar__phi'>Hi, {currentUser.firstName} {currentUser.lastName}</p>
-                                <button onClick={handleLogout} className='navbar__button1'>Logout</button>
-                            </>
+                                <button onClick={handleLogout} className='navbar__button1'>Log out</button>
+                            </div>
                         ) : (
                             <>
                                 <li><Link to="/signin">Sign in</Link></li>

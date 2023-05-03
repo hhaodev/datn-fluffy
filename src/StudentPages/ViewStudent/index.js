@@ -1,95 +1,78 @@
-import '../ViewCourse/viewcourse.css'
-import { Link } from 'react-router-dom';
+import '../ViewStudent/viewstudent.css'
+import { Link } from 'react-router-dom'
 import Navbar from '../component/Navbar';
-import React from 'react'
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 import course1 from '../../assets/images/course1.jpg'
 import avt1 from '../../assets/images/avt1.jpg'
-import { Rate, Button } from 'antd';
+import { Rate } from 'antd';
 import { Collapse } from 'antd';
 
+function ViewStudent() {
 
-function ViewCourse() {
     // content view
     const { Panel } = Collapse;
   
     // end content view
-
-     // end content view
-     const onChange = (key) => {
+    const onChange = (key) => {
         console.log(key);
       };
-    return (
-        <>
-            {/* SIDEBAR */}
-            <section id="course__sidebar">
-                <Link to="" className="Course__brand">
-                    <img src={sidebarlogo} className='student__imglogo'></img>
-                    <span className="student__logos">Fluffy</span>
-                </Link>
-                <ul className="course__side-menu top">
-                    <li>
-                        <Link to="/dashboardtt">
-                            <i className='bx bx-home' ></i>
-                            <span className="course__text">Dashboard</span>
-                        </Link>
-                    </li>
-                    <li className="active">
-                        <Link to="/mycoursett">
-                            <i className='bx bx-book-open'></i>
-                            <span className="course__text">Courses</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/mystudent">
-                            <i className='bx bx-male-female'></i>
-                            <span className="course__text">My Student</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/sessiontt">
-                            <i className='bx bxs-objects-horizontal-left'></i>
-                            <span className="course__text">Session</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/paymenttutor">
-                            <i className='bx bx-credit-card' ></i>
-                            <span className="course__text">Payment</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="" >
-                            <i className='bx bxs-message-minus' ></i>
-                            <span className="course__text">Feedback</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/viewprofile">
-                            <i class='bx bxs-user-circle'></i>
-                            <span className="course__text">Profile</span>
-                        </Link>
-                    </li>
-                </ul>
-            </section>
-            {/* SIDEBAR */}
+    return ( 
+        <div>
+      {/* SIDEBAR */}
+      <section id="course__sidebar">
+        <a href="" className="Course__brand">
+          <img src={sidebarlogo} className='student__imglogo'></img>
+          <span className="student__logos">Fluffy</span>
+        </a>
+        <ul className="course__side-menu top">
+          <li className="active">
+            <Link to="/studenthome">
+              <i className='bx bx-home' ></i>
+              <span className="course__text">Home</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/studentmycourse">
+              <i className='bx bx-book-open'></i>
+              <span className="course__text">My Courses</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/studentschedule">
+              <i class='bx bx-calendar' ></i>
+              <span className="course__text">Schedule</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/studentpayment">
+              <i className='bx bx-credit-card'></i>
+              <span className="course__text">Payment</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/studentprofile">
+              <i class='bx bxs-user-circle'></i>
+              <span className="course__text">Profile</span>
+            </Link>
+          </li>
+        </ul>
+      </section>
+      {/* SIDEBAR */}
+      {/* CONTENT */}
+      <section id="content">
+        {/* NAVBAR */}
+        <Navbar />
+        {/* NAVBAR */}
+        {/* MAIN */}
+        <main className='view__course'>
+          <div className="head-title">
+            <div className="left">
+              <h1><i class='bx bxs-notepad'></i>View Course</h1>
+            </div>
+          </div>
 
-            {/* SIDEBAR */}
 
-            <section id="content">
-                {/* NAVBAR */}
-                <Navbar />
-                {/* NAVBAR */}
-                <main>
-                    <div className="feedback__head-title">
-                        <div className="feedback__left">
-                            <h1 className='view__h1view'><i className='bx bx-dock-right'></i>View Course</h1>
-                            <Button type='primary' className='view__but1'><i class='bx bxs-up-arrow-alt'></i>Publish Course</Button>
-                        </div>
-                        {/* <h1 className='feedback__h1'>FeedBack</h1> */}
-                    </div>
-
-                    <div className='bg__view'>
+          <div className='bg__view'>
           <div className="box__student">
                 <div className="student__thumb">
                   <img src={course1} alt="" className="student__img2" />
@@ -107,18 +90,14 @@ function ViewCourse() {
                 <p className='student__des'>Become an ethical hacker that can hack computer systems like black hat hackers.</p>
                 <h2 className='view__cost'><i class='bx bx-dollar' ></i>60</h2>
                 <div className='view__buttonall'>
-                <div className='course__buttonlink'><Link to='/viewcourse' className="inline-btn"><i class='bx bxs-edit' ></i>Edit</Link></div>
-                <div className='course__buttonlink'><Link to='/viewcourse' className="inline-btn view__but242"><i class='bx bx-x' ></i>Delete</Link></div>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i className='bx bx-tv' ></i>Start Trial lesson</Link></div>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i className='bx bx-cart-add'></i>Buy Now</Link></div>
                 </div>
               </div>
           </div> 
 
           <div className='view__content'>
-            <div className='view__but212'>
-            <h2 className='view__h2r'><i class='bx bxs-book-content' ></i>Content Course</h2>
-            <Button type='primary' className='view__but1'><i class='bx bxs-edit' ></i>Edit</Button>
-            <Button type='primary' className='view__but242'><i class='bx bx-x' ></i>Delete</Button>
-            </div>
+            <h2 className='view__h2'><i class='bx bxs-book-content' ></i>Content Course</h2>
           <Collapse defaultActiveKey={['1']} onChange={onChange}>
             <Panel header="Introduction" key="1">
                 <p className='introduction__view'><i className='bx bxs-tv' ></i>In this lecture you will learn what is meant by a hacker<span className='span__view'>09:28</span></p>
@@ -151,12 +130,14 @@ function ViewCourse() {
                 <p><i className='bx bxs-tv' ></i>Configuring Wireless Settings for Maximum Security<span className='span__view'>02:19</span></p>
             </Panel>
             </Collapse>
-            </div>
-                </main>
-            </section>
+            </div> 
 
-        </>
-    );
+            </main>
+        {/* MAIN */}
+      </section>
+      {/* CONTENT */}
+    </div>
+     );
 }
 
-export default ViewCourse;
+export default ViewStudent;

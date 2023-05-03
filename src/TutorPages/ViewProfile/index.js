@@ -21,7 +21,6 @@ function ViewProfile() {
     };
     const menu = (
         <Menu>
-            <Menu.Item key="profile"><Link to='/viewprofile'>View Profile</Link></Menu.Item>
             <Menu.Item key="logout" onClick={() => { handleLogout() }}>Log out</Menu.Item>
         </Menu>
     );
@@ -105,10 +104,10 @@ function ViewProfile() {
                 </nav>
                 {/* NAVBAR */}
                 {/* MAIN */}
-                <main>
+                <main className='main__prolife2'>
                     <div className="course__head-title__view">
                         <div className="course__left">
-                            <h1>View Profile</h1>
+                            <h1><i class='bx bxs-user-circle'></i>View Profile</h1>
                             <div className='view__allform'>
                                 <div className='view__form'>
                                     <div className='view__avt'>
@@ -128,6 +127,8 @@ function ViewProfile() {
                                         <Button type="primary" htmlType="submit" className="view__upload">
                                             Upload new picture
                                         </Button>
+                                        <p className='view__id'>ID: <span className='view__span1'>16612</span></p>
+                                        <p className='view__status'>Status: <span className='view__span1'>Approved</span><i class='bx bx-check'></i></p>
                                     </div>
 
                                     <Form
@@ -152,7 +153,7 @@ function ViewProfile() {
                                                 ]}
                                                 className='view__firsts1'
                                             >
-                                                <Input style={{ height: "50px", width: '258px' }} />
+                                                <Input placeholder='Tran' style={{ height: "50px", width: '258px' }} />
                                             </Form.Item>
 
                                             <Form.Item
@@ -165,7 +166,7 @@ function ViewProfile() {
                                                     },
                                                 ]}
                                             >
-                                                <Input style={{ height: "50px", width: '278px', width: '278px' }} />
+                                                <Input placeholder='Hoang' style={{ height: "50px", width: '278px', width: '278px' }} />
                                             </Form.Item>
                                         </div>
 
@@ -181,7 +182,7 @@ function ViewProfile() {
                                                 ]}
                                                 className='view__firsts1'
                                             >
-                                                <Input style={{ height: "50px", width: '258px' }} />
+                                                <Input placeholder='tranthanhhoang28022001@gmail.com' style={{ height: "50px", width: '258px' }} />
                                             </Form.Item>
 
                                             <Form.Item
@@ -212,7 +213,7 @@ function ViewProfile() {
                                                 },
                                             ]}
                                         >
-                                            <Input style={{ height: "50px" }} />
+                                            <Input placeholder='Duy Tan University' style={{ height: "50px" }} />
                                         </Form.Item>
 
                                         <div className='view__bottom'>

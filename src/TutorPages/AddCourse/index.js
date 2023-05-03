@@ -110,6 +110,7 @@ function Addcourse() {
     return (
         <div className='add__all'>
             <h1 className='add__logo'>Fluffy</h1>
+            <div className='add__pd2'>
             <Form
                 name="basic"
                 onFinish={onFinish}
@@ -294,13 +295,14 @@ function Addcourse() {
                                 <Button onClick={handleCancel}>
                                     Cancel
                                 </Button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
             </Form>
+            </div>
         </div>
     );
 }

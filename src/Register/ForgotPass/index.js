@@ -46,7 +46,7 @@ function ForgotPassWord() {
                     <div className="box__forgot">
                         <div classname="forgot">
                             <h1 className="forgot__heading">Reset password</h1>
-                            <p className="forgot__p">Enter the email address associated with your account, and we'll email you a link to reset your password.</p>
+                            <p className="forgot__p">Enter the email address associated with your account, and we'll send you a link to reset your password.</p>
                             <Form
                              name="basic"
                              onFinish={onFinish}
@@ -72,7 +72,7 @@ function ForgotPassWord() {
                                     <Input style={{ height: "35px" }} />
                                 </Form.Item>
                                 <Button type="primary" htmlType="submit" className="forgot__form__button">
-                                        Signup
+                                        Submit
                                     </Button>
                             </Form>
                         </div>

@@ -1,11 +1,10 @@
 import '../../StudentPages/StudentSchedule/studentschedule.css';
-import { Avatar, Dropdown, Menu } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import user from '../../assets/images/user.jpg'
+import { Menu } from 'antd';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { Badge, Calendar } from 'antd';
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import Navbar from '../component/Navbar';
 
 function StudentSchedule() {
     const getListData = (value) => {
@@ -165,24 +164,13 @@ function StudentSchedule() {
             {/* SIDEBAR */}
             <section id="content">
                 {/* NAVBAR */}
-                <nav>
-                    <i className="bx bx-menu" />
-                    <form action="#">
-                        <div className="form-input">
-                            <input type="search" placeholder="Search..." />
-                            <button type="submit" className="search-btn"><i className="bx bx-search" /></button>
-                        </div>
-                    </form>
-                    <Dropdown overlay={menu} placement="bottomRight">
-                        <Avatar className="avatar" src={user} icon={<DownOutlined />} />
-                    </Dropdown>
-                </nav>
+                <Navbar/>
                 {/* NAVBAR */}
                 {/* MAIN */}
-                <main>
+                <main className='calendar__student'>
                     <div className="course__head-title">
                         <div className="course__left">
-                            <h1>My Schedule</h1>
+                            <h1 className='calendar__h1'><i class='bx bxs-calendar' ></i>My Schedule</h1>
                         </div>
                     </div>
 

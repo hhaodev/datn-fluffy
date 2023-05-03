@@ -16,7 +16,6 @@ export default function Navbar() {
     };
     const menu = (
         <Menu>
-            <Menu.Item key="profile"><Link to='/viewprofile'>View Profile</Link></Menu.Item>
             <Menu.Item key="logout" onClick={() => { handleLogout() }}>Log out</Menu.Item>
         </Menu>
     );

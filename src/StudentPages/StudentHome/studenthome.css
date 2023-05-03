@@ -381,11 +381,12 @@ body {
 }
 #content main .box-info li {
 	padding: 24px;
-	background: var(--light);
+	background-color: #fff !important;
 	border-radius: 20px;
 	display: flex;
 	align-items: center;
 	grid-gap: 24px;
+	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 #content main .box-info li .bx {
 	width: 80px;
@@ -431,9 +432,10 @@ body {
 }
 #content main .table-data > div {
 	border-radius: 20px;
-	background: var(--light);
+	background-color: #fff !important;
 	padding: 24px;
 	overflow-x: auto;
+	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 #content main .table-data .head {
 	display: flex;
@@ -532,6 +534,27 @@ body {
 /* MAIN */
 /* CONTENT */
 
+.button-viewall {
+	border-radius: 22px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 10px;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #f66962;
+    display: inline-block;
+    width: 200px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.more-btn {
+	padding-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 @media screen and (max-width: 768px) {
 	#sidebar {
@@ -595,9 +618,9 @@ body {
 
 /* -------------------------------------------------------------------------------- */
 .My__courses {
-	padding: 2rem;
     margin: 0 auto;
     max-width: 1200px;
+	padding-bottom: 50px;
 }
 
 .student__heading11 {
@@ -725,6 +748,7 @@ body {
 
 .student__des {
 	padding-right: 20px;
+	margin-bottom: 10px;
 }
 
 /* :where(.css-dev-only-do-not-override-mxhywb).ant-segmented .ant-segmented-item-label {
@@ -742,13 +766,12 @@ body {
 /* home grid */
 
 .student__grid {
-	padding: 2rem;
     margin: 0 auto;
     max-width: 1200px;
 }
 
 .student__heading11 {
-	font-size: 2.5rem;
+	font-size: 40px;
     color: var(--black);
     margin-bottom: 2.5rem;
     border-bottom: var(--border);
@@ -769,6 +792,7 @@ body {
     border-radius: 20px;
     padding: 2rem;
 	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+	height: 391px;
 }
 
 .std__title {
@@ -784,11 +808,11 @@ body {
 }
 
 .std__span1 {
-	color: blueviolet;
+	color: rgb(241, 85, 7);
 }
 
 .std__inline {
-	background-color: #7eadf4;
+	background-color: #f66962;
 	display: inline-block;
 	border-radius: .5rem;
     color: #fff;
@@ -798,6 +822,7 @@ body {
     padding: 10px 20px;
     text-align: center;
     margin-top: 1rem;
+	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .std__flexs {
@@ -828,5 +853,10 @@ body {
 
 .spanx {
 	color: #060714;
+}
+
+.home-our {
+	display: flex;
+	align-items: center;
 }
 

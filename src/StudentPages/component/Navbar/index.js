@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
     const menu = (
         <Menu>
-
-            <Menu.Item key="profile">Profile</Menu.Item>
             <Menu.Item key="logout" onClick={() => handleLogout()}>Logout</Menu.Item>
         </Menu>
     );
@@ -24,9 +22,9 @@ export default function Navbar() {
         <nav>
             <i className="bx bx-menu" />
             <form action="#">
-                <div className="form-input">
+                <div className="course__form-input">
                     <input type="search" placeholder="Search..." />
-                    <button type="submit" className="search-btn"><i className="bx bx-search" /></button>
+                    <button type="submit" className="course__search-btn"><i className="bx bx-search" /></button>
                 </div>
             </form>
             <input type="checkbox" id="switch-mode" hidden />

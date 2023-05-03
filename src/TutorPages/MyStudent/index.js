@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Table, Modal, Button, Form, Input } from 'antd';
 import Navbar from '../component/Navbar';
 import React, { useState } from 'react';
-import userstudent from '../../assets/images/avt1.jpg';
 import { Avatar } from 'antd';
 import avt from '../../../src/assets/images/avt1.jpg';
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
@@ -33,7 +32,7 @@ const MyStudenttutor = () => {
   const dataSource = [
     {
       id: '1323',
-      name: 'John Brown',
+      name: 'Tran Thanh Hoang',
       status: 'Done',
     },
     {
@@ -159,10 +158,10 @@ const MyStudenttutor = () => {
         <Navbar />
         {/* NAVBAR */}
         {/* MAIN */}
-        <main>
+        <main className='course__allname'>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>My student</h1>
+              <h1 className='course__studentmy'><i class='bx bx-universal-access' ></i>My student</h1>
               {/* <ul className="course__breadcrumb">
                 <li>
                   <a href="">Dashboard</a>
@@ -193,19 +192,30 @@ const MyStudenttutor = () => {
                     src={avt}
                     className='view__avt2'
                   />
+                  <div className='course__tran'>
                   <p className='mystdtt__name'>Tran Thanh Hoang</p>
+                  <p className='my__font'>ID: 262277</p>
+                  </div>
                 </div>
                 <div className='ag1'>
                   <p className='mystdtt__age'>Age:</p>
-                  <p>22</p>
+                  <p className='my__font'>22</p>
+                </div>
+                <div className='ag1'>
+                  <p className='mystdtt__age'>Date of birth:</p>
+                  <p className='my__font'>22/10/2001</p>
+                </div>
+                <div className='ag1'>
+                  <p className='mystdtt__age'>Email:</p>
+                  <p className='my__font'>tranthanhhoang28022001@gmail.com</p>
                 </div>
                 <div className='school1'>
                   <p className='mystdtt__school'>School:</p>
-                  <p>Duy Tan University</p>
+                  <p className='my__font'>Duy Tan University</p>
                 </div>
                 <div className='courses1'>
                   <p className='mystdtt__courses'>Courses:</p>
-                  <p>GraphQL with React: The Complete Developers Guide</p>
+                  <p className='my__font'>GraphQL with React: The Complete Developers Guide</p>
                 </div>
               </Form>
             </Modal>

@@ -1,0 +1,39 @@
+.bx-x {
+    font-size: 18px;
+}
+
+.feedback__left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view__but1 {
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.view__but212 {
+    display: flex;
+    gap: 20px;
+}
+
+.view__but242 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.view__h1view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.view__h2r {
+    margin-bottom: 20px;
+    font-size: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

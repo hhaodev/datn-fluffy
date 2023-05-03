@@ -110,23 +110,29 @@ const PaymentTutor = () => {
 
   const dataSource = [
     {
-      purchase: '1',
+      purchasedate: '15/5/2023',
       subtotal: 'John Brown',
-      Fee: 32,
-      total: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
+      total: '230',
+      currency: 'USD',
+      paymentmethod: 'Credit card',
+      paymentid: 1,
+  },
+  {
+      purchasedate: '16/5/2023',
+      subtotal: 'Ma Jack',
+      total: '129',
+      currency: 'USD',
+      paymentmethod: 'Credit card',
+      paymentid: 2,
+  },
+  {
+      purchasedate: '25/5/2023',
+      subtotal: 'Stephonwn',
+      total: '62',
+      currency: 'USD',
+      paymentmethod: 'Credit card',
+      paymentid: 3,
+  },
   ];
 
   const columns = [
@@ -139,11 +145,6 @@ const PaymentTutor = () => {
       title: 'Subtotal',
       dataIndex: 'subtotal',
       key: 'subtotal',
-    },
-    {
-      title: 'Fee',
-      dataIndex: 'fee',
-      key: 'fee',
     },
     {
       title: 'Total',
@@ -237,19 +238,10 @@ const PaymentTutor = () => {
         <Navbar />
         {/* NAVBAR */}
         {/* MAIN */}
-        <main>
+        <main className='main__paymentt'>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>Payment</h1>
-              {/* <ul className="course__breadcrumb">
-                <li>
-                  <a href="">Dashboard</a>
-                </li>
-                <li><i className="bx bx-chevron-right" /></li>
-                <li>
-                  <a href="">Payment</a>
-                </li>
-              </ul> */}
+              <h1 className='payment__bx'><i class='bx bx-credit-card-front' ></i>Payment</h1>
             </div>
           </div>
 
@@ -361,10 +353,6 @@ const PaymentTutor = () => {
                             <p className='payment__total'>Total: </p>
                             <p>$110.00</p>
                           </div>
-                          <div className='flex4'>
-                            <p className='payment__fee'>Fee: </p>
-                            <p>$10.00</p>
-                          </div>
                           <div className='flex5'>
                             <p className='payment__currency'>Currency: </p>
                             <p>USD</p>
@@ -396,7 +384,7 @@ const PaymentTutor = () => {
 
                             <div className='payment__ttli2'>
                               <div className='payment__li4'>
-                                <h4 className='payment__sessiondates'><i class='bx bx-calendar' ></i>Session date:</h4>
+                                <h4 className='payment__sessiondates'><i class='bx bx-calendar-alt' ></i>Session date:</h4>
                                 <p>Apr 12,2023</p>
                               </div>
                               <div className='payment__li5'>

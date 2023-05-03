@@ -152,9 +152,9 @@
 .payment__li4 {
     display: flex;
     margin-bottom: 15px;
-    margin-right: 19px;
     color: #fff;
-
+    align-items: center;
+    margin-right: 10px;
 }
 
 .payment__li5 {
@@ -183,5 +183,15 @@
 
 .payment__searchs, .payment__spaces{
     height: 41px !important;
+}
+
+.payment__bx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__paymentt {
+    padding: 20px 34px !important;
 }
 

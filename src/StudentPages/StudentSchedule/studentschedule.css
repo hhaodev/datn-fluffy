@@ -10,3 +10,25 @@
     border-radius: 20px;
     padding: 30px;
 }
+
+.calendar__student {
+    padding: 10px 50px !important;
+}
+
+.calendar__h1 {
+    margin-bottom: 25px !important;
+    font-size: 32px !important;
+}
+
+/* :where(.css-dev-only-do-not-override-mxhywb).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    position: relative;
+    background-color: #f66962;
+    border: 1px solid #ffffff;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    color: #fff;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+} */
+
+/* :where(.css-dev-only-do-not-override-mxhywb).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    height: 40px;
+} */

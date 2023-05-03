@@ -93,8 +93,10 @@ const CourseBox = () => {
       
         <div className="feedback__head-title">
           <div className="feedback__left">
-            <h1>Feedback</h1>
+            <h1 className='feedback__h1ba'><i class='bx bx-chat' ></i>Feedback</h1>
           </div>
+          <p className='feedback__listpp'>List feedback <i class='bx bxs-chevrons-down'></i></p>
+
           {/* <h1 className='feedback__h1'>FeedBack</h1> */}
 
           <div className='feedback__box'>
@@ -105,7 +107,7 @@ const CourseBox = () => {
                   <img src={avtfeedback4} alt="Avatar" className='feedback__boxavt' />
                 </div>
                 <div className="course-box-info">
-                  <h3 className="course-box-title">Duck</h3>
+                  <h3 className="course-box-title">Tran Thanh Hoang</h3>
                   <p className="course-box-subtitle">ReactJs for Developer</p>
                 </div>
                 <div className="course-box-rating">
@@ -126,7 +128,7 @@ const CourseBox = () => {
                     </Space>
                     </div>
                     <div className="feedback__tittle">
-                      <h3 className="course-box-title">Duck</h3>
+                      <h3 className="course-box-title">Tran Thanh Hoang</h3>
                       <p className="course-box-subtitle">Reactjs for Developer</p>
                     </div>
                     <div className="feedback__rating">
@@ -135,7 +137,7 @@ const CourseBox = () => {
                     </div>
                   </div>
                   <p className="course-box-description">
-                    Greattttt!!!!!, The teacher is so best, hehe
+                    Greattttt!!!!!, The teacher is so best .
                   </p>
                 </div>
               </Modal>

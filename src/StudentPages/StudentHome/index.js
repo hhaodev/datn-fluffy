@@ -1,24 +1,26 @@
 import '../../StudentPages/StudentHome/studenthome.css';
-import { Segmented } from 'antd';
-import courses1 from '../../assets/images/courses1.jpg'
 import avt1 from '../../assets/images/avt1.jpg'
 import avt2 from '../../assets/images/avt2.jpg'
 import avt3 from '../../assets/images/avt3.jpg'
 import avt4 from '../../assets/images/avt4.jpg'
 import avt5 from '../../assets/images/avt5.jpg'
 import avt6 from '../../assets/images/avt6.jpg'
-import courses2 from '../../assets/images/courses2.jpg'
-import courses4 from '../../assets/images/courses4.jpg'
-import courses3 from '../../assets/images/courses3.jpg'
-import courses5 from '../../assets/images/courses5.jpg'
-import courses6 from '../../assets/images/courses6.jpg'
+import course1 from '../../assets/images/course1.jpg'
+import course2 from '../../assets/images/course2.jpg'
+import course3 from '../../assets/images/course3.jpg'
+import course4 from '../../assets/images/course4.jpg'
+import course5 from '../../assets/images/course5.jpg'
+import course6 from '../../assets/images/course6.jpg'
 import React from 'react';
 import Navbar from '../component/Navbar';
 import { Link } from 'react-router-dom'
 import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
+import { Tabs } from 'antd'
+import { useState } from 'react';
 
-function stdHome() {
-
+function StdHome() {
+  const { TabPane } = Tabs;
+  const [activeTab, setActiveTab] = useState('1');
   return (
     <div>
       {/* SIDEBAR */}
@@ -73,52 +75,18 @@ function stdHome() {
               <h1>Home Student</h1>
             </div> */}
           </div>
-          {/* Home grid */}
-          <div class="student__grid">
-
-            <h1 class="student__heading11">quick options</h1>
-
-            <div class="box__std">
-
-              <div class="boxchild__std">
-                <h3 class="std__title">likes and comments</h3>
-                <p class="std__like">total likes : <span className='std__span1'>25</span></p>
-                <a href="" class="std__inline">view likes</a>
-                <p class="std__like">total comments : <span className='std__span1'>12</span></p>
-                <a href="" class="std__inline">view comments</a>
-                <p class="std__like">saved playlists : <span className='std__span1'>4</span></p>
-                <a href="" class="std__inline">view playlists</a>
-              </div>
-
-              <div class="boxchild__std">
-                <h3 class="std__title">top categories</h3>
-                <div class="std__flexs">
-                  <a href="#" className='std__aa'><i class="fas fa-code"></i><span className='spanx'>development</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-chart-simple"></i><span className='spanx'>business</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-pen"></i><span className='spanx'>design</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-chart-line"></i><span className='spanx'>marketing</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-music"></i><span className='spanx'>music</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-camera"></i><span className='spanx'>photography</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-cog"></i><span className='spanx'>software</span></a>
-                  <a href="#" className='std__aa'><i class="fas fa-vial"></i><span className='spanx'>science</span></a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
           {/* course */}
           <div className="My__courses">
-            <h1 className="student__heading11">our courses</h1>
-            <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='student__segmented' />
-
-            <div className="student__box">
-
+            <div className='home-our'>
+            <h1 className="student__heading11"><i class='bx bxs-bookmark-alt-plus'></i>our courses</h1>
+            </div>
+            {/* <Segmented options={['Technology', 'Languages', 'Economics', 'Marketing', 'Design']} className='student__segmented' /> */}
+            <Tabs activeKey={activeTab} onChange={key => setActiveTab(key)}>
+              <TabPane tab="Technology" key="1">
+              <div className="student__box">
               <div className="box__student">
                 <div className="student__thumb">
-                  <img src={courses1} alt="" className="student__img2" />
-                  <span className="student__spana">10 unit</span>
+                  <img src={course1} alt="" className="student__img2" />
                 </div>
                 <div className="student__tutor">
                   <img src={avt1} alt="" className="student__img1" />
@@ -126,15 +94,14 @@ function stdHome() {
                     <h3 className="student__h32">Rebecca</h3>
                   </div>
                 </div>
-                <h3 className="student__title">complete HTML tutorial</h3>
-                <p className='student__des'>Good friends, good books, and a sleepy conscience: this is the ideal life.</p>
-                <a href="playlist.html" className="inline-btn">Learn More</a>
+                <h3 className="student__title">Learn Ethical Hacking From Scratch Here</h3>
+                <p className='student__des'>Become an ethical hacker that can hack computer systems like black hat hackers.</p>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i class='bx bx-chevrons-right'></i>Learn More</Link></div>
               </div>
 
               <div className="box__student">
                 <div className="student__thumb">
-                  <img src={courses2} alt="" className="student__img2" />
-                  <span className="student__spana">10 unit</span>
+                  <img src={course2} alt="" className="student__img2" />
                 </div>
                 <div className="student__tutor">
                   <img src={avt2} alt="" className="student__img1" />
@@ -142,15 +109,14 @@ function stdHome() {
                     <h3 className="student__h32">David</h3>
                   </div>
                 </div>
-                <h3 className="student__title">complete CSS tutorial</h3>
-                <p className='student__des'>then you sure as hell don't deserve me at my best</p>
-                <a href="playlist.html" className="inline-btn">Learn More</a>
+                <h3 className="student__title">GraphQL with React: The Complete Developers Guide</h3>
+                <p className='student__des'>Learn and master GraphQL by building real web apps with React and Node</p>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i class='bx bx-chevrons-right'></i>Learn More</Link></div>
               </div>
 
               <div className="box__student">
                 <div className="student__thumb">
-                  <img src={courses3} alt="" className="student__img2" />
-                  <span className="student__spana">10 Unit</span>
+                  <img src={course3} alt="" className="student__img2" />
                 </div>
                 <div className="student__tutor">
                   <img src={avt3} alt="" className="student__img1" />
@@ -159,15 +125,14 @@ function stdHome() {
                   </div>
                 </div>
 
-                <h3 className="student__title">complete JS tutorial</h3>
-                <p className='student__des'>You've gotta dance like there's nobody watching</p>
-                <a href="playlist.html" className="inline-btn">Learn More</a>
+                <h3 className="student__title">Programming for Networks, Systems and Security engineer</h3>
+                <p className='student__des'>Free up time & grow your business with marketing automation: social media marketing !</p>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i class='bx bx-chevrons-right'></i>Learn More</Link></div>
               </div>
 
               <div className="box__student">
                 <div className="student__thumb">
-                  <img src={courses4} alt="" className="student__img2" />
-                  <span className="student__spana">10 Unit</span>
+                  <img src={course4} alt="" className="student__img2" />
                 </div>
                 <div className="student__tutor">
                   <img src={avt4} alt="" className="student__img1" />
@@ -176,15 +141,14 @@ function stdHome() {
                   </div>
                 </div>
 
-                <h3 className="student__title">complete Boostrap tutorial</h3>
-                <p className='student__des'>You only live once, but if you do it right, once is enough.</p>
-                <a href="playlist.html" className="inline-btn">Learn More</a>
+                <h3 className="student__title">English for Beginners: Intensive Spoken English Course</h3>
+                <p className='student__des'>English speaking course. 77 Hours of English language speaking, English listening practice.</p>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i class='bx bx-chevrons-right'></i>Learn More</Link></div>
               </div>
 
               <div className="box__student">
                 <div className="student__thumb">
-                  <img src={courses5} alt="" className="student__img2" />
-                  <span className="student__spana">10 Unit</span>
+                  <img src={course5} alt="" className="student__img2" />
                 </div>
                 <div className="student__tutor">
                   <img src={avt5} alt="" className="student__img1" />
@@ -193,16 +157,15 @@ function stdHome() {
                   </div>
                 </div>
 
-                <h3 className="student__title">complete JQuery tutorial</h3>
-                <p className='student__des'>In three words I can sum up everything I’ve learned about life</p>
-                <a href="playlist.html" className="inline-btn">Learn More</a>
+                <h3 className="student__title">Best Way to Learn German Language: Full Beginner</h3>
+                <p className='student__des'>Learn German language with fun bite-size lessons for beginners. Start speaking German.</p>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i class='bx bx-chevrons-right'></i>Learn More</Link></div>
               </div>
 
               <div className="box__student">
 
                 <div className="student__thumb">
-                  <img src={courses6} alt="" className="student__img2" />
-                  <span className="student__spana">10 Unit</span>
+                  <img src={course6} alt="" className="student__img2" />
                 </div>
                 <div className="student__tutor">
                   <img src={avt6} alt="" className="student__img1" />
@@ -210,14 +173,28 @@ function stdHome() {
                     <h3 className="student__h32">Mark</h3>
                   </div>
                 </div>
-                <h3 className="student__title">complete SASS tutorial</h3>
-                <p className='student__des'>To live is the rarest thing in the world. Most people exist, that is all. </p>
-                <a href="playlist.html" className="inline-btn">Learn More</a>
+                <h3 className="student__title">Web Design for Beginners: Real World Coding in HTML & CSS</h3>
+                <p className='student__des'>Launch a career as a web designer by learning HTML5, CSS3, responsive design, Sass and more!</p>
+                <div className='course__buttonlink'><Link to='/viewstudent' className="inline-btn"><i class='bx bx-chevrons-right'></i>Learn More</Link></div>
               </div>
 
             </div>
+              </TabPane>
+              <TabPane tab="Languages" key="2">
+                <p>Nội dung khoá học về Languages</p>
+              </TabPane>
+              <TabPane tab="Economics" key="3">
+                <p>Nội dung khoá học về Economics</p>
+              </TabPane>
+              <TabPane tab="Marketing" key="4">
+                <p>Nội dung khoá học về Marketing</p>
+              </TabPane>
+              <TabPane tab="Design" key="5">
+                <p>Nội dung khoá học về Design</p>
+              </TabPane>
+            </Tabs>
             <div className="more-btn">
-              <a href="courses.html" className="inline-option-btn">view all courses</a>
+              <a href="courses.html" className="button-viewall">view all courses</a>
             </div>
           </div>
         </main>
@@ -229,4 +206,4 @@ function stdHome() {
   );
 }
 
-export default stdHome;
+export default StdHome;

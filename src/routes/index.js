@@ -24,6 +24,7 @@ import StudentSchedule from '../StudentPages/StudentSchedule/index';
 import StudentPayment from '../StudentPages/StudentPayment/index';
 import StudentProfile from '../StudentPages/StudentProfile/index';
 import ViewCourse from '../TutorPages/ViewCourse/index'
+import ViewStudent from '../StudentPages/ViewStudent/index';
 
 const publicRoutes = [
     { path: '/', component: Home },
@@ -46,6 +47,7 @@ const publicRoutes = [
     { path: '/studentschedule', component: StudentSchedule, layout: null},
     { path: '/studentpayment', component: StudentPayment, layout: null},
     { path: '/studentprofile', component: StudentProfile, layout: null},
+    { path: '/viewstudent', component: ViewStudent, layout: null},
 
 //tutor
     { path: '/mycoursett', component: myCoursestt, layout: null},
