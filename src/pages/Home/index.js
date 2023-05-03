@@ -167,18 +167,15 @@ function myHome() {
       {/*-start contact section--*/}
       <section className="contact" id="contact">
         <div className="main-contact">
-          <div className="contact-content">
-            <h1 className="studenthome__logo1">Fluffy</h1>
-            <li>
-              <a href="">Facebook</a>
-            </li>
-            <li>
-              <a href="">Instagram</a>
-            </li>
-            <li>
-              <a href="">Twitter</a>
-            </li>
-          </div>
+        <div className="contact-content">
+                        <h1 className='home__logo1'>Fluffy</h1>
+                         <ul className='home__icon'>
+                         <li><a href=""><i className='bx bxl-facebook-circle'></i></a></li>
+                         <li><a href=""><i className='bx bxl-instagram-alt' ></i></a></li>
+                         <li><a href=""><i className='bx bxl-github' ></i></a></li>
+                         <li><a href=""><i className='bx bxl-twitter' ></i></a></li>
+                         </ul>
+                    </div>
           <div className="contact-content">
             <li>
               <a href="">Home</a>
@@ -209,13 +206,14 @@ function myHome() {
           </div>
           <div className="contact-content">
             <li>
-              <a href="">
-                DaNang,
-                <br /> VietNam, VN 15101
+              <a href="">DaNang,
               </a>
             </li>
             <li>
-              <a href="">fluffy@example.com</a>
+              <a href="">VietNam, Asia</a>
+            </li>
+            <li>
+              <a href="">fluffy.team.dev@gmail.com</a>
             </li>
             <li>
               <a href="">01646895741</a>
