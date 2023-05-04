@@ -9,6 +9,8 @@ import client from '../../configGQL';
 import { useEffect, useState } from 'react';
 
 
+
+
 function Addcourse() {
     const { Option } = Select;
     const navigate = useNavigate()
@@ -25,7 +27,7 @@ function Addcourse() {
     const [category, setCategory] = useState([]);
     useEffect(() => {
         client.query({
-        query: gql`
+            query: gql`
         query getCategories ($queryParams: QueryFilterDto!) {
             getCategories(queryParams: $queryParams) {
                 items{
@@ -64,7 +66,7 @@ function Addcourse() {
                     mutation: CREATE_COURSE,
                     variables: { input },
                 });
-                return data.createCourse;
+                return data;
             } catch (error) {
                 alert(error);
             }
@@ -88,13 +90,13 @@ function Addcourse() {
             spendTime: parseFloat(values.spendTime),
             duration: values.duration,
             numberOfProgramRequired: 1,
-
             coursePrograms: [coursePrograms]
         }
         createCourse(client, input)
             .then((result) => {
-                if (result)
-                    navigate("/mycoursett")
+                if (result.createCourse.id)
+                alert("Thêm course thành công")
+                navigate("/mycoursett")
             })
             .catch((error) => alert(error));
     };
@@ -104,12 +106,13 @@ function Addcourse() {
     }
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        
     };
 
     return (
         <div className='add__all'>
             <h1 className='add__logo'>Fluffy</h1>
+            <div className='add__pd2'>
             <Form
                 name="basic"
                 onFinish={onFinish}
@@ -294,13 +297,14 @@ function Addcourse() {
                                 <Button onClick={handleCancel}>
                                     Cancel
                                 </Button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
             </Form>
+            </div>
         </div>
     );
 }

@@ -16,3 +16,9 @@
 .session__booked {
     color: #f66962;
 }
+
+.sesison__h1s {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -384,7 +384,7 @@ li {
   border: none;
   border-radius: 5px;
   background: #eecda3;
-  background: linear-gradient( to bottom, #ef629f, #eecda3 );
+  background: linear-gradient(to bottom, #ef629f, #eecda3);
   color: #fff;
   cursor: pointer;
   box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
@@ -507,7 +507,7 @@ li {
   text-align: center;
   border-radius: 10px;
   background: #eecda3;
-  background: linear-gradient( to bottom, #ef629f, #eecda3 );
+  background: linear-gradient(to bottom, #ef629f, #eecda3);
   box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 

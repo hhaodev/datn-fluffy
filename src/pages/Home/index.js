@@ -8,7 +8,6 @@ import cate1 from "../../assets/images/undraw_Educator_re_ju47.png";
 import cate2 from "../../assets/images/undraw_Male_avatar_g98d.png";
 import cate3 from "../../assets/images/undraw_Traveling_yhxq.png";
 import cate4 from "../../assets/images/undraw_Ready_for_waves_vlke.png";
-import course4 from "../../assets/images/course4.jpg";
 import cta1 from "../../assets/images/cta1.png";
 import cta2 from "../../assets/images/cta2.png";
 import cta3 from "../../assets/images/cta3.png";
@@ -167,15 +166,31 @@ function myHome() {
       {/*-start contact section--*/}
       <section className="contact" id="contact">
         <div className="main-contact">
-        <div className="contact-content">
-                        <h1 className='home__logo1'>Fluffy</h1>
-                         <ul className='home__icon'>
-                         <li><a href=""><i className='bx bxl-facebook-circle'></i></a></li>
-                         <li><a href=""><i className='bx bxl-instagram-alt' ></i></a></li>
-                         <li><a href=""><i className='bx bxl-github' ></i></a></li>
-                         <li><a href=""><i className='bx bxl-twitter' ></i></a></li>
-                         </ul>
-                    </div>
+          <div className="contact-content">
+            <h1 className="home__logo1">Fluffy</h1>
+            <ul className="home__icon">
+              <li>
+                <a href="">
+                  <i className="bx bxl-facebook-circle"></i>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i className="bx bxl-instagram-alt"></i>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i className="bx bxl-github"></i>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i className="bx bxl-twitter"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
           <div className="contact-content">
             <li>
               <a href="">Home</a>
@@ -206,8 +221,7 @@ function myHome() {
           </div>
           <div className="contact-content">
             <li>
-              <a href="">DaNang,
-              </a>
+              <a href="">DaNang,</a>
             </li>
             <li>
               <a href="">VietNam, Asia</a>
