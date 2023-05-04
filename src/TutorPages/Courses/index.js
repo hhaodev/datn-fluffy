@@ -7,11 +7,12 @@ import { useSelector } from "react-redux";
 import { Tabs } from "antd";
 import CourseComponent from "../../component/Course";
 
+
 function MyCoursestt() {
   const [courseList, setCourseList] = useState([]);
-  console.log("🚀 ~ file: index.js:12 ~ MyCoursestt ~ courseList:", courseList);
+  // console.log("🚀 ~ file: index.js:12 ~ MyCoursestt ~ courseList:", courseList);
   const userId = useSelector((state) => state.user.currentUser.id);
-
+  // console.log(userId);
   const [activeTab, setActiveTab] = useState("1");
   const { TabPane } = Tabs;
 
@@ -35,7 +36,6 @@ function MyCoursestt() {
                   tutor {
                     firstName
                     lastName
-                    avatar
                   }
                 }
                 coursePrograms {
@@ -58,7 +58,6 @@ function MyCoursestt() {
         setCourseList(result.data.getCoursesByTutorId.items);
       });
   }, [userId]);
-
   return (
     <div>
       <section id="content">
@@ -81,7 +80,7 @@ function MyCoursestt() {
               <TabPane tab="Technology" key="1">
                 <div className="student__box">
                   {courseList.map((data) => {
-                    return <CourseComponent course={data} />;
+                    return <CourseComponent course={data} type="TUTOR" />;
                   })}
                 </div>
               </TabPane>
