@@ -65,13 +65,6 @@ function sessionTutor() {
     console.log("search:", value);
   };
 
-  const menu = (
-    <Menu>
-      <Menu.Item key="profile">Profile</Menu.Item>
-      <Menu.Item key="logout">Logout</Menu.Item>
-    </Menu>
-  );
-
   dayjs.extend(customParseFormat);
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   return (
@@ -80,7 +73,7 @@ function sessionTutor() {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>Session</h1>
+              <h1 className='sesison__h1s'><i class='bx bx-candles' ></i>Session</h1>
               {/* <ul className="course__breadcrumb">
                 <li>
                   <a href="">Dashboard</a>

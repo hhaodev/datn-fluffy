@@ -1,18 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Bree+Serif&family=Catamaran:wght@200&family=Karla:wght@200&family=Lilita+One&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Pathway+Extreme&family=Poppins&family=Roboto&family=Rubik&family=Signika+Negative:wght@300&family=Signika:wght@300;500&family=Ysabeau:wght@600&display=swap');
 .navbar__phi {
     color: black;
-    font-size: 1.5rem;
+    font-size: 20px;
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Karla', sans-serif;
     margin-right: 20px;
 }
 
 .navbar__button1 {
     background-color: #f66962;
-    font-size: 15px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 14px;
     border: none;
     color: #fff;
     line-height: 10px;
     border-radius: 10px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.navbar__fix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -106,7 +106,9 @@ const MyStudenttutor = () => {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>My student</h1>
+              <h1 className="course__studentmy">
+                <i class="bx bx-universal-access"></i>My student
+              </h1>
               {/* <ul className="course__breadcrumb">
                 <li>
                   <a href="">Dashboard</a>

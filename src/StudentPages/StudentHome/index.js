@@ -1,9 +1,15 @@
 import "../../StudentPages/StudentHome/studenthome.css";
 import CourseComponent from "../../component/Course";
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { Segmented } from 'antd'
+=======
+import React, { useEffect, useState } from "react";
+import { Segmented } from "antd";
+import { gql, useQuery } from "@apollo/client";
+>>>>>>> 5b80f32b1f53a4131cd45717f970d65b2044371f
 
 const GET_COURSES = gql`
   query getCourses($params: QueryFilterDto!) {
@@ -37,7 +43,13 @@ const GET_CATEGORY = gql`
     }
   }
 `;
+<<<<<<< HEAD
 const HomeComponent = () => {
+=======
+
+const HomeComponent = () => {
+  let reload = null;
+>>>>>>> 5b80f32b1f53a4131cd45717f970d65b2044371f
   const [params, setParams] = useState({
     limit: 10,
     page: 1,
@@ -86,8 +98,14 @@ const HomeComponent = () => {
   return (
     <>
       <section id="content">
+<<<<<<< HEAD
         <main className="main-content">
           {/* <div class="student__grid">
+=======
+        {categories && (
+          <main className="main-content">
+            {/* <div class="student__grid">
+>>>>>>> 5b80f32b1f53a4131cd45717f970d65b2044371f
             <h1 class="student__heading11">quick options</h1>
 
             <div class="box__std">
@@ -152,6 +170,7 @@ const HomeComponent = () => {
               </div>
             </div>
           </div> */}
+<<<<<<< HEAD
           <div className="My__courses">
             <h1 className="student__heading11">our courses</h1>
             <Segmented
@@ -174,6 +193,27 @@ const HomeComponent = () => {
             </div>
           </div>
         </main>
+=======
+            <div className="My__courses">
+              <h1 className="student__heading11">our courses</h1>
+              <Segmented
+                options={categories.map((category) => ({
+                  label: category.name,
+                  value: category.id,
+                }))}
+                onChange={(e) => onChangeCategories(e)}
+                className="student__segmented"
+              />
+
+              <div className="student__box">
+                {reload}
+                {courses.length !== 0 &&
+                  courses.map((course) => <CourseComponent course={course} />)}
+              </div>
+            </div>
+          </main>
+        )}
+>>>>>>> 5b80f32b1f53a4131cd45717f970d65b2044371f
       </section>
     </>
   );

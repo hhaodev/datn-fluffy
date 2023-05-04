@@ -9,8 +9,8 @@ export default function Courses({ data }) {
     const firstName = useSelector(state => state.user.currentUser.firstName)
     const {
         id,
-        spendTime,
         name,
+        price,
         description,
         imageUrl,
     } = data
@@ -26,11 +26,10 @@ export default function Courses({ data }) {
                 </div>
             </div>
             <h3 className="student__title">{name}</h3>
+            {price ? <h3>{price} $</h3> : null}
             <p className='student__des'>{description}</p>
             <div className='course__buttonlink'>
-                <Link className="inline-btn" to="/viewcourse"><i class='bx bxs-chevrons-right'></i>Learn More</Link>
-                {/* <Link className="inline-btn" to={`/editcourse/${id}`}>edit</Link>
-                <Link className="inline-btn">Delete</Link> */}
+                <Link className="inline-btn" to={`/viewcourse/${id}`}><i class='bx bxs-chevrons-right'></i>Learn More</Link>
             </div>
         </div>
     )
