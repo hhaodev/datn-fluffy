@@ -25,11 +25,10 @@ function ViewProfile() {
         </Menu>
     );
 
+
+
+    
     const onFinish = (values) => {
-        const datatemp = {
-            email: values.username,
-            password: values.password
-        }
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -166,7 +165,7 @@ function ViewProfile() {
                                                     },
                                                 ]}
                                             >
-                                                <Input placeholder='Hoang' style={{ height: "50px", width: '278px', width: '278px' }} />
+                                                <Input placeholder='Hoang' style={{ height: "50px", width: '278px'}} />
                                             </Form.Item>
                                         </div>
 

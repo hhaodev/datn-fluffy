@@ -12,7 +12,6 @@ import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
 function MyCoursestt() {
   const [courseList, setCourseList] = useState([])
   const userId = useSelector(state => state.user.currentUser.id)
-
   const [activeTab, setActiveTab] = useState('1');
   const { TabPane } = Tabs;
 
@@ -24,13 +23,11 @@ function MyCoursestt() {
           items{
             id
             name
-            isPublish
+            price
             imageUrl
-            spendTime
             description
             coursePrograms {
               id
-              isPublish
             }
           }
         }
