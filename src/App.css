@@ -2,6 +2,12 @@
 
 h1 {
   font-family: "Ysabeau", sans-serif;
+  color: #ef709f !important;
+}
+
+p {
+  font-family: 'Karla', sans-serif;
+
 }
 #content {
   position: relative;

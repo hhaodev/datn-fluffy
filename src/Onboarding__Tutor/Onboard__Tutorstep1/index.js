@@ -122,7 +122,7 @@ function OnboardTutor__Step1() {
       </div>
       <div className="form-wrapper">
         <div className="box__onboardstd">
-          <h2 className="step1__h2">Educations</h2>
+          <h2 className="step1__h2">Education</h2>
 
           <div className="student-form-container">
             <div className="student-onboarding-form">

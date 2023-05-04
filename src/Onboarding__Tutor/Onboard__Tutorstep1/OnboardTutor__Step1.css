@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Bree+Serif&family=Catamaran:wght@200&family=Karla:wght@200&family=Lilita+One&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Pathway+Extreme&family=Poppins&family=Roboto&family=Rubik&family=Signika+Negative:wght@300&family=Signika:wght@300;500&family=Ysabeau:wght@600&display=swap");
+
+h2 {
+  font-family: "Poppins", sans-serif;
+}
+
 .step1__body {
   width: 100%;
   height: 100vh;
@@ -61,7 +67,7 @@
   font-size: 40px;
   align-items: center;
   padding: 16px;
-  color: #c45852;
+  color: #ef629f;
 }
 
 .student__buttonsub {
@@ -100,4 +106,5 @@
   left: 50%;
   bottom: 30px;
   transform: translate(-50%, -30px);
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }

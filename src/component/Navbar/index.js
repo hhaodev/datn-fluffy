@@ -8,7 +8,6 @@ import "./index.css";
 export default function Navbar() {
   const menu = (
     <Menu>
-      <Menu.Item key="profile">Profile</Menu.Item>
       <Menu.Item key="logout" onClick={() => handleLogout()}>
         Logout
       </Menu.Item>

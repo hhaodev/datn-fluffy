@@ -1,7 +1,7 @@
 .feedback__box1 {
     width: 386px;
     height: 90px;
-    border: 1px solid rgb(209, 209, 209);
+    border: 1px solid #ef629f;
     border-radius: 20px;
     display: flex;
     justify-content: flex-start;
@@ -35,7 +35,7 @@
 
 .course-box-info {
     margin: 6px 20px;
-    border-right: 1px solid black;
+    border-right: 1px solid #ef629f;
     padding-right: 20px;
 }
 
@@ -57,6 +57,7 @@
 
 .feedback__boxall {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .feedback__tittle {
@@ -72,6 +73,7 @@
 }
 
 .course-box-description {
+    margin-top: 20px;
     width: 450px;
     height: 90px;
     border: 1px dashed black;
@@ -104,6 +106,30 @@
 
 .feedback__head-title {
     padding: 32px;
+}
+
+.feedback__h1ba {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback__left {
+    display: flex;
+
+}
+
+.feedback__listpp {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #f66962;
+    color: #fff;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
  

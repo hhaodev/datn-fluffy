@@ -183,16 +183,9 @@ const PaymentTutor = () => {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>Payment</h1>
-              {/* <ul className="course__breadcrumb">
-                <li>
-                  <a href="">Dashboard</a>
-                </li>
-                <li><i className="bx bx-chevron-right" /></li>
-                <li>
-                  <a href="">Payment</a>
-                </li>
-              </ul> */}
+              <h1 className="payment__bx">
+                <i class="bx bx-credit-card-front"></i>Payment
+              </h1>
             </div>
           </div>
 
@@ -384,13 +377,13 @@ const PaymentTutor = () => {
                             <div className="payment__ttli1">
                               <div className="payment__li2">
                                 <h4 className="payment__tutors">
-                                  <i class="bx bxs-id-card"></i>Tutor:
+                                  <i className="bx bxs-id-card"></i>Tutor:
                                 </h4>
                                 <p>Tutor19 Van</p>
                               </div>
                               <div className="payment__li3">
                                 <h4 className="payment__prices">
-                                  <i class="bx bxs-coin"></i>Price:
+                                  <i className="bx bxs-coin"></i>Price:
                                 </h4>
                                 <p>$150</p>
                               </div>
@@ -399,13 +392,14 @@ const PaymentTutor = () => {
                             <div className="payment__ttli2">
                               <div className="payment__li4">
                                 <h4 className="payment__sessiondates">
-                                  <i class="bx bx-calendar"></i>Session date:
+                                  <i className="bx bx-calendar-check"></i>
+                                  Session date:
                                 </h4>
                                 <p>Apr 12,2023</p>
                               </div>
                               <div className="payment__li5">
                                 <h4 className="payment__duration">
-                                  <i class="bx bx-alarm"></i>Duration
+                                  <i className="bx bx-calendar-alt"></i>Duration
                                 </h4>
                                 <p>1 hour</p>
                               </div>
@@ -413,7 +407,7 @@ const PaymentTutor = () => {
 
                             <div className="payment__li6">
                               <h4 className="payment__times">
-                                <i class="bx bx-hourglass"></i>Session time:
+                                <i className="bx bx-hourglass"></i>Session time:
                               </h4>
                               <p>01:00 PM - 02:00 PM</p>
                             </div>

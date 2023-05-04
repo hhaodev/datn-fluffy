@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600&family=Bree+Serif&family=Catamaran:wght@200&family=Karla:wght@200&family=Lilita+One&family=Open+Sans:wght@300;400;500&family=Pacifico&family=Pathway+Extreme&family=Poppins&family=Roboto&family=Rubik&family=Signika+Negative:wght@300&family=Signika:wght@300;500&family=Ysabeau:wght@600&display=swap');
+
+.view__course {
+    padding: 20px 52px !important;
+}
+
+.bg__view {
+    padding: 0 100px;
+}
+
+.rate__view {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.bx-cart-add {
+    font-size: 18px;
+}
+
+.view__content {
+    margin-top: 40px;
+}
+
+.span__view {
+    float: right;
+}
+
+.view__h2 {
+    margin-bottom: 20px;
+    font-size: 29px;
+}
+
+.student__view {
+    font-weight: normal;
+    font-family: 'Rubik', sans-serif;
+    margin-left: 20px;
+}
+
+.view__cost {
+    font-size: 25px;
+    font-weight: normal;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: brown;
+}
+
+.view__buttonall {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.viewer__rate {
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+.view__h3rate {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.student__title1 {
+    margin-right: 20px;
+}

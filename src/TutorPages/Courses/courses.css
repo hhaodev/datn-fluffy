@@ -192,11 +192,12 @@ li {
 }
 #content main .box-info li {
   padding: 24px;
-  background: var(--light);
+  background-color: #fff;
   border-radius: 20px;
   display: flex;
   align-items: center;
   grid-gap: 24px;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 #content main .box-info li .bx {
   width: 80px;
@@ -243,9 +244,10 @@ li {
 }
 #content main .table-data > div {
   border-radius: 20px;
-  background: var(--light);
+  background: #fff;
   padding: 24px;
   overflow-x: auto;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 #content main .table-data .head {
   display: flex;
@@ -351,6 +353,8 @@ li {
 }
 
 .title-container {
+  justify-content: space-between;
+  align-items: center;
   display: flex;
   width: 100%;
   margin-bottom: 20px;
@@ -379,9 +383,11 @@ li {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #f66962;
+  background: #eecda3;
+  background: linear-gradient(to bottom, #ef629f, #eecda3);
   color: #fff;
   cursor: pointer;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .add-course:hover {
@@ -495,11 +501,13 @@ li {
 
 :where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab-btn {
   outline: none;
+  color: #fff;
   padding: 10px;
   width: 100px;
   text-align: center;
   border-radius: 10px;
-  background-color: #db504a;
+  background: #eecda3;
+  background: linear-gradient(to bottom, #ef629f, #eecda3);
   box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 

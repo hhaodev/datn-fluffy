@@ -49,7 +49,7 @@
     align-items: center;
     font-size: 45px;
     padding: 20px;
-    color: #c45852;
+    color: #ef629f !important;
 }
 
 .signin__all {
@@ -124,12 +124,14 @@
     margin: 20px;
     border-radius: 15px;
     border: none;
-    background-color: #f66962;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #ef629f, #eecda3 );
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .signin__wantbutton:hover {
-    background-color: #c45852;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #ed458e, #db9b46 );
 }
 
 .signin__apply {

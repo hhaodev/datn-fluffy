@@ -110,7 +110,6 @@ function App() {
       {type === UserType.STUDENT && (
         <Routes>
           {routerStudent.map((route, index) => {
-            const Page = route.component;
             let Layout = DefaultLayout;
             if (route.layout) {
               Layout = route.layout;
@@ -125,7 +124,7 @@ function App() {
                 element={
                   <Layout type={type}>
                     {route.layout2 && <route.layout2 />}
-                    <Page />
+                    <route.component />
                   </Layout>
                 }
               />

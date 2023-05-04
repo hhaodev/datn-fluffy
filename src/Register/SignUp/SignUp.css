@@ -93,13 +93,14 @@
     font-size: 40px;
     align-items: center;
     padding: 20px;
-    color: #c45852;
+    color: #ef629f !important;
 }
 
 .signup__form__button {
     margin-bottom: 25px;
     width: 172px;
-    background-color: #f66962;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #ef629f, #eecda3 );
     font-size: 22px;
     display: flex;
     align-items: center;
@@ -109,7 +110,8 @@
 }
 
 .signup__form__button:hover {
-    background-color: #c45852 !important;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #df4286, #cf8c34 );
 }
 
 .signup__wantr {
@@ -125,12 +127,14 @@
     margin: 20px;
     border-radius: 15px;
     border: none;
-    background-color: #f66962;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #ef629f, #eecda3 );
 	box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .signup__wantbutton:hover {
-    background-color: #c45852;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #df4286, #cf8c34 );
 }
 
 .signup__apply {

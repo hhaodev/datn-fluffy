@@ -1,7 +1,7 @@
 import "../../StudentPages/StudentHome/studenthome.css";
-import { Segmented } from "antd";
 import CourseComponent from "../../component/Course";
 import React, { useEffect, useState } from "react";
+import { Segmented } from "antd";
 import { gql, useQuery } from "@apollo/client";
 
 const GET_COURSES = gql`
@@ -36,6 +36,7 @@ const GET_CATEGORY = gql`
     }
   }
 `;
+
 const HomeComponent = () => {
   let reload = null;
   const [params, setParams] = useState({

@@ -1,6 +1,7 @@
 import "./index.css";
+import { Link } from "react-router-dom";
+
 const CourseComponent = ({ course }) => {
-  console.log("🚀 ~ file: index.js:3 ~ CourseComponent ~ course:", course);
   const { firstName, lastName } = course.tutorProfile.tutor;
   return (
     <div className="course_box">
@@ -23,9 +24,9 @@ const CourseComponent = ({ course }) => {
         <div className="course_box_content_des">
           <p>{course.description}</p>
         </div>
-        <a href="playlist.html" className="inline-btn">
+        <Link to={`/dashboard/courses/${course.id}`} className="inline-btn">
           See detail
-        </a>
+        </Link>
       </div>
     </div>
   );
