@@ -54,6 +54,12 @@ export const routerStudent = [
     layout2: Navbar,
   },
   {
+    path: "/dashboard/courses/:id",
+    component: Viewcourse,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
     path: "/schedules",
     component: StudentSchedule,
     layout: SideBarLayout,
@@ -68,12 +74,6 @@ export const routerStudent = [
   {
     path: "/profile",
     component: StudentProfile,
-    layout: SideBarLayout,
-    layout2: Navbar,
-  },
-  {
-    path: "/viewcourse",
-    component: Viewcourse,
     layout: SideBarLayout,
     layout2: Navbar,
   },

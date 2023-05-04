@@ -36,6 +36,7 @@ const GET_CATEGORY = gql`
     }
   }
 `;
+
 const HomeComponent = () => {
   let reload = null;
   const [params, setParams] = useState({
