@@ -34,7 +34,7 @@ const CourseComponent = ({ course }) => {
             renders a TouchableHighlight
           </p>
         </div>
-        <Link to="/viewcourses" className="inline-btn">
+        <Link to="/viewcourse" className="inline-btn">
           See detail
         </Link>
       </div>
