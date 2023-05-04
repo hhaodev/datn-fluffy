@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../Redux/features/userSlice";
 import { UserType } from "../../constraint";
 import { useState } from "react";
+import { setError } from "../../Redux/features/notificationSlice";
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ function SignIn() {
         dispatch(setCurrentUser(userData));
         setUser(userData);
       } catch (error) {
-        alert(error.message);
+        dispatch(setError({ message: error.message }));
       }
     };
     getData();

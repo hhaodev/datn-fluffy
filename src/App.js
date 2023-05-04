@@ -9,8 +9,25 @@ import { setSchools } from "./Redux/features/schoolsSlice";
 import { UserType } from "./constraint";
 import { routerStudent, routerTutor } from "./routes/index";
 import "./App.css";
+import NotificationComponent from "./component/Notification";
 
 function App() {
+  const error = useSelector((state) => state.error.content);
+
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (error.message) {
+      setVisible(true);
+      const timer = setTimeout(() => {
+        setVisible(false);
+      }, 3000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [error]);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -65,6 +82,7 @@ function App() {
 
   return (
     <>
+      {visible && <NotificationComponent error={error} />}
       <Routes>
         {publicRoutes.map((route, index) => {
           const Page = route.component;
