@@ -133,7 +133,7 @@ export const routerTutor = [
     layout2: Navbar,
   },
   {
-    path: "/viewcourses",
+    path: "/courses/:id",
     component: ViewCourse,
     layout: SideBarLayout,
     layout2: Navbar,

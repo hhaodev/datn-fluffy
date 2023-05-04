@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import '../course/navcourse.css'
 
-export default function Courses({ data }) {
+export default function Courses({ course }) {
     const lastName = useSelector(state => state.user.currentUser.lastName)
     const firstName = useSelector(state => state.user.currentUser.firstName)
     const {
@@ -13,7 +13,7 @@ export default function Courses({ data }) {
         price,
         description,
         imageUrl,
-    } = data
+    } = course
     return (
         <div className="box__student">
             <div className="student__thumb">
@@ -29,7 +29,7 @@ export default function Courses({ data }) {
             {price ? <h3>{price} $</h3> : null}
             <p className='student__des'>{description}</p>
             <div className='course__buttonlink'>
-                <Link className="inline-btn" to={`/viewcourse/${id}`}><i class='bx bxs-chevrons-right'></i>Learn More</Link>
+                <Link className="inline-btn" to={`/viewcourses/${id}`}><i class='bx bxs-chevrons-right'></i>Learn More</Link>
             </div>
         </div>
     )

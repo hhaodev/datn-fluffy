@@ -96,7 +96,7 @@ function Addcourse() {
             .then((result) => {
                 if (result.createCourse.id)
                 alert("Thêm course thành công")
-                navigate("/mycoursett")
+                navigate("/courses")
             })
             .catch((error) => alert(error));
     };

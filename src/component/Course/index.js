@@ -1,7 +1,7 @@
 import "./index.css";
 import { Link } from "react-router-dom";
 
-const CourseComponent = ({ course }) => {
+const CourseComponent = ({ course, type }) => {
   const { firstName, lastName } = course.tutorProfile.tutor;
   return (
     <div className="course_box">
@@ -24,7 +24,7 @@ const CourseComponent = ({ course }) => {
         <div className="course_box_content_des">
           <p>{course.description}</p>
         </div>
-        <Link to={`/dashboard/courses/${course.id}`} className="inline-btn">
+        <Link to={type? `/courses/${course.id}` : `/dashboard/courses/${course.id}`} className="inline-btn">
           See detail
         </Link>
       </div>

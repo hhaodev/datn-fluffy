@@ -10,6 +10,7 @@ import { UserType } from "./constraint";
 import { routerStudent, routerTutor } from "./routes/index";
 import "./App.css";
 import NotificationComponent from "./component/Notification";
+import { setCurrentUser } from "./Redux/features/userSlice";
 
 function App() {
   const error = useSelector((state) => state.error.content);
@@ -66,6 +67,8 @@ function App() {
           query getMe {
             getMe {
               id
+              lastName
+              firstName
               type
               isOnboarded
             }
@@ -74,6 +77,7 @@ function App() {
       })
       .then((result) => {
         setType(result.data.getMe.type);
+        dispatch(setCurrentUser(result.data.getMe))
       })
       .catch((error) => {
         redirect("/sign-in");
