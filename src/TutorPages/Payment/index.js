@@ -183,16 +183,9 @@ const PaymentTutor = () => {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1>Payment</h1>
-              {/* <ul className="course__breadcrumb">
-                <li>
-                  <a href="">Dashboard</a>
-                </li>
-                <li><i className="bx bx-chevron-right" /></li>
-                <li>
-                  <a href="">Payment</a>
-                </li>
-              </ul> */}
+              <h1 className="payment__bx">
+                <i class="bx bx-credit-card-front"></i>Payment
+              </h1>
             </div>
           </div>
 
@@ -399,13 +392,14 @@ const PaymentTutor = () => {
                             <div className="payment__ttli2">
                               <div className="payment__li4">
                                 <h4 className="payment__sessiondates">
-                                <i className='bx bx-calendar-check' ></i>Session date:
+                                  <i className="bx bx-calendar-check"></i>
+                                  Session date:
                                 </h4>
                                 <p>Apr 12,2023</p>
                               </div>
                               <div className="payment__li5">
                                 <h4 className="payment__duration">
-                                <i className='bx bx-calendar-alt' ></i>Duration
+                                  <i className="bx bx-calendar-alt"></i>Duration
                                 </h4>
                                 <p>1 hour</p>
                               </div>

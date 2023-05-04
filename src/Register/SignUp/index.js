@@ -7,6 +7,7 @@ import "../../Register/SignUp/SignUp.css";
 import { useDispatch } from "react-redux";
 import { setVerify } from "../../Redux/features/verifySlice";
 import { setCurrentUser } from "../../Redux/features/userSlice";
+import { setError } from "../../Redux/features/notificationSlice";
 
 function SignUp() {
   const { Option } = Select;
@@ -34,19 +35,22 @@ function SignUp() {
       type: UserType.STUDENT,
     };
     const getData = async () => {
-      const result = await signUp({
-        variables: {
-          input: datatemp,
-        },
-      });
-      setStatus(result.data.signUp.success);
-      dispatch(setCurrentUser(datatemp));
-      dispatch(setVerify(user.email));
+      try {
+        const result = await signUp({
+          variables: {
+            input: datatemp,
+          },
+        });
+
+        setStatus(result.data.signUp.success);
+        dispatch(setCurrentUser(datatemp));
+        dispatch(setVerify(user.email));
+      } catch (error) {
+        dispatch(setError({ message: error.message }));
+      }
     };
+
     getData();
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   return (
@@ -66,7 +70,6 @@ function SignUp() {
             <Form
               name="basic"
               onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
               autoComplete="off"
               layout="vertical"
             >

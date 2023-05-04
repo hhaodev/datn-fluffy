@@ -9,6 +9,7 @@ import CourseComponent from "../../component/Course";
 
 function MyCoursestt() {
   const [courseList, setCourseList] = useState([]);
+  console.log("🚀 ~ file: index.js:12 ~ MyCoursestt ~ courseList:", courseList);
   const userId = useSelector((state) => state.user.currentUser.id);
 
   const [activeTab, setActiveTab] = useState("1");
@@ -30,6 +31,13 @@ function MyCoursestt() {
                 imageUrl
                 spendTime
                 description
+                tutorProfile {
+                  tutor {
+                    firstName
+                    lastName
+                    avatar
+                  }
+                }
                 coursePrograms {
                   id
                   isPublish
@@ -73,7 +81,7 @@ function MyCoursestt() {
               <TabPane tab="Technology" key="1">
                 <div className="student__box">
                   {courseList.map((data) => {
-                    return <CourseComponent data={data} />;
+                    return <CourseComponent course={data} />;
                   })}
                 </div>
               </TabPane>

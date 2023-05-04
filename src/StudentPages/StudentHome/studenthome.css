@@ -263,7 +263,7 @@ body {
   text-transform: capitalize;
 }
 .student__box {
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto auto auto;
-  gap: 50px;
+  grid-gap: 50px;
 }

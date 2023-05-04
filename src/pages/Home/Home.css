@@ -687,33 +687,35 @@ header.sticky {
 }
 
 .home__icon {
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
-	margin-top: 20px;
-	position: relative;
-	right: 65px;
-  }
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
+  position: relative;
+  right: 65px;
+}
 
-  .bxl-facebook-circle, .bxl-instagram-alt, .bxl-github, .bxl-twitter {
-	font-size: 35px;
-  }
+.bxl-facebook-circle,
+.bxl-instagram-alt,
+.bxl-github,
+.bxl-twitter {
+  font-size: 35px;
+}
 
-  .home__danang {
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
-  }
+.home__danang {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
 
-  .home__logo1 {
-  font-family: 'Lilita One', cursive;
+.home__logo1 {
+  font-family: "Lilita One", cursive;
   font-weight: bold;
   color: #f66962 !important;
-	font-size: 35px;
+  font-size: 35px;
 }
 
 .home-accessible {
   color: black !important;
   font-weight: 400 !important;
 }
-
