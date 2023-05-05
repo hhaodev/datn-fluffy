@@ -27,7 +27,7 @@ const GET_COURSES = gql`
   }
 `;
 
-const GET_CATEGORY = gql`
+export const GET_CATEGORY = gql`
   query getCategories {
     getCategories(queryParams: { limit: 10, page: 1 }) {
       items {

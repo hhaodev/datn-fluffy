@@ -1,5 +1,5 @@
 import "../../TutorPages/Courses/courses.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
@@ -7,57 +7,68 @@ import { useSelector } from "react-redux";
 import { Tabs } from "antd";
 import CourseComponent from "../../component/Course";
 
-
 function MyCoursestt() {
-  const [courseList, setCourseList] = useState([]);
-  // console.log("🚀 ~ file: index.js:12 ~ MyCoursestt ~ courseList:", courseList);
+  const [courseList, setCourseList] = useState(null);
+  const categories = useSelector((state) => state.categories.items);
   const userId = useSelector((state) => state.user.currentUser.id);
-  // console.log(userId);
-  const [activeTab, setActiveTab] = useState("1");
   const { TabPane } = Tabs;
+
+  const [params, setParams] = useState({
+    page: 1,
+    limit: 9,
+    filters: [
+      {
+        field: "Course.categoryId",
+        operator: "eq",
+        data: categories[0]?.id,
+      },
+    ],
+  });
 
   useEffect(() => {
     client
-      .query({
-        query: gql`
-          query getCoursesByTutorId(
-            $tutorId: String!
-            $query: QueryFilterDto!
-          ) {
-            getCoursesByTutorId(tutorId: $tutorId, query: $query) {
-              items {
-                id
-                name
-                isPublish
-                imageUrl
-                spendTime
-                description
-                tutorProfile {
-                  tutor {
-                    firstName
-                    lastName
-                  }
-                }
-                coursePrograms {
+      .query(
+        {
+          query: gql`
+            query getCoursesByTutorId(
+              $tutorId: String!
+              $query: QueryFilterDto!
+            ) {
+              getCoursesByTutorId(tutorId: $tutorId, query: $query) {
+                items {
                   id
+                  name
                   isPublish
+                  imageUrl
+                  spendTime
+                  description
+                  tutorProfile {
+                    tutor {
+                      firstName
+                      lastName
+                      avatarUrl
+                    }
+                  }
+                  coursePrograms {
+                    id
+                    isPublish
+                  }
                 }
               }
             }
-          }
-        `,
-        variables: {
-          query: {
-            page: 1,
-            limit: 10,
+          `,
+          variables: {
+            query: params,
+            tutorId: `${userId}`,
           },
-          tutorId: `${userId}`,
         },
-      })
+        {}
+      )
       .then((result) => {
         setCourseList(result.data.getCoursesByTutorId.items);
       });
-  }, [userId]);
+  }, [params]);
+
   return (
     <div>
       <section id="content">
@@ -65,7 +76,6 @@ function MyCoursestt() {
           <div className="course__head-title">
             <div className="course__left"></div>
           </div>
-
           <div className="course-container">
             <div className="title-container">
               <h1 className="course__h1tittle">Courses</h1>
@@ -75,34 +85,37 @@ function MyCoursestt() {
                 </button>
               </Link>
             </div>
-            {/* <div className='course__padding'> */}
-            <Tabs activeKey={activeTab} onChange={(key) => setActiveTab(key)}>
-              <TabPane tab="Technology" key="1">
-                <div className="student__box">
-                  {courseList.map((data) => {
-                    return <CourseComponent course={data} type="TUTOR" />;
-                  })}
-                </div>
-              </TabPane>
-              <TabPane tab="Languages" key="2">
-                <p>Nội dung khoá học về Languages</p>
-              </TabPane>
-              <TabPane tab="Economics" key="3">
-                <p>Nội dung khoá học về Economics</p>
-              </TabPane>
-              <TabPane tab="Marketing" key="4">
-                <p>Nội dung khoá học về Marketing</p>
-              </TabPane>
-              <TabPane tab="Design" key="5">
-                <p>Nội dung khoá học về Design</p>
-              </TabPane>
+
+            <Tabs
+              onChange={(key) =>
+                setParams({
+                  limit: 9,
+                  page: 1,
+                  filters: [
+                    {
+                      field: "Course.categoryId",
+                      operator: "eq",
+                      data: key,
+                    },
+                  ],
+                })
+              }
+            >
+              {categories &&
+                categories.map((category) => (
+                  <TabPane tab={category.name} key={category.id}>
+                    <div className="student__box">
+                      {courseList &&
+                        courseList.map((course) => (
+                          <CourseComponent course={course} type="tutor" />
+                        ))}
+                    </div>
+                  </TabPane>
+                ))}
             </Tabs>
-            {/* </div> */}
           </div>
         </main>
-        {/* MAIN */}
       </section>
-      {/* CONTENT */}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import verifySlice from "./features/verifySlice";
 import schoolsSlice from "./features/schoolsSlice";
 import tutorSlice from "./features/tutorSlice";
 import notificationSlice from "./features/notificationSlice";
+import categoriesSlice from "./features/categoriesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     schools: schoolsSlice,
     tutor: tutorSlice,
     error: notificationSlice,
+    categories: categoriesSlice,
   },
 });
