@@ -11,6 +11,8 @@ import { routerStudent, routerTutor } from "./routes/index";
 import "./App.css";
 import NotificationComponent from "./component/Notification";
 import { setCurrentUser } from "./Redux/features/userSlice";
+import { setCategories } from "./Redux/features/categoriesSlice";
+import { GET_CATEGORY } from "./StudentPages/StudentHome";
 
 function App() {
   const error = useSelector((state) => state.error.content);
@@ -77,10 +79,18 @@ function App() {
       })
       .then((result) => {
         setType(result.data.getMe.type);
-        dispatch(setCurrentUser(result.data.getMe))
+        dispatch(setCurrentUser(result.data.getMe));
       })
       .catch((error) => {
         redirect("/sign-in");
+      });
+
+    client
+      .query({
+        query: GET_CATEGORY,
+      })
+      .then((result) => {
+        dispatch(setCategories(result.data.getCategories.items));
       });
   }, [currentUser]);
 

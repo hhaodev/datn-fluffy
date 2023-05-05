@@ -1,206 +1,224 @@
-import '../ViewCourse/viewcourse.css'
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import Navbar from '../component/Navbar';
-import sidebarlogo from '../../assets/images/logo-removebg-preview.png'
-import course1 from '../../assets/images/course1.jpg'
-import avt1 from '../../assets/images/avt1.jpg'
-import { Rate, Button, Modal, Form, Input } from 'antd';
-import { Collapse } from 'antd';
-import React, { useEffect, useState } from 'react'
-import { gql } from '@apollo/client';
-import client from '../../configGQL';
+import "./viewcourse.css";
+import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { gql } from "@apollo/client";
+import { CourseLabelComponent } from "../../component/CourseLabel";
+import client from "../../configGQL";
+import { Modal, Switch, Button, InputNumber } from "antd";
+import { Label } from "@mui/icons-material";
+import { DollarOutlined, ReadOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { setError } from "../../Redux/features/notificationSlice";
 
+const QUERY_COURSE_BY_ID = gql`
+  query getCourseById($courseId: String!) {
+    getCourseById(courseId: $courseId) {
+      id
+      name
+      imageUrl
+      description
+      price
+      spendTime
+      duration
+      isPublish
+      numberOfProgramRequired
+      tutorProfile {
+        tutor {
+          lastName
+          firstName
+          avatarUrl
+        }
+      }
+      category {
+        name
+      }
+      coursePrograms {
+        id
+        title
+        description
+        isPublish
+        courseProgramPhases {
+          id
+          order
+          name
+          content
+          overviewUrl
+        }
+      }
+    }
+  }
+`;
+
+const MUTATION_PUBLISH_COURSE = gql`
+  mutation publishCourse($input: PublishCourseDto!) {
+    publishCourse(input: $input) {
+      isPublish
+    }
+  }
+`;
 
 function ViewCourse() {
-    const { id } = useParams()
-    const navigate = useNavigate()
-    const { Panel } = Collapse;
-    const onChange = (key) => {
-    };
-    const [dataCousre, setDataCourse] = useState([])
-    const [open, setOpen] = useState(false);
-    const showModal = () => {
-        setOpen(true);
-    };
-    const handleOk = () => {
-        setOpen(false)
-    };
-    const handleCancel = () => {
-        setOpen(false);
-    };
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const [isVisibled, setIsVisibled] = useState(false);
+  const [courseData, setDataCourse] = useState(null);
+  const [publishData, setPublishData] = useState(null);
 
-    useEffect(() => {
-        client.query({
-            query: gql`
-            query getCourseById($courseId: String!){
-                getCourseById(courseId: $courseId){
-                    id
-                    name
-                    imageUrl
-                    description
-                    price
-                    spendTime
-                    duration
-                    category{
-                        name
-                    }
-                    coursePrograms{
-                        id
-                        title
-                        description
-                        courseProgramPhases{
-                            id
-                            order
-                            name
-                            content
-                            overviewUrl
-                        }
-                    }
-                }
-            }
-            `,
-            variables: { courseId: `${id}` }
-        })
-            .then((result => { setDataCourse(result.data.getCourseById) }))
-    }, [id]);
+  const onHandlePublished = (publishCourse) => {
+    client
+      .mutate({
+        mutation: MUTATION_PUBLISH_COURSE,
+        variables: {
+          input: publishCourse,
+        },
+      })
+      .then((response) => {
+        setIsVisibled(false);
+      })
+      .catch((error) => {
+        dispatch(setError({ message: error.message }));
+      });
+  };
 
-    const DELETECOURSEBYID = gql`
-    mutation deleteCourseById($courseId: String!) {
-        deleteCourseById(courseId: $courseId) {
-            message
-            success
-        }
+  const hanldeOnChangeStatus = (field, value) => {
+    let data = publishData;
+    if (!publishData) {
+      data = {
+        id,
+        price: courseData.price,
+        isPublish: courseData.isPublish,
+        numberOfProgramRequired: courseData.numberOfProgramRequired,
+        courseProgram: courseData.coursePrograms.map((program) => ({
+          id: program.id,
+          isPublish: program.isPublish,
+        })),
+      };
     }
-    `
 
-    const handleEditCourse = () => {
-        alert("tét")
+    if (field === "courseProgram") {
+      const newPrograms = data.courseProgram.filter((el) => el.id !== value.id);
+      newPrograms.push(value);
+      data.courseProgram = newPrograms;
+    } else {
+      data[field] = value;
     }
-    const handleDeleteCourse = () => {
-        let input = { courseId: id }
-        const deteleCourseById = async (client, input) => {
-            try {
-                const { data } = await client.mutate({
-                    mutation: DELETECOURSEBYID,
-                    variables: input,
-                });
-                return data;
-            } catch (error) {
-                alert(error);
-            }
-        };
-        deteleCourseById(client, input)
-            .then((result) => {
-                if (result.deleteCourseById.success) {
-                    alert("Xoá course thành công")
-                    navigate('/mycoursett')
-                }
-            }
-            )
-            .catch((error) => alert(error));
-    }
-    return (
-        <>
-            <section id="content">
-                <main>
-                    <div className="feedback__head-title">
-                        <div className="feedback__left">
-                            <h1 className='view__h1view'><i className='bx bx-dock-right'></i>View Course</h1>
-                            {/* <Button type='primary' className='view__but1'><i class='bx bxs-up-arrow-alt'></i>Publish Course</Button> */}
-                            <Button type="primary" onClick={showModal}>
-                                Publish Course
-                            </Button>
-                            <Modal
-                                title="Publish Course"
-                                open={open}
-                                onOk={handleOk}
-                                onCancel={handleCancel}
-                            >
-                                <Form.Item
-                                    name="price"
-                                    label="Price"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input price!',
-                                        },
-                                    ]}
-                                >
-                                    <Input type='number' style={{ height: "35px" }} />
-                                </Form.Item>
-                            </Modal>
-                        </div>
-                        {/* <h1 className='feedback__h1'>FeedBack</h1> */}
-                    </div>
 
-                    <div className='bg__view'>
-                        <div className="box__student">
-                            <div className="student__thumb">
-                                <img src={course1} alt="" className="student__img2" />
-                            </div>
-                            <div className="student__tutor">
-                                <img src={avt1} alt="" className="student__img1" />
-                                <div className="student__info">
-                                    <h3 className="student__h32">Rebecca</h3>
-                                </div>
-                            </div>
-                            <div className='view__h3rate'>
-                                <h3 className="student__title1">Learn Ethical Hacking From Scratch Here</h3>
-                                <p className='rate__view'><Rate disabled defaultValue={4} className='viewer__rate' /></p>
-                            </div>
-                            <p className='student__des'>Become an ethical hacker that can hack computer systems like black hat hackers.</p>
-                            <h2 className='view__cost'><i class='bx bx-dollar' ></i>60</h2>
-                            <div className='view__buttonall'>
-                                <div className='course__buttonlink'><Button onClick={handleEditCourse} className="inline-btn view__but242"><i class='bx bxs-edit' ></i>Edit</Button></div>
-                                <div className='course__buttonlink'><Button onClick={handleDeleteCourse} className="inline-btn view__but242"><i class='bx bx-x' ></i>Delete</Button></div>
-                            </div>
-                        </div>
-                    </div>
+    setPublishData((prevState) => ({
+      ...prevState,
+      ...data,
+    }));
+  };
 
-                    <div className='view__content'>
-                        <div className='view__but212'>
-                            <h2 className='view__h2r'><i class='bx bxs-book-content' ></i>Content Course</h2>
-                            <Button type='primary' className='view__but1'><i class='bx bxs-edit' ></i>Edit</Button>
-                            <Button type='primary' className='view__but242'><i class='bx bx-x' ></i>Delete</Button>
-                        </div>
-                        <Collapse defaultActiveKey={['1']} onChange={onChange}>
-                            <Panel header="Introduction" key="1">
-                                <p className='introduction__view'><i className='bx bxs-tv' ></i>In this lecture you will learn what is meant by a hacker<span className='span__view'>09:28</span></p>
-                            </Panel>
-                            <Panel header="Linux Basic" key="2">
-                                <p><i className='bx bxs-tv' ></i>Basic Overview of Kali Linux<span className='span__view'>04:56</span></p>
-                                <p><i className='bx bxs-tv' ></i>The Terminal & Linux Commands<span className='span__view'>02:04</span></p>
-                            </Panel>
-                            <Panel header="Network hacking" key="3">
-                                <p><i className='bx bxs-tv' ></i>Networks Basics<span className='span__view'>09:28</span></p>
-                                <p><i className='bx bxs-tv' ></i>Connecting a Wireless Adapter To Kali<span className='span__view'>02:06</span></p>
-                                <p><i className='bx bxs-tv' ></i>What is MAC Address & How To Change It<span className='span__view'>06:02</span></p>
-                                <p><i className='bx bxs-tv' ></i>Wireless Modes (Managed & Monitor)<span className='span__view'>01:38</span></p>
-                            </Panel>
-                            <Panel header="Network hacking: Pre-Conecting attack" key="4">
-                                <p><i className='bx bxs-tv' ></i>Packet Sniffing Basics<span className='span__view'>09:28</span></p>
-                                <p><i className='bx bxs-tv' ></i>WiFi Bands - 2.4Ghz & 5Ghz Frequencies<span className='span__view'>02:52</span></p>
-                                <p><i className='bx bxs-tv' ></i>Targeted Packet Sniffing<span className='span__view'>09:28</span></p>
-                                <p><i className='bx bxs-tv' ></i>Theory Behind Cracking WEP Encryption<span className='span__view'>07:12</span></p>
-                            </Panel>
-                            <Panel header="Network Hacking - Gaining Access - WPA / WPA2 Cracking" key="5">
-                                <p><i className='bx bxs-tv' ></i>Introduction to WPA and WPA2 Cracking<span className='span__view'>02:26</span></p>
-                                <p><i className='bx bxs-tv' ></i>Hacking WPA & WPA2 Without a Wordlist<span className='span__view'>06:16</span></p>
-                                <p><i className='bx bxs-tv' ></i>Capturing The Handshake<span className='span__view'>09:28</span></p>
-                                <p><i className='bx bxs-tv' ></i>Creating a Wordlist<span className='span__view'>09:28</span></p>
-                                <p><i className='bx bxs-tv' ></i>Cracking WPA & WPA2 Using a Wordlist Attack<span className='span__view'>02:19</span></p>
-                            </Panel>
-                            <Panel header="Network Hacking - Gaining Access - Security" key="6">
-                                <p><i className='bx bxs-tv' ></i>Securing Your Network From Hackers<span className='span__view'>06:12</span></p>
-                                <p><i className='bx bxs-tv' ></i>Configuring Wireless Settings for Maximum Security<span className='span__view'>02:19</span></p>
-                            </Panel>
-                        </Collapse>
-                    </div>
-                </main>
-            </section>
+  const hanldeToggleModal = () => {
+    setIsVisibled(!isVisibled);
+  };
 
-        </>
-    );
+  useEffect(() => {
+    client
+      .query({
+        query: QUERY_COURSE_BY_ID,
+        variables: { courseId: `${id}` },
+      })
+      .then((result) => {
+        setDataCourse(result.data.getCourseById);
+      });
+  }, [id]);
+
+  return (
+    <>
+      <section id="content">
+        <main>
+          <div className="feedback__head-title">
+            <div className="feedback__left">
+              <h1 className="view__h1view">
+                <i className="bx bx-dock-right"></i>View Course
+              </h1>
+            </div>
+          </div>
+          <Modal
+            open={isVisibled}
+            title="Publish Course"
+            width="750px"
+            footer={null}
+            closable={false}
+          >
+            <div className="publish-form">
+              <h3>Course Programs: </h3>
+              <div className="publish-coursePrograms">
+                {courseData &&
+                  courseData.coursePrograms.map((el) => (
+                    <div className="publish-item">
+                      <Label />
+                      <p>{el.title}</p>
+                      <Switch
+                        defaultChecked={el.isPublish}
+                        onChange={(e) => {
+                          hanldeOnChangeStatus("courseProgram", {
+                            id: el.id,
+                            isPublish: e || false,
+                          });
+                        }}
+                      />
+                    </div>
+                  ))}
+              </div>
+              <div className="publish-form-price">
+                <label className="publish-form-price-lable">
+                  <ReadOutlined /> Number of required programs
+                </label>
+                <InputNumber
+                  className="input-price"
+                  onChange={(e) =>
+                    hanldeOnChangeStatus("numberOfProgramRequired", e)
+                  }
+                  defaultValue={courseData?.numberOfProgramRequired || 1}
+                ></InputNumber>
+              </div>
+              <div className="publish-form-price">
+                <label className="publish-form-price-lable">
+                  <DollarOutlined className="icon-dolar" /> Price
+                </label>
+                <InputNumber
+                  className="input-price"
+                  defaultValue={courseData?.price || 0.0}
+                  onChange={(e) => hanldeOnChangeStatus("price", e)}
+                  formatter={(value) =>
+                    `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                />
+              </div>
+              <div className="publish-form-btn-group">
+                <Button className="btn-publish" onClick={hanldeToggleModal}>
+                  Cancel
+                </Button>
+                <Button
+                  className="btn-publish btn-primary"
+                  onClick={() => onHandlePublished(publishData)}
+                >
+                  Publish
+                </Button>
+              </div>
+            </div>
+          </Modal>
+          {courseData && (
+            <CourseLabelComponent
+              course={courseData}
+              tutorType
+              handleOpenPublished={hanldeToggleModal}
+            />
+          )}
+          <div className="view__content">
+            <div className="view__but212">
+              <h2 className="view__h2r">
+                <i class="bx bxs-book-content"></i>Content Course
+              </h2>
+            </div>
+          </div>
+        </main>
+      </section>
+    </>
+  );
 }
 
 export default ViewCourse;
