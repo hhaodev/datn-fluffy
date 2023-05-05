@@ -376,13 +376,13 @@ function StudentPayment() {
                             <div className="payment__ttli2">
                               <div className="payment__li4">
                                 <h4 className="payment__sessiondates">
-                                  <i class="bx bx-calendar"></i>Session date:
+                                <i className='bx bx-calendar-event' ></i>Session date:
                                 </h4>
                                 <p>Apr 12,2023</p>
                               </div>
                               <div className="payment__li5">
                                 <h4 className="payment__duration">
-                                  <i class="bx bx-alarm"></i>Duration
+                                  <i class="bx bx-alarm"></i>Duration:
                                 </h4>
                                 <p>1 hour</p>
                               </div>

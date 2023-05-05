@@ -7,3 +7,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.student_change {
+  float: right;
+  position: relative;
+  bottom: -32px;
+  right: 140px;
+}

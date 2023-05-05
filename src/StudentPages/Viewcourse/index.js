@@ -7,6 +7,9 @@ import client from "../../configGQL";
 import { useDispatch } from "react-redux";
 import { setError } from "../../Redux/features/notificationSlice";
 import "./viewcourses.css";
+import { Link } from 'react-router-dom'
+import { Calendar, theme } from 'antd';
+import { Segmented } from 'antd';
 
 const QUERY_COURSE_DETAIL = gql`
   query getCourseById($courseId: String!) {
@@ -53,6 +56,18 @@ const QUERY_COURSE_DETAIL = gql`
 `;
 
 function Viewcourse() {
+
+  // calendar
+  const onPanelChange = (value, mode) => {
+    console.log(value.format('YYYY-MM-DD'), mode);
+  };
+  const { token } = theme.useToken();
+  const wrapperStyle = {
+    width: 300,
+    border: `1px solid ${token.colorBorderSecondary}`,
+    borderRadius: token.borderRadiusLG,
+  };
+  // end calendar
   const dispatch = useDispatch();
   const { id } = useParams();
   const [courseData, setCourseData] = useState(null);
@@ -128,6 +143,7 @@ function Viewcourse() {
                       <img
                         src={courseData.tutorProfile.tutor.avatarUrl}
                         alt=""
+                        className="course-author-avt"
                       />
                     </div>
                     <p className="course_author1_info1">{`${courseData.tutorProfile.tutor.firstName} ${courseData.tutorProfile.tutor.lastName}`}</p>
@@ -140,6 +156,10 @@ function Viewcourse() {
                     {courseData.price}
                     <i className="bx bx-dollar"></i>
                   </h3>
+                  
+                  {/* <h3 className="calendar-h3"><i className='bx bxs-calendar'>11:00 PM - 14:00 PM (Friday, Sunday)</i></h3> */}
+                  <div style={wrapperStyle}>
+                  </div>
                   <div className="all__button2">
                     <Button type="default" className="inline-btn1">
                       Start Trial Lesson
@@ -148,7 +168,13 @@ function Viewcourse() {
                   </div>
                 </div>
               </div>
+              <div className="course_box2">
+              <Segmented block options={["Set 1", "Set 2", "Set 3"]} />
+              <Calendar fullscreen={false} onPanelChange={onPanelChange} className="calendar-form"/>
+              </div>
             </div>
+
+
             <div className="view__content">
               <div className="view__but212">
                 <h1 className="view__h2r">Course Program:</h1>
@@ -169,6 +195,7 @@ function Viewcourse() {
                         <i className="bx bxs-tv"></i>
                         {phase.name}
                         <span className="span__view">09:28</span>
+                        <span className="span__view"><Link>Preview</Link></span>
                       </p>
                     ))}
                   </Panel>

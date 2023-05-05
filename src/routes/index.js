@@ -28,6 +28,7 @@ import ViewCourse from "../TutorPages/ViewCourse/index";
 import Addcourse from "../TutorPages/AddCourse/index";
 import Schedulestt from "../TutorPages/Schedules/index";
 import Viewcourse from "../StudentPages/Viewcourse/index";
+import ChangeStudent from "../StudentPages/ChangeStudent/index";
 
 const publicRoutes = [
   { path: "/", component: Home },
@@ -77,6 +78,13 @@ export const routerStudent = [
     layout: SideBarLayout,
     layout2: Navbar,
   },
+  {
+    path: "/changepass",
+    component: ChangeStudent,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  
 ];
 export const routerTutor = [
   { path: "/onboarding/step-1", component: OnboardTutor__Step1 },

@@ -3,8 +3,7 @@
   background-color: white;
   padding: 10px;
   box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
-  width: 700px;
-  height: 500px;
+  width: 60%;
   overflow: hidden;
   color: black;
   border: 3px solid #ef709f;
@@ -90,12 +89,6 @@
   background-color: #87ddebcb;
 }
 
-.all__course1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .all__button2 {
   display: flex;
   width: 400px;
@@ -131,4 +124,8 @@
 
 .span__view {
   float: right;
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

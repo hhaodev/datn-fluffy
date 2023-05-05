@@ -392,14 +392,14 @@ const PaymentTutor = () => {
                             <div className="payment__ttli2">
                               <div className="payment__li4">
                                 <h4 className="payment__sessiondates">
-                                  <i className="bx bx-calendar-check"></i>
+                                <i className='bx bx-calendar-event' ></i>
                                   Session date:
                                 </h4>
                                 <p>Apr 12,2023</p>
                               </div>
                               <div className="payment__li5">
                                 <h4 className="payment__duration">
-                                  <i className="bx bx-calendar-alt"></i>Duration
+                                  <i className="bx bx-calendar-alt"></i>Duration:
                                 </h4>
                                 <p>1 hour</p>
                               </div>

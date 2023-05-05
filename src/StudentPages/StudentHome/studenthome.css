@@ -263,7 +263,14 @@ body {
   text-transform: capitalize;
 }
 .student__box {
-  display: inline-grid;
+  display: grid;
   grid-template-columns: auto auto auto;
   grid-gap: 50px;
+}
+
+.pagni_padding {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -52,13 +52,10 @@ li {
   background-color: var(--light);
   z-index: 300;
   font-family: var(--lato);
-  /* transition: 0.3s ease; */
   overflow-x: hidden;
   scrollbar-width: none;
 }
-/* #course__sidebar::--webkit-scrollbar {
-	display: none;
-} */
+
 #sidecourse__sidebarbar.hide {
   width: 60px;
 }
@@ -74,13 +71,6 @@ li {
   height: 90px;
 }
 #course__sidebar {
-  /* background: rgb(63, 94, 251);
-  background: linear-gradient(
-    180deg,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(162, 82, 180, 1) 49%,
-    rgba(252, 70, 107, 1) 100%
-  ); */
   background: #eecda3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to bottom,
@@ -102,7 +92,6 @@ li {
   height: 66px;
   background: transparent;
   margin-left: 6px;
-  /* border-radius: 48px 0 0 48px; */
   padding: 4px;
 }
 
@@ -516,4 +505,29 @@ li {
   .ant-tabs-tab-btn {
   color: #ffffff;
   text-shadow: 0 0 0.25px currentcolor;
+}
+
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab-btn {
+    outline: none;
+    color: #fff;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    border-radius: 10px;
+    background: #eecda3;
+    background: linear-gradient( to bottom, #ef629f, #eecda3 );
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #ffffff;
+    text-shadow: 0 0 0.25px currentcolor;
+}
+
+:where(.css-dev-only-do-not-override-mxhywb).ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, :where(.css-dev-only-do-not-override-mxhywb).ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
 }

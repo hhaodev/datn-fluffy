@@ -3,6 +3,7 @@ import CourseComponent from "../../component/Course";
 import React, { useEffect, useState } from "react";
 import { Segmented } from "antd";
 import { gql, useQuery } from "@apollo/client";
+import Pagnigation from "../../component/Pagnigation";
 
 const GET_COURSES = gql`
   query getCourses($params: QueryFilterDto!) {
@@ -169,7 +170,11 @@ const HomeComponent = () => {
                 {reload}
                 {courses.length !== 0 &&
                   courses.map((course) => <CourseComponent course={course} />)}
+                  
               </div>
+             
+                  <Pagnigation/>
+                    
             </div>
           </main>
         )}

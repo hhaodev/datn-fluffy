@@ -2,9 +2,6 @@ import "../StudentProfile/studentprofile.css";
 import { Avatar, Dropdown, Button, Menu, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import user from "../../assets/images/user.jpg";
-import { DownOutlined } from "@ant-design/icons";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
 import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
 import avt from "../../../src/assets/images/avt1.jpg";
@@ -28,9 +25,7 @@ function StudentProfile() {
         <main>
           <div className="course__head-title__view">
             <div className="course__left">
-              <h1>
-                <i class="bx bxs-user-circle"></i>View Profile
-              </h1>
+              <h1>View Profile</h1>
               <div className="view__allform">
                 <div className="view__form">
                   <div className="view__avt">
@@ -54,6 +49,8 @@ function StudentProfile() {
                     >
                       Upload new picture
                     </Button>
+                    
+                    <Button type="primary"  className="student_change"><Link to="/changepass">Change Password</Link></Button>
                   </div>
 
                   <Form
