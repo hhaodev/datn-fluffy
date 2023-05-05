@@ -57,7 +57,7 @@ function MyCoursestt() {
       .then((result) => {
         setCourseList(result.data.getCoursesByTutorId.items);
       });
-  }, [userId]);
+  }, [userId, courseList]);
   return (
     <div>
       <section id="content">
