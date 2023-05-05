@@ -1,97 +1,109 @@
 import "../../TutorPages/MyStudent/mystudent.css";
 import { Table, Modal, Button, Form } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar } from "antd";
-import avt from "../../../src/assets/images/avt1.jpg";
+import client from "../../configGQL";
+import { gql } from "@apollo/client";
+import { useDispatch, useSelector } from "react-redux";
+import { setError } from '../../Redux/features/notificationSlice'
+import avt1 from "../../assets/images/avt1.jpg"
 
 const MyStudenttutor = () => {
-  // Table
+  const dispatch = useDispatch()
+  const schoolsList = useSelector(state => state.schools.schoolsData)
+  const [studentList, setStudentList] = useState([])
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [moreData, setMoreData] = useState([])
   const [form] = Form.useForm();
 
-  const handleViewMoreClick = () => {
+  useEffect(() => {
+    client.query({
+      query: gql`
+      query getMyStudents($query: QueryFilterDto!){
+      getMyStudents(query: $query) {
+        items {
+          id
+          lastName
+          firstName
+          email
+          phoneNumber
+          gender
+          avatarUrl
+          studentProfile{
+            studentEducations{
+              schoolId
+            }
+          }
+        }
+      }
+      }`,
+      variables: {
+        query: {
+          limit: 10,
+          page: 1
+        }
+      }
+    })
+      .then(result => {
+        setStudentList(result.data.getMyStudents.items)
+      }).catch(error => {
+        dispatch(setError({ message: error.message }))
+      })
+  }, [studentList]);
+  // Table
+
+
+  const handleViewMoreClick = (record) => {
+
+    setMoreData(record)
     setIsModalVisible(true);
   };
 
   const handleOk = () => {
-    form.submit();
-  };
-
-  const handleCancel = () => {
     setIsModalVisible(false);
   };
 
-  const onFinish = (values) => {
-    console.log(values);
-    setIsModalVisible(false);
-  };
-
-  const dataSource = [
-    {
-      id: "1323",
-      name: "John Brown",
-      status: "Done",
-    },
-    {
-      id: "2232",
-      name: "Jim Green",
-      status: "To Do",
-    },
-    {
-      id: "3232",
-      name: "Joe Black",
-      status: "Inprogress",
-    },
-    {
-      id: "6663",
-      name: "John Brown",
-      status: "To Do",
-    },
-    {
-      id: "9981",
-      name: "John Brown",
-      status: "Done",
-    },
-    {
-      id: "6512",
-      name: "John Brown",
-      status: "To Do",
-    },
-    {
-      id: "8872",
-      name: "John Brown",
-      status: "Done",
-    },
-    {
-      id: "6652",
-      name: "John Brown",
-      status: "Done",
-    },
-  ];
+  const dataSource = studentList.map(data => ({
+    id: data.id,
+    name: data.firstName + ' ' + data.lastName,
+    phoneNumber: data.phoneNumber,
+    gmail: data.email,
+    gender: data.gender,
+    array: data.studentProfile
+  }))
 
   const columns = [
-    {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-    },
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
+      render: (text) => (
+        <span>{text ? text : "null"}</span>
+      )
     },
     {
-      title: "Status",
-      dataIndex: "status",
-      key: "status",
+      title: "Gmail",
+      dataIndex: "gmail",
+      key: "gmail",
+      render: (text) => (
+        <span>{text ? text : "null"}</span>
+      )
+    },
+    {
+      title: "PhoneNumber",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
+      render: (text) => (
+        <span>{text ? text : "null"}</span>
+      )
     },
     {
       title: "Detail",
       key: "detail",
-      render: (text, record) => (
+      render: (record) => (
         <Button
           type="primary"
-          onClick={handleViewMoreClick}
+          onClick={() => handleViewMoreClick(record)}
           className="view__payment"
         >
           More
@@ -107,17 +119,8 @@ const MyStudenttutor = () => {
           <div className="course__head-title">
             <div className="course__left">
               <h1 className="course__studentmy">
-                <i class="bx bx-universal-access"></i>My student
+                My student
               </h1>
-              {/* <ul className="course__breadcrumb">
-                <li>
-                  <a href="">Dashboard</a>
-                </li>
-                <li><i className="bx bx-chevron-right" /></li>
-                <li>
-                  <a href="">My Student</a>
-                </li>
-              </ul> */}
             </div>
           </div>
 
@@ -126,38 +129,53 @@ const MyStudenttutor = () => {
             <Modal
               title="Profile"
               visible={isModalVisible}
-              onOk={handleOk}
-              onCancel={handleCancel}
+              footer={[<Button onClick={handleOk}>Cancel</Button>]}
             >
-              <Form form={form} name="view-more-form" onFinish={onFinish}>
-                <div className="mystdtt__avtt">
-                  <Avatar
-                    size={{
-                      xs: 24,
-                      sm: 32,
-                      md: 40,
-                      lg: 64,
-                      xl: 80,
-                      xxl: 100,
-                    }}
-                    src={avt}
-                    className="view__avt2"
-                  />
-                  <p className="mystdtt__name">Tran Thanh Hoang</p>
-                </div>
-                <div className="ag1">
-                  <p className="mystdtt__age">Age:</p>
-                  <p>22</p>
-                </div>
-                <div className="school1">
-                  <p className="mystdtt__school">School:</p>
-                  <p>Duy Tan University</p>
-                </div>
-                <div className="courses1">
-                  <p className="mystdtt__courses">Courses:</p>
-                  <p>GraphQL with React: The Complete Developers Guide</p>
-                </div>
-              </Form>
+              {moreData && (
+                <Form form={form} name="view-more-form">
+                  <div className="mystdtt__avtt">
+                    <Avatar
+                      size={{
+                        xs: 24,
+                        sm: 32,
+                        md: 40,
+                        lg: 64,
+                        xl: 80,
+                        xxl: 100,
+                      }}
+                      src={moreData.avatarUrl ? moreData.avatarUrl : avt1}
+                      className="view__avt2"
+                    />
+                    <p className="mystdtt__name">{moreData.name ? moreData.name : "null"}</p>
+                  </div>
+                  <div className="school1">
+                    <p className="mystdtt__school">UserId:</p>
+                    <p>{moreData.id ? moreData.id : "null"}</p>
+                  </div>
+                  <div className="school1">
+                    <p className="mystdtt__school">Gender:</p>
+                    <p>{moreData.gender ? moreData.gender : "null"}</p>
+                  </div>
+                  <div className="school1">
+                    <p className="mystdtt__school">PhoneNumber:</p>
+                    <p>{moreData.phoneNumber ? moreData.phoneNumber : "null"}</p>
+                  </div>
+                  <div className="school1">
+                    <p className="mystdtt__school">School:</p>
+                    {
+                      moreData.array?.studentEducations.map((school) => {
+                        const t =  schoolsList?.find(sch=>sch.id === school.schoolId)
+                        return (
+                          <p>{t.name}</p>   
+                        )
+                      })
+                    }
+                  </div>
+                  <div className="courses1">
+                    <p className="mystdtt__courses"></p>
+                  </div>
+                </Form>
+              )}
             </Modal>
           </div>
         </main>

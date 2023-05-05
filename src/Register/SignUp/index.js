@@ -30,7 +30,7 @@ function SignUp() {
       lastName: user.lastName,
       email: user.email,
       password: user.password,
-      phoneNumber: user.phoneNumber,
+      phoneNumber: user.phone,
       gender: user.gender,
       type: UserType.STUDENT,
     };
@@ -41,7 +41,6 @@ function SignUp() {
             input: datatemp,
           },
         });
-
         setStatus(result.data.signUp.success);
         dispatch(setCurrentUser(datatemp));
         dispatch(setVerify(user.email));

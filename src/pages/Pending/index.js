@@ -40,7 +40,7 @@ function Pending() {
         })
             .then(result => {
                 if(result.data.getMe.tutorProfile.status==="APPROVED"){
-                    navigate('/dashboardtt')
+                    navigate('/dashboard')
                 }
             })
             .catch(error => { })
