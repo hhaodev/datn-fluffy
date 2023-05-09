@@ -1,6 +1,6 @@
 import "../Viewcourse/viewcourses.css";
 import React, { useEffect, useState } from "react";
-import { Collapse, Modal } from "antd";
+import { Button, Collapse, Modal } from "antd";
 import { useParams } from "react-router-dom";
 import { gql } from "@apollo/client";
 import client from "../../configGQL";

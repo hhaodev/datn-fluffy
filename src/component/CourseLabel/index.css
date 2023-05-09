@@ -95,3 +95,10 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.courses_buynow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

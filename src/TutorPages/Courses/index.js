@@ -87,6 +87,7 @@ function MyCoursestt() {
             </div>
 
             <Tabs
+            
               onChange={(key) =>
                 setParams({
                   limit: 9,

@@ -6,6 +6,9 @@
     background: url(../../assets/images/background.png);
 	background-size: cover;
 	background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* padding-bottom: 150px; */
 }
 

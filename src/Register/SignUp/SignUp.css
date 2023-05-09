@@ -8,6 +8,9 @@
     background: url(../../assets/images/background.png);
 	background-size: cover;
 	background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* padding-bottom: 150px; */
 }
 
@@ -51,11 +54,12 @@
 
 .logo__signup {
     z-index: 10;
-    position: relative;
+    position: absolute;
     font-family: 'Lilita One', cursive;
     font-weight: bold;
     color: #ffffff;
-    top: 22px;
+    top: 5%;
+    left: 5%;
     font-size: 50px;
 }
 

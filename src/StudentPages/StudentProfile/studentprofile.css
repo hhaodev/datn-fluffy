@@ -8,9 +8,16 @@
   align-items: center;
 }
 
-.student_change {
+/* .student_change {
   float: right;
   position: relative;
   bottom: -32px;
   right: 140px;
+} */
+
+.view_heading {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-right: 15%;
 }

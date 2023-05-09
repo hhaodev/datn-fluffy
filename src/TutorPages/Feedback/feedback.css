@@ -15,6 +15,7 @@
 .feedback__boxavt {
     width: 60px;
     height: 60px;
+    border-radius: 50%;
 }
 
 .feedback__formavt {
@@ -105,7 +106,7 @@
 }
 
 .feedback__head-title {
-    padding: 32px;
+    padding: 2% 1%;
 }
 
 .feedback__h1ba {

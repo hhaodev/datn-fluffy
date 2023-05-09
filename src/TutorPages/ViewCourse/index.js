@@ -131,7 +131,7 @@ function ViewCourse() {
           <div className="feedback__head-title">
             <div className="feedback__left">
               <h1 className="view__h1view">
-                <i className="bx bx-dock-right"></i>View Course
+                View Course
               </h1>
             </div>
           </div>
@@ -141,6 +141,7 @@ function ViewCourse() {
             width="750px"
             footer={null}
             closable={false}
+            className="publish-title"
           >
             <div className="publish-form">
               <h3>Course Programs: </h3>
@@ -212,9 +213,9 @@ function ViewCourse() {
           </div>
           <div className="view__content">
             <div className="view__but212">
-              <h2 className="view__h2r">
-                <i class="bx bxs-book-content"></i>Content Course
-              </h2>
+              <h1 className="view__h2r">
+                Content Course
+              </h1>
             </div>
           </div>
         </main>

@@ -149,19 +149,19 @@ const MyStudenttutor = () => {
                     <p className="mystdtt__name">{moreData.name ? moreData.name : "null"}</p>
                   </div>
                   <div className="school1">
-                    <p className="mystdtt__school">UserId:</p>
+                    <p className="mystdtt__school">UserId: </p>
                     <p>{moreData.id ? moreData.id : "null"}</p>
                   </div>
                   <div className="school1">
-                    <p className="mystdtt__school">Gender:</p>
+                    <p className="mystdtt__school">Gender: </p>
                     <p>{moreData.gender ? moreData.gender : "null"}</p>
                   </div>
                   <div className="school1">
-                    <p className="mystdtt__school">PhoneNumber:</p>
+                    <p className="mystdtt__school">Phone number:</p>
                     <p>{moreData.phoneNumber ? moreData.phoneNumber : "null"}</p>
                   </div>
                   <div className="school1">
-                    <p className="mystdtt__school">School:</p>
+                    <p className="mystdtt__school">School: </p>
                     {
                       moreData.array?.studentEducations.map((school) => {
                         const t =  schoolsList?.find(sch=>sch.id === school.schoolId)

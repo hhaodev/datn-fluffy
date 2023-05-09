@@ -73,16 +73,7 @@ function sessionTutor() {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1 className='sesison__h1s'><i class='bx bx-candles' ></i>Session</h1>
-              {/* <ul className="course__breadcrumb">
-                <li>
-                  <a href="">Dashboard</a>
-                </li>
-                <li><i className="bx bx-chevron-right" /></li>
-                <li>
-                  <a href="">Session</a>
-                </li>
-              </ul> */}
+              <h1 className='sesison__h1s'>Session</h1>
             </div>
           </div>
 

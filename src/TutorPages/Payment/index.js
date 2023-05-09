@@ -360,8 +360,8 @@ const PaymentTutor = () => {
                       </div>
 
                       <div style={{ flex: 1 }}>
-                        <div style={{ marginBottom: 16 }}>
-                          <h2 className="payment__tutoring">
+                        <div style={{ marginBottom: 16 }} className="payment__tutoring">
+                          <h2>
                             Tutoring session
                           </h2>
                         </div>

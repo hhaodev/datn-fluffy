@@ -87,6 +87,7 @@ function Verifi() {
                     message: "Please input your code!",
                   },
                 ]}
+                className="verify_yourcode"
               >
                 <Input />
               </Form.Item>

@@ -4,6 +4,9 @@
     min-height: 100vh;
     padding-right: 40px;
     padding-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: url(../../assets/images/background.png);
 	background-size: cover;
 	background-position: center;
@@ -60,11 +63,12 @@
 
 .logo__signin {
     z-index: 10;
-    position: relative;
+    position: absolute;
     font-family: 'Lilita One', cursive;
     font-weight: bold;
     color: #ffffff;
-    top: 22px;
+    top: 5%;
+    left: 5%;
     font-size: 50px;
 }
 

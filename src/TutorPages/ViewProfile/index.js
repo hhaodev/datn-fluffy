@@ -44,25 +44,28 @@ function ViewProfile() {
                   <div className="view__form">
                     <div className="view__avt">
                       <h2 className="view__htitle">Personal Information</h2>
-                      <Avatar
-                        size={{
-                          xs: 24,
-                          sm: 32,
-                          md: 40,
-                          lg: 64,
-                          xl: 80,
-                          xxl: 100,
-                        }}
-                        src={avt}
-                        className="view__avt2"
-                      />
-                      <Button
-                        type="primary"
-                        htmlType="submit"
-                        className="view__upload"
-                      >
-                        Upload new picture
-                      </Button>
+                      <div className="view_heading">
+                        <Avatar
+                          size={{
+                            xs: 24,
+                            sm: 32,
+                            md: 40,
+                            lg: 64,
+                            xl: 80,
+                            xxl: 100,
+                          }}
+                          src={avt}
+                          className="view__avt2"
+                        />
+                        <Button
+                          type="primary"
+                          htmlType="submit"
+                          className="view__upload"
+                        >
+                          Upload new picture
+                        </Button>
+                        <Button type="primary" className="student_change"><Link to="/changepass">Change Password</Link></Button>
+                      </div>
                       <p className="view__id">
                         ID: <span className="view__span1">16612</span>
                       </p>

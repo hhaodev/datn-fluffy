@@ -39,7 +39,7 @@ function Pending() {
             }`
         })
             .then(result => {
-                if(result.data.getMe.tutorProfile.status==="APPROVED"){
+                if (result.data.getMe.tutorProfile.status === "APPROVED") {
                     navigate('/dashboard')
                 }
             })
@@ -52,10 +52,16 @@ function Pending() {
                 <div className='box__verify'>
                     <h2 className="verify__h2">Fluffy</h2>
                     <>
-                        <h3> Thank you for completing the profile</h3>
+                        <div className='verify_thanks'>
+                            <h3> Thank you for completing the profile</h3>
+                        </div>
                         <br />
-                        <h3>We will get back to you as soon as possible</h3>
-                        <button onClick={handleClick}>OK!</button>
+                        <div className='verify_thanks1'>
+                            <h3>We will get back to you as soon as possible</h3>
+                        </div>
+                        <div className='verify_button1'>
+                            <button onClick={handleClick} className='verify_oke'>OK !</button>
+                        </div>
                     </>
                 </div>
             </div>

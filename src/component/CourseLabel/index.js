@@ -50,17 +50,14 @@ export const CourseLabelComponent = ({
       title: `Do you want to delete ${name} ?`,
       icon: <ExclamationCircleFilled />,
       onOk: () => handleDelete(id),
-      onCancel() {},
+      onCancel() { },
     });
   };
 
   let groupBtnAction = (
-    <>
-      <Button type="default" className="inline-btn1">
-        Start Trial Lesson
-      </Button>
-      <Button className="inline-btn1">Buy now</Button>
-    </>
+    <div className="courses_buynow">
+      <Button className="inline-btn1"><a href=""></a>Buy now</Button>
+    </div>
   );
 
   if (tutorType) {

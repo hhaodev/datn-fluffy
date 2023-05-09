@@ -117,8 +117,12 @@
 }
 
 .payment__tutoring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 30px;
   margin-bottom: 30px;
+  color: #ef629f;
 }
 
 .payment__right {
