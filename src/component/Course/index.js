@@ -26,7 +26,6 @@ const CourseComponent = ({ course, type }) => {
     <div className="course_box">
       <div className="course_thumnail">
         <img src={course.imageUrl} alt="" className="course_image" />
-        <span className="course_program_number">10 Unit</span>
       </div>
       <div className="course_box_content">
         <h3 className="course_box_content_title">{course.name}</h3>
