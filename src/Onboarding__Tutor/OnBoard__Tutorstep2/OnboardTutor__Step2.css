@@ -1,10 +1,11 @@
 .step2__body {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   padding-right: 40px;
   padding-left: 40px;
-  padding-top: 100px;
+  padding-top: 5%;
   background: url(../../assets/images/background.png);
+  padding-bottom: 32%;
   background-size: cover;
   background-position: center;
 }
@@ -64,12 +65,12 @@
   background-color: #c45852 !important;
 }
 
-.step2__skip {
+/* .step2__skip {
   position: absolute;
   right: 0;
   bottom: 14%;
   transform: translateY(-13%);
-}
+} */
 
 .step2__body .form-wrapper {
   margin: auto;
@@ -78,7 +79,7 @@
 }
 
 .step2__body .box__onboardstd {
-  margin-top: 0;
+  margin-top: 10%;
 }
 
 .step2__body .student-form-container {
@@ -86,7 +87,7 @@
   height: 100%;
 }
 .step2__body .form__dropdown {
-  height: 370px;
+  height: 80%;
 }
 
 :where(.css-dev-only-do-not-override-1e3x2xa).ant-form-item {
@@ -95,4 +96,15 @@
 
 .step2__body .button-submit {
   bottom: 20px;
+}
+
+.onboard-button-next {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.onboard-button-skip {
+  float: right;
 }

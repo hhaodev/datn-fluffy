@@ -1,9 +1,10 @@
 .body-onboarding {
-  padding-top: 100px;
+  padding-top: 5%;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding-right: 40px;
   padding-left: 40px;
+  padding-bottom: 32%;
   background: url(../assets/images/background.png);
   background-size: cover;
   background-position: center;
@@ -21,10 +22,8 @@
 }
 
 .box__onboardstd {
-  margin: 100px 0;
-  max-width: 100%;
   width: 100%;
-  height: 100%;
+  height: 120%;
   padding: 30px 50px;
   border-radius: 50px;
   background-color: #fff;
@@ -98,8 +97,6 @@
 }
 
 .onboardstd__skip {
-  position: absolute;
-  bottom: 50px;
   text-decoration: underline;
   padding: 10px 20px;
   font-size: 20px;
@@ -112,11 +109,12 @@
   right: 0;
   top: -30px;
 }
-.submit-form-student {
+/* .submit-form-student {
   margin-top: -70px;
   display: flex;
   justify-content: center;
-}
+  align-items: center;
+} */
 .student-add-form {
   position: absolute;
   right: 0;
@@ -124,7 +122,22 @@
   background-color: #fff;
 }
 .button-submit {
+  
+}
+
+.onboardstd-button-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.onboard-std-skip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  padding: 10px 20px;
   font-size: 20px;
-  min-width: 130px;
-  min-height: 40px;
+  color: #ff6699 !important;
 }

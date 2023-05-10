@@ -212,7 +212,7 @@ function OnboardTutor__Step3() {
               </Button>
             </div>
             <div className="tutor-button1">
-              <div>
+              <div className="onboard-button-next">
                 <Button
                   type="primary"
                   className="button-submit"
@@ -221,7 +221,7 @@ function OnboardTutor__Step3() {
                   Next
                 </Button>
               </div>
-              <div>
+              <div className="onboard-button-skip">
                 <Link to="/onboarding/step-4" className="step2__skip">
                   <Button danger>Skip</Button>
                 </Link>

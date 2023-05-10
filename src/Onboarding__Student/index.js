@@ -79,7 +79,6 @@ function OnBoard__Student() {
 
   return (
     <div className="body-onboarding">
-      {/* <h1 className="student__logo">Fluffy</h1> */}
       <div className="form-wrapper">
         <div className="box__onboardstd">
           <div className="onboard__heading">
@@ -173,17 +172,21 @@ function OnBoard__Student() {
             </Button>
           </div>
           <div className="submit-form-student">
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="button-submit"
-              onClick={onSubmitForm}
-            >
-              Submit
-            </Button>
-            <Link to="/dashboard" className="onboardstd__skip">
-              Skip onboarding for student
-            </Link>
+            <div className="onboardstd-button-submit">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="button-submit"
+                onClick={onSubmitForm}
+              >
+                Submit
+              </Button>
+            </div>
+            <div className="onboard-std-skip">
+              <Link to="/dashboard" className="onboardstd__skip">
+                Skip onboarding for student
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -207,16 +207,16 @@ function OnboardTutor__Step1() {
                           style={
                             el.scoreUrl
                               ? {
-                                  opacity: 0,
-                                  duration: "0.5s",
-                                  position: "absolute",
-                                }
+                                opacity: 0,
+                                duration: "0.5s",
+                                position: "absolute",
+                              }
                               : {
-                                  position: "absolute",
-                                  opacity: "1",
-                                  left: "45%",
-                                  top: "45%",
-                                }
+                                position: "absolute",
+                                opacity: "1",
+                                left: "45%",
+                                top: "45%",
+                              }
                           }
                         >
                           Upload
@@ -237,13 +237,15 @@ function OnboardTutor__Step1() {
               <PlusOutlined /> Add form
             </Button>
           </div>
-          <Button
-            type="primary"
-            onClick={onSubmitStep1}
-            className="button-submit"
-          >
-            Next
-          </Button>
+          <div className="button-submit-div">
+            <Button
+              type="primary"
+              onClick={onSubmitStep1}
+              className="button-submit"
+            >
+              Next
+            </Button>
+          </div>
         </div>
       </div>
     </div>
