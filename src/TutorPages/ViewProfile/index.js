@@ -1,15 +1,13 @@
 import "../ViewProfile/viewprofile.css";
 import { Link } from "react-router-dom";
-import { Avatar, Dropdown, Menu } from "antd";
+import { Avatar } from "antd";
 import { useNavigate } from "react-router-dom";
-import { DownOutlined } from "@ant-design/icons";
-import user from "../../../src/assets/images/user.jpg";
 import avt from "../../../src/assets/images/avt1.jpg";
 import { Button } from "antd";
 import { Form, Input } from "antd";
 import { DatePicker, Space } from "antd";
 import dayjs from "dayjs";
-import sidebarlogo from "../../assets/images/logo-removebg-preview.png";
+
 
 function ViewProfile() {
   const navigate = useNavigate();

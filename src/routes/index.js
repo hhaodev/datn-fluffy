@@ -30,6 +30,7 @@ import Schedulestt from "../TutorPages/Schedules/index";
 import Viewcourse from "../StudentPages/Viewcourse/index";
 import ChangeStudent from "../StudentPages/ChangeStudent/index";
 
+
 const publicRoutes = [
   { path: "/", component: Home },
   { path: "/sign-in", component: SignIn, layout: null },
@@ -149,6 +150,12 @@ export const routerTutor = [
   {
     path: "/addcourses",
     component: Addcourse,
+  },
+  {
+    path: "/changepass",
+    component: ChangeStudent,
+    layout: SideBarLayout,
+    layout2: Navbar,
   },
   //   { path: "/viewcourse", component: ViewCourse, layout: null },
 ];

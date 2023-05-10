@@ -9,16 +9,15 @@ function ChangeStudent() {
             <div className="course__left">
               <h1>Change Pass</h1>
             </div>
-              
             <div className="view__allform">
               <div className='change_form'>
-                 <ChangePass/>
+                <ChangePass/>
               </div>
               </div>
             </main>
           </section>
         </>
-     );
+    );
 }
 
 export default ChangeStudent;

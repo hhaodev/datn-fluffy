@@ -1,6 +1,6 @@
 import "./index.css";
 import { Link } from "react-router-dom";
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import { useState } from 'react';
 import avt1 from '../../assets/images/avt2.jpg'
 
