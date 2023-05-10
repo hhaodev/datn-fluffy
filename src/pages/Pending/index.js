@@ -20,20 +20,6 @@ function Pending() {
                 getMe{
                     tutorProfile{
                         status
-                        educations{
-                            id
-                        }
-                        experiences{
-                            id
-                        }
-                        certifications{
-                            id
-                        }
-                    }
-                    studentProfile{
-                        studentEducations{
-                            id
-                        }
                     }
                 }
             }`

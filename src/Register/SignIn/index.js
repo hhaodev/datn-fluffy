@@ -74,7 +74,7 @@ function SignIn() {
         />
       );
     } else {
-      Navi = <Navigate to={"/dashboard"} replace={true} />;
+      Navi = <Navigate to={"/pending"} replace={true} />;
     }
   }
   return (

@@ -5,6 +5,8 @@ import CheckBoxComponent from "../../Utils/CheckBox/CheckBox";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { setError } from "../../Redux/features/notificationSlice";
+import { useDispatch } from "react-redux";
 
 const HAS_CONNECTED_STRIPE = gql`
   query hasVerifyStripe($accountId: String!) {
@@ -34,6 +36,7 @@ function OnboardTutor__Step4() {
       description,
     },
   ];
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [id, setId] = useState("");
   const [isStripeVerified, SetIsStripeVerified] = useState(false);
@@ -106,11 +109,10 @@ function OnboardTutor__Step4() {
         `,
       })
       .then((result) => {
-        window.location.href =
-          result.data.connectStripeAccount.connectedAccountUrl;
+        window.location.href = result.data.connectStripeAccount.connectedAccountUrl;
       })
       .catch((error) => {
-        console.log(error);
+        dispatch(setError({ message: error.message }));
       });
   };
 
