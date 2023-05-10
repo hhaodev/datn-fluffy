@@ -73,8 +73,17 @@ function SignIn() {
           replace={true}
         />
       );
-    } else {
-      Navi = <Navigate to={"/pending"} replace={true} />;
+    } else if (user) {
+      Navi = (
+        <Navigate
+          to={
+            user.type === UserType.STUDENT
+              ? "/dashboard"
+              : "/pending"
+          }
+          replace={true}
+        />
+      );
     }
   }
   return (
