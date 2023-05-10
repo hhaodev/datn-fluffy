@@ -13,6 +13,7 @@ import { setCurrentTutor_certifications } from "../../Redux/features/tutorSlice"
 import { useDispatch, useSelector } from "react-redux";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
+import { setError } from "../../Redux/features/notificationSlice";
 
 const CREATE_TUTOR_ON_BOARDING_MUTATION = gql`
   mutation createTutorOnboarding($input: CreateTutorOnboardingDto!) {
@@ -36,7 +37,9 @@ const createTutorOnboarding = async (client, input) => {
 
 function OnboardTutor__Step3() {
   const navigate = useNavigate();
-  const tutorData = useSelector((state) => state.tutor.currentTutor);
+  const educations = useSelector((state) => state.tutor.currentTutor.educations);
+  const experiences = useSelector((state) => state.tutor.currentTutor.experiences);
+  const tutorDataFromRedux = useSelector(state => state.tutor.currentTutor)
   const [formList, setFormList] = useState([
     { organization: null, score: null, name: null, awardUrl: null },
   ]);
@@ -100,6 +103,15 @@ function OnboardTutor__Step3() {
     });
     setFormList(newFormList);
   };
+  const handleSkipStep3 = () => {
+    createTutorOnboarding(client, tutorDataFromRedux)
+      .then((result) => {
+        if (result) {
+          navigate("/onboarding/step-4");
+        }
+      })
+      .catch((error) => dispatch(setError({ message: error.message })));
+  }
 
   const onSubmitStep1 = () => {
     let isValidated = true;
@@ -110,17 +122,21 @@ function OnboardTutor__Step3() {
     });
 
     if (!isValidated) {
-      alert("Please fill in all fields");
+      dispatch(setError({ message: "Please fill in all fields" }));
     } else {
-      dispatch(setCurrentTutor_certifications(formList));
-
+      
+      const tutorData = {
+        educations: educations,
+        experiences: experiences,
+        certifications: formList,
+      }
       createTutorOnboarding(client, tutorData)
         .then((result) => {
           if (result) {
             navigate("/onboarding/step-4");
           }
         })
-        .catch((error) => alert(error));
+        .catch((error) => dispatch(setError({ message: error.message })));
     }
   };
 
@@ -153,7 +169,7 @@ function OnboardTutor__Step3() {
                   </Form.Item>
                   <Form.Item
                     label="Certification Name"
-                    name="Certification Name"
+                    name="name"
                   >
                     <Input
                       onChange={(e) =>
@@ -183,16 +199,16 @@ function OnboardTutor__Step3() {
                         style={
                           el.scoreUrl
                             ? {
-                                opacity: 0,
-                                duration: "0.5s",
-                                position: "absolute",
-                              }
+                              opacity: 0,
+                              duration: "0.5s",
+                              position: "absolute",
+                            }
                             : {
-                                position: "absolute",
-                                opacity: "1",
-                                left: "45%",
-                                top: "45%",
-                              }
+                              position: "absolute",
+                              opacity: "1",
+                              left: "45%",
+                              top: "45%",
+                            }
                         }
                       >
                         Upload
@@ -222,8 +238,8 @@ function OnboardTutor__Step3() {
                 </Button>
               </div>
               <div className="onboard-button-skip">
-                <Link to="/onboarding/step-4" className="step2__skip">
-                  <Button danger>Skip</Button>
+                <Link className="step2__skip">
+                  <Button onClick={handleSkipStep3} danger>Skip</Button>
                 </Link>
               </div>
             </div>

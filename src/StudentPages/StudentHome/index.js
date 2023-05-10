@@ -1,7 +1,7 @@
 import "../../StudentPages/StudentHome/studenthome.css";
 import CourseComponent from "../../component/Course";
 import React, { useEffect, useState } from "react";
-import { Segmented } from "antd";
+import { Tabs } from "antd";
 import { gql, useQuery } from "@apollo/client";
 import Pagnigation from "../../component/Pagnigation";
 
@@ -39,7 +39,7 @@ export const GET_CATEGORY = gql`
 `;
 
 const HomeComponent = () => {
-  let reload = null;
+  const { TabPane } = Tabs;
   const [params, setParams] = useState({
     limit: 10,
     page: 1,
@@ -92,20 +92,34 @@ const HomeComponent = () => {
           <main className="main-content">
             <div className="My__courses">
               <h1 className="student__heading11">our courses</h1>
-              <Segmented
-                options={categories.map((category) => ({
-                  label: category.name,
-                  value: category.id,
-                }))}
-                onChange={(e) => onChangeCategories(e)}
-                className="student__segmented"
-              />
+              <Tabs
 
-              <div className="student__box">
-                {reload}
-                {courses.length !== 0 &&
-                  courses.map((course) => <CourseComponent course={course} />)}
-              </div>
+                onChange={(key) =>
+                  setParams({
+                    limit: 9,
+                    page: 1,
+                    filters: [
+                      {
+                        field: "Course.categoryId",
+                        operator: "eq",
+                        data: key,
+                      },
+                    ],
+                  })
+                }
+              >
+                {categories &&
+                  categories.map((category) => (
+                    <TabPane tab={category.name} key={category.id}>
+                      <div className="student__box">
+                        {courses &&
+                          courses.map((course) => (
+                            <CourseComponent course={course} type="tutor" />
+                          ))}
+                      </div>
+                    </TabPane>
+                  ))}
+              </Tabs>
               <Pagnigation />
             </div>
           </main>

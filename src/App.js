@@ -53,7 +53,7 @@ function App() {
         `,
         variables: {
           queryParams: {
-            limit: 10,
+            limit: 99,
             page: 1,
           },
         },

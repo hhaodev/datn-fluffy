@@ -1,11 +1,13 @@
 import "../../Register/Verify/verify.css";
 import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { gql, useMutation } from "@apollo/client";
+import { setError } from "../../Redux/features/notificationSlice";
 
 function Verifi() {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const dataVerify = useSelector((state) => state.verify.verify);
   const VERIFY = gql`
     mutation verifyCode($input: CodeVerifyDto!) {
@@ -30,16 +32,12 @@ function Verifi() {
             input: datatemp,
           },
         });
-
-        localStorage.setItem("token", result.data.verifyCode.token);
-        localStorage.setItem(
-          "refreshToken",
-          result.data.verifyCode.refreshToken
-        );
-
-        navigate("/");
+        // localStorage.setItem("token", result.data.verifyCode.token);
+        // localStorage.setItem("refreshToken", result.data.verifyCode.refreshToken
+        // );
+        navigate("/sign-in");
       } catch (error) {
-        alert(error.message);
+        dispatch(setError({ message: error.message }));
       }
     };
     getData();

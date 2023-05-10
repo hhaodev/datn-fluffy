@@ -10,6 +10,7 @@ import {
   PlusOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
+import { setError } from "../../Redux/features/notificationSlice";
 import { setCurrentTutor_educations } from "../../Redux/features/tutorSlice";
 import dayjs from "dayjs";
 
@@ -101,7 +102,8 @@ function OnboardTutor__Step1() {
     });
 
     if (!isValidated) {
-      alert("Please fill in all fields");
+      // alert("Please fill in all fields");
+      dispatch(setError({ message: "Please fill in all fields" }));
     } else {
       dispatch(setCurrentTutor_educations(formList));
       navigate("/onboarding/step-2");

@@ -5,8 +5,9 @@ import { gql } from "@apollo/client";
 import client from "../configGQL";
 import { DatePicker, Button, Form, Select } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import dayjs from "dayjs";
+import { setError } from "../Redux/features/notificationSlice";
 
 function OnBoard__Student() {
   const [formList, setFormList] = useState([
@@ -15,6 +16,7 @@ function OnBoard__Student() {
 
   const { Option } = Select;
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const schoolsList = useSelector((state) => state.schools.schoolsData);
 
   const CREATE_STUDENT_ON_BOARDING_MUTATION = gql`
@@ -60,7 +62,7 @@ function OnBoard__Student() {
           navigate("/dashboard");
         }
       })
-      .catch((error) => alert(error));
+      .catch((error) => dispatch(setError({ message: error.message })));
   };
 
   const handleDeleteForm = (index) => {

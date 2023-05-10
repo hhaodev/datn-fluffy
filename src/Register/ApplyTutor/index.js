@@ -29,7 +29,7 @@ function ApplyTutor() {
       lastName: user.lastName,
       email: user.email,
       password: user.password,
-      phoneNumber: user.phoneNumber,
+      phoneNumber: user.phone,
       gender: user.gender,
       type: UserType.TUTOR,
     };

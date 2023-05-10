@@ -8,6 +8,7 @@ import { setCurrentTutor_experiences } from "../../Redux/features/tutorSlice";
 import { DatePicker } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
+import { setError } from "../../Redux/features/notificationSlice";
 
 const { RangePicker } = DatePicker;
 
@@ -91,7 +92,7 @@ function OnboardTutor__Step2() {
       dispatch(setCurrentTutor_experiences(formList));
       navigate("/onboarding/step-3");
     } else {
-      alert("Please fill in all fields");
+      dispatch(setError({ message: "Please fill in all fields" }));
     }
   };
 
@@ -180,7 +181,7 @@ function OnboardTutor__Step2() {
                 </Button>
               </div>
               <div className="onboard-button-skip">
-                <Link to="onboarding/step-3">
+                <Link to="/onboarding/step-3">
                   <Button danger>Skip</Button>
                 </Link>
               </div>
