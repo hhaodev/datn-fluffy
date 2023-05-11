@@ -9,6 +9,7 @@ import { Label } from "@mui/icons-material";
 import { DollarOutlined, ReadOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { setError } from "../../Redux/features/notificationSlice";
+import EditCourseComponent from "./EditCourse";
 
 const QUERY_COURSE_BY_ID = gql`
   query getCourseById($courseId: String!) {
@@ -19,8 +20,8 @@ const QUERY_COURSE_BY_ID = gql`
       description
       price
       spendTime
-      duration
       isPublish
+      ratting
       numberOfProgramRequired
       tutorProfile {
         tutor {
@@ -52,7 +53,39 @@ const QUERY_COURSE_BY_ID = gql`
 const MUTATION_PUBLISH_COURSE = gql`
   mutation publishCourse($input: PublishCourseDto!) {
     publishCourse(input: $input) {
+      id
+      name
+      imageUrl
+      description
+      price
+      spendTime
       isPublish
+      ratting
+      numberOfProgramRequired
+      categoryId
+      tutorProfile {
+        tutor {
+          lastName
+          firstName
+          avatarUrl
+        }
+      }
+      category {
+        name
+      }
+      coursePrograms {
+        id
+        title
+        description
+        isPublish
+        courseProgramPhases {
+          id
+          order
+          name
+          content
+          overviewUrl
+        }
+      }
     }
   }
 `;
@@ -61,6 +94,7 @@ function ViewCourse() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [isVisibled, setIsVisibled] = useState(false);
+  const [isEdited, setIsEdited] = useState(false);
   const [courseData, setDataCourse] = useState(null);
   const [publishData, setPublishData] = useState(null);
 
@@ -73,6 +107,7 @@ function ViewCourse() {
         },
       })
       .then((response) => {
+        setDataCourse(response.data.publishCourse);
         setIsVisibled(false);
       })
       .catch((error) => {
@@ -207,15 +242,21 @@ function ViewCourse() {
                 course={courseData}
                 tutorType
                 handleOpenPublished={hanldeToggleModal}
+                setIsEdited={setIsEdited}
               />
             )}
           </div>
           <div className="view__content">
-            <div className="view__but212">
-              <h2 className="view__h2r">
-                <i class="bx bxs-book-content"></i>Content Course
-              </h2>
-            </div>
+            <h1 className="view__h2r">
+              <i class="bx bxs-book-content"></i>Course information
+            </h1>
+            {courseData && (
+              <EditCourseComponent
+                course={courseData}
+                canNotEditedPermission={isEdited}
+                setIsEdited={setIsEdited}
+              />
+            )}
           </div>
         </main>
       </section>

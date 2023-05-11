@@ -1,5 +1,5 @@
 import "../../TutorPages/Courses/courses.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
@@ -41,6 +41,7 @@ function MyCoursestt() {
                   isPublish
                   imageUrl
                   spendTime
+
                   description
                   tutorProfile {
                     tutor {

@@ -1,0 +1,28 @@
+.course_information {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.course_information .course_content {
+  padding: 20px 30px;
+  width: 100%;
+  border: 1px solid red;
+}
+.course_information .ant-form-item-control {
+  display: flex;
+  width: 100%;
+}
+
+.course_information .ant-form-item-control label {
+  min-width: 100px;
+  max-width: 200px;
+}
+.course_programs {
+  margin-bottom: 20px;
+  background-color: #ccc;
+}
+.btn-group {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+}
