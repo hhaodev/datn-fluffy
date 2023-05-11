@@ -172,7 +172,7 @@ function OnboardTutor__Step4() {
           </div>
 
           <div className="step4__fot">
-            <p>Do not have an account?</p>
+            <p>Do you have an account?</p>
             <Button onClick={() => handleCreate()}>
               Create a connected account
             </Button>

@@ -184,7 +184,7 @@ const PaymentTutor = () => {
           <div className="course__head-title">
             <div className="course__left">
               <h1 className="payment__bx">
-                <i class="bx bx-credit-card-front"></i>Payment
+                Payment
               </h1>
             </div>
           </div>
@@ -392,7 +392,7 @@ const PaymentTutor = () => {
                             <div className="payment__ttli2">
                               <div className="payment__li4">
                                 <h4 className="payment__sessiondates">
-                                <i className='bx bx-calendar-event' ></i>
+                                  <i className='bx bx-calendar-event' ></i>
                                   Session date:
                                 </h4>
                                 <p>Apr 12,2023</p>

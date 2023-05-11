@@ -26,7 +26,7 @@ const CourseBox = () => {
           <div className="feedback__head-title">
             <div className="feedback__left">
               <h1 className="feedback__h1ba">
-                <i class="bx bx-chat"></i>Feedback
+                Feedback
               </h1>
             </div>
             {/* <h1 className='feedback__h1'>FeedBack</h1> */}

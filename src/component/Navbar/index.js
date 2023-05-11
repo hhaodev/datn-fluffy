@@ -9,7 +9,7 @@ export default function Navbar() {
   const menu = (
     <Menu>
       <Menu.Item key="logout" onClick={() => handleLogout()}>
-        Logout
+        Log out
       </Menu.Item>
     </Menu>
   );
@@ -22,7 +22,7 @@ export default function Navbar() {
   };
   return (
     <nav className="nav-header">
-      <i className="bx bx-menu" />
+      {/* <i className="bx bx-menu" />
       <form action="#">
         <div className="form-input">
           <input type="search" placeholder="Search..." />
@@ -30,9 +30,8 @@ export default function Navbar() {
             <i className="bx bx-search" />
           </button>
         </div>
-      </form>
-      <input type="checkbox" id="switch-mode" hidden />
-      <Dropdown overlay={menu} placement="bottomRight">
+      </form> */}
+      <Dropdown overlay={menu} placement="bottomRight" className="dropdown-avatar">
         <Avatar className="avatar" src={user} icon={<DownOutlined />} />
       </Dropdown>
     </nav>

@@ -4,6 +4,39 @@ import React, { useEffect, useState } from "react";
 import { Tabs } from "antd";
 import { gql, useQuery } from "@apollo/client";
 import Pagnigation from "../../component/Pagnigation";
+import { AutoComplete, Input } from 'antd';
+
+const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
+const searchResult = (query) =>
+  new Array(getRandomInt(5))
+    .join('.')
+    .split('.')
+    .map((_, idx) => {
+      const category = `${query}${idx}`;
+      return {
+        value: category,
+        label: (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <span>
+              Found {query} on{' '}
+              <a
+                href={`https://s.taobao.com/search?q=${query}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {category}
+              </a>
+            </span>
+            <span>{getRandomInt(200, 100)} results</span>
+          </div>
+        ),
+      };
+    });
 
 const GET_COURSES = gql`
   query getCourses($params: QueryFilterDto!) {
@@ -39,6 +72,13 @@ export const GET_CATEGORY = gql`
 `;
 
 const HomeComponent = () => {
+  const [options, setOptions] = useState([]);
+  const handleSearch = (value) => {
+    setOptions(value ? searchResult(value) : []);
+  };
+  const onSelect = (value) => {
+    console.log('onSelect', value);
+  };
   const { TabPane } = Tabs;
   const [params, setParams] = useState({
     limit: 10,
@@ -92,7 +132,23 @@ const HomeComponent = () => {
         {categories && (
           <main className="main-content">
             <div className="My__courses">
-              <h1 className="student__heading11">our courses</h1>
+              <div className="heading-search">
+                <h1 className="student__heading11">our courses</h1>
+                <div className="search-btn">
+                  <AutoComplete
+                    dropdownMatchSelectWidth={252}
+                    style={{
+                      width: 500,
+                    }}
+                    options={options}
+                    onSelect={onSelect}
+                    onSearch={handleSearch}
+                    className="search-button"
+                  >
+                    <Input.Search size="large" placeholder="Search courses ..." enterButton />
+                  </AutoComplete>
+                </div>
+              </div>
               <Tabs
 
                 onChange={(key) =>
@@ -115,7 +171,7 @@ const HomeComponent = () => {
                       <div className="student__box">
                         {courses &&
                           courses.map((course) => (
-                            <CourseComponent course={course}/>
+                            <CourseComponent course={course} />
                           ))}
                       </div>
                     </TabPane>

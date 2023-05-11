@@ -28,7 +28,7 @@ export default function Navbar() {
                   Hi, {currentUser.firstName} {currentUser.lastName}
                 </p>
                 <button onClick={handleLogout} className="navbar__button1">
-                  Logout
+                  Log out
                 </button>
               </>
             ) : (
