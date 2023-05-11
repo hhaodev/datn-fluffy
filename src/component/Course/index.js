@@ -5,7 +5,7 @@ import { useState } from 'react';
 import avt1 from '../../assets/images/avt2.jpg'
 
 const CourseComponent = ({ course, type }) => {
-  const { firstName, lastName } = course.tutorProfile.tutor;
+  const { firstName, lastName, avatarUrl } = course.tutorProfile.tutor;
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -32,7 +32,7 @@ const CourseComponent = ({ course, type }) => {
         <div className="course_author">
           <div className="course_author_image">
             <img
-              src="https://i.pinimg.com/564x/0d/b1/d8/0db1d8d5fc83125ab2645388c06b3858.jpg"
+              src={avatarUrl}
               alt=""
               onClick={showModal}
             />

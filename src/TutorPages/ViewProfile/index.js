@@ -1,43 +1,122 @@
 import "../ViewProfile/viewprofile.css";
 import { Link } from "react-router-dom";
-import { Avatar } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Avatar, Select, Upload } from "antd";
 import avt from "../../../src/assets/images/avt1.jpg";
 import { Button } from "antd";
 import { Form, Input } from "antd";
-import { DatePicker, Space } from "antd";
-import dayjs from "dayjs";
+import gql from "graphql-tag";
+import { uploadToCloudinary } from "../../cloudinary/cloudinaryHelper";
+import { useMutation } from "@apollo/client";
+import client from "../../configGQL";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { setError } from "../../Redux/features/notificationSlice";
+import { UploadOutlined } from "@ant-design/icons";
+import { UserGender } from "../../constraint";
 
+
+
+const UPDATEME = gql`
+mutation updateMe($input: UpdateUserDto!) {
+  updateMe(input: $input) {
+    firstName
+    lastName
+    avatarUrl
+    phoneNumber
+    email
+    gender
+  }
+}`;
 
 function ViewProfile() {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
-    navigate("/");
-    window.location.reload(false);
-  };
+  const { Option } = Select;
+  const dispatch = useDispatch()
+  const [dataUser, setDataUser] = useState()
+  const [formValues, setFormValues] = useState();
+  const idUser = useSelector(state => state.user.currentUser.id)
 
-  const onFinish = (values) => {
-    const datatemp = {
-      email: values.username,
-      password: values.password,
-    };
-  };
+  const handleUploadImage = (options) => {
+    const { onSuccess, onError, file } = options;
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    uploadToCloudinary({
+      file,
+      fileType: "image",
+      successCallback: onSuccess,
+      failureCallback: onError,
+    });
   };
+  const [updateMe] = useMutation(UPDATEME);
+  useEffect(() => {
+    client
+      .query({
+        query: gql`
+          query getMe {
+            getMe {
+              avatarUrl
+              lastName
+              firstName
+              phoneNumber
+              email
+              gender
+            }
+          }
+        `,
+      })
+      .then((result) => {
+        setDataUser(result.data.getMe)
+      })
+  }, [dataUser]);
 
-  const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
+  const handleInputChange = (filed, value) => {
+    setFormValues({
+      ...formValues,
+      [filed]: value
+    });
+  };
+  const handleUpdate = () => {
+    const data = {
+      id: idUser,
+      lastName: formValues?.lastName,
+      firstName: formValues?.firstName,
+      phoneNumber: formValues?.phoneNumber,
+      avatarUrl: formValues?.avatarUrl,
+      gender: formValues?.gender,
+    }
+    let isValidated = true;
+    if (!data.firstName && !data.lastName && !data.phoneNumber && !data.avatarUrl && !data.gender) {
+      isValidated = false;
+    }
+    if (isValidated === true) {
+      const getData = async () => {
+        try {
+          const result = await updateMe({
+            variables: {
+              input: data,
+            },
+          });
+          window.location.reload()
+          setDataUser(result.data.updateMe)
+          dispatch(setError({ message: "Successfully" }));
+          client.clearStore();
+        } catch (error) {
+          dispatch(setError({ message: error.message }));
+        }
+      };
+      getData();
+    }
+    else {
+      dispatch(setError({ message: "No data to update" }));
+    }
+
+  }
   return (
-    <div className="view__all">
-      <section id="content">
-        <main>
-          <div className="course__head-title__view">
-            <div className="course__left">
-              <h1>View Profile</h1>
-              <div className="view__allform">
+    <>
+      {dataUser &&
+        <section id="content">
+          <main>
+            <div className="course__head-title__view">
+              <div className="course__left">
+                <h1>View Profile</h1>
                 <div className="view__allform">
                   <div className="view__form">
                     <div className="view__avt">
@@ -50,29 +129,25 @@ function ViewProfile() {
                             md: 40,
                             lg: 64,
                             xl: 80,
-                            xxl: 100,
+                            xxl: 120,
                           }}
-                          src={avt}
+                          src={dataUser?.avatarUrl ? dataUser.avatarUrl : avt}
                           className="view__avt2"
                         />
-                        <Button
-                          type="primary"
-                          htmlType="submit"
-                          className="view__upload"
+                        <Upload
+                          listType="picture"
+                          customRequest={handleUploadImage}
+                          onChange={(e) => handleInputChange("avatarUrl", e.file.response)}
                         >
-                          Upload new picture
-                        </Button>
-                        <Button type="primary" className="student_change"><Link to="/changepass">Change Password</Link></Button>
+                          <Button
+                            icon={<UploadOutlined />}
+                            className="view__upload"
+                          >
+                            Upload picture
+                          </Button>
+                        </Upload>
                       </div>
-                      <p className="view__id">
-                        ID: <span className="view__span1">16612</span>
-                      </p>
-                      <p className="view__status">
-                        Status: <span className="view__span1">Approved</span>
-                        <i class="bx bx-check"></i>
-                      </p>
                     </div>
-
                     <Form
                       name="normal_login"
                       className="login-form"
@@ -80,99 +155,65 @@ function ViewProfile() {
                       initialValues={{
                         remember: true,
                       }}
-                      onFinish={onFinish}
-                      onFinishFailed={onFinishFailed}
                     >
+                      <div className="account_profile">
+                        <div className="view__email">
+                          <h3>Email: <span>{dataUser?.email}</span></h3>
+                        </div>
+                        <Button type="primary" className="student_change"><Link to="/changepass">Change Password</Link></Button>
+                      </div>
                       <div className="view__firsts">
                         <Form.Item
                           label="First name"
                           name="firstname"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your firsname!",
-                            },
-                          ]}
                           className="view__firsts1"
                         >
                           <Input
-                            placeholder="Tran"
+                            placeholder={dataUser?.firstName}
                             style={{ height: "50px", width: "258px" }}
+                            className="profile__input"
+                            onChange={(event) => handleInputChange("firstName", event.target.value)}
                           />
                         </Form.Item>
 
                         <Form.Item
                           label="Last name"
                           name="lastname"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your lirsname!",
-                            },
-                          ]}
                         >
                           <Input
-                            placeholder="Hoang"
-                            style={{ height: "50px", width: "278px" }}
+                            onChange={(event) => handleInputChange("lastName", event.target.value)}
+                            placeholder={dataUser?.lastName}
+                            style={{
+                              height: "50px",
+                              width: "278px",
+                              width: "278px",
+                            }}
                           />
                         </Form.Item>
                       </div>
 
-                      <div className="view__email">
-                        <Form.Item
-                          label="Email"
-                          name="email"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your email!",
-                            },
-                          ]}
-                          className="view__firsts1"
-                        >
-                          <Input
-                            placeholder="tranthanhhoang28022001@gmail.com"
-                            style={{ height: "50px", width: "258px" }}
-                          />
-                        </Form.Item>
-
-                        <Form.Item
-                          label="Date of birth"
-                          name="dateofbirth"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your lirsname!",
-                            },
-                          ]}
-                        >
-                          <Space direction="vertical" size={12}>
-                            <DatePicker
-                              defaultValue={dayjs(
-                                "01/01/2015",
-                                dateFormatList[0]
-                              )}
-                              format={dateFormatList}
-                              style={{ height: "50px", width: "278px" }}
-                            />
-                          </Space>
-                        </Form.Item>
-                      </div>
 
                       <Form.Item
-                        label="School"
-                        name="school"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input your school!",
-                          },
-                        ]}
+                        label="Phone Number"
+                        name="phoneNumber"
+                        className="view__firsts1"
                       >
                         <Input
-                          placeholder="Duy Tan University"
-                          style={{ height: "50px" }}
+                          onChange={(event) => handleInputChange("phoneNumber", event.target.value)}
+                          placeholder={dataUser?.phoneNumber}
                         />
+                      </Form.Item>
+                      <Form.Item
+                        name="gender"
+                        label="Gender"
+                      >
+                        <Select
+                          placeholder={dataUser?.gender}
+                          onChange={(event) => handleInputChange("gender", event)}
+                        >
+                          <Option value={UserGender.MALE}>Male</Option>
+                          <Option value={UserGender.FEMALE}>Female</Option>
+                        </Select>
                       </Form.Item>
 
                       <div className="view__bottom">
@@ -185,6 +226,7 @@ function ViewProfile() {
                         </Button>
 
                         <Button
+                          onClick={handleUpdate}
                           type="primary"
                           htmlType="submit"
                           className="view__upload"
@@ -197,12 +239,13 @@ function ViewProfile() {
                 </div>
               </div>
             </div>
-          </div>
-        </main>
-        {/* MAIN */}
-      </section>
+          </main>
+          {/* MAIN */}
+        </section>
+      }
+
       {/* CONTENT */}
-    </div>
+    </>
   );
 }
 
