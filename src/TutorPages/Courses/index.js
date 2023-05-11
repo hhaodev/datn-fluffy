@@ -83,6 +83,7 @@ function MyCoursestt() {
                   spendTime
 
                   description
+                  price
                   tutorProfile {
                     tutor {
                       firstName

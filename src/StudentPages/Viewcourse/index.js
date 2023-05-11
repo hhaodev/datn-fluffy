@@ -1,6 +1,6 @@
 import "../Viewcourse/viewcourses.css";
 import React, { useEffect, useState } from "react";
-import { Button, Collapse, Modal } from "antd";
+import { Collapse, Modal, Radio } from "antd";
 import { useParams } from "react-router-dom";
 import { gql } from "@apollo/client";
 import client from "../../configGQL";
@@ -9,8 +9,8 @@ import { setError } from "../../Redux/features/notificationSlice";
 import { CourseLabelComponent } from "../../component/CourseLabel";
 import "./viewcourses.css";
 import { Link } from "react-router-dom";
-import { Calendar, theme } from "antd";
-import { Segmented } from "antd";
+import { Calendar } from "antd";
+import moment from 'moment';
 
 const QUERY_COURSE_DETAIL = gql`
   query getCourseById($courseId: String!) {
@@ -19,7 +19,6 @@ const QUERY_COURSE_DETAIL = gql`
       name
       price
       ratting
-      duration
       imageUrl
       description
       sets {
@@ -27,6 +26,7 @@ const QUERY_COURSE_DETAIL = gql`
         isBooked
         name
         availableDates {
+          setId
           date
           endTime
           startTime
@@ -36,6 +36,7 @@ const QUERY_COURSE_DETAIL = gql`
         name
       }
       tutorProfile {
+        tutorId
         tutor {
           lastName
           firstName
@@ -57,24 +58,23 @@ const QUERY_COURSE_DETAIL = gql`
 `;
 
 function Viewcourse() {
-  // calendar
-  const onPanelChange = (value, mode) => {
-    console.log(value.format("YYYY-MM-DD"), mode);
-  };
-  const { token } = theme.useToken();
-  const wrapperStyle = {
-    width: 300,
-    border: `1px solid ${token.colorBorderSecondary}`,
-    borderRadius: token.borderRadiusLG,
-  };
-  // end calendar
-  const dispatch = useDispatch();
+  const { Panel } = Collapse;
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [courseData, setCourseData] = useState(null);
   const [modal, setModal] = useState({
     isOpen: false,
     link: null,
   });
+
+  const [dateSet, setDateSet] = useState([])
+  const dateList = dateSet && dateSet.map(date => date.date)
+  const disabledDate = () => true;
+
+
+
+
+
 
   useEffect(() => {
     client
@@ -92,8 +92,17 @@ function Viewcourse() {
       });
   }, [id]);
 
-  const { Panel } = Collapse;
-  const onChange = (key) => {};
+
+  const listSet = courseData && courseData.sets?.map((items) => (
+    {
+      name: items.name,
+      id: items.id,
+      availableDates: items.availableDates,
+    }
+  ))
+  const tutorId = courseData && courseData.tutorProfile.tutorId
+
+
   return (
     <section id="content">
       {modal.isOpen && (
@@ -127,10 +136,17 @@ function Viewcourse() {
             <div className="all__course1">
               <CourseLabelComponent course={courseData} />
               <div className="course_box2">
-                <Segmented block options={["Set 1", "Set 2", "Set 3"]} />
+                <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
+                  {listSet.map((option) => (
+                    <Radio.Button key={option.id} value={option.availableDates}>
+                      {option.name}
+                    </Radio.Button>
+                  ))}
+                </Radio.Group>
                 <Calendar
+                  disabledDate={disabledDate}
+                  
                   fullscreen={false}
-                  onPanelChange={onPanelChange}
                   className="calendar-form"
                 />
               </div>
@@ -140,7 +156,7 @@ function Viewcourse() {
               <div className="view__but212">
                 <h1 className="view__h2r">Course Program:</h1>
               </div>
-              <Collapse onChange={onChange}>
+              <Collapse>
                 {courseData.coursePrograms.map((el, index) => (
                   <Panel header={el.title} key={index}>
                     {el.courseProgramPhases.map((phase) => (
@@ -155,7 +171,7 @@ function Viewcourse() {
                       >
                         <i className="bx bxs-tv"></i>
                         {phase.name}
-                        <span className="span__view">09:28</span>
+                        {/* <span className="span__view">09:28</span> */}
                         <span className="span__view">
                           <Link>Preview</Link>
                         </span>
@@ -168,7 +184,7 @@ function Viewcourse() {
           </>
         )}
       </main>
-    </section>
+    </section >
   );
 }
 
