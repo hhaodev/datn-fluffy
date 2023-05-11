@@ -71,7 +71,6 @@ const onHandleAddProgramPhases = (indexProgram, setEdit) => {
       newProgams[indexProgram].courseProgramPhases = [];
     }
 
-    console.log("🚀 ~ file: index.js:70 ~ setEdit ~ newProgams:", newProgams);
     newProgams[indexProgram]?.courseProgramPhases?.push(newProgramPhase);
 
     return {
@@ -118,7 +117,8 @@ const EditCourseComponent = ({
   const [editCourseData, setEditCourseData] = useState(course);
 
   const handleSaveCourse = (state, setState) => {
-    const newValue = _.omit(state, [
+    const newObject = _.cloneDeep(state);
+    const newValue = _.omit(newObject, [
       "__typename",
       "tutorProfile",
       "category",
