@@ -1,11 +1,13 @@
 import React from "react";
 import { Avatar, Dropdown, Menu } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import user from "../../assets/images/user.jpg";
+import user1 from "../../assets/images/user.jpg";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const user = useSelector(state=>state.user.currentUser)
   const menu = (
     <Menu>
       <Menu.Item key="logout" onClick={() => handleLogout()}>
@@ -32,8 +34,9 @@ export default function Navbar() {
         </div>
       </form> */}
       <Dropdown overlay={menu} placement="bottomRight" className="dropdown-avatar">
-        <Avatar className="avatar" src={user} icon={<DownOutlined />} />
+        <Avatar className="avatar" src={user1} icon={<DownOutlined />} />
       </Dropdown>
+      <h4 className="nav_h2">Hi, {user.lastName}</h4>
     </nav>
   );
 }
