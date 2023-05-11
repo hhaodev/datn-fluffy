@@ -123,11 +123,13 @@ const EditCourseComponent = ({
       "tutorProfile",
       "category",
       "ratting",
-      ...state.coursePrograms.reduce((cur, el, index) => {
+      "numberOfProgramRequired",
+      "isPublish",
+      ...state.coursePrograms?.reduce((cur, el, index) => {
         return [
           ...cur,
           `coursePrograms[${index}].__typename`,
-          ...el?.courseProgramPhases.map(
+          ...el?.courseProgramPhases?.map(
             (x, indexX) =>
               `coursePrograms[${index}].courseProgramPhases[${indexX}].__typename`
           ),

@@ -50,7 +50,7 @@ export const CourseLabelComponent = ({
     confirm({
       title: title,
       icon: <ExclamationCircleFilled />,
-      onOk: () => handleDelete(id),
+      onOk: handle,
       onCancel() {},
     });
   };
