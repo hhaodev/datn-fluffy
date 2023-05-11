@@ -37,11 +37,15 @@ const CourseComponent = ({ course, type }) => {
               onClick={showModal}
             />
           </div>
-          <p className="course_author_info">{`${firstName} ${lastName}`}</p>
+          <p onClick={showModal} className="course_author_info">{`${firstName} ${lastName}`}</p>
         </div>
 
         <div className="course_box_content_des">
           <p>{course.description}</p>
+          <h3 className="dollar-h3">
+            {course.price}
+            <i className="bx bx-dollar"></i>
+          </h3>
         </div>
         <Link to={type ? `/courses/${course.id}` : `/dashboard/courses/${course.id}`} className="inline-btn">
           See detail

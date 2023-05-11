@@ -85,6 +85,7 @@ const HomeComponent = () => {
     }
   }, [params, courseLoading, courseData, courseError]);
 
+
   return (
     <>
       <section id="content">
@@ -114,7 +115,7 @@ const HomeComponent = () => {
                       <div className="student__box">
                         {courses &&
                           courses.map((course) => (
-                            <CourseComponent course={course} type="tutor" />
+                            <CourseComponent course={course}/>
                           ))}
                       </div>
                     </TabPane>

@@ -129,6 +129,7 @@ const MyStudenttutor = () => {
             <Modal
               title="Profile"
               visible={isModalVisible}
+              onCancel={handleOk}
               footer={[<Button onClick={handleOk}>Cancel</Button>]}
             >
               {moreData && (
