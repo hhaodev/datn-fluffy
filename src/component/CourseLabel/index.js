@@ -56,7 +56,7 @@ export const CourseLabelComponent = ({
 
   let groupBtnAction = (
     <div className="courses_buynow">
-      <Button className="inline-btn1"><a href=""></a>Buy now</Button>
+      <Button className="inline-btn1">Buy now</Button>
     </div>
   );
 

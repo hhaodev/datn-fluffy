@@ -16,7 +16,6 @@ const GET_MY_COURSES = gql`
         name
         description
         price 
-        duration
         spendTime
         category{
           name

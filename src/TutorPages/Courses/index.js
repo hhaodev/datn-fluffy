@@ -42,6 +42,7 @@ function MyCoursestt() {
                   imageUrl
                   spendTime
                   description
+                  price
                   tutorProfile {
                     tutor {
                       firstName

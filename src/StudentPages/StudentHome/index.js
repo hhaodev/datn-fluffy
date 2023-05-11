@@ -29,7 +29,7 @@ const GET_COURSES = gql`
 
 export const GET_CATEGORY = gql`
   query getCategories {
-    getCategories(queryParams: { limit: 10, page: 1 }) {
+    getCategories(queryParams: { limit: 99, page: 1 }) {
       items {
         id
         name
