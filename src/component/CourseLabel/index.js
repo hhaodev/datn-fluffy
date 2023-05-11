@@ -22,6 +22,7 @@ export const CourseLabelComponent = ({
   course,
   tutorType,
   handleOpenPublished,
+  setIsEdited,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,25 +46,36 @@ export const CourseLabelComponent = ({
       });
   };
 
-  const showPromiseConfirm = async ({ id, name }) => {
+  const showPromiseConfirm = async ({ title, id, name, handle }) => {
     confirm({
-      title: `Do you want to delete ${name} ?`,
+      title: title,
       icon: <ExclamationCircleFilled />,
       onOk: () => handleDelete(id),
-      onCancel() { },
+      onCancel() {},
     });
   };
 
   let groupBtnAction = (
     <div className="courses_buynow">
-      <Button className="inline-btn1"><a href=""></a>Buy now</Button>
+      <Button className="inline-btn1">
+        <a href=""></a>Buy now
+      </Button>
     </div>
   );
 
   if (tutorType) {
     groupBtnAction = (
       <>
-        <Button type="primary" className="view__but1">
+        <Button
+          type="primary"
+          className="view__but1"
+          onClick={() =>
+            showPromiseConfirm({
+              title: `Do you want to edit ${course.name}`,
+              handle: () => setIsEdited(true),
+            })
+          }
+        >
           <i class="bx bxs-edit"></i>Edit
         </Button>
         <Button type="primary" onClick={handleOpenPublished}>
@@ -73,7 +85,12 @@ export const CourseLabelComponent = ({
           type="primary"
           className="view__but242"
           onClick={() =>
-            showPromiseConfirm({ id: course.id, name: course.name })
+            showPromiseConfirm({
+              id: course.id,
+              name: course.name,
+              title: `Do you want to delete ${course.name}`,
+              handle: () => handleDelete(course.id),
+            })
           }
         >
           <i class="bx bx-x"></i>Delete
