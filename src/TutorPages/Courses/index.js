@@ -90,6 +90,18 @@ function MyCoursestt() {
                       lastName
                       avatarUrl
                     }
+                    educations{
+                      schoolId
+                    }
+                    experiences{
+                      organization
+                      description
+                      position
+                    }
+                    certifications{
+                      name
+                      score
+                    }
                   }
                   coursePrograms {
                     id

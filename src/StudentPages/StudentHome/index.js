@@ -54,6 +54,18 @@ const GET_COURSES = gql`
             lastName
             avatarUrl
           }
+          educations{
+            schoolId
+          }
+          experiences{
+            organization
+            description
+            position
+          }
+          certifications{
+            name
+            score
+          }
         }
       }
     }

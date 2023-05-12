@@ -11,6 +11,7 @@ import "./viewcourses.css";
 import { Link } from "react-router-dom";
 import { Calendar } from "antd";
 import moment from 'moment';
+import dayjs from "dayjs";
 
 const QUERY_COURSE_DETAIL = gql`
   query getCourseById($courseId: String!) {
@@ -68,9 +69,9 @@ function Viewcourse() {
   });
 
   const [dateSet, setDateSet] = useState([])
-  const dateList = dateSet && dateSet.map(date => date.date)
+  const dateList = dateSet?.map(date => date.date)
   const disabledDate = () => true;
-
+  
 
 
 
@@ -100,6 +101,7 @@ function Viewcourse() {
       availableDates: items.availableDates,
     }
   ))
+  // console.log(listSet);
   const tutorId = courseData && courseData.tutorProfile.tutorId
 
 
@@ -145,7 +147,7 @@ function Viewcourse() {
                 </Radio.Group>
                 <Calendar
                   disabledDate={disabledDate}
-                  
+                  value={dayjs(dateList[0])}
                   fullscreen={false}
                   className="calendar-form"
                 />

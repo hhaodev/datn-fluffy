@@ -1,6 +1,6 @@
 import "../../TutorPages/Feedback/feedback.css";
 import React, { useState } from "react";
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 
 import avtfeedback4 from "../../assets/images/avt3.jpg";
 
@@ -50,7 +50,14 @@ const CourseBox = () => {
                     <p className="feedback__star">4.5</p>
                   </div>
                 </div>
-                <Modal open={open} onOk={hideModal} onCancel={hideModal}>
+                <Modal 
+                closable={false}
+                open={open} 
+                onOk={hideModal}
+                footer={
+                  <Button onClick={() => hideModal()}>Cancel</Button>
+              }
+                >
                   <div className="course-box-modal">
                     <div className="feedback__boxall">
                       <div className="course-box-avatar">

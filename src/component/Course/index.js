@@ -1,19 +1,22 @@
 import "./index.css";
 import { Link } from "react-router-dom";
-import { Modal } from 'antd';
+import { Button, Modal } from 'antd';
 import { useState } from 'react';
-import avt1 from '../../assets/images/avt2.jpg'
+import { useSelector } from 'react-redux';
 
 const CourseComponent = ({ course, type }) => {
+  const schoolsList = useSelector(state => state.schools.schoolsData)
   const { firstName, lastName, avatarUrl } = course.tutorProfile.tutor;
+  const tutorEducations = course.tutorProfile.educations
+  const tutorExperiences = course.tutorProfile.experiences
+  const tutorCertifications = course.tutorProfile.certifications
+
+
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
   };
 
   const handleCancel = () => {
@@ -56,44 +59,77 @@ const CourseComponent = ({ course, type }) => {
           See detail
         </Link>
         <Modal
+          closable={false}
           visible={isModalVisible}
-          onOk={handleOk}
           onCancel={handleCancel}
+          footer={
+            <Button onClick={handleCancel}>Cancel</Button>
+          }
         >
           <div className="information_tutor">
             <div className="infor_title1">
-              <img src={avt1} alt="" className="infor_avt1"></img>
-              <h2>Hoang Tran</h2>
+              <img src={avatarUrl} alt="" className="infor_avt1"></img>
+              <h2>{firstName} {lastName}</h2>
             </div>
-
-            <div className="infor_date1">
-              <h2 className="infor_content">Date of birth: </h2>
-              <p>16/04/2007</p>
-            </div>
-
             <div className="infor_schools">
               <h2 className="infor_content">Schools:  </h2>
-              <p>Duy Tan University</p>
+              {
+                tutorEducations?.map(data => {
+                  const sch = schoolsList?.find(sch => sch.id === data.schoolId)
+                  return (
+                    <span>{sch.name}</span>
+                  )
+                })
+              }
             </div>
+            {tutorExperiences?.length !== 0 ? <h3 className='request_title2'><i className='bx bxs-label' ></i>Experiences </h3> : (null)}
+            {
+              tutorExperiences?.map(data => {
+                return (
+                  <>
+                    <div className="infor_experience">
+                      <div className="infor_company">
+                        <h2 className="infor_content bottom">Organization Name: </h2>
+                        <p>{data.organization}</p>
+                      </div>
+                      <div className="infor_company">
+                        <h2 className="infor_content">Position: </h2>
+                        <p>{data.position}</p>
+                      </div>
+                      <div className="infor_company">
+                        <h2 className="infor_content">Description: </h2>
+                        <p>{data.description}</p>
+                      </div>
+                    </div>
+                  </>
+                )
+              })
+            }
+            {tutorCertifications?.length !== 0 ? <h3 className='request_title2'><i className='bx bxs-label' ></i>Certifications </h3> : (null)}
+            {
+              tutorCertifications?.map(data => {
+                return (
+                  <>
+                    <div className="infor_experience">
+                      <div className="infor_company">
+                        <h2 className="infor_content bottom">Organization Name: </h2>
+                        <p>{data.name}</p>
+                      </div>
+                      <div className="infor_company">
+                        <h2 className="infor_content">Score: </h2>
+                        <p>{data.score}</p>
+                      </div>
+                    </div>
+                  </>
+                )
+              })
+            }
 
-            <div className="infor_experience">
-              <div className="infor_company">
-                <h2 className="infor_content bottom">Organization Name: </h2>
-                <p>KMS</p>
-              </div>
-              <div className="infor_company">
-                <h2 className="infor_content">Position: </h2>
-                <p>Tech Lead</p>
-              </div>
-            </div>
 
-            <div className="infor_des">
-              <h2 className="infor_content">Description: </h2>
-              <p className="infor_descreption">I am an all-rounder, specializing in all fields, I am still handsome, especially very attractive, come with me, my house is in Hoa Vang, Da Nang</p>
-            </div>
+
+
+
           </div>
-          {/* <p>{course.name}</p>
-          <p>{course.description}</p> */}
         </Modal>
       </div>
     </div >

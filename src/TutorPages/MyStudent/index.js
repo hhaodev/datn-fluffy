@@ -127,6 +127,7 @@ const MyStudenttutor = () => {
           <div className="mystdtutor__content">
             <Table dataSource={dataSource} columns={columns} />
             <Modal
+              closable={false}
               title="Profile"
               visible={isModalVisible}
               onCancel={handleOk}
@@ -165,9 +166,9 @@ const MyStudenttutor = () => {
                     <p className="mystdtt__school">School: </p>
                     {
                       moreData.array?.studentEducations.map((school) => {
-                        const t =  schoolsList?.find(sch=>sch.id === school.schoolId)
+                        const t = schoolsList?.find(sch => sch.id === school.schoolId)
                         return (
-                          <p>{t.name}</p>   
+                          <p>{t.name}</p>
                         )
                       })
                     }
