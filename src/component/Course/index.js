@@ -1,8 +1,8 @@
 import "./index.css";
 import { Link } from "react-router-dom";
-import { Modal } from 'antd';
-import { useState } from 'react';
-import avt1 from '../../assets/images/avt2.jpg'
+import { Modal } from "antd";
+import { useState } from "react";
+import avt1 from "../../assets/images/avt2.jpg";
 
 const CourseComponent = ({ course, type }) => {
   const { firstName, lastName } = course.tutorProfile.tutor;
@@ -20,8 +20,6 @@ const CourseComponent = ({ course, type }) => {
     setIsModalVisible(false);
   };
 
-
-
   return (
     <div className="course_box">
       <div className="course_thumnail">
@@ -32,29 +30,33 @@ const CourseComponent = ({ course, type }) => {
         <div className="course_author">
           <div className="course_author_image">
             <img
-              src="https://i.pinimg.com/564x/0d/b1/d8/0db1d8d5fc83125ab2645388c06b3858.jpg"
+              src={course.tutorProfile.tutor.avatarUrl}
               alt=""
               onClick={showModal}
             />
           </div>
-          <p onClick={showModal} className="course_author_info">{`${firstName} ${lastName}`}</p>
+          <p
+            onClick={showModal}
+            className="course_author_info"
+          >{`${firstName} ${lastName}`}</p>
         </div>
 
         <div className="course_box_content_des">
           <p>{course.description}</p>
           <h3 className="dollar-h3">
-            {course.price}
+            {course.price || 0}
             <i className="bx bx-dollar"></i>
           </h3>
         </div>
-        <Link to={type ? `/courses/${course.id}` : `/dashboard/courses/${course.id}`} className="inline-btn">
+        <Link
+          to={
+            type ? `/courses/${course.id}` : `/dashboard/courses/${course.id}`
+          }
+          className="inline-btn"
+        >
           See detail
         </Link>
-        <Modal
-          visible={isModalVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
+        <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
           <div className="information_tutor">
             <div className="infor_title1">
               <img src={avt1} alt="" className="infor_avt1"></img>
@@ -67,7 +69,7 @@ const CourseComponent = ({ course, type }) => {
             </div>
 
             <div className="infor_schools">
-              <h2 className="infor_content">Schools:  </h2>
+              <h2 className="infor_content">Schools: </h2>
               <p>Duy Tan University</p>
             </div>
 
@@ -84,11 +86,13 @@ const CourseComponent = ({ course, type }) => {
 
             <div className="infor_des">
               <h2 className="infor_content">Description: </h2>
-              <p className="infor_descreption">I am an all-rounder, specializing in all fields, I am still handsome, especially very attractive, come with me, my house is in Hoa Vang, Da Nang</p>
+              <p className="infor_descreption">
+                I am an all-rounder, specializing in all fields, I am still
+                handsome, especially very attractive, come with me, my house is
+                in Hoa Vang, Da Nang
+              </p>
             </div>
           </div>
-          {/* <p>{course.name}</p>
-          <p>{course.description}</p> */}
         </Modal>
       </div>
     </div>

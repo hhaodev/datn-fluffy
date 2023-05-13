@@ -187,7 +187,7 @@ const EditCourseComponent = ({
               handleChangeValue("spendTime", e.target.value, setEditCourseData)
             }
             addonAfter={"Day"}
-            defaultValue={100}
+            defaultValue={0}
           />
         </Form.Item>
         <Form.Item label="Image" className="course_content_level1">
