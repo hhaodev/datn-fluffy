@@ -1,56 +1,83 @@
 import "../../TutorPages/Courses/courses.css";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
-import { useSelector } from "react-redux";
-import { Tabs } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import CourseComponent from "../../component/Course";
-import { AutoComplete, Input } from 'antd';
+import { AutoComplete, Input, Modal, Upload, Select, Form, Tabs } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { PlusOutlined } from "@ant-design/icons";
+import { setError } from "../../Redux/features/notificationSlice";
+
+const PRESIGN_URL = gql`
+  mutation getPresignUrl($input: PreSignedUrlDto!) {
+    presignedUrl(input: $input) {
+      url
+    }
+  }
+`;
+
+const MUTATION_UPSERT_COURSE = gql`
+  mutation createCourse($input: CourseDto!) {
+    createCourse(input: $input) {
+      id
+      name
+      imageUrl
+      description
+      price
+      spendTime
+    }
+  }
+`;
+
+const handleCreateCourse = (input, dispatch, setModal, setParams) => {
+  client
+    .mutate({
+      mutation: MUTATION_UPSERT_COURSE,
+      variables: {
+        input,
+      },
+    })
+    .then((response) => {
+      client.clearStore();
+      setParams((params) => ({ ...params }));
+      setModal(false);
+    })
+    .catch((error) => {
+      dispatch(setError({ message: error.message }));
+    });
+};
+
+const getPresignedUrl = async (file) => {
+  const response = await client.mutate({
+    mutation: PRESIGN_URL,
+    variables: {
+      input: {
+        fileType: file.type,
+        pathType: "Profile",
+        fileName: file.name,
+      },
+    },
+  });
+
+  return response.data.presignedUrl.url;
+};
 
 function MyCoursestt() {
-  const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
-  const searchResult = (query) =>
-    new Array(getRandomInt(5))
-      .join('.')
-      .split('.')
-      .map((_, idx) => {
-        const category = `${query}${idx}`;
-        return {
-          value: category,
-          label: (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <span>
-                Found {query} on{' '}
-                <a
-                  href={`https://s.taobao.com/search?q=${query}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {category}
-                </a>
-              </span>
-              <span>{getRandomInt(200, 100)} results</span>
-            </div>
-          ),
-        };
-      });
+  const dispatch = useDispatch();
+  const [isModal, setIsModal] = useState(false);
 
-  const [options, setOptions] = useState([]);
-  const handleSearch = (value) => {
-    setOptions(value ? searchResult(value) : []);
-  };
-  const onSelect = (value) => {
-    console.log('onSelect', value);
-  };
   const [courseList, setCourseList] = useState(null);
   const categories = useSelector((state) => state.categories.items);
   const userId = useSelector((state) => state.user.currentUser.id);
+  const [createCourse, setCreateCourse] = useState({
+    name: null,
+    description: null,
+    imageUrl: null,
+    categoryId: null,
+  });
+
   const { TabPane } = Tabs;
 
   const [params, setParams] = useState({
@@ -64,6 +91,26 @@ function MyCoursestt() {
       },
     ],
   });
+
+  const handleUpload = async (file) => {
+    const presignedUrl = await getPresignedUrl(file);
+
+    await axios
+      .put(presignedUrl, file, {
+        headers: {
+          "Content-Type": file.type,
+        },
+      })
+      .then((message) => {
+        setCreateCourse({
+          ...createCourse,
+          imageUrl: message.config.url.split("?")[0],
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   useEffect(() => {
     client
@@ -123,6 +170,19 @@ function MyCoursestt() {
       });
   }, [params]);
 
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </div>
+  );
+
   return (
     <div>
       <section id="content">
@@ -140,24 +200,93 @@ function MyCoursestt() {
                     style={{
                       width: 500,
                     }}
-                    options={options}
-                    onSelect={onSelect}
-                    onSearch={handleSearch}
                     className="search-button"
                   >
-                    <Input.Search size="large" placeholder="Search courses ..." enterButton />
+                    <Input.Search
+                      size="large"
+                      placeholder="Search courses ..."
+                      enterButton
+                    />
                   </AutoComplete>
                 </div>
               </div>
-              <Link to="/addcourses">
-                <button className="add-course">
-                  <i class="bx bx-plus add__plus"></i>Add Course
-                </button>
-              </Link>
+
+              <button
+                className="add-course"
+                onClick={() => setIsModal(!isModal)}
+              >
+                <i class="bx bx-plus add__plus"></i>Add Course
+              </button>
             </div>
-
+            <Modal
+              title="Create New Course"
+              centered
+              open={isModal}
+              width={800}
+              onCancel={() => setIsModal(false)}
+              onOk={() =>
+                handleCreateCourse(
+                  createCourse,
+                  dispatch,
+                  setIsModal,
+                  setParams
+                )
+              }
+            >
+              <Form className="form_create-course">
+                <Form.Item label="Name">
+                  <Input
+                    onChange={(e) =>
+                      setCreateCourse({ ...createCourse, name: e.target.value })
+                    }
+                  ></Input>
+                </Form.Item>
+                <Form.Item label="Category">
+                  <Select
+                    onChange={(e) =>
+                      setCreateCourse({ ...createCourse, categoryId: e })
+                    }
+                  >
+                    {categories.map((category) => (
+                      <Select.Option value={category.id}>
+                        {category.name}
+                      </Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+                <Form.Item label="Description">
+                  <TextArea
+                    autoSize={{ minRows: 3, maxRows: 5 }}
+                    onChange={(e) =>
+                      setCreateCourse({
+                        ...createCourse,
+                        description: e.target.value,
+                      })
+                    }
+                  ></TextArea>
+                </Form.Item>
+                <Form.Item label="Course Image">
+                  <Upload
+                    name="avatar"
+                    listType="picture-card"
+                    className="avatar-uploader"
+                    showUploadList={false}
+                    action={handleUpload}
+                  >
+                    {createCourse.imageUrl ? (
+                      <img
+                        src={createCourse.imageUrl}
+                        alt="avatar"
+                        style={{ width: "100%" }}
+                      />
+                    ) : (
+                      uploadButton
+                    )}
+                  </Upload>
+                </Form.Item>
+              </Form>
+            </Modal>
             <Tabs
-
               onChange={(key) =>
                 setParams({
                   limit: 9,

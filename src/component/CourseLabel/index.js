@@ -115,7 +115,7 @@ export const CourseLabelComponent = ({
           <p>{course.description}</p>
         </div>
         <h3 className="dollar-h3">
-          {course.price}
+          {course.price || 0}
           <i className="bx bx-dollar"></i>
         </h3>
         <div className="all__button2">{groupBtnAction}</div>

@@ -10,7 +10,6 @@ import { CourseLabelComponent } from "../../component/CourseLabel";
 import "./viewcourses.css";
 import { Link } from "react-router-dom";
 import { Calendar } from "antd";
-import moment from 'moment';
 import dayjs from "dayjs";
 
 const QUERY_COURSE_DETAIL = gql`
@@ -68,14 +67,9 @@ function Viewcourse() {
     link: null,
   });
 
-  const [dateSet, setDateSet] = useState([])
-  const dateList = dateSet?.map(date => date.date)
+  const [dateSet, setDateSet] = useState([]);
+  const dateList = dateSet?.map((date) => date.date);
   const disabledDate = () => true;
-  
-
-
-
-
 
   useEffect(() => {
     client
@@ -93,17 +87,15 @@ function Viewcourse() {
       });
   }, [id]);
 
-
-  const listSet = courseData && courseData.sets?.map((items) => (
-    {
+  const listSet =
+    courseData &&
+    courseData.sets?.map((items) => ({
       name: items.name,
       id: items.id,
       availableDates: items.availableDates,
-    }
-  ))
+    }));
   // console.log(listSet);
-  const tutorId = courseData && courseData.tutorProfile.tutorId
-
+  const tutorId = courseData && courseData.tutorProfile.tutorId;
 
   return (
     <section id="content">
@@ -138,7 +130,10 @@ function Viewcourse() {
             <div className="all__course1">
               <CourseLabelComponent course={courseData} />
               <div className="course_box2">
-                <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
+                <Radio.Group
+                  onChange={(e) => setDateSet(e.target.value)}
+                  value={listSet}
+                >
                   {listSet.map((option) => (
                     <Radio.Button key={option.id} value={option.availableDates}>
                       {option.name}
@@ -186,7 +181,7 @@ function Viewcourse() {
           </>
         )}
       </main>
-    </section >
+    </section>
   );
 }
 

@@ -1,17 +1,15 @@
 import "./index.css";
 import { Link } from "react-router-dom";
-import { Button, Modal } from 'antd';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { Button, Modal } from "antd";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const CourseComponent = ({ course, type }) => {
-  const schoolsList = useSelector(state => state.schools.schoolsData)
+  const schoolsList = useSelector((state) => state.schools.schoolsData);
   const { firstName, lastName, avatarUrl } = course.tutorProfile.tutor;
-  const tutorEducations = course.tutorProfile.educations
-  const tutorExperiences = course.tutorProfile.experiences
-  const tutorCertifications = course.tutorProfile.certifications
-
-
+  const tutorEducations = course.tutorProfile.educations;
+  const tutorExperiences = course.tutorProfile.experiences;
+  const tutorCertifications = course.tutorProfile.certifications;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -23,8 +21,6 @@ const CourseComponent = ({ course, type }) => {
     setIsModalVisible(false);
   };
 
-
-
   return (
     <div className="course_box">
       <div className="course_thumnail">
@@ -35,104 +31,110 @@ const CourseComponent = ({ course, type }) => {
         <div className="course_author">
           <div className="course_author_image">
             <img
-              src={avatarUrl}
+              src={course.tutorProfile.tutor.avatarUrl}
               alt=""
               onClick={showModal}
             />
           </div>
-          <p onClick={showModal} className="course_author_info">{`${firstName} ${lastName}`}</p>
+          <p
+            onClick={showModal}
+            className="course_author_info"
+          >{`${firstName} ${lastName}`}</p>
         </div>
 
         <div className="course_box_content_des">
           <p>{course.description}</p>
-          {course.price
-            ? (
-              <h3 h3 className="dollar-h3">
-                {course.price}
-                <i className="bx bx-dollar"></i>
-              </h3>
-            )
-            : (null)
-          }
+          {course.price || 0 ? (
+            <h3 h3 className="dollar-h3">
+              {course.price}
+              <i className="bx bx-dollar"></i>
+            </h3>
+          ) : null}
         </div>
-        <Link to={type ? `/courses/${course.id}` : `/dashboard/courses/${course.id}`} className="inline-btn">
+        <Link
+          to={
+            type ? `/courses/${course.id}` : `/dashboard/courses/${course.id}`
+          }
+          className="inline-btn"
+        >
           See detail
         </Link>
         <Modal
           closable={false}
           visible={isModalVisible}
           onCancel={handleCancel}
-          footer={
-            <Button onClick={handleCancel}>Cancel</Button>
-          }
+          footer={<Button onClick={handleCancel}>Cancel</Button>}
         >
           <div className="information_tutor">
             <div className="infor_title1">
               <img src={avatarUrl} alt="" className="infor_avt1"></img>
-              <h2>{firstName} {lastName}</h2>
+              <h2>
+                {firstName} {lastName}
+              </h2>
             </div>
             <div className="infor_schools">
-              <h2 className="infor_content">Schools:  </h2>
-              {
-                tutorEducations?.map(data => {
-                  const sch = schoolsList?.find(sch => sch.id === data.schoolId)
-                  return (
-                    <span>{sch.name}</span>
-                  )
-                })
-              }
+              <h2 className="infor_content">Schools: </h2>
+              {tutorEducations?.map((data) => {
+                const sch = schoolsList?.find(
+                  (sch) => sch.id === data.schoolId
+                );
+                return <span>{sch.name}</span>;
+              })}
             </div>
-            {tutorExperiences?.length !== 0 ? <h3 className='request_title2'><i className='bx bxs-label' ></i>Experiences </h3> : (null)}
-            {
-              tutorExperiences?.map(data => {
-                return (
-                  <>
-                    <div className="infor_experience">
-                      <div className="infor_company">
-                        <h2 className="infor_content bottom">Organization Name: </h2>
-                        <p>{data.organization}</p>
-                      </div>
-                      <div className="infor_company">
-                        <h2 className="infor_content">Position: </h2>
-                        <p>{data.position}</p>
-                      </div>
-                      <div className="infor_company">
-                        <h2 className="infor_content">Description: </h2>
-                        <p>{data.description}</p>
-                      </div>
+            {tutorExperiences?.length !== 0 ? (
+              <h3 className="request_title2">
+                <i className="bx bxs-label"></i>Experiences{" "}
+              </h3>
+            ) : null}
+            {tutorExperiences?.map((data) => {
+              return (
+                <>
+                  <div className="infor_experience">
+                    <div className="infor_company">
+                      <h2 className="infor_content bottom">
+                        Organization Name:{" "}
+                      </h2>
+                      <p>{data.organization}</p>
                     </div>
-                  </>
-                )
-              })
-            }
-            {tutorCertifications?.length !== 0 ? <h3 className='request_title2'><i className='bx bxs-label' ></i>Certifications </h3> : (null)}
-            {
-              tutorCertifications?.map(data => {
-                return (
-                  <>
-                    <div className="infor_experience">
-                      <div className="infor_company">
-                        <h2 className="infor_content bottom">Organization Name: </h2>
-                        <p>{data.name}</p>
-                      </div>
-                      <div className="infor_company">
-                        <h2 className="infor_content">Score: </h2>
-                        <p>{data.score}</p>
-                      </div>
+                    <div className="infor_company">
+                      <h2 className="infor_content">Position: </h2>
+                      <p>{data.position}</p>
                     </div>
-                  </>
-                )
-              })
-            }
-
-
-
-
-
+                    <div className="infor_company">
+                      <h2 className="infor_content">Description: </h2>
+                      <p>{data.description}</p>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
+            {tutorCertifications?.length !== 0 ? (
+              <h3 className="request_title2">
+                <i className="bx bxs-label"></i>Certifications{" "}
+              </h3>
+            ) : null}
+            {tutorCertifications?.map((data) => {
+              return (
+                <>
+                  <div className="infor_experience">
+                    <div className="infor_company">
+                      <h2 className="infor_content bottom">
+                        Organization Name:{" "}
+                      </h2>
+                      <p>{data.name}</p>
+                    </div>
+                    <div className="infor_company">
+                      <h2 className="infor_content">Score: </h2>
+                      <p>{data.score}</p>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
           </div>
         </Modal>
       </div>
-    </div >
+    </div>
   );
 };
 
