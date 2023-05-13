@@ -93,6 +93,7 @@ function Viewcourse() {
   }, [id]);
 
   const listSetIsBooked = courseData?.sets.filter(item => !item.isBooked)
+  console.log("🚀 ~ file: index.js:96 ~ Viewcourse ~ listSetIsBooked:", listSetIsBooked)
   const listSet = listSetIsBooked?.map((items) => (
     {
       name: items.name,
@@ -135,7 +136,7 @@ function Viewcourse() {
             <div className="all__course1">
               <CourseLabelComponent course={courseData} dateSet={dateSet} />
               <div className="course_box2">
-                {listSet
+                {listSet.length === 0
                   ? <p>The course is currently sold out</p>
                   : <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
                     {listSet.map((option) => (
