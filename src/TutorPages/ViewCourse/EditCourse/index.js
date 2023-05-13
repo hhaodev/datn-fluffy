@@ -184,7 +184,7 @@ const EditCourseComponent = ({
           <InputNumber
             value={editCourseData?.spendTime}
             onChange={(e) =>
-              handleChangeValue("spendTime", e.target.value, setEditCourseData)
+              handleChangeValue("spendTime", e, setEditCourseData)
             }
             addonAfter={"Day"}
             defaultValue={100}

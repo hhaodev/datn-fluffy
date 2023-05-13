@@ -10,7 +10,6 @@ import { CourseLabelComponent } from "../../component/CourseLabel";
 import "./viewcourses.css";
 import { Link } from "react-router-dom";
 import { Calendar } from "antd";
-import moment from 'moment';
 import dayjs from "dayjs";
 
 const QUERY_COURSE_DETAIL = gql`
@@ -71,7 +70,7 @@ function Viewcourse() {
   const [dateSet, setDateSet] = useState([])
   const dateList = dateSet?.map(date => date.date)
   const disabledDate = () => true;
-  
+
 
 
 
@@ -93,16 +92,14 @@ function Viewcourse() {
       });
   }, [id]);
 
-
-  const listSet = courseData && courseData.sets?.map((items) => (
+  const listSetIsBooked = courseData?.sets.filter(item => !item.isBooked)
+  const listSet = listSetIsBooked?.map((items) => (
     {
       name: items.name,
       id: items.id,
-      availableDates: items.availableDates,
+      availableDates: items.availableDates
     }
   ))
-  // console.log(listSet);
-  const tutorId = courseData && courseData.tutorProfile.tutorId
 
 
   return (
@@ -136,15 +133,19 @@ function Viewcourse() {
         {courseData && (
           <>
             <div className="all__course1">
-              <CourseLabelComponent course={courseData} />
+              <CourseLabelComponent course={courseData} dateSet={dateSet} />
               <div className="course_box2">
-                <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
-                  {listSet.map((option) => (
-                    <Radio.Button key={option.id} value={option.availableDates}>
-                      {option.name}
-                    </Radio.Button>
-                  ))}
-                </Radio.Group>
+                {listSet
+                  ? <p>The course is currently sold out</p>
+                  : <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
+                    {listSet.map((option) => (
+                      <Radio.Button key={option.id} value={option.availableDates}>
+                        {option.name}
+                      </Radio.Button>
+                    ))}
+                  </Radio.Group>
+                }
+
                 <Calendar
                   disabledDate={disabledDate}
                   value={dayjs(dateList[0])}

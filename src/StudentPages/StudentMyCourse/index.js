@@ -44,7 +44,7 @@ const GET_MY_COURSES = gql`
 
 function StudentMyCourse() {
   const [coureseList, setCoureseList] = useState([])
-  console.log("🚀 ~ file: index.js:49 ~ StudentMyCourse ~ coureseList:", coureseList)
+  // console.log("🚀 ~ file: index.js:49 ~ StudentMyCourse ~ coureseList:", coureseList)
 
   useEffect(() => {
     client
@@ -52,7 +52,7 @@ function StudentMyCourse() {
         query: GET_MY_COURSES,
         variables: {
           query: {
-            limit: 10,
+            limit: 99,
             page: 1,
           }
         }
@@ -61,6 +61,8 @@ function StudentMyCourse() {
         setCoureseList(result.data.getMyCourses.items)
       })
   }, [coureseList]);
+
+  
   return (
     <>
       <section id="content">

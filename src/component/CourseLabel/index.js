@@ -1,11 +1,11 @@
 import { Button, Rate, Modal } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import "./index.css";
-import { gql } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import client from "../../configGQL";
 import { useDispatch } from "react-redux";
 import { setError } from "../../Redux/features/notificationSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const { confirm } = Modal;
 
@@ -18,14 +18,63 @@ const DELETE_COURSE_BY_ID = gql`
   }
 `;
 
+const BUY_COURSE = gql`
+  mutation createCheckoutCourseUsingStripe($input: CheckoutCourseDto!){
+  createCheckoutCourseUsingStripe(input: $input){
+    checkoutUrl
+    successUrl
+    cancelUrl
+  }
+}
+`;
+
+
 export const CourseLabelComponent = ({
   course,
   tutorType,
   handleOpenPublished,
   setIsEdited,
+  dateSet,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [buyCourse] = useMutation(BUY_COURSE)
+
+  const { id } = useParams()
+  const url = window.location.href
+  const tutorId = course.tutorProfile.tutorId
+
+  const handleBuyCourse = () => {
+    const data = {
+      successUrl: url,
+      cancelUrl: url,
+      tutorId: tutorId,
+      courseId: id,
+      setId: dateSet[0]?.setId,
+    }
+    let validated = true
+    if (dateSet.length === 0) {
+      validated = false
+    }
+    if (validated === true) {
+      const getData = async () => {
+        try {
+          const result = await buyCourse({
+            variables: {
+              input: data,
+            },
+          });
+          window.location.href = result.data.createCheckoutCourseUsingStripe.checkoutUrl
+        } catch (error) {
+          dispatch(setError({ message: error.message }))
+        }
+      }
+      getData()
+    }
+    else {
+      dispatch(setError({ message: "Please select your set" }))
+    }
+  }
 
   const handleDelete = (courseId) => {
     client
@@ -51,13 +100,23 @@ export const CourseLabelComponent = ({
       title: title,
       icon: <ExclamationCircleFilled />,
       onOk: handle,
-      onCancel() {},
+      onCancel() { },
     });
   };
 
   let groupBtnAction = (
     <div className="courses_buynow">
-      <Button className="inline-btn1">Buy now</Button>
+      <Button
+        className="inline-btn1"
+        onClick={() => {
+          showPromiseConfirm({
+            title: `Do you want to buy this course`,
+            handle: () => handleBuyCourse(),
+          })
+        }}
+      >
+        Buy now
+      </Button>
     </div>
   );
 
