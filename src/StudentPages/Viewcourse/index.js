@@ -133,6 +133,7 @@ function Viewcourse() {
                 <Radio.Group
                   onChange={(e) => setDateSet(e.target.value)}
                   value={listSet}
+                  className="radio-class-btn"
                 >
                   {listSet.map((option) => (
                     <Radio.Button key={option.id} value={option.availableDates}>

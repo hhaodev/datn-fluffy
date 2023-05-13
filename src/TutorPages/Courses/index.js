@@ -1,11 +1,20 @@
-import "../../TutorPages/Courses/courses.css";
+import style from "../../TutorPages/Courses/courses.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 import CourseComponent from "../../component/Course";
-import { AutoComplete, Input, Modal, Upload, Select, Form, Tabs } from "antd";
+import {
+  AutoComplete,
+  Input,
+  Modal,
+  Upload,
+  Select,
+  Form,
+  Tabs,
+  Button,
+} from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { PlusOutlined } from "@ant-design/icons";
 import { setError } from "../../Redux/features/notificationSlice";
@@ -128,7 +137,6 @@ function MyCoursestt() {
                   isPublish
                   imageUrl
                   spendTime
-                  
                   description
                   price
                   tutorProfile {
@@ -137,15 +145,15 @@ function MyCoursestt() {
                       lastName
                       avatarUrl
                     }
-                    educations{
+                    educations {
                       schoolId
                     }
-                    experiences{
+                    experiences {
                       organization
                       description
                       position
                     }
-                    certifications{
+                    certifications {
                       name
                       score
                     }
@@ -185,7 +193,7 @@ function MyCoursestt() {
 
   return (
     <div>
-      <section id="content">
+      <section id="content" style={style}>
         <main>
           <div className="course__head-title">
             <div className="course__left"></div>
@@ -193,7 +201,6 @@ function MyCoursestt() {
           <div className="course-container">
             <div className="title-container">
               <div className="heading-search">
-                <h1 className="course__h1tittle">Courses</h1>
                 <div className="search-btn">
                   <AutoComplete
                     dropdownMatchSelectWidth={252}
@@ -209,14 +216,86 @@ function MyCoursestt() {
                     />
                   </AutoComplete>
                 </div>
+                <div className="price-btn">
+                  <Select
+                    showSearch
+                    style={{
+                      width: 200,
+                    }}
+                    placeholder="Sort by Price"
+                    optionFilterProp="children"
+                    filterOption={(input, option) =>
+                      (option?.label ?? "").includes(input)
+                    }
+                    filterSort={(optionA, optionB) =>
+                      (optionA?.label ?? "")
+                        .toLowerCase()
+                        .localeCompare((optionB?.label ?? "").toLowerCase())
+                    }
+                    options={[
+                      {
+                        value: "1",
+                        label: "Low to High",
+                      },
+                      {
+                        value: "2",
+                        label: "High to Low",
+                      },
+                    ]}
+                  />
+                </div>
+                <div className="categories-course">
+                  <Select
+                    showSearch
+                    style={{
+                      width: 200,
+                    }}
+                    placeholder="All Categories"
+                    optionFilterProp="children"
+                    filterOption={(input, option) =>
+                      (option?.label ?? "").includes(input)
+                    }
+                    filterSort={(optionA, optionB) =>
+                      (optionA?.label ?? "")
+                        .toLowerCase()
+                        .localeCompare((optionB?.label ?? "").toLowerCase())
+                    }
+                    options={[
+                      {
+                        value: "1",
+                        label: "Technology",
+                      },
+                      {
+                        value: "2",
+                        label: "Languages",
+                      },
+                      {
+                        value: "3",
+                        label: "Economics",
+                      },
+                      {
+                        value: "4",
+                        label: "Marketing",
+                      },
+                      {
+                        value: "5",
+                        label: "Design",
+                      },
+                    ]}
+                  />
+                </div>
+                <div className="filter-course">
+                  <Button type="default">
+                    <i className="bx bx-filter-alt"></i>Filter
+                  </Button>
+                </div>
+                <button
+                  className="add-course"
+                  onClick={() => setIsModal(!isModal)}
+                >
+                  <i class="bx bx-plus add__plus"></i>Add Course
+                </button>
               </div>
-
-              <button
-                className="add-course"
-                onClick={() => setIsModal(!isModal)}
-              >
-                <i class="bx bx-plus add__plus"></i>Add Course
-              </button>
             </div>
             <Modal
               title="Create New Course"

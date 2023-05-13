@@ -17,11 +17,22 @@
 
 .view_heading {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   padding-right: 15%;
 }
 .view__upload{
   display: block;
   margin-left: 8%;
+}
+
+.button-changes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.student_change {
+  text-decoration: underline;
+  color: #ef629f;
 }

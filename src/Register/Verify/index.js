@@ -18,7 +18,7 @@ function Verifi() {
       }
     }
   `;
-  const [verify, {}] = useMutation(VERIFY);
+  const [verify, { }] = useMutation(VERIFY);
 
   const onFinish = (values) => {
     const datatemp = {
@@ -54,9 +54,11 @@ function Verifi() {
           <h2 className="verify__h2">Verify</h2>
           <>
             {Object.keys(dataVerify).length > 0 && (
-              <span className="verify__sapns">
-                Please check your email: {dataVerify}
-              </span>
+              <div className="verify_head1">
+                <span className="verify__sapns">
+                  Please check your email: {dataVerify}
+                </span>
+              </div>
             )}
             <Form
               name="basic"

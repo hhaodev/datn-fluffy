@@ -89,3 +89,11 @@
     flex-direction: column;
     gap: 20px;
 }
+
+:where(.css-dev-only-do-not-override-ed5zg0).ant-table-wrapper {
+    clear: both;
+    padding: 10px;
+    border-radius: 20px;
+    border: 3px solid #ef629f;
+    max-width: 100%;
+}

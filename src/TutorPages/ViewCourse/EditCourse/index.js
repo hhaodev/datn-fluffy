@@ -25,6 +25,13 @@ const MUTATION_UPSERT_COURSE = gql`
       isPublish
       ratting
       numberOfProgramRequired
+      tutorProfile {
+        tutor {
+          lastName
+          firstName
+          avatarUrl
+        }
+      }
       coursePrograms {
         id
         title
@@ -112,6 +119,7 @@ const EditCourseComponent = ({
   course,
   canNotEditedPermission,
   setIsEdited,
+  setCourseData,
 }) => {
   const dispatch = useDispatch();
   const [editCourseData, setEditCourseData] = useState(course);
@@ -125,15 +133,17 @@ const EditCourseComponent = ({
       "ratting",
       "numberOfProgramRequired",
       "isPublish",
-      ...state.coursePrograms?.reduce((cur, el, index) => {
-        return [
-          ...cur,
-          `coursePrograms[${index}].__typename`,
-          ...el?.courseProgramPhases?.map(
-            (x, indexX) =>
-              `coursePrograms[${index}].courseProgramPhases[${indexX}].__typename`
-          ),
-        ];
+      ...state?.coursePrograms?.reduce((cur, el, index) => {
+        cur.push(`coursePrograms[${index}].__typename`);
+        if (el.courseProgramPhases) {
+          cur.push(
+            ...el.courseProgramPhases.map(
+              (x, indexX) =>
+                `coursePrograms[${index}].courseProgramPhases[${indexX}].__typename`
+            )
+          );
+        }
+        return cur;
       }, []),
     ]);
 
@@ -146,6 +156,7 @@ const EditCourseComponent = ({
           },
         })
         .then((response) => {
+          setCourseData(response.data.createCourse);
           client.clearStore();
           setIsEdited(false);
         });

@@ -70,9 +70,6 @@ const MUTATION_PUBLISH_COURSE = gql`
           avatarUrl
         }
       }
-      category {
-        name
-      }
       coursePrograms {
         id
         title
@@ -107,6 +104,15 @@ function ViewCourse() {
         },
       })
       .then((response) => {
+        dispatch(
+          setError({
+            message: `${
+              response.data.publishCourse.isPublish
+                ? "Publish course successfully"
+                : "Unpublish course successfully"
+            }`,
+          })
+        );
         setDataCourse(response.data.publishCourse);
         setIsVisibled(false);
       })
@@ -177,6 +183,12 @@ function ViewCourse() {
             className="publish-title"
           >
             <div className="publish-form">
+              <Switch
+                defaultChecked={courseData?.isPublish || false}
+                onChange={(e) => {
+                  hanldeOnChangeStatus("isPublish", e);
+                }}
+              />
               <h3>Course Programs: </h3>
               <div className="publish-coursePrograms">
                 {courseData &&
@@ -252,6 +264,7 @@ function ViewCourse() {
             {courseData && (
               <EditCourseComponent
                 course={courseData}
+                setCourseData={setDataCourse}
                 canNotEditedPermission={isEdited}
                 setIsEdited={setIsEdited}
               />
