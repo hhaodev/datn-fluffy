@@ -157,9 +157,9 @@ function StudentProfile() {
                       }}
                     >
                       <div className="view__email">
-                        <h3>Email: <span>{dataUser?.email}</span></h3>
+                        <h3>Email: </h3>
+                        <span>{dataUser?.email}</span>
                       </div>
-                      <Button type="primary" className="student_change"><Link to="/changepass">Change Password</Link></Button>
                       <div className="view__firsts">
                         <Form.Item
                           label="First name"
@@ -199,6 +199,10 @@ function StudentProfile() {
                         <Input
                           onChange={(event) => handleInputChange("phoneNumber", event.target.value)}
                           placeholder={dataUser?.phoneNumber}
+                          style={{
+                            height: "50px",
+                            width: "103%",
+                          }}
                         />
                       </Form.Item>
                       <Form.Item
@@ -231,6 +235,9 @@ function StudentProfile() {
                         >
                           Save Changes
                         </Button>
+                      </div>
+                      <div className="button-changes">
+                        <Button type="link" className="student_change"><Link to="/changepass">Change Password ?</Link></Button>
                       </div>
                     </Form>
                   </div>

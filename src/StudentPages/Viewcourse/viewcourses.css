@@ -40,8 +40,9 @@
 } */
 
 .calendar-form {
-  height: 400px;
-  margin-top: 13%;
+  /* height: 400px; */
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 5%;
   border: 3px solid #ef709f;
 }
 
@@ -71,5 +72,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+:where(.css-dev-only-do-not-override-ed5zg0).ant-radio-button-wrapper {
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  margin: 0;
+  padding-inline: 15px;
+  padding-block: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 30px;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  /* border-block-start-width: 1.02px; */
+  /* border-inline-start-width: 0; */
+  /* border-inline-end-width: 1px; */
+  cursor: pointer;
+  transition: color 0.2s,background 0.2s,border-color 0.2s,box-shadow 0.2s;
+}
+
+.radio-class-btn {
+  width: 100%;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 3px solid #ef709f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
 }
 

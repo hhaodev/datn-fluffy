@@ -287,5 +287,26 @@ body {
 .heading-search {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
+  margin-bottom: 20px;
+}
+
+:where(.css-dev-only-do-not-override-ed5zg0).ant-tabs >.ant-tabs-nav .ant-tabs-nav-wrap, :where(.css-dev-only-do-not-override-ed5zg0).ant-tabs >div>.ant-tabs-nav .ant-tabs-nav-wrap {
+  position: relative;
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  /* align-self: center; */
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  transform: translate(0);
+  /* gap: 40px !important; */
+}
+
+:where(.css-dev-only-do-not-override-ed5zg0).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ef629f;
+  margin-right: 20% !important;
+  text-shadow: 0 0 0.25px currentcolor;
 }

@@ -6,7 +6,7 @@ import { gql } from "@apollo/client";
 import { useSelector } from "react-redux";
 import { Tabs } from "antd";
 import CourseComponent from "../../component/Course";
-import { AutoComplete, Input } from 'antd';
+import { Select, Button, Input } from 'antd';
 
 function MyCoursestt() {
   const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -133,27 +133,81 @@ function MyCoursestt() {
           <div className="course-container">
             <div className="title-container">
               <div className="heading-search">
-                <h1 className="course__h1tittle">Courses</h1>
+                {/* <h1 className="course__h1tittle">Courses</h1> */}
                 <div className="search-btn">
-                  <AutoComplete
-                    dropdownMatchSelectWidth={252}
-                    style={{
-                      width: 500,
-                    }}
-                    options={options}
-                    onSelect={onSelect}
-                    onSearch={handleSearch}
-                    className="search-button"
-                  >
-                    <Input.Search size="large" placeholder="Search courses ..." enterButton />
-                  </AutoComplete>
+                  <Input placeholder="Search course ..." />
                 </div>
+                <div className="price-btn">
+                  <Select
+                    showSearch
+                    style={{
+                      width: 200,
+                    }}
+                    placeholder="Sort by Price"
+                    optionFilterProp="children"
+                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                    filterSort={(optionA, optionB) =>
+                      (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                    }
+                    options={[
+                      {
+                        value: '1',
+                        label: 'Low to High',
+                      },
+                      {
+                        value: '2',
+                        label: 'High to Low',
+                      },
+                    ]}
+                  />
+                </div>
+                <div className="categories-course">
+                  <Select
+                    showSearch
+                    style={{
+                      width: 200,
+                    }}
+                    placeholder="All Categories"
+                    optionFilterProp="children"
+                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                    filterSort={(optionA, optionB) =>
+                      (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                    }
+                    options={[
+                      {
+                        value: '1',
+                        label: 'Technology',
+                      },
+                      {
+                        value: '2',
+                        label: 'Languages',
+                      },
+                      {
+                        value: '3',
+                        label: 'Economics',
+                      },
+                      {
+                        value: '4',
+                        label: 'Marketing',
+                      },
+                      {
+                        value: '5',
+                        label: 'Design',
+                      },
+                    ]}
+                  />
+                </div>
+                <div className="filter-course">
+                  <Button type="default">
+                    <i className='bx bx-filter-alt'></i>Filter
+                  </Button>
+                </div>
+                <Link to="/addcourses">
+                  <button className="add-course">
+                    <i class="bx bx-plus add__plus"></i>Add Course
+                  </button>
+                </Link>
               </div>
-              <Link to="/addcourses">
-                <button className="add-course">
-                  <i class="bx bx-plus add__plus"></i>Add Course
-                </button>
-              </Link>
             </div>
 
             <Tabs

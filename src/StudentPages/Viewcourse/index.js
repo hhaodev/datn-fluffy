@@ -138,7 +138,7 @@ function Viewcourse() {
             <div className="all__course1">
               <CourseLabelComponent course={courseData} />
               <div className="course_box2">
-                <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
+                <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet} className="radio-class-btn">
                   {listSet.map((option) => (
                     <Radio.Button key={option.id} value={option.availableDates}>
                       {option.name}

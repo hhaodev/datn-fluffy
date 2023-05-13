@@ -56,9 +56,14 @@
 
 .verify__sapns {
     font-weight: bold;
-    font-size: 15px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 20px;
+    color: #ef629f;
     padding-bottom: 15px;
-    ;
+    text-align: center;
 }
 
 .verify_thanks {
@@ -93,4 +98,10 @@
 .verify_yourcode {
     position: relative;
     right: 10%;
+}
+
+.verify_head1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

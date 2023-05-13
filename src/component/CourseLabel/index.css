@@ -41,9 +41,10 @@
   border-radius: 50%;
 }
 .course_box1_content1 .course_author1 img {
-  width: 100%;
-  height: 100%;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .course_author1 {
@@ -59,14 +60,16 @@
   color: #ad1457;
   font-family: "Ysabeau, sans-serif";
 }
-.course_box1_content_des1 {
-  /* flex: 1;
+/* .course_box1_content_des1 {
+  flex: 1;
     padding: 15px 0px;
     overflow: hidden;
-    text-overflow: ellipsis; */
-}
+    text-overflow: ellipsis;
+} */
 .course_box1_content_des1 p {
   white-space: wrap;
+  padding: 20px;
+  text-align: start;
 }
 .inline-btn1 {
   padding: 8px 20px;

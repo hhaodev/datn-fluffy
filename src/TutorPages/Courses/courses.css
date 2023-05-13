@@ -341,14 +341,14 @@ li {
 	align-items: center; */
 }
 
-.title-container {
+/* .title-container {
   justify-content: space-between;
   align-items: center;
   display: flex;
   width: 100%;
   margin-bottom: 20px;
   margin-top: 20px;
-}
+} */
 
 .course__h1tittle {
   margin-right: 20px;
@@ -404,8 +404,11 @@ li {
 
 .title-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
+
+
 
 .add__plus {
   font-size: 15px;
