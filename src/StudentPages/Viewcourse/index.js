@@ -71,6 +71,11 @@ function Viewcourse() {
   const dateList = dateSet?.map((date) => date.date);
   const disabledDate = () => true;
 
+
+
+
+
+
   useEffect(() => {
     client
       .query({
@@ -87,15 +92,15 @@ function Viewcourse() {
       });
   }, [id]);
 
-  const listSet =
-    courseData &&
-    courseData.sets?.map((items) => ({
+  const listSetIsBooked = courseData?.sets.filter(item => !item.isBooked)
+  const listSet = listSetIsBooked?.map((items) => (
+    {
       name: items.name,
       id: items.id,
-      availableDates: items.availableDates,
-    }));
-  // console.log(listSet);
-  const tutorId = courseData && courseData.tutorProfile.tutorId;
+      availableDates: items.availableDates
+    }
+  ))
+
 
   return (
     <section id="content">
@@ -128,19 +133,19 @@ function Viewcourse() {
         {courseData && (
           <>
             <div className="all__course1">
-              <CourseLabelComponent course={courseData} />
+              <CourseLabelComponent course={courseData} dateSet={dateSet} />
               <div className="course_box2">
-                <Radio.Group
-                  onChange={(e) => setDateSet(e.target.value)}
-                  value={listSet}
-                  className="radio-class-btn"
-                >
-                  {listSet.map((option) => (
-                    <Radio.Button key={option.id} value={option.availableDates}>
-                      {option.name}
-                    </Radio.Button>
-                  ))}
-                </Radio.Group>
+                {listSet.length === 0
+                  ? <p>The course is currently sold out</p>
+                  : <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
+                    {listSet.map((option) => (
+                      <Radio.Button key={option.id} value={option.availableDates}>
+                        {option.name}
+                      </Radio.Button>
+                    ))}
+                  </Radio.Group>
+                }
+
                 <Calendar
                   disabledDate={disabledDate}
                   value={dayjs(dateList[0])}
