@@ -44,12 +44,10 @@ const CourseComponent = ({ course, type }) => {
 
         <div className="course_box_content_des">
           <p>{course.description}</p>
-          {course.price || 0 ? (
-            <h3 h3 className="dollar-h3">
-              {course.price}
-              <i className="bx bx-dollar"></i>
-            </h3>
-          ) : null}
+          <h3 h3 className="dollar-h3">
+            {course.price}
+            <i className="bx bx-dollar"></i>
+          </h3>
         </div>
         <Link
           to={

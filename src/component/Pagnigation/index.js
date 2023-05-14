@@ -1,12 +1,20 @@
-import '../Pagnigation/index.css'
-import { Pagination } from 'antd';
+import "../Pagnigation/index.css";
+import { Pagination } from "antd";
 
-function Pagnigation() {
-    return ( 
-        <div className='pagnigation_all'>
-                <Pagination defaultCurrent={1} total={50} className='pagnigation'/>
-        </div>
-     );
+function Pagnigation({ meta, setParams }) {
+  return (
+    <div className="pagnigation_all">
+      <Pagination
+        className="pagnigation"
+        pageSize={meta.itemsPerPage}
+        current={meta.currentPage}
+        total={meta.totalItems}
+        onChange={(e) => {
+          setParams((params) => ({ ...params, page: e }));
+        }}
+      />
+    </div>
+  );
 }
 
 export default Pagnigation;

@@ -5,19 +5,12 @@ import client from "../../configGQL";
 import { gql } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 import CourseComponent from "../../component/Course";
-import {
-  AutoComplete,
-  Input,
-  Modal,
-  Upload,
-  Select,
-  Form,
-  Tabs,
-  Button,
-} from "antd";
+import { Input, Modal, Upload, Select, Form, Button } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { setError } from "../../Redux/features/notificationSlice";
+import Pagination from "../../component/Pagnigation/index";
+import _ from "lodash";
 
 const PRESIGN_URL = gql`
   mutation getPresignUrl($input: PreSignedUrlDto!) {
@@ -40,6 +33,48 @@ const MUTATION_UPSERT_COURSE = gql`
   }
 `;
 
+const GET_COURSE = gql`
+  query getCoursesByTutorId($tutorId: String!, $query: QueryFilterDto!) {
+    getCoursesByTutorId(tutorId: $tutorId, query: $query) {
+      items {
+        id
+        name
+        isPublish
+        imageUrl
+        spendTime
+        description
+        price
+        tutorProfile {
+          tutor {
+            firstName
+            lastName
+            avatarUrl
+          }
+          educations {
+            schoolId
+          }
+          experiences {
+            organization
+            description
+            position
+          }
+          certifications {
+            name
+            score
+          }
+        }
+      }
+      meta {
+        totalPages
+        currentPage
+        itemCount
+        totalItems
+        itemsPerPage
+      }
+    }
+  }
+`;
+
 const handleCreateCourse = (input, dispatch, setModal, setParams) => {
   client
     .mutate({
@@ -48,7 +83,7 @@ const handleCreateCourse = (input, dispatch, setModal, setParams) => {
         input,
       },
     })
-    .then((response) => {
+    .then(() => {
       client.clearStore();
       setParams((params) => ({ ...params }));
       setModal(false);
@@ -73,6 +108,30 @@ const getPresignedUrl = async (file) => {
   return response.data.presignedUrl.url;
 };
 
+const setOnChangeFilter = (field, value, setFilter, operator = "eq") => {
+  setFilter((filter) => {
+    const object = _.cloneDeep(filter);
+
+    if (field.split(".").length > 1) {
+      const index = object.filters.findIndex((el) => el.field === field);
+
+      if (index >= 0) {
+        object.filters[index].data = value;
+      } else {
+        object.filters.push({
+          field: field,
+          operator,
+          data: value,
+        });
+      }
+    } else {
+      object[field] = value;
+    }
+
+    return object;
+  });
+};
+
 function MyCoursestt() {
   const dispatch = useDispatch();
   const [isModal, setIsModal] = useState(false);
@@ -87,19 +146,33 @@ function MyCoursestt() {
     categoryId: null,
   });
 
-  const { TabPane } = Tabs;
-
   const [params, setParams] = useState({
+    limit: 6,
     page: 1,
-    limit: 9,
-    filters: [
-      {
-        field: "Course.categoryId",
-        operator: "eq",
-        data: categories[0]?.id,
-      },
-    ],
   });
+
+  const [meta, setMeta] = useState(null);
+  const [filter, setFilter] = useState({
+    q: "",
+    filters: [],
+  });
+
+  useEffect(() => {
+    const getCourse = async () => {
+      const result = await client.query({
+        query: GET_COURSE,
+        variables: {
+          query: params,
+          tutorId: `${userId}`,
+        },
+      });
+
+      setCourseList(result.data.getCoursesByTutorId.items);
+      setMeta(result.data.getCoursesByTutorId.meta);
+    };
+
+    getCourse();
+  }, [params]);
 
   const handleUpload = async (file) => {
     const presignedUrl = await getPresignedUrl(file);
@@ -121,62 +194,17 @@ function MyCoursestt() {
       });
   };
 
-  useEffect(() => {
-    client
-      .query(
-        {
-          query: gql`
-            query getCoursesByTutorId(
-              $tutorId: String!
-              $query: QueryFilterDto!
-            ) {
-              getCoursesByTutorId(tutorId: $tutorId, query: $query) {
-                items {
-                  id
-                  name
-                  isPublish
-                  imageUrl
-                  spendTime
-                  description
-                  price
-                  tutorProfile {
-                    tutor {
-                      firstName
-                      lastName
-                      avatarUrl
-                    }
-                    educations {
-                      schoolId
-                    }
-                    experiences {
-                      organization
-                      description
-                      position
-                    }
-                    certifications {
-                      name
-                      score
-                    }
-                  }
-                  coursePrograms {
-                    id
-                    isPublish
-                  }
-                }
-              }
-            }
-          `,
-          variables: {
-            query: params,
-            tutorId: `${userId}`,
-          },
-        },
-        {}
-      )
-      .then((result) => {
-        setCourseList(result.data.getCoursesByTutorId.items);
-      });
-  }, [params]);
+  const onFilter = () => {
+    setParams({ ...params, ...filter });
+  };
+
+  const onUnFilter = () => {
+    setFilter({ q: "", filters: [] });
+    setParams({
+      limit: 6,
+      page: 1,
+    });
+  };
 
   const uploadButton = (
     <div>
@@ -202,19 +230,14 @@ function MyCoursestt() {
             <div className="title-container">
               <div className="heading-search">
                 <div className="search-btn">
-                  <AutoComplete
-                    dropdownMatchSelectWidth={252}
-                    style={{
-                      width: 500,
-                    }}
-                    className="search-button"
-                  >
-                    <Input.Search
-                      size="large"
-                      placeholder="Search courses ..."
-                      enterButton
-                    />
-                  </AutoComplete>
+                  <Input
+                    size="middle"
+                    placeholder="Course Name"
+                    onChange={(e) =>
+                      setOnChangeFilter("q", e.target.value, setFilter)
+                    }
+                    suffix={<SearchOutlined />}
+                  />
                 </div>
                 <div className="price-btn">
                   <Select
@@ -232,16 +255,20 @@ function MyCoursestt() {
                         .toLowerCase()
                         .localeCompare((optionB?.label ?? "").toLowerCase())
                     }
+                    value={filter.orderBy ?? null}
                     options={[
                       {
-                        value: "1",
+                        value: "Course.price:ASC",
                         label: "Low to High",
                       },
                       {
-                        value: "2",
+                        value: "Course.price:DESC",
                         label: "High to Low",
                       },
                     ]}
+                    onChange={(e) => {
+                      setOnChangeFilter("orderBy", e, setFilter);
+                    }}
                   />
                 </div>
                 <div className="categories-course">
@@ -260,33 +287,21 @@ function MyCoursestt() {
                         .toLowerCase()
                         .localeCompare((optionB?.label ?? "").toLowerCase())
                     }
-                    options={[
-                      {
-                        value: "1",
-                        label: "Technology",
-                      },
-                      {
-                        value: "2",
-                        label: "Languages",
-                      },
-                      {
-                        value: "3",
-                        label: "Economics",
-                      },
-                      {
-                        value: "4",
-                        label: "Marketing",
-                      },
-                      {
-                        value: "5",
-                        label: "Design",
-                      },
-                    ]}
+                    options={categories.map((el) => ({
+                      value: el.id,
+                      label: el.name,
+                    }))}
+                    onChange={(e) => {
+                      setOnChangeFilter("Course.categoryId", e, setFilter);
+                    }}
                   />
                 </div>
                 <div className="filter-course">
-                  <Button type="default">
+                  <Button type="default" onClick={onFilter}>
                     <i className="bx bx-filter-alt"></i>Filter
+                  </Button>
+                  <Button type="default" onClick={onUnFilter}>
+                    <i class="fa-light fa-eraser"></i>Un Filter
                   </Button>
                 </div>
                 <button
@@ -365,33 +380,15 @@ function MyCoursestt() {
                 </Form.Item>
               </Form>
             </Modal>
-            <Tabs
-              onChange={(key) =>
-                setParams({
-                  limit: 9,
-                  page: 1,
-                  filters: [
-                    {
-                      field: "Course.categoryId",
-                      operator: "eq",
-                      data: key,
-                    },
-                  ],
-                })
-              }
-            >
-              {categories &&
-                categories.map((category) => (
-                  <TabPane tab={category.name} key={category.id}>
-                    <div className="student__box">
-                      {courseList &&
-                        courseList.map((course) => (
-                          <CourseComponent course={course} type="tutor" />
-                        ))}
-                    </div>
-                  </TabPane>
-                ))}
-            </Tabs>
+            <div className="course-list-tutor">
+              <div className="student__box">
+                {courseList &&
+                  courseList.map((course) => (
+                    <CourseComponent course={course} type="tutor" />
+                  ))}
+              </div>
+              {meta && <Pagination meta={meta} setParams={setParams} />}
+            </div>
           </div>
         </main>
       </section>
