@@ -12,7 +12,17 @@ import "./App.css";
 import NotificationComponent from "./component/Notification";
 import { setCurrentUser } from "./Redux/features/userSlice";
 import { setCategories } from "./Redux/features/categoriesSlice";
-import { GET_CATEGORY } from "./StudentPages/StudentHome";
+
+export const GET_CATEGORY = gql`
+  query getCategories {
+    getCategories(queryParams: { limit: 10, page: 1 }) {
+      items {
+        id
+        name
+      }
+    }
+  }
+`;
 
 function App() {
   const error = useSelector((state) => state.error.content);
@@ -73,6 +83,7 @@ function App() {
               firstName
               type
               isOnboarded
+              avatarUrl
             }
           }
         `,

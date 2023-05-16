@@ -1,43 +1,13 @@
 import "../../StudentPages/StudentHome/studenthome.css";
 import CourseComponent from "../../component/Course";
 import React, { useEffect, useState } from "react";
-import { Button, Tabs } from "antd";
-import { gql, useQuery } from "@apollo/client";
-import Pagnigation from "../../component/Pagnigation";
-import { Input } from 'antd';
-import { Select } from 'antd';
-
-const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
-const searchResult = (query) =>
-  new Array(getRandomInt(5))
-    .join('.')
-    .split('.')
-    .map((_, idx) => {
-      const category = `${query}${idx}`;
-      return {
-        value: category,
-        label: (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <span>
-              Found {query} on{' '}
-              <a
-                href={`https://s.taobao.com/search?q=${query}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {category}
-              </a>
-            </span>
-            <span>{getRandomInt(200, 100)} results</span>
-          </div>
-        ),
-      };
-    });
+import { gql } from "@apollo/client";
+import { Input, Select, Button } from "antd";
+import { useSelector } from "react-redux";
+import client from "../../configGQL";
+import _ from "lodash";
+import { SearchOutlined } from "@ant-design/icons";
+import Pagination from "../../component/Pagnigation/index";
 
 const GET_COURSES = gql`
   query getCourses($params: QueryFilterDto!) {
@@ -57,75 +27,85 @@ const GET_COURSES = gql`
           }
         }
       }
-    }
-  }
-`;
-
-export const GET_CATEGORY = gql`
-  query getCategories {
-    getCategories(queryParams: { limit: 10, page: 1 }) {
-      items {
-        id
-        name
+      meta {
+        totalPages
+        currentPage
+        itemCount
+        totalItems
+        itemsPerPage
       }
     }
   }
 `;
 
+const setOnChangeFilter = (field, value, setFilter, operator = "eq") => {
+  setFilter((filter) => {
+    const object = _.cloneDeep(filter);
+
+    if (field.split(".").length > 1) {
+      const index = object.filters.findIndex((el) => el.field === field);
+
+      if (index >= 0) {
+        object.filters[index].data = value;
+      } else {
+        object.filters.push({
+          field: field,
+          operator,
+          data: value,
+        });
+      }
+    } else {
+      object[field] = value;
+    }
+
+    return object;
+  });
+};
+
 const HomeComponent = () => {
-  const [options, setOptions] = useState([]);
-  const handleSearch = (value) => {
-    setOptions(value ? searchResult(value) : []);
-  };
-  const onSelect = (value) => {
-    console.log('onSelect', value);
-  };
-  const { TabPane } = Tabs;
   const [params, setParams] = useState({
     limit: 10,
     page: 1,
   });
-  const [categories, setCategories] = useState(null);
+
+  const categories = useSelector((state) => state.categories.items);
+
+  const [meta, setMeta] = useState(null);
+  const [filter, setFilter] = useState({
+    q: "",
+    filters: [],
+  });
 
   const [courses, setCourses] = useState([]);
 
-  const { loading, error, data } = useQuery(GET_CATEGORY);
+  const onFilter = () => {
+    setParams({ ...params, ...filter });
+  };
 
-  const {
-    loading: courseLoading,
-    error: courseError,
-    data: courseData,
-  } = useQuery(GET_COURSES, {
-    variables: { params },
-  });
-
-  const onChangeCategories = (e) => {
-    const newParams = {
-      ...params,
-      filters: [
-        {
-          field: "Course.categoryId",
-          operator: "eq",
-          data: e,
-        },
-      ],
-    };
-    setParams(newParams);
+  const onUnFilter = () => {
+    setFilter({ q: "", filters: [] });
+    setParams({
+      limit: 6,
+      page: 1,
+    });
   };
 
   useEffect(() => {
-    if (!loading && data) {
-      setCategories(data.getCategories.items);
-      setParams(() => onChangeCategories(data.getCategories.items[0]?.id));
-    }
-  }, [loading, data, error]);
+    const getCourse = async () => {
+      const result = await client.query({
+        query: GET_COURSES,
+        variables: {
+          params,
+        },
+      });
+      console.log("🚀 ~ file: index.js:99 ~ getCourse ~ result:", result);
 
-  useEffect(() => {
-    if (!courseLoading && courseData) {
-      setCourses(courseData.getCourses.items);
-    }
-  }, [params, courseLoading, courseData, courseError]);
+      setCourses(result.data.getCourses.items);
+      setMeta(result.data.getCourses.meta);
+    };
 
+    getCourse();
+  }, [params]);
 
   return (
     <>
@@ -136,30 +116,43 @@ const HomeComponent = () => {
               <div className="heading-search">
                 {/* <h1 className="student__heading11">our courses</h1> */}
                 <div className="search-btn">
-                  <Input placeholder="Search course ..."/>
+                  <Input
+                    placeholder="Search course ..."
+                    onChange={(e) =>
+                      setOnChangeFilter("q", e.target.value, setFilter)
+                    }
+                    suffix={<SearchOutlined />}
+                  />
                 </div>
                 <div className="price-btn">
-                <Select
+                  <Select
                     showSearch
                     style={{
                       width: 200,
                     }}
                     placeholder="Sort by Price"
                     optionFilterProp="children"
-                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                    filterOption={(input, option) =>
+                      (option?.label ?? "").includes(input)
+                    }
                     filterSort={(optionA, optionB) =>
-                      (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                      (optionA?.label ?? "")
+                        .toLowerCase()
+                        .localeCompare((optionB?.label ?? "").toLowerCase())
                     }
                     options={[
                       {
-                        value: '1',
-                        label: 'Low to High',
+                        value: "Course.price:ASC",
+                        label: "Low to High",
                       },
                       {
-                        value: '2',
-                        label: 'High to Low',
+                        value: "Course.price:DESC",
+                        label: "High to Low",
                       },
                     ]}
+                    onChange={(e) => {
+                      setOnChangeFilter("orderBy", e, setFilter);
+                    }}
                   />
                 </div>
                 <div className="categories-course">
@@ -170,68 +163,38 @@ const HomeComponent = () => {
                     }}
                     placeholder="All Categories"
                     optionFilterProp="children"
-                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                    filterSort={(optionA, optionB) =>
-                      (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                    filterOption={(input, option) =>
+                      (option?.label ?? "").includes(input)
                     }
-                    options={[
-                      {
-                        value: '1',
-                        label: 'Technology',
-                      },
-                      {
-                        value: '2',
-                        label: 'Languages',
-                      },
-                      {
-                        value: '3',
-                        label: 'Economics',
-                      },
-                      {
-                        value: '4',
-                        label: 'Marketing',
-                      },
-                      {
-                        value: '5',
-                        label: 'Design',
-                      },
-                    ]}
+                    filterSort={(optionA, optionB) =>
+                      (optionA?.label ?? "")
+                        .toLowerCase()
+                        .localeCompare((optionB?.label ?? "").toLowerCase())
+                    }
+                    options={categories.map((el) => ({
+                      value: el.id,
+                      label: el.name,
+                    }))}
+                    onChange={(e) => {
+                      setOnChangeFilter("Course.categoryId", e, setFilter);
+                    }}
                   />
                 </div>
                 <div className="filter-course">
-                  <Button type="default">
-                  <i className='bx bx-filter-alt'></i>Filter
+                  <Button type="default" onClick={onFilter}>
+                    <i className="bx bx-filter-alt"></i>Filter
                   </Button>
                 </div>
               </div>
-              <Tabs
-                onChange={(key) =>
-                  setParams({
-                    limit: 9,
-                    page: 1,
-                    filters: [
-                      {
-                        field: "Course.categoryId",
-                        operator: "eq",
-                        data: key,
-                      },
-                    ],
-                  })
-                }
-              >
-                {categories &&
-                  categories.map((category) => (
-                    <TabPane tab={category.name} key={category.id}>
-                      <div className="student__box">
-                        {courses &&
-                          courses.map((course) => (
-                            <CourseComponent course={course} />
-                          ))}
-                      </div>
-                    </TabPane>
-                  ))}
-              </Tabs>
-              <Pagnigation />
+              <div className="course-list-tutor">
+                <div className="student__box">
+                  {courses &&
+                    courses.map((course) => (
+                      <CourseComponent course={course} />
+                    ))}
+                </div>
+                {meta && <Pagination meta={meta} setParams={setParams} />}
+              </div>
             </div>
           </main>
         )}

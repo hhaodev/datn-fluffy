@@ -6,9 +6,9 @@ function Pagnigation({ meta, setParams }) {
     <div className="pagnigation_all">
       <Pagination
         className="pagnigation"
-        pageSize={meta.itemsPerPage}
-        current={meta.currentPage}
-        total={meta.totalItems}
+        pageSize={meta?.itemsPerPage || 10}
+        current={meta?.currentPage || 1}
+        total={meta?.totalItems || 10}
         onChange={(e) => {
           setParams((params) => ({ ...params, page: e }));
         }}
