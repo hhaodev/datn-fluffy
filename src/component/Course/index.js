@@ -81,7 +81,7 @@ const CourseComponent = ({ course, type }) => {
             </div>
             {tutorExperiences?.length !== 0 ? (
               <h3 className="request_title2">
-                <i className="bx bxs-label"></i>Experiences{" "}
+                <i className="bx bxs-label"></i>Experiences :
               </h3>
             ) : null}
             {tutorExperiences?.map((data) => {
@@ -108,7 +108,7 @@ const CourseComponent = ({ course, type }) => {
             })}
             {tutorCertifications?.length !== 0 ? (
               <h3 className="request_title2">
-                <i className="bx bxs-label"></i>Certifications{" "}
+                <i className="bx bxs-label"></i>Certifications:  
               </h3>
             ) : null}
             {tutorCertifications?.map((data) => {
@@ -117,7 +117,7 @@ const CourseComponent = ({ course, type }) => {
                   <div className="infor_experience">
                     <div className="infor_company">
                       <h2 className="infor_content bottom">
-                        Organization Name:{" "}
+                        Organization Name: 
                       </h2>
                       <p>{data.name}</p>
                     </div>

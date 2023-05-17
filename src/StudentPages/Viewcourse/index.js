@@ -69,6 +69,9 @@ function Viewcourse() {
 
   const [dateSet, setDateSet] = useState([]);
   const dateList = dateSet?.map((date) => date.date);
+  const listSetIsBooked = courseData?.sets.map(item => item)
+
+
   const disabledDate = () => true;
 
 
@@ -92,14 +95,6 @@ function Viewcourse() {
       });
   }, [id]);
 
-  const listSetIsBooked = courseData?.sets.filter(item => !item.isBooked)
-  const listSet = listSetIsBooked?.map((items) => (
-    {
-      name: items.name,
-      id: items.id,
-      availableDates: items.availableDates
-    }
-  ))
 
 
   return (
@@ -135,11 +130,20 @@ function Viewcourse() {
             <div className="all__course1">
               <CourseLabelComponent course={courseData} dateSet={dateSet} />
               <div className="course_box2">
-                {listSet.length === 0
+                {listSetIsBooked.length === 0
                   ? <p>The course is currently sold out</p>
-                  : <Radio.Group onChange={(e) => setDateSet((e).target.value)} value={listSet}>
-                    {listSet.map((option) => (
-                      <Radio.Button key={option.id} value={option.availableDates}>
+                  :
+                  <Radio.Group
+                    buttonStyle="solid"
+                    onChange={(e) => setDateSet(e.target.value)}
+                  >
+                    {listSetIsBooked.map((option) => (
+                      <Radio.Button
+                        key={option.id}
+                        name={option.name}
+                        value={option.availableDates}
+                        disabled={option.isBooked}
+                      >
                         {option.name}
                       </Radio.Button>
                     ))}

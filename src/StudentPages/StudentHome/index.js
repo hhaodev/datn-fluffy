@@ -25,6 +25,18 @@ const GET_COURSES = gql`
             lastName
             avatarUrl
           }
+          educations {
+            schoolId
+          }
+          experiences {
+            organization
+            description
+            position
+          }
+          certifications {
+            name
+            score
+          }
         }
       }
       meta {
@@ -85,7 +97,7 @@ const HomeComponent = () => {
   const onUnFilter = () => {
     setFilter({ q: "", filters: [] });
     setParams({
-      limit: 6,
+      limit: 10,
       page: 1,
     });
   };
@@ -183,6 +195,9 @@ const HomeComponent = () => {
                 <div className="filter-course">
                   <Button type="default" onClick={onFilter}>
                     <i className="bx bx-filter-alt"></i>Filter
+                  </Button>
+                  <Button type="default" onClick={onUnFilter}>
+                    <i class="fa-light fa-eraser"></i>Un Filter
                   </Button>
                 </div>
               </div>
