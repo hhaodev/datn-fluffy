@@ -55,6 +55,18 @@ const GET_COURSES = gql`
             lastName
             avatarUrl
           }
+          educations {
+            schoolId
+          }
+          experiences {
+            organization
+            description
+            position
+          }
+          certifications {
+            name
+            score
+          }
         }
       }
     }
@@ -231,7 +243,7 @@ const HomeComponent = () => {
                     </TabPane>
                   ))}
               </Tabs>
-              <Pagnigation />
+              {/* <Pagnigation /> */}
             </div>
           </main>
         )}

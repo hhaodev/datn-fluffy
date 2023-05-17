@@ -38,12 +38,15 @@ export const CourseLabelComponent = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [buyCourse] = useMutation(BUY_COURSE)
-
   const { id } = useParams()
+
+  const [buyCourse] = useMutation(BUY_COURSE)
   const url = window.location.href
   const tutorId = course.tutorProfile.tutorId
-
+  const setName = course?.sets.find(
+    (data) => data.id === dateSet[0]?.setId
+  );
+  
   const handleBuyCourse = () => {
     const data = {
       successUrl: url,
@@ -70,9 +73,6 @@ export const CourseLabelComponent = ({
         }
       }
       getData()
-    }
-    else {
-      dispatch(setError({ message: "Please select your set" }))
     }
   }
 
@@ -110,7 +110,7 @@ export const CourseLabelComponent = ({
         className="inline-btn1"
         onClick={() => {
           showPromiseConfirm({
-            title: `Do you want to buy this course`,
+            title: `${setName ? `Do you want to buy ${setName?.name} this course?` : `Please select set`}`,
             handle: () => handleBuyCourse(),
           })
         }}
