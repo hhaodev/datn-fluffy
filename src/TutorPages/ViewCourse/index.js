@@ -5,7 +5,7 @@ import { gql } from "@apollo/client";
 import { CourseLabelComponent } from "../../component/CourseLabel";
 import client from "../../configGQL";
 import { Modal, Switch, Button, InputNumber } from "antd";
-import { Label } from "@mui/icons-material";
+// import { Label } from "@mui/icons-material";
 import { DollarOutlined, ReadOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { setError } from "../../Redux/features/notificationSlice";
@@ -194,7 +194,7 @@ function ViewCourse() {
                 {courseData &&
                   courseData.coursePrograms.map((el) => (
                     <div className="publish-item">
-                      <Label />
+                      {/* <Label /> */}
                       <p>{el.title}</p>
                       <Switch
                         defaultChecked={el.isPublish}

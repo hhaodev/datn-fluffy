@@ -301,15 +301,16 @@ function MyCoursestt() {
                     <i className="bx bx-filter-alt"></i>Filter
                   </Button>
                   <Button type="default" onClick={onUnFilter}>
-                    <i class="fa-light fa-eraser"></i>Un Filter
+                    <i className='bx bx-x'></i>Un Filter
+                  </Button>
+                  <Button
+                    className="add-course"
+                    onClick={() => setIsModal(!isModal)}
+                  >
+                    <i className="bx bx-plus add__plus"></i>Add Course
                   </Button>
                 </div>
-                <button
-                  className="add-course"
-                  onClick={() => setIsModal(!isModal)}
-                >
-                  <i class="bx bx-plus add__plus"></i>Add Course
-                </button>
+
               </div>
             </div>
             <Modal

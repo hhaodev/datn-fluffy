@@ -369,7 +369,7 @@ li {
 }
 
 .add-course {
-  padding: 10px;
+  padding: 1%;
   border: none;
   border-radius: 5px;
   background: #eecda3;
@@ -377,6 +377,7 @@ li {
   color: #fff;
   cursor: pointer;
   box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 9rem;
 }
 
 .add-course:hover {
@@ -410,12 +411,6 @@ li {
 
 .add__plus {
   font-size: 15px;
-}
-
-.add-course {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .inline-btn__course {
