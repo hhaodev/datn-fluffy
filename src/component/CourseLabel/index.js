@@ -43,7 +43,7 @@ export const CourseLabelComponent = ({
   const [buyCourse] = useMutation(BUY_COURSE)
   const url = window.location.href
   const tutorId = course.tutorProfile.tutorId
-  const setName = course?.sets.find(
+  const setName = course?.sets?.find(
     (data) => data.id === dateSet[0]?.setId
   );
   
