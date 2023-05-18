@@ -15,7 +15,6 @@ import cta4 from "../../assets/images/cta4.png";
 import cta5 from "../../assets/images/cta5.png";
 import cta6 from "../../assets/images/cta6.png";
 import about from "../../assets/images/about.png";
-import SliderCourse from "../../component/SliderCourse";
 
 function myHome() {
   return (
@@ -38,7 +37,6 @@ function myHome() {
         </div>
       </section>
       {/*-start container section--*/}
-      <SliderCourse />
       <section className="student__container">
         <div className="container-box">
           <div className="container-img">

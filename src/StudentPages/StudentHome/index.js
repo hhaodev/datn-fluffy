@@ -8,7 +8,6 @@ import client from "../../configGQL";
 import _ from "lodash";
 import { SearchOutlined } from "@ant-design/icons";
 import Pagination from "../../component/Pagnigation/index";
-import SliderCourse from "../../component/SliderCourse";
 
 const GET_COURSES = gql`
   query getCourses($params: QueryFilterDto!) {
@@ -125,8 +124,6 @@ const HomeComponent = () => {
       <section id="content">
         {categories && (
           <main className="main-content">
-            <h1>About Course</h1>
-            <SliderCourse />
             <div className="My__courses">
               <div className="heading-search">
                 {/* <h1 className="student__heading11">our courses</h1> */}
