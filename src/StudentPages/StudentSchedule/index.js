@@ -1,126 +1,104 @@
 import "../../StudentPages/StudentSchedule/studentschedule.css";
-import { Badge, Calendar } from "antd";
-import { Collapse } from 'antd';
-import { useState } from 'react';
-import { Button, Modal } from 'antd';
-import React from 'react';
-import { Rate } from 'antd';
-import { Input } from 'antd';
+import { Calendar } from "antd";
+import { Collapse } from "antd";
+import { useState } from "react";
+import { Button, Modal } from "antd";
+import React from "react";
+import { Rate } from "antd";
+import { Input } from "antd";
+import client from "../../configGQL";
+import dayjs from "dayjs";
+import { gql } from "@apollo/client";
+import { useDispatch } from "react-redux";
+import { setError } from "../../Redux/features/notificationSlice";
 const { TextArea } = Input;
+const { Panel } = Collapse;
+
+export const SCHEDULE_BY_STUDENT = gql`
+  query getSchedule($query: QueryFilterDto!) {
+    getSchedulesByStudent(query: $query) {
+      items {
+        id
+        isCompleted
+        learnTime {
+          endTime
+          startTime
+          date
+          courseProgramPhases {
+            name
+          }
+          set {
+            course {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const MUTATION_FEEDBACK = gql`
+  mutation feedBack($input: SubmitFeedbackFormDto!) {
+    submitFeedbackForm(input: $input) {
+      message
+      success
+    }
+  }
+`;
 
 function StudentSchedule() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const [year, setYear] = useState(() => dayjs().get("year"));
+  const [feedback, setFeedBack] = useState({
+    scheduleId: "",
+    message: "",
+    ratting: 0,
+  });
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  const [schedules, setSchedules] = useState(null);
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+  useState(() => {
+    client
+      .query({
+        query: SCHEDULE_BY_STUDENT,
+        variables: {
+          query: {
+            limit: 10,
+            page: 1,
+          },
+        },
+      })
+      .then((response) => {
+        setSchedules(response.data.getSchedulesByStudent.items);
+      })
+      .catch((error) => {
+        dispatch(setError({ message: error.message }));
+      });
+  }, [year]);
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const { Panel } = Collapse;
-  const onChange = (key) => {
-    console.log(key);
-  };
-  const getListData = (value) => {
-    let listData;
-    switch (value.date()) {
-      case 8:
-        listData = [
-          {
-            type: "warning",
-            content: "This is warning event.",
-          },
-          {
-            type: "success",
-            content: "This is usual event.",
-          },
-        ];
-        break;
-      case 10:
-        listData = [
-          {
-            type: "warning",
-            content: "This is warning event.",
-          },
-          {
-            type: "success",
-            content: "This is usual event.",
-          },
-          {
-            type: "error",
-            content: "This is error event.",
-          },
-        ];
-        break;
-      case 15:
-        listData = [
-          {
-            type: "warning",
-            content: "This is warning event",
-          },
-          {
-            type: "success",
-            content: "This is very long usual event。。....",
-          },
-          {
-            type: "error",
-            content: "This is error event 1.",
-          },
-          {
-            type: "error",
-            content: "This is error event 2.",
-          },
-          {
-            type: "error",
-            content: "This is error event 3.",
-          },
-          {
-            type: "error",
-            content: "This is error event 4.",
-          },
-        ];
-        break;
-      default:
-    }
-    return listData || [];
-  };
-
-  const getMonthData = (value) => {
-    if (value.month() === 8) {
-      return 1394;
-    }
-  };
-
-  const monthCellRender = (value) => {
-    const num = getMonthData(value);
-    return num ? (
-      <div className="notes-month">
-        <section>{num}</section>
-        <span>Backlog number</span>
-      </div>
-    ) : null;
-  };
-  const dateCellRender = (value) => {
-    const listData = getListData(value);
-    return (
-      <ul className="events">
-        {listData.map((item) => (
-          <li key={item.content}>
-            <Badge status={item.type} text={item.content} />
-          </li>
-        ))}
-      </ul>
-    );
-  };
-  const cellRender = (current, info) => {
-    if (info.type === "date") return dateCellRender(current);
-    if (info.type === "month") return monthCellRender(current);
-    return info.originNode;
+  const handleSubmitFeedback = (id) => {
+    console.log("🚀 ~ file: index.js:81 ~ handleSubmitFeedback ~ id:", id);
+    client
+      .mutate({
+        mutation: MUTATION_FEEDBACK,
+        variables: {
+          input: { ...feedback, scheduleId: id },
+        },
+      })
+      .then((response) => {
+        setFeedBack({
+          scheduleId: "",
+          message: "",
+          ratting: 0,
+        });
+        setIsModalOpen(false);
+        dispatch(setError({ message: "Feedback successfully!" }));
+      })
+      .catch((error) => {
+        dispatch(setError({ message: error.message }));
+      });
   };
   return (
     <>
@@ -133,39 +111,139 @@ function StudentSchedule() {
           </div>
 
           <div className="schedule__app">
-            <Calendar cellRender={cellRender} className="schedule__calen" />
+            <Calendar
+              mode={"month"}
+              className="schedule__calen"
+              dateCellRender={(date) => {
+                const renders =
+                  schedules &&
+                  schedules.map((schedule) => {
+                    if (
+                      dayjs(date).format("YYYY-MM-DD") ===
+                      schedule.learnTime.date
+                    ) {
+                      return (
+                        <li
+                          className={
+                            schedule.isCompleted ||
+                            dayjs(new Date()).isAfter(
+                              dayjs(
+                                `${schedule.learnTime.date} ${schedule.learnTime.endTime}`
+                              )
+                            )
+                              ? "schedule-li-content completed"
+                              : "schedule-li-content"
+                          }
+                        >
+                          <h5>{schedule.learnTime.set.course.name}</h5>
+                          <p>
+                            {schedule.learnTime.startTime} -
+                            {schedule.learnTime.endTime}
+                          </p>
+                        </li>
+                      );
+                    }
+                  });
+
+                return renders;
+              }}
+            />
           </div>
 
           <div className="feedback_student">
             <div className="course__left">
-              <h1 className="feedback_h1feedback">Feedback</h1>
+              <h1 className="feedback_h1feedback">
+                Today Feedback:
+                <span
+                  style={{
+                    fontSize: "18px",
+                    marginLeft: "10px",
+                    color: "red",
+                  }}
+                >
+                  {dayjs(new Date()).format("YYYY-MM-DD")}
+                </span>
+              </h1>
             </div>
 
             <div className="feedback_box">
-              <Collapse defaultActiveKey={['1']} onChange={onChange}>
-                <Panel header="13/05/2023" key="1">
-                  <div className="feedback_content1">
-                    <p>How to use Nodejs & Nestjs framework</p>
-                    <div className="feedback_link">
-                      <Button type="link" onClick={showModal}>Link feedback</Button>
-                    </div>
-                  </div>
-
-                  <Modal title="Feedback" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} closeIcon={<span className="my-close-icon">X</span>}>
-                    <div className="box_feedback">
-                      <div className="rates1">
-                        <Rate className="feedback_rates" />
-                      </div>
-
-                      <div className="box_des1">
-                        <h2 className="feedback_des1">Description</h2>
-                        <div className="descruption_feedbacks">
-                          <TextArea placeholder="Input here ..." rows={4} className="text-area-des1"/>
+              <Collapse defaultActiveKey={["1"]}>
+                {schedules &&
+                  schedules
+                    .filter(
+                      (schedule) =>
+                        schedule.learnTime.date ===
+                        dayjs(new Date()).format("YYYY-MM-DD")
+                    )
+                    // thistle
+                    .map((el) => (
+                      <Panel
+                        header={`${el.learnTime.set.course.name}: ${el.learnTime.startTime} - ${el.learnTime.endTime}`}
+                        key={el.id}
+                      >
+                        <div className="feedback_content1">
+                          <div className="feedback_content1_group">
+                            {el.learnTime.courseProgramPhases.map((phases) => (
+                              <p>{phases.name}</p>
+                            ))}
+                          </div>
+                          <div
+                            className="feedback_link"
+                            onClick={() => setIsModalOpen(true)}
+                          >
+                            <Button type="link">Link feedback</Button>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </Modal>
-                </Panel>
+
+                        <Modal
+                          title="Feedback"
+                          open={isModalOpen}
+                          onCancel={() => {
+                            setIsModalOpen(false);
+                            setFeedBack({
+                              scheduleId: "",
+                              message: "",
+                              ratting: 0,
+                            });
+                          }}
+                          onOk={() => handleSubmitFeedback(el.id)}
+                          closeIcon={<span className="my-close-icon">X</span>}
+                        >
+                          <div className="box_feedback">
+                            <div className="rates1">
+                              <Rate
+                                className="feedback_rates"
+                                value={feedback.ratting}
+                                onChange={(e) =>
+                                  setFeedBack((state) => ({
+                                    ...state,
+                                    ratting: e,
+                                  }))
+                                }
+                              />
+                            </div>
+
+                            <div className="box_des1">
+                              <h2 className="feedback_des1">Description</h2>
+                              <div className="descruption_feedbacks">
+                                <TextArea
+                                  value={feedback.message}
+                                  onChange={(e) =>
+                                    setFeedBack((state) => ({
+                                      ...state,
+                                      message: e.target.value,
+                                    }))
+                                  }
+                                  placeholder="Input here ..."
+                                  rows={4}
+                                  className="text-area-des1"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </Modal>
+                      </Panel>
+                    ))}
               </Collapse>
             </div>
           </div>
