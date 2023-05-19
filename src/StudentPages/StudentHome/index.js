@@ -110,7 +110,6 @@ const HomeComponent = () => {
           params,
         },
       });
-      console.log("🚀 ~ file: index.js:99 ~ getCourse ~ result:", result);
 
       setCourses(result.data.getCourses.items);
       setMeta(result.data.getCourses.meta);
@@ -197,7 +196,7 @@ const HomeComponent = () => {
                     <i className="bx bx-filter-alt"></i>Filter
                   </Button>
                   <Button type="default" onClick={onUnFilter}>
-                    <i className='bx bx-x'></i>Un Filter
+                    <i className="bx bx-x"></i>Un Filter
                   </Button>
                 </div>
               </div>

@@ -1,9 +1,17 @@
-:where(.css-dev-only-do-not-override-mxhywb).ant-picker-calendar.ant-picker-calendar-full .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-calendar-date,
-:where(.css-dev-only-do-not-override-mxhywb).ant-picker-calendar.ant-picker-calendar-full .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-calendar-date-today {
-  background: #cd88a6;
+.css-dev-only-do-not-override-mxhywb
+  .ant-picker-calendar.ant-picker-calendar-full
+  .ant-picker-cell-in-view.ant-picker-cell-selected
+  .ant-picker-calendar-date,
+.css-dev-only-do-not-override-mxhywb
+  .ant-picker-calendar.ant-picker-calendar-full
+  .ant-picker-cell-in-view.ant-picker-cell-selected
+  .ant-picker-calendar-date-today {
+  /* background: #cd88a6; */
 }
 
-:where(.css-dev-only-do-not-override-mxhywb).ant-picker-calendar.ant-picker-calendar-full .ant-picker-calendar-date-today {
+.css-dev-only-do-not-override-mxhywb
+  .ant-picker-calendar.ant-picker-calendar-full
+  .ant-picker-calendar-date-today {
   border-color: #ef629f;
 }
 
@@ -48,7 +56,6 @@
 
 .box_des1 {
   margin-top: 20px !important;
-
 }
 
 .text-area-des1 {
@@ -66,5 +73,46 @@
 }
 
 .my-close-icon {
+  display: none;
+}
+
+.schedule-li-content {
+  width: 100%;
+  padding: 0 10px;
+  background-color: #cfe8ff;
+  padding: 5px 10px !important;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.schedule-li-content h5 {
+  color: #2456d5;
+  text-overflow: ellipsis;
+}
+.schedule-li-content p {
+  font-size: 12px;
+  color: black;
+}
+.schedule-li-content.completed {
+  background-color: #51ff005d;
+}
+.schedule-li-content {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.825);
+}
+
+.css-dev-only-do-not-override-mxhywb
+  .ant-picker-calendar.ant-picker-calendar-full
+  .ant-picker-calendar-date {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.css-dev-only-do-not-override-mxhywb[class^="ant-radio"] [class^="ant-radio"],
+.css-dev-only-do-not-override-mxhywb[class*=" ant-radio"] [class^="ant-radio"],
+.css-dev-only-do-not-override-mxhywb[class^="ant-radio"] [class*=" ant-radio"],
+.css-dev-only-do-not-override-mxhywb[class*=" ant-radio"]
+  [class*=" ant-radio"] {
+  box-sizing: border-box;
   display: none;
 }
