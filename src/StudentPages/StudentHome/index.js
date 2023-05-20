@@ -110,7 +110,7 @@ const HomeComponent = () => {
           params,
         },
       });
-      console.log("🚀 ~ file: index.js:99 ~ getCourse ~ result:", result);
+
 
       setCourses(result.data.getCourses.items);
       setMeta(result.data.getCourses.meta);
