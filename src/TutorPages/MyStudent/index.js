@@ -39,7 +39,7 @@ const MyStudenttutor = () => {
       }`,
       variables: {
         query: {
-          limit: 10,
+          limit: 99,
           page: 1
         }
       }
@@ -67,6 +67,7 @@ const MyStudenttutor = () => {
     id: data.id,
     name: data.firstName + ' ' + data.lastName,
     phoneNumber: data.phoneNumber,
+    avatarUrl: data.avatarUrl,
     gmail: data.email,
     gender: data.gender,
     array: data.studentProfile

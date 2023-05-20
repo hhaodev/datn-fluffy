@@ -103,4 +103,7 @@
   align-items: center;
   padding: 5px;
 }
-
+.calendar{
+  display: flex;
+  margin: 20px 20px 20px 0px;
+}

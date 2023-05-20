@@ -10,7 +10,7 @@ import { CourseLabelComponent } from "../../component/CourseLabel";
 import "./viewcourses.css";
 import { Link } from "react-router-dom";
 import { Calendar } from "antd";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 const QUERY_COURSE_DETAIL = gql`
   query getCourseById($courseId: String!) {
@@ -70,8 +70,7 @@ function Viewcourse() {
   const [dateSet, setDateSet] = useState([]);
   const dateList = dateSet?.map((date) => date.date);
   const listSetIsBooked = courseData?.sets.map(item => item)
-
-
+  const [status, setStatus] = useState(false)
   const disabledDate = () => true;
 
 
@@ -143,19 +142,29 @@ function Viewcourse() {
                         name={option.name}
                         value={option.availableDates}
                         disabled={option.isBooked}
+                        onClick={() => setStatus(true)}
                       >
                         {option.name}
                       </Radio.Button>
                     ))}
                   </Radio.Group>
                 }
-
+                {status && (
+                  <div className="calendar">
+                    {dateSet?.map((data) => (
+                      <>
+                        {dayjs(data.date).format("DD/MM/YYYY")}: {data.startTime} - {data.endTime}
+                      </>
+                    ))}
+                  </div>
+                )}
                 <Calendar
                   disabledDate={disabledDate}
                   value={dayjs(dateList[0])}
                   fullscreen={false}
                   className="calendar-form"
                 />
+
               </div>
             </div>
 
