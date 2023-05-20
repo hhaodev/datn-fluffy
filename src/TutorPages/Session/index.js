@@ -14,9 +14,10 @@ const QUERY_SESSION = gql`
     getMyBookedSessions(query: $query){
       items{
         data
-        contractUrl
         checkoutSessionId
-        courseId
+        course {
+          name
+        }
         status
         price
         student{
@@ -54,13 +55,11 @@ function SessionTutor() {
   const columns = [
     {
       title: "Student",
-      width: 60,
       dataIndex: "student",
       key: "student",
     },
     {
       title: "Start Date",
-      width: 60,
       dataIndex: "startDate",
       key: "startDate",
     },
@@ -68,13 +67,38 @@ function SessionTutor() {
       title: "End Date",
       dataIndex: "endDate",
       key: "endDate",
-      width: 60,
+    },
+    {
+      title: "Course Name",
+      dataIndex: "courseName",
+      key: "courseName",
+      render: (text) => {
+        const truncatedText = `${text.substring(0, 30)}...`; 
+        return <span>{truncatedText}</span>;
+      },
+    },
+    {
+      title: "CheckOut ID",
+      dataIndex: "checkoutId",
+      key: "checkoutId",
+      render: (text) => {
+        const truncatedText = `${text.substring(0, 20)}...`; 
+        return <span>{truncatedText}</span>;
+      },
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+      render: (text) => {
+        const truncatedText = `${text} $`; 
+        return <span>{truncatedText}</span>;
+      },
     },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      width: 50,
     },
   ];
 
@@ -82,6 +106,9 @@ function SessionTutor() {
     student: data.student.firstName + " " + data.student.lastName,
     startDate: dayjs(data.data.startDate).format("HH:mm, DD/MM/YYYY"),
     endDate: dayjs(data.data.endDate).format("HH:mm, DD/MM/YYYY"),
+    checkoutId: data.checkoutSessionId,
+    courseName: data.course.name,
+    price: data.price,
     status: data.status,
     data: data.data,
   }))
