@@ -65,7 +65,7 @@ function StudentSchedule() {
         query: SCHEDULE_BY_STUDENT,
         variables: {
           query: {
-            limit: 10,
+            limit: 99,
             page: 1,
           },
         },

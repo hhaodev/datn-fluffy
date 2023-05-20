@@ -1,107 +1,63 @@
+import { useDispatch, useSelector } from 'react-redux';
 import '../Schedules/schedules.css'
-import { Badge, Calendar } from "antd";
+import { Calendar } from "antd";
+import dayjs from 'dayjs';
+import { useState } from 'react';
+import { gql } from '@apollo/client';
+import { setError } from '../../Redux/features/notificationSlice';
+import client from '../../configGQL';
 
+export const SCHEDULE_BY_TUTOR = gql`
+  query getSchedule($query: QueryFilterDto!, $tutorId:String!) {
+    getSchedulesForTutor(query: $query,  tutorId:$tutorId) {
+      items {
+        id
+        isCompleted
+        learnTime {
+          endTime
+          startTime
+          date
+          set {
+            course {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 function Schedulestt() {
-    const getListData = (value) => {
-        let listData;
-        switch (value.date()) {
-          case 8:
-            listData = [
-              {
-                type: "warning",
-                content: "This is warning event.",
-              },
-              {
-                type: "success",
-                content: "This is usual event.",
-              },
-            ];
-            break;
-          case 10:
-            listData = [
-              {
-                type: "warning",
-                content: "This is warning event.",
-              },
-              {
-                type: "success",
-                content: "This is usual event.",
-              },
-              {
-                type: "error",
-                content: "This is error event.",
-              },
-            ];
-            break;
-          case 15:
-            listData = [
-              {
-                type: "warning",
-                content: "This is warning event",
-              },
-              {
-                type: "success",
-                content: "This is very long usual event。。....",
-              },
-              {
-                type: "error",
-                content: "This is error event 1.",
-              },
-              {
-                type: "error",
-                content: "This is error event 2.",
-              },
-              {
-                type: "error",
-                content: "This is error event 3.",
-              },
-              {
-                type: "error",
-                content: "This is error event 4.",
-              },
-            ];
-            break;
-          default:
-        }
-        return listData || [];
-      };
-    
-      const getMonthData = (value) => {
-        if (value.month() === 8) {
-          return 1394;
-        }
-      };
-    
-      const monthCellRender = (value) => {
-        const num = getMonthData(value);
-        return num ? (
-          <div className="notes-month">
-            <section>{num}</section>
-            <span>Backlog number</span>
-          </div>
-        ) : null;
-      };
-      const dateCellRender = (value) => {
-        const listData = getListData(value);
-        return (
-          <ul className="events">
-            {listData.map((item) => (
-              <li key={item.content}>
-                <Badge status={item.type} text={item.content} />
-              </li>
-            ))}
-          </ul>
-        );
-      };
-      const cellRender = (current, info) => {
-        if (info.type === "date") return dateCellRender(current);
-        if (info.type === "month") return monthCellRender(current);
-        return info.originNode;
-      };
-    return ( 
-        <>
-            <section id="content">
+  const id = useSelector(state=>state.user.currentUser.id)
+  const dispatch = useDispatch();
+  const [schedules, setSchedules] = useState(null);
+  const [year, setYear] = useState(() => dayjs().get("year"));
+
+  useState(() => {
+    client
+      .query({
+        query: SCHEDULE_BY_TUTOR,
+        variables: {
+          query: {
+            limit: 99,
+            page: 1,
+          },
+          tutorId: id,
+        },
+      })
+      .then((response) => {
+        setSchedules(response.data.getSchedulesForTutor.items);
+      })
+      .catch((error) => {
+        dispatch(setError({ message: error.message }));
+      });
+  }, [year]);
+
+
+  return (
+    <>
+      <section id="content">
         <main>
           <div className="course__head-title">
             <div className="course__left">
@@ -110,13 +66,48 @@ function Schedulestt() {
           </div>
 
           <div className="schedule__app">
-            <Calendar cellRender={cellRender} className="schedule__calen" />
+            <Calendar
+              className="schedule__calen"
+              dateCellRender={(date) => {
+                const renders =
+                  schedules &&
+                  schedules.map((schedule) => {
+                    if (
+                      dayjs(date).format("YYYY-MM-DD") ===
+                      schedule.learnTime.date
+                    ) {
+                      return (
+                        <li
+                          className={
+                            schedule.isCompleted ||
+                            dayjs(new Date()).isAfter(
+                              dayjs(
+                                `${schedule.learnTime.date} ${schedule.learnTime.endTime}`
+                              )
+                            )
+                              ? "schedule-li-content completed"
+                              : "schedule-li-content"
+                          }
+                        >
+                          <h5>{schedule.learnTime.set.course.name}</h5>
+                          <p>
+                            {schedule.learnTime.startTime} -
+                            {schedule.learnTime.endTime}
+                          </p>
+                        </li>
+                      );
+                    }
+                  });
+
+                return renders;
+              }}
+            />
           </div>
         </main>
       </section>
       {/* CONTENT */}
-        </>
-     );
+    </>
+  );
 }
 
 export default Schedulestt;
