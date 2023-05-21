@@ -25,10 +25,10 @@ import StudentProfile from "../StudentPages/StudentProfile/index";
 import SideBarLayout from "../component/SideBar";
 import Navbar from "../component/Navbar";
 import ViewCourse from "../TutorPages/ViewCourse/index";
-import Addcourse from "../TutorPages/AddCourse/index";
 import Schedulestt from "../TutorPages/Schedules/index";
 import Viewcourse from "../StudentPages/Viewcourse/index";
 import ChangeStudent from "../StudentPages/ChangeStudent/index";
+import CourseDetail from "../StudentPages/StudentMyCourse/CourseDetail";
 
 const publicRoutes = [
   { path: "/", component: Home },
@@ -75,6 +75,12 @@ export const routerStudent = [
   {
     path: "/profile",
     component: StudentProfile,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/courses/:id",
+    component: CourseDetail,
     layout: SideBarLayout,
     layout2: Navbar,
   },
