@@ -12,6 +12,7 @@ import "./App.css";
 import NotificationComponent from "./component/Notification";
 import { setCurrentUser } from "./Redux/features/userSlice";
 import { setCategories } from "./Redux/features/categoriesSlice";
+import { setError } from "./Redux/features/notificationSlice";
 
 export const GET_CATEGORY = gql`
   query getCategories {
@@ -71,7 +72,9 @@ function App() {
       .then((result) => {
         dispatch(setSchools(result.data.getSchools.items));
       })
-      .catch((error) => {});
+      .catch((error) => {
+        dispatch(setError({ message: error.message }));
+      });
 
     client
       .query({

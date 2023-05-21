@@ -8,31 +8,31 @@ import { gql } from "@apollo/client";
 import client from "../../configGQL";
 
 const GET_MY_COURSES = gql`
-  query getMyCourses($query:  QueryFilterDto!){
-    getMyCourses(query: $query){
-      items{
+  query getMyCourses($query: QueryFilterDto!) {
+    getMyCourses(query: $query) {
+      items {
         id
-        imageUrl 
+        imageUrl
         name
         description
-        price 
+        price
         spendTime
-        category{
+        category {
           name
           id
         }
-        coursePrograms{
+        coursePrograms {
           title
           description
-          courseProgramPhases{
+          courseProgramPhases {
             name
             order
             content
             overviewUrl
           }
         }
-        tutorProfile{
-          tutor{
+        tutorProfile {
+          tutor {
             firstName
             lastName
           }
@@ -40,11 +40,10 @@ const GET_MY_COURSES = gql`
       }
     }
   }
-`
+`;
 
 function StudentMyCourse() {
-  const [coureseList, setCoureseList] = useState([])
-  // console.log("🚀 ~ file: index.js:49 ~ StudentMyCourse ~ coureseList:", coureseList)
+  const [coureseList, setCoureseList] = useState([]);
 
   useEffect(() => {
     client
@@ -54,15 +53,14 @@ function StudentMyCourse() {
           query: {
             limit: 99,
             page: 1,
-          }
-        }
+          },
+        },
       })
-      .then(result => {
-        setCoureseList(result.data.getMyCourses.items)
-      })
+      .then((result) => {
+        setCoureseList(result.data.getMyCourses.items);
+      });
   }, [coureseList]);
 
-  
   return (
     <>
       <section id="content">
@@ -71,13 +69,13 @@ function StudentMyCourse() {
             <div className="course__left">
               <h1 className="course__ch1">Course in Progress</h1>
               <div className="course__boxall">
-                {coureseList.map(data => {
-                  return <CourseMyStudent data={data} />
+                {coureseList.map((data) => {
+                  return <CourseMyStudent data={data} />;
                 })}
               </div>
             </div>
 
-            <div className="course__right">
+            {/* <div className="course__right">
               <h1 className="course__ch1">Up Coming Class</h1>
               <div className="box__all2">
                 <div className="course__box2">
@@ -89,20 +87,20 @@ function StudentMyCourse() {
                 </div>
 
                 <div className="course__box2">
-                  <img  alt="" src={course5} className="course__2img"></img>
+                  <img alt="" src={course5} className="course__2img"></img>
                   <h3>Best Way to Learn German Language: Full Beginner</h3>
                   <p>Today 15:00 PM - 17:00 PM</p>
                 </div>
 
                 <div className="course__box2">
-                  <img  alt="" src={course5} className="course__2img"></img>
+                  <img alt="" src={course5} className="course__2img"></img>
                   <h3>
                     Web Design for Beginners: Real World Coding in HTML & CSS
                   </h3>
                   <p>Today 12:00 PM - 17:00 PM</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </main>
         {/* MAIN */}
