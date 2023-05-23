@@ -5,57 +5,57 @@ import { Avatar } from "antd";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
-import { setError } from '../../Redux/features/notificationSlice'
-import avt1 from "../../assets/images/avt1.jpg"
+import { setError } from "../../Redux/features/notificationSlice";
+import avt1 from "../../assets/images/avt1.jpg";
 
 const MyStudenttutor = () => {
-  const dispatch = useDispatch()
-  const schoolsList = useSelector(state => state.schools.schoolsData)
-  const [studentList, setStudentList] = useState([])
+  const dispatch = useDispatch();
+  const schoolsList = useSelector((state) => state.schools.schoolsData);
+  const [studentList, setStudentList] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [moreData, setMoreData] = useState([])
+  const [moreData, setMoreData] = useState([]);
   const [form] = Form.useForm();
 
   useEffect(() => {
-    client.query({
-      query: gql`
-      query getMyStudents($query: QueryFilterDto!){
-      getMyStudents(query: $query) {
-        items {
-          id
-          lastName
-          firstName
-          email
-          phoneNumber
-          gender
-          avatarUrl
-          studentProfile{
-            studentEducations{
-              schoolId
+    client
+      .query({
+        query: gql`
+          query getMyStudents($query: QueryFilterDto!) {
+            getMyStudents(query: $query) {
+              items {
+                id
+                lastName
+                firstName
+                email
+                phoneNumber
+                gender
+                avatarUrl
+                studentProfile {
+                  studentEducations {
+                    schoolId
+                  }
+                }
+              }
             }
           }
-        }
-      }
-      }`,
-      variables: {
-        query: {
-          limit: 99,
-          page: 1
-        }
-      }
-    })
-      .then(result => {
-        setStudentList(result.data.getMyStudents.items)
-      }).catch(error => {
-        dispatch(setError({ message: error.message }))
+        `,
+        variables: {
+          query: {
+            limit: 99,
+            page: 1,
+          },
+        },
       })
+      .then((result) => {
+        setStudentList(result.data.getMyStudents.items);
+      })
+      .catch((error) => {
+        dispatch(setError({ message: error.message }));
+      });
   }, [studentList]);
-  // Table
-
 
   const handleViewMoreClick = (record) => {
-
-    setMoreData(record)
+    setMoreData(record);
     setIsModalVisible(true);
   };
 
@@ -63,40 +63,34 @@ const MyStudenttutor = () => {
     setIsModalVisible(false);
   };
 
-  const dataSource = studentList.map(data => ({
+  const dataSource = studentList.map((data) => ({
     id: data.id,
-    name: data.firstName + ' ' + data.lastName,
+    name: data.firstName + " " + data.lastName,
     phoneNumber: data.phoneNumber,
     avatarUrl: data.avatarUrl,
     gmail: data.email,
     gender: data.gender,
-    array: data.studentProfile
-  }))
+    array: data.studentProfile,
+  }));
 
   const columns = [
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      render: (text) => (
-        <span>{text ? text : "null"}</span>
-      )
+      render: (text) => <span>{text ? text : "null"}</span>,
     },
     {
       title: "Gmail",
       dataIndex: "gmail",
       key: "gmail",
-      render: (text) => (
-        <span>{text ? text : "null"}</span>
-      )
+      render: (text) => <span>{text ? text : "null"}</span>,
     },
     {
       title: "PhoneNumber",
       dataIndex: "phoneNumber",
       key: "phoneNumber",
-      render: (text) => (
-        <span>{text ? text : "null"}</span>
-      )
+      render: (text) => <span>{text ? text : "null"}</span>,
     },
     {
       title: "Detail",
@@ -119,9 +113,7 @@ const MyStudenttutor = () => {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1 className="course__studentmy">
-                My student
-              </h1>
+              <h1 className="course__studentmy">My student</h1>
             </div>
           </div>
 
@@ -149,7 +141,9 @@ const MyStudenttutor = () => {
                       src={moreData.avatarUrl ? moreData.avatarUrl : avt1}
                       className="view__avt2"
                     />
-                    <p className="mystdtt__name">{moreData.name ? moreData.name : "null"}</p>
+                    <p className="mystdtt__name">
+                      {moreData.name ? moreData.name : "null"}
+                    </p>
                   </div>
                   <div className="school1">
                     <p className="mystdtt__school">UserId: </p>
@@ -161,18 +155,18 @@ const MyStudenttutor = () => {
                   </div>
                   <div className="school1">
                     <p className="mystdtt__school">Phone number:</p>
-                    <p>{moreData.phoneNumber ? moreData.phoneNumber : "null"}</p>
+                    <p>
+                      {moreData.phoneNumber ? moreData.phoneNumber : "null"}
+                    </p>
                   </div>
                   <div className="school1">
                     <p className="mystdtt__school">School: </p>
-                    {
-                      moreData.array?.studentEducations.map((school) => {
-                        const t = schoolsList?.find(sch => sch.id === school.schoolId)
-                        return (
-                          <p>{t.name}</p>
-                        )
-                      })
-                    }
+                    {moreData.array?.studentEducations.map((school) => {
+                      const t = schoolsList?.find(
+                        (sch) => sch.id === school.schoolId
+                      );
+                      return <p>{t.name}</p>;
+                    })}
                   </div>
                   <div className="courses1">
                     <p className="mystdtt__courses"></p>

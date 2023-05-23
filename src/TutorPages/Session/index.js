@@ -4,15 +4,14 @@ import { DatePicker, Space } from "antd";
 import { Select, Button, Table } from "antd";
 import client from "../../configGQL";
 import { gql } from "@apollo/client";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../../Redux/features/notificationSlice";
 import dayjs from "dayjs";
 
-
 const QUERY_SESSION = gql`
-  query getMyBookedSessions($query: QueryFilterDto!){
-    getMyBookedSessions(query: $query){
-      items{
+  query getMyBookedSessions($query: QueryFilterDto!) {
+    getMyBookedSessions(query: $query) {
+      items {
         data
         checkoutSessionId
         course {
@@ -20,37 +19,39 @@ const QUERY_SESSION = gql`
         }
         status
         price
-        student{
+        student {
           lastName
           firstName
         }
       }
     }
   }
-`
+`;
 
 function SessionTutor() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [params, setParams] = useState({
-    limit: 99,
+    limit: 10,
     page: 1,
-  })
-  const [dataSession, setDataSession] = useState([])
+  });
 
+  const categories = useSelector((state) => state.categories.items);
+
+  const [filter, setFilters] = useState([]);
+
+  const [dataSession, setDataSession] = useState([]);
 
   useEffect(() => {
     client
       .query({
         query: QUERY_SESSION,
         variables: {
-          query: params
-        }
+          query: params,
+        },
       })
-      .then(result => setDataSession(result.data.getMyBookedSessions.items))
-      .catch(error => dispatch(setError({ message: error.message })))
+      .then((result) => setDataSession(result.data.getMyBookedSessions.items))
+      .catch((error) => dispatch(setError({ message: error.message })));
   }, [params]);
-
-
 
   const columns = [
     {
@@ -73,7 +74,7 @@ function SessionTutor() {
       dataIndex: "courseName",
       key: "courseName",
       render: (text) => {
-        const truncatedText = `${text.substring(0, 30)}...`; 
+        const truncatedText = `${text.substring(0, 30)}...`;
         return <span>{truncatedText}</span>;
       },
     },
@@ -82,7 +83,7 @@ function SessionTutor() {
       dataIndex: "checkoutId",
       key: "checkoutId",
       render: (text) => {
-        const truncatedText = `${text.substring(0, 20)}...`; 
+        const truncatedText = `${text.substring(0, 20)}...`;
         return <span>{truncatedText}</span>;
       },
     },
@@ -91,7 +92,7 @@ function SessionTutor() {
       dataIndex: "price",
       key: "price",
       render: (text) => {
-        const truncatedText = `${text} $`; 
+        const truncatedText = `${text} $`;
         return <span>{truncatedText}</span>;
       },
     },
@@ -102,7 +103,7 @@ function SessionTutor() {
     },
   ];
 
-  const data = dataSession.map(data => ({
+  const data = dataSession.map((data) => ({
     student: data.student.firstName + " " + data.student.lastName,
     startDate: dayjs(data.data.startDate).format("HH:mm, DD/MM/YYYY"),
     endDate: dayjs(data.data.endDate).format("HH:mm, DD/MM/YYYY"),
@@ -111,8 +112,7 @@ function SessionTutor() {
     price: data.price,
     status: data.status,
     data: data.data,
-  }))
-
+  }));
 
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   return (
@@ -121,7 +121,7 @@ function SessionTutor() {
         <main>
           <div className="course__head-title">
             <div className="course__left">
-              <h1 className='sesison__h1s'>Session</h1>
+              <h1 className="sesison__h1s">Session</h1>
             </div>
           </div>
 
@@ -129,44 +129,26 @@ function SessionTutor() {
             <div className="session__date">
               <p>From</p>
               <Space direction="vertical" size={12}>
-                <DatePicker
-                  format={dateFormatList}
-                />
+                <DatePicker format={dateFormatList} />
               </Space>
               <p>To</p>
               <Space direction="vertical" size={12}>
-                <DatePicker
-                  format={dateFormatList}
-                />
+                <DatePicker format={dateFormatList} />
               </Space>
 
               <Select
                 showSearch
-                placeholder="Course"
+                placeholder="Category"
                 optionFilterProp="children"
                 filterOption={(input, option) =>
                   (option?.label ?? "")
                     .toLowerCase()
                     .includes(input.toLowerCase())
                 }
-                options={[
-                  {
-                    value: "reactjs",
-                    label: "ReactJs",
-                  },
-                  {
-                    value: "bootstrap",
-                    label: "Bootstrap",
-                  },
-                  {
-                    value: "gamedesign",
-                    label: "Game Design",
-                  },
-                  {
-                    value: "codeuniy",
-                    label: "Code Unity",
-                  },
-                ]}
+                options={categories.map((cate) => ({
+                  value: cate.id,
+                  label: cate.name,
+                }))}
                 className="session__select"
               />
 
@@ -181,12 +163,16 @@ function SessionTutor() {
                 }
                 options={[
                   {
-                    value: "in progress",
-                    label: "In Progress",
+                    value: "inprogress",
+                    label: "In progress",
                   },
                   {
-                    value: "Done",
-                    label: "Done",
+                    value: "incompleted",
+                    label: "In completed",
+                  },
+                  {
+                    value: "completed",
+                    label: "Completed",
                   },
                 ]}
                 className="session__select"
@@ -205,10 +191,7 @@ function SessionTutor() {
               </Button>
             </div>
 
-            <Table
-              columns={columns}
-              dataSource={data}
-            />
+            <Table columns={columns} dataSource={data} />
           </div>
         </main>
         {/* MAIN */}
