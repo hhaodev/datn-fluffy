@@ -1,6 +1,6 @@
 import "../Viewcourse/viewcourses.css";
 import React, { useEffect, useState } from "react";
-import { Collapse, Modal, Radio } from "antd";
+import { Button, Collapse, Modal, Radio } from "antd";
 import { useParams } from "react-router-dom";
 import { gql } from "@apollo/client";
 import client from "../../configGQL";
@@ -68,12 +68,15 @@ function Viewcourse() {
   });
 
   const [dateSet, setDateSet] = useState([]);
-  const dateList = dateSet?.map((date) => date.date);
   const listSetIsBooked = courseData?.sets.map(item => item)
-  const [status, setStatus] = useState(false)
+  const [nameSet, setNameSet] = useState()
   const disabledDate = () => true;
 
 
+  const handleClick = (value) => {
+    setNameSet(value.name)
+    setDateSet(value.availableDates)
+  }
 
 
 
@@ -93,7 +96,6 @@ function Viewcourse() {
         dispatch(setError({ message: error.message }));
       });
   }, [id]);
-
 
 
   return (
@@ -134,37 +136,48 @@ function Viewcourse() {
                   :
                   <Radio.Group
                     buttonStyle="solid"
-                    onChange={(e) => setDateSet(e.target.value)}
                   >
                     {listSetIsBooked.map((option) => (
-                      <Radio.Button
+                      <Button
                         key={option.id}
                         name={option.name}
                         value={option.availableDates}
                         disabled={option.isBooked}
-                        onClick={() => setStatus(true)}
+                        onClick={() => handleClick(option)}
                       >
                         {option.name}
-                      </Radio.Button>
+                      </Button>
                     ))}
                   </Radio.Group>
                 }
-                {status && (
+                {nameSet && (
                   <div className="calendar">
-                    {dateSet?.map((data) => (
-                      <>
-                        {dayjs(data.date).format("DD/MM/YYYY")}: {data.startTime} - {data.endTime}
-                      </>
-                    ))}
+                    <p>You are choosing: {nameSet}</p>
                   </div>
                 )}
                 <Calendar
                   disabledDate={disabledDate}
-                  value={dayjs(dateList[0])}
                   fullscreen={false}
                   className="calendar-form"
+                  dateCellRender={(date) => {
+                    const renders =
+                      dateSet &&
+                      dateSet.map((schedule) => {
+                        if (
+                          dayjs(date).format("YYYY-MM-DD") === schedule.date
+                        ) {
+                          return (
+                            <li className="li-schedule">
+                              <p>
+                                {schedule.startTime} - {schedule.endTime}
+                              </p>
+                            </li>
+                          );
+                        }
+                      });
+                    return renders;
+                  }}
                 />
-
               </div>
             </div>
 

@@ -35,12 +35,16 @@
   align-items: center;
   color: black;
 } */
-
 .calendar-form {
   /* height: 400px; */
   box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
   margin-top: 5%;
   border: 3px solid #ef709f;
+}
+.li-schedule{
+  background-color: rgba(44, 243, 44, 0.555);
+  color: black;
 }
 
 .course_box2 {

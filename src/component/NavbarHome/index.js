@@ -23,14 +23,14 @@ export default function Navbar() {
         <ul className="navbar">
           <>
             {!(Object.values(currentUser).length === 0) ? (
-              <>
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <p className="navbar__phi">
                   Hi, {currentUser.firstName} {currentUser.lastName}
                 </p>
                 <button onClick={handleLogout} className="navbar__button1">
                   Log out
                 </button>
-              </>
+              </div>
             ) : (
               <>
                 <li>

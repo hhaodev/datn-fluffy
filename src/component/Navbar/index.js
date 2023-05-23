@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user.currentUser);
-  console.log("🚀 ~ file: index.js:10 ~ Navbar ~ user:", user);
   const menu = (
     <Menu>
       <Menu.Item key="logout" onClick={() => handleLogout()}>
