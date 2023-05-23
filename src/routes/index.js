@@ -28,6 +28,9 @@ import ViewCourse from "../TutorPages/ViewCourse/index";
 import Schedulestt from "../TutorPages/Schedules/index";
 import Viewcourse from "../StudentPages/Viewcourse/index";
 import ChangeStudent from "../StudentPages/ChangeStudent/index";
+import MessStudent from '../StudentPages/MessStudent/index'
+import MessTutor from '../TutorPages/MessTutor/index'
+import CourseDetail from '../StudentPages/StudentMyCourse/CourseDetail'
 
 const publicRoutes = [
   { path: "/", component: Home },
