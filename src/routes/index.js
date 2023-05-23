@@ -25,10 +25,11 @@ import StudentProfile from "../StudentPages/StudentProfile/index";
 import SideBarLayout from "../component/SideBar";
 import Navbar from "../component/Navbar";
 import ViewCourse from "../TutorPages/ViewCourse/index";
-import Addcourse from "../TutorPages/AddCourse/index";
 import Schedulestt from "../TutorPages/Schedules/index";
 import Viewcourse from "../StudentPages/Viewcourse/index";
 import ChangeStudent from "../StudentPages/ChangeStudent/index";
+import MessStudent from "../StudentPages/MessStudent/index";
+import MessTutor from "../TutorPages/MessTutor/index";
 
 const publicRoutes = [
   { path: "/", component: Home },
@@ -81,6 +82,12 @@ export const routerStudent = [
   {
     path: "/changepass",
     component: ChangeStudent,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/message",
+    component: MessStudent,
     layout: SideBarLayout,
     layout2: Navbar,
   },
@@ -148,6 +155,12 @@ export const routerTutor = [
   {
     path: "/changepass",
     component: ChangeStudent,
+    layout: SideBarLayout,
+    layout2: Navbar,
+  },
+  {
+    path: "/messages",
+    component: MessTutor,
     layout: SideBarLayout,
     layout2: Navbar,
   },

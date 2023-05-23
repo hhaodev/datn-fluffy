@@ -115,7 +115,8 @@ li {
 .bxs-objects-horizontal-left,
 .bxs-message-minus,
 .bxs-user-circle,
-.bx-calendar {
+.bx-calendar,
+.bxs-message-rounded-dots {
   margin-left: 20px;
   font-size: 24px;
 }

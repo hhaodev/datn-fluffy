@@ -36,10 +36,10 @@ const CourseComponent = ({ course, type }) => {
               onClick={showModal}
             />
           </div>
-          <p
+          <h4
             onClick={showModal}
             className="course_author_info"
-          >{`${firstName} ${lastName}`}</p>
+          >{`${firstName} ${lastName}`}</h4>
         </div>
 
         <div className="course_box_content_des">

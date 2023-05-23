@@ -167,7 +167,7 @@ export const CourseLabelComponent = ({
           <div className="course_author_image1">
             <img src={course.tutorProfile.tutor.avatarUrl} alt="" />
           </div>
-          <p className="course_author1_info1">{`${course.tutorProfile.tutor.firstName} ${course.tutorProfile.tutor.lastName}`}</p>
+          <h4 className="course_author1_info1">{`${course.tutorProfile.tutor.firstName} ${course.tutorProfile.tutor.lastName}`}</h4>
         </div>
 
         <div className="course_box1_content_des1">

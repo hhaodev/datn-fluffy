@@ -58,15 +58,16 @@
   align-items: center;
 }
 
-.course_author p {
+.course_author h4 {
   margin-left: 20px;
 }
+
 
 .course_box_content .course_box_content_title {
   font-size: 22px;
   padding: 8px 0;
   color: #ad1457;
-  font-family: "Ysabeau, sans-serif";
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
 }
 
@@ -101,7 +102,7 @@
   border-radius: 10px;
   transition: 0.5s ease;
   text-decoration: none;
-  margin-top: 16px;
+  /* margin-top: 16px; */
 }
 
 .course_box_content a:hover {
