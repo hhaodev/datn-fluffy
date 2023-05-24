@@ -9,18 +9,21 @@
   border: 3px solid #ef709f;
   padding: 5px;
 }
+
 .course_thumnail1 {
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
   height: 300px;
 }
+
 .course_thumnail1 img {
   width: 100%;
   height: 100%;
   max-width: 100%;
   object-fit: cover;
 }
+
 .course_box1_content1 {
   padding: 5px 10px;
   display: flex;
@@ -30,16 +33,19 @@
   overflow: hidden;
   height: calc(100% - 220px);
 }
+
 .course_box1_content1 .course_author1 {
   width: 100%;
   display: flex;
 }
+
 .course_box1_content1 .course_author_image1 {
   width: 40px;
   height: 40px;
   background-color: red;
   border-radius: 50%;
 }
+
 .course_box1_content1 .course_author1 img {
   width: 40px;
   height: 40px;
@@ -51,15 +57,18 @@
   display: flex;
   align-items: center;
 }
+
 .course_author1 p {
   margin-left: 20px;
 }
+
 .course_box1_content1 .course_box1_content1_title1 {
   font-size: 22px;
   padding: 8px 0;
   color: #ad1457;
   font-family: "Ysabeau, sans-serif";
 }
+
 /* .course_box1_content_des1 {
   flex: 1;
     padding: 15px 0px;
@@ -71,6 +80,7 @@
   padding: 20px;
   text-align: start;
 }
+
 .inline-btn1 {
   padding: 8px 20px;
   width: 170px;
@@ -88,6 +98,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .course_box1_content1 a:hover {
   background-color: #87ddebcb;
 }
@@ -110,3 +121,58 @@
   align-items: center;
   width: 100%;
 }
+
+
+/* css */
+
+.form_modal_date {
+  margin-bottom: 24px !important;
+}
+
+.form_modal_select {
+  margin-bottom: 40px !important;
+  height: 4rem;
+}
+
+.form_modal_start_end {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+
+.form_modal_button_addcourse {
+  position: absolute;
+  top: 20px;
+  right: 5%;
+}
+
+.fom_modal_addset {
+  height: 100px !important;
+}
+
+.form_modal_start_end_time {
+  padding-bottom: 7rem;
+}
+
+.form_modal_box1 {
+  border: 1px dashed black;
+  padding: 2%;
+  border-radius: 30px;
+}
+
+.form_modal_button_pad {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2%;
+}
+
+.form_modal_tru {
+  position: relative;
+  top: -345px;
+  right: -465px;
+}
+

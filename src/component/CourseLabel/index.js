@@ -1,4 +1,4 @@
-import { Button, Rate, Modal } from "antd";
+import { Button, Rate, Modal, Input, Form, DatePicker, TimePicker, Select, Radio } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import "./index.css";
 import { gql, useMutation } from "@apollo/client";
@@ -6,6 +6,9 @@ import client from "../../configGQL";
 import { useDispatch } from "react-redux";
 import { setError } from "../../Redux/features/notificationSlice";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
 
 const { confirm } = Modal;
 
@@ -28,6 +31,52 @@ const BUY_COURSE = gql`
 }
 `;
 
+const ADD_SET = gql`
+  mutation createOrUpdateSetForCourse($input: CreateSetForCourseDto!){
+    createOrUpdateSetForCourse(input: $input){
+      id
+      name
+      isBooked
+    }
+  }
+`
+
+const GETCOURSE_BYID = gql`
+  query getCourseById($courseId: String!){
+    getCourseById(courseId:$courseId){
+      coursePrograms{
+        courseProgramPhases{
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
+const QUERY_COURSE_DETAIL = gql`
+  query getCourseById($courseId: String!) {
+    getCourseById(courseId: $courseId) {
+      id
+      name
+      price
+      ratting
+      imageUrl
+      description
+      sets {
+        id
+        isBooked
+        name
+        availableDates {
+          setId
+          date
+          endTime
+          startTime
+        }
+      }
+    }
+  }
+`;
 
 export const CourseLabelComponent = ({
   course,
@@ -39,14 +88,47 @@ export const CourseLabelComponent = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams()
-
-  const [buyCourse] = useMutation(BUY_COURSE)
+  const [isVisibled, setIsVisibled] = useState(false);
   const url = window.location.href
   const tutorId = course.tutorProfile.tutorId
   const setName = course?.sets?.find(
     (data) => data.id === dateSet[0]?.setId
   );
-  
+  const [nameSet, setNameSet] = useState()
+  const [formListAddSet, setFormListAddSet] = useState([
+    { startTime: null, endTime: null, date: null, courseProgramPhases: null },
+  ]);
+  const [coursePrograms, setCoursePrograms] = useState()
+  const phaseList = coursePrograms?.flatMap(obj => obj.courseProgramPhases)
+  const [setList, setSetList] = useState()
+  const [status, setStatus] = useState(false)
+
+  useEffect(() => {
+    client
+      .query({
+        query: GETCOURSE_BYID,
+        variables: {
+          courseId: id,
+        }
+      })
+      .then(result => setCoursePrograms(result.data.getCourseById.coursePrograms))
+      .catch(error => dispatch(setError({ message: error })))
+  }, [id]);
+
+  useEffect(() => {
+    client
+      .query({
+        query: QUERY_COURSE_DETAIL,
+        variables: {
+          courseId: id,
+        }
+      })
+      .then(result => setSetList(result.data.getCourseById.sets))
+      .catch(error => dispatch(setError({ message: error })))
+  }, [status])
+
+  const [buyCourse] = useMutation(BUY_COURSE)
+  const [addSet] = useMutation(ADD_SET)
   const handleBuyCourse = () => {
     const data = {
       successUrl: url,
@@ -75,6 +157,63 @@ export const CourseLabelComponent = ({
       getData()
     }
   }
+
+  const handleButtonOk = () => {
+    const datatemp = {
+      courseId: id,
+      name: nameSet,
+      availableDates: formListAddSet,
+    };
+    const getData = async () => {
+      try {
+        const result = await addSet({
+          variables: {
+            input: datatemp,
+          },
+        });
+        setStatus(!status)
+        setIsVisibled(!isVisibled);
+        client.clearStore()
+        dispatch(setError({ message: "Create set successfully" }));
+      } catch (error) {
+        dispatch(setError({ message: error.message }));
+      }
+    };
+    getData();
+  }
+
+  const handleAddSet = () => {
+    setIsVisibled(!isVisibled);
+  }
+
+  const hanldeToggleModal = () => {
+    setIsVisibled(!isVisibled);
+  };
+
+  const handleAddForm = () => {
+    const newFormList = formListAddSet.concat({
+      startTime: null,
+      endTime: null,
+      date: null,
+      courseProgramPhases: null
+    });
+    setFormListAddSet(newFormList);
+  };
+  const handleDeleteForm = (index) => {
+    const newFormList = formListAddSet.filter((el, i) => index !== i);
+    setFormListAddSet(newFormList);
+  };
+
+  const onChangeValue = (indexForm, field, value) => {
+    const newForm = formListAddSet[indexForm];
+    if (field === 'courseProgramPhases') {
+      value = value.map(e => ({ id: e }))
+    }
+    newForm[field] = value;
+    const newFormList = formListAddSet.filter((el, index) => index !== indexForm);
+    newFormList.push(newForm);
+    setFormListAddSet(newFormList);
+  };
 
   const handleDelete = (courseId) => {
     client
@@ -122,7 +261,7 @@ export const CourseLabelComponent = ({
 
   if (tutorType) {
     groupBtnAction = (
-      <>
+      <div className="form_modal_button_pad">
         <Button
           type="primary"
           className="view__but1"
@@ -152,33 +291,188 @@ export const CourseLabelComponent = ({
         >
           <i class="bx bx-x"></i>Delete
         </Button>
-      </>
+        <Button type="primary" onClick={handleAddSet}>
+          Add Set
+        </Button>
+      </div>
     );
   }
   return (
-    <div className="course_box1">
-      <div className="course_thumnail1">
-        <img src={course?.imageUrl} alt="" className="course_image1" />
-      </div>
-      <div className="course_box1_content1">
-        <h3 className="course_box1_content_title1">{course.name}</h3>
-        <Rate disabled defaultValue={course.ratting} />
-        <div className="course_author1">
-          <div className="course_author_image1">
-            <img src={course.tutorProfile.tutor.avatarUrl} alt="" />
-          </div>
-          <h4 className="course_author1_info1">{`${course.tutorProfile.tutor.firstName} ${course.tutorProfile.tutor.lastName}`}</h4>
-        </div>
+    <>
+      <Modal
+        open={isVisibled}
+        title="AddSet"
+        // height={800}
+        onOk={handleButtonOk}
+        onCancel={hanldeToggleModal}
+        closable={false}
+        className="fom_modal_addset"
+      >
+        <Form className="form_aaa">
+          <label>Set Name</label>
+          <Input
+            onChange={(e) =>
+              setNameSet(e.target.value)
+            }
+            placeholder="Set name" className="fom_modal_addset_input" />
 
-        <div className="course_box1_content_des1">
-          <p>{course.description}</p>
+          {formListAddSet.map((el, index) => (
+            <div className="form_modal_child1">
+              <Form
+                name="normal"
+                layout="vertical"
+                key={index}
+                style={{ border: "1px solid #ccc;" }}
+              >
+
+
+                <Form.Item
+                  name="range-picker"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please select date!",
+                    },
+                  ]}
+                  className=""
+                >
+                </Form.Item>
+
+                {/*  */}
+                <div className="form_modal_box1">
+                  {/* date */}
+                  <div style={{ width: "45%" }} className="form_modal_date">
+                    <label>Date</label>
+                    <DatePicker
+                      onChange={(e) =>
+                        onChangeValue(
+                          index,
+                          "date",
+                          dayjs(e).format("YYYY-MM-DD")
+                        )
+                      }
+                    />
+                  </div>
+
+                  {/* start time, and time */}
+                  <Form.Item
+                    name="range-picker"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select time!",
+                      },
+                    ]}
+                    className="form_modal_start_end_time"
+                  >
+                    <div className="form_modal_start_end">
+                      <div style={{ width: "45%" }}>
+                        <label>Start Time</label>
+                        <TimePicker
+                          onChange={(e) =>
+                            onChangeValue(
+                              index,
+                              "startTime",
+                              dayjs(e).format("HH:mm:ss")
+                            )
+                          }
+                        />
+                      </div>
+                      <div style={{ width: "45%" }}>
+                        <label>End Time</label>
+                        <TimePicker
+                          onChange={(e) =>
+                            onChangeValue(
+                              index,
+                              "endTime",
+                              dayjs(e).format("HH:mm:ss")
+                            )
+                          }
+                        />
+                      </div>
+                    </div>
+                  </Form.Item>
+
+                  {/* select */}
+                  <Form.Item className="form_modal_select">
+                    <Select
+                      mode="multiple"
+                      allowClear
+                      style={{ width: '100%' }}
+                      placeholder="Please select"
+                      onChange={(e) =>
+                        onChangeValue(
+                          index,
+                          "courseProgramPhases",
+                          e
+                        )
+                      }
+                      options={phaseList?.map((phase) => ({ label: phase.name, value: phase.id }))}
+
+                    />
+                  </Form.Item>
+                  {formListAddSet.length > 1 && index !== 0 ? (
+                    <MinusCircleOutlined
+                      className="form_modal_tru"
+                      onClick={() => handleDeleteForm(index)}
+                    />
+                  ) : null}
+                </div>
+
+
+              </Form>
+            </div>
+          ))}
+        </Form>
+
+        <Button onClick={handleAddForm} className="form_modal_button_addcourse">
+          <PlusOutlined /> Add date
+        </Button>
+      </Modal>
+
+      <div className="course_box1">
+        <div className="course_thumnail1">
+          <img src={course?.imageUrl} alt="" className="course_image1" />
         </div>
-        <h3 className="dollar-h3">
-          {course.price || 0}
-          <i className="bx bx-dollar"></i>
-        </h3>
-        <div className="all__button2">{groupBtnAction}</div>
+        <div className="course_box1_content1">
+          <h3 className="course_box1_content_title1">{course.name}</h3>
+          <Rate disabled defaultValue={course.ratting} />
+          <div className="course_author1">
+            <div className="course_author_image1">
+              <img src={course.tutorProfile.tutor.avatarUrl} alt="" />
+            </div>
+            <h4 className="course_author1_info1">{`${course.tutorProfile.tutor.firstName} ${course.tutorProfile.tutor.lastName}`}</h4>
+          </div>
+
+          <div className="course_box1_content_des1">
+            <p>{course.description}</p>
+          </div>
+          <h3 className="dollar-h3">
+            {course.price || 0}
+            <i className="bx bx-dollar"></i>
+          </h3>
+          <div className="all__button2">{groupBtnAction}</div>
+        </div>
       </div>
-    </div>
+      {setList?.length === 0
+        ? <p>There are currently no classes available</p>
+        :
+        <>
+          <p>Available study sets</p>
+          <Radio.Group
+            buttonStyle="solid"
+          >
+            {setList?.map((option) => (
+              <Button
+                key={option.id}
+                name={option.name}
+              >
+                {option.name}
+              </Button>
+            ))}
+          </Radio.Group>
+        </>
+      }
+    </>
   );
 };

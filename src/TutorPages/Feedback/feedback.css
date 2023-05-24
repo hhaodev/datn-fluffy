@@ -36,7 +36,7 @@
 
 .course-box-info {
     margin: 6px 20px;
-    border-right: 1px solid #ef629f;
+    /* border-right: 1px solid #ef629f; */
     padding-right: 20px;
 }
 
@@ -48,12 +48,11 @@
     padding: 0 10px;
 }
 
-.star__form {
-    font-size: 25px;
-}
 
 .feedback__star {
-    margin-right: 10px;
+    /* margin-right: 10px; */
+    display: inline;
+    font-size: 1.5rem;
 }
 
 .feedback__boxall {
@@ -73,14 +72,7 @@
     padding-left: 150px;
 }
 
-.course-box-description {
-    margin-top: 20px;
-    width: 450px;
-    height: 90px;
-    border: 1px dashed black;
-    padding: 10px;
-    border-radius: 20px;
-}
+
 
 
 .feedback__left h1 {
@@ -133,5 +125,61 @@
     box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
- 
+.form_modal_star {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.form_ratting {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 2%; */
+    gap: 2%;
+    align-items: center;
+    border-left: 1px dashed #333;
+    padding-left: 2%;
+}
+
+.course-box-description{
+    width: 350px;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    -webkit-line-clamp: 3;
+    height: 75px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.form_des_modal {
+    padding-right: 4%;
+    /* border-right: 1px dashed #333; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form_fb_all {
+    
+    /* margin-top: 20px; */
+    width: 100%;
+    height: 90px;
+    border: 1px dashed black;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-modal .ant-modal-body{
+    max-height: 500px; /* Chiều cao tối đa của modal */
+    overflow-y: auto; /* Hiển thị thanh cuộn khi vượt quá chiều cao */
+}
+
+.date_feedback{
+    margin-top: 5%;
+}
 

@@ -3,6 +3,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin: 40px 0;
+    padding: 0 9%;
 }
 
 .session__select {
@@ -21,4 +22,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.session_from1, .session_to1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7%;
 }

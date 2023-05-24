@@ -127,14 +127,20 @@ function SessionTutor() {
 
           <div className="session__all">
             <div className="session__date">
-              <p>From</p>
-              <Space direction="vertical" size={12}>
-                <DatePicker format={dateFormatList} />
-              </Space>
-              <p>To</p>
-              <Space direction="vertical" size={12}>
-                <DatePicker format={dateFormatList} />
-              </Space>
+              <div className="session_from1">
+                <p>From</p>
+                <Space direction="vertical" size={12}>
+                  <DatePicker format={dateFormatList} />
+                </Space>
+              </div>
+
+              <div className="session_to1">
+                <p>To</p>
+                <Space direction="vertical" size={12}>
+                  <DatePicker format={dateFormatList} />
+                </Space>
+              </div>
+
 
               <Select
                 showSearch
@@ -152,43 +158,49 @@ function SessionTutor() {
                 className="session__select"
               />
 
-              <Select
-                showSearch
-                placeholder="Status"
-                optionFilterProp="children"
-                filterOption={(input, option) =>
-                  (option?.label ?? "")
-                    .toLowerCase()
-                    .includes(input.toLowerCase())
-                }
-                options={[
-                  {
-                    value: "inprogress",
-                    label: "In progress",
-                  },
-                  {
-                    value: "incompleted",
-                    label: "In completed",
-                  },
-                  {
-                    value: "completed",
-                    label: "Completed",
-                  },
-                ]}
-                className="session__select"
-              />
+              <div className="">
+                <Select
+                  showSearch
+                  placeholder="Status"
+                  optionFilterProp="children"
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toLowerCase()
+                      .includes(input.toLowerCase())
+                  }
+                  options={[
+                    {
+                      value: "inprogress",
+                      label: "In progress",
+                    },
+                    {
+                      value: "incompleted",
+                      label: "In completed",
+                    },
+                    {
+                      value: "completed",
+                      label: "Completed",
+                    },
+                  ]}
+                  className="session__select"
+                />
+              </div>
 
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="session__filter"
-              >
-                Filter
-              </Button>
+              <div className="">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="session__filter"
+                >
+                  Filter
+                </Button>
+              </div>
 
-              <Button type="default" htmlType="submit" className="">
-                Clear
-              </Button>
+              <div className="">
+                <Button type="default" htmlType="submit" className="">
+                  Clear
+                </Button>
+              </div>
             </div>
 
             <Table columns={columns} dataSource={data} />
