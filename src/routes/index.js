@@ -28,9 +28,10 @@ import ViewCourse from "../TutorPages/ViewCourse/index";
 import Schedulestt from "../TutorPages/Schedules/index";
 import Viewcourse from "../StudentPages/Viewcourse/index";
 import ChangeStudent from "../StudentPages/ChangeStudent/index";
-import MessStudent from '../StudentPages/MessStudent/index'
-import MessTutor from '../TutorPages/MessTutor/index'
-import CourseDetail from '../StudentPages/StudentMyCourse/CourseDetail'
+import MessStudent from "../StudentPages/MessStudent/index";
+import MessTutor from "../TutorPages/MessTutor/index";
+import CourseDetail from "../StudentPages/StudentMyCourse/CourseDetail";
+import CheckoutSuccessComponent from "../component/CheckoutSuccess";
 
 const publicRoutes = [
   { path: "/", component: Home },
@@ -61,6 +62,10 @@ export const routerStudent = [
     component: Viewcourse,
     layout: SideBarLayout,
     layout2: Navbar,
+  },
+  {
+    path: "/dashboard/courses/:id/checkout",
+    component: CheckoutSuccessComponent,
   },
   {
     path: "/schedules",

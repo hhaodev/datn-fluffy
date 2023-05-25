@@ -1,4 +1,14 @@
-import { Button, Rate, Modal, Input, Form, DatePicker, TimePicker, Select, Radio } from "antd";
+import {
+  Button,
+  Rate,
+  Modal,
+  Input,
+  Form,
+  DatePicker,
+  TimePicker,
+  Select,
+  Radio,
+} from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import "./index.css";
 import { gql, useMutation } from "@apollo/client";
@@ -9,7 +19,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons"
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;
 
@@ -23,39 +33,39 @@ const DELETE_COURSE_BY_ID = gql`
 `;
 
 const BUY_COURSE = gql`
-  mutation createCheckoutCourseUsingStripe($input: CheckoutCourseDto!){
-  createCheckoutCourseUsingStripe(input: $input){
-    checkoutUrl
-    successUrl
-    cancelUrl
+  mutation createCheckoutCourseUsingStripe($input: CheckoutCourseDto!) {
+    createCheckoutCourseUsingStripe(input: $input) {
+      checkoutUrl
+      successUrl
+      cancelUrl
+    }
   }
-}
 `;
 
 const ADD_SET = gql`
-  mutation createOrUpdateSetForCourse($input: CreateSetForCourseDto!){
-    createOrUpdateSetForCourse(input: $input){
+  mutation createOrUpdateSetForCourse($input: CreateSetForCourseDto!) {
+    createOrUpdateSetForCourse(input: $input) {
       id
       name
       isBooked
     }
   }
-`
+`;
 
 const DELETE_SET = gql`
-  mutation deleteSet($id: String!){
-    deleteSet(id:$id){
+  mutation deleteSet($id: String!) {
+    deleteSet(id: $id) {
       message
       success
     }
   }
-`
+`;
 
 const GETCOURSE_BYID = gql`
-  query getCourseById($courseId: String!){
-    getCourseById(courseId:$courseId){
-      coursePrograms{
-        courseProgramPhases{
+  query getCourseById($courseId: String!) {
+    getCourseById(courseId: $courseId) {
+      coursePrograms {
+        courseProgramPhases {
           id
           name
         }
@@ -97,24 +107,22 @@ export const CourseLabelComponent = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = useParams()
+  const { id } = useParams();
   const [isVisibled, setIsVisibled] = useState(false);
   const [isVisibled1, setIsVisibled1] = useState(false);
-  const url = window.location.href
-  const tutorId = course.tutorProfile.tutorId
-  const setName = course?.sets?.find(
-    (data) => data.id === dateSet[0]?.setId
-  );
-  const [nameSet, setNameSet] = useState()
+  const url = window.location.href;
+  const tutorId = course.tutorProfile.tutorId;
+  const setName = course?.sets?.find((data) => data.id === dateSet[0]?.setId);
+  const [nameSet, setNameSet] = useState();
   const [formListAddSet, setFormListAddSet] = useState([
     { startTime: null, endTime: null, date: null, courseProgramPhases: null },
   ]);
-  const [coursePrograms, setCoursePrograms] = useState()
-  const phaseList = coursePrograms?.flatMap(obj => obj.courseProgramPhases)
-  const [setList, setSetList] = useState([])
-  const [status, setStatus] = useState(false)
-  const [dataSet, setDataSet] = useState()
-  console.log("🚀 ~ file: index.js:116 ~ dataSet:", dataSet)
+  const [coursePrograms, setCoursePrograms] = useState();
+  const phaseList = coursePrograms?.flatMap((obj) => obj.courseProgramPhases);
+  const [setList, setSetList] = useState([]);
+  const [status, setStatus] = useState(false);
+  const [dataSet, setDataSet] = useState();
+  console.log("🚀 ~ file: index.js:116 ~ dataSet:", dataSet);
 
   useEffect(() => {
     client
@@ -122,10 +130,12 @@ export const CourseLabelComponent = ({
         query: GETCOURSE_BYID,
         variables: {
           courseId: id,
-        }
+        },
       })
-      .then(result => setCoursePrograms(result.data.getCourseById.coursePrograms))
-      .catch(error => dispatch(setError({ message: error })))
+      .then((result) =>
+        setCoursePrograms(result.data.getCourseById.coursePrograms)
+      )
+      .catch((error) => dispatch(setError({ message: error })));
   }, [id, course.coursePrograms]);
 
   useEffect(() => {
@@ -134,28 +144,29 @@ export const CourseLabelComponent = ({
         query: QUERY_COURSE_DETAIL,
         variables: {
           courseId: id,
-        }
+        },
       })
-      .then(result => setSetList(result.data.getCourseById.sets))
-      .catch(error => dispatch(setError({ message: error })))
-  }, [status, dataSet])
+      .then((result) => setSetList(result.data.getCourseById.sets))
+      .catch((error) => dispatch(setError({ message: error })));
+  }, [status, dataSet]);
 
-  const [buyCourse] = useMutation(BUY_COURSE)
-  const [addSet] = useMutation(ADD_SET)
-  const [deleteSet] = useMutation(DELETE_SET)
+  const [deleteSet] = useMutation(DELETE_SET);
 
+  const [buyCourse] = useMutation(BUY_COURSE);
+  const [addSet] = useMutation(ADD_SET);
 
   const handleBuyCourse = () => {
     const data = {
-      successUrl: url,
+      successUrl: `${url}/checkout?success=true&&setId=${dateSet[0]?.setId}`,
       cancelUrl: url,
       tutorId: tutorId,
       courseId: id,
       setId: dateSet[0]?.setId,
-    }
-    let validated = true
+    };
+
+    let validated = true;
     if (dateSet.length === 0) {
-      validated = false
+      validated = false;
     }
     if (validated === true) {
       const getData = async () => {
@@ -165,14 +176,15 @@ export const CourseLabelComponent = ({
               input: data,
             },
           });
-          window.location.href = result.data.createCheckoutCourseUsingStripe.checkoutUrl
+          window.location.href =
+            result.data.createCheckoutCourseUsingStripe.checkoutUrl;
         } catch (error) {
-          dispatch(setError({ message: error.message }))
+          dispatch(setError({ message: error.message }));
         }
-      }
-      getData()
+      };
+      getData();
     }
-  }
+  };
 
   const handleButtonOk = () => {
     let isValidated = true;
@@ -183,14 +195,19 @@ export const CourseLabelComponent = ({
     };
     if (nameSet) {
       formListAddSet.forEach((el) => {
-        if (!el.startTime || !el.endTime || !el.date || !el.courseProgramPhases) {
+        if (
+          !el.startTime ||
+          !el.endTime ||
+          !el.date ||
+          !el.courseProgramPhases
+        ) {
           isValidated = false;
         } else {
           isValidated = true;
         }
-      })
+      });
     } else {
-      isValidated = false
+      isValidated = false;
     }
 
     if (isValidated) {
@@ -201,24 +218,23 @@ export const CourseLabelComponent = ({
               input: datatemp,
             },
           });
-          setStatus(!status)
+          setStatus(!status);
           setIsVisibled(!isVisibled);
-          client.clearStore()
+          client.clearStore();
           dispatch(setError({ message: "Create set successfully" }));
         } catch (error) {
           dispatch(setError({ message: error.message }));
         }
       };
       getData();
-    }
-    else {
+    } else {
       dispatch(setError({ message: "Please fill in all fields" }));
     }
-  }
+  };
   //add set
   const handleAddSet = () => {
     setIsVisibled(!isVisibled);
-  }
+  };
   //modal add set
   const hanldeToggleModal = () => {
     setIsVisibled(!isVisibled);
@@ -229,7 +245,7 @@ export const CourseLabelComponent = ({
       startTime: null,
       endTime: null,
       date: null,
-      courseProgramPhases: null
+      courseProgramPhases: null,
     });
     setFormListAddSet(newFormList);
   };
@@ -241,11 +257,13 @@ export const CourseLabelComponent = ({
 
   const onChangeValue = (indexForm, field, value) => {
     const newForm = formListAddSet[indexForm];
-    if (field === 'courseProgramPhases') {
-      value = value.map(e => ({ id: e }))
+    if (field === "courseProgramPhases") {
+      value = value.map((e) => ({ id: e }));
     }
     newForm[field] = value;
-    const newFormList = formListAddSet.filter((el, index) => index !== indexForm);
+    const newFormList = formListAddSet.filter(
+      (el, index) => index !== indexForm
+    );
     newFormList.push(newForm);
     setFormListAddSet(newFormList);
   };
@@ -274,36 +292,36 @@ export const CourseLabelComponent = ({
       title: title,
       icon: <ExclamationCircleFilled />,
       onOk: handle,
-      onCancel() { },
+      onCancel() {},
     });
   };
   ///handle Setttt
   const handleOpenSetData = (option) => {
     setIsVisibled1(!isVisibled1);
-    setDataSet(option)
-  }
+    setDataSet(option);
+  };
 
   const handleDeleteSet = (value) => {
     if (value?.isBooked === true) {
-      dispatch(setError({ message: "This set is in progress!!" }))
+      dispatch(setError({ message: "This set is in progress!!" }));
     } else {
       const getData = async () => {
         try {
           const result = await deleteSet({
             variables: {
-              id: value.id
+              id: value.id,
             },
           });
-          dispatch(setError({ message: result.data.deleteSet.message }))
-          client.clearStore()
-          handleOpenSetData()
+          dispatch(setError({ message: result.data.deleteSet.message }));
+          client.clearStore();
+          handleOpenSetData();
         } catch (error) {
-          dispatch(setError({ message: error.message }))
+          dispatch(setError({ message: error.message }));
         }
-      }
-      getData()
+      };
+      getData();
     }
-  }
+  };
 
   let groupBtnAction = (
     <div className="courses_buynow">
@@ -311,9 +329,13 @@ export const CourseLabelComponent = ({
         className="inline-btn1"
         onClick={() => {
           showPromiseConfirm({
-            title: `${setName ? `Do you want to buy ${setName?.name} this course?` : `Please select set`}`,
+            title: `${
+              setName
+                ? `Do you want to buy ${setName?.name} this course?`
+                : `Please select set`
+            }`,
             handle: () => handleBuyCourse(),
-          })
+          });
         }}
       >
         Buy now
@@ -360,24 +382,19 @@ export const CourseLabelComponent = ({
     );
   }
 
-  let formAddSetForTutor = (
-    <Fragment></Fragment>
-  )
+  let formAddSetForTutor = <Fragment></Fragment>;
   if (tutorType) {
     formAddSetForTutor = (
       <div>
-        {setList?.length === 0
-          ?
+        {setList?.length === 0 ? (
           <>
             <p>There are currently no classes available!!!</p>
             <button onClick={handleAddSet}>add set here?</button>
           </>
-          :
+        ) : (
           <>
             <p>Available study sets</p>
-            <Radio.Group
-              buttonStyle="solid"
-            >
+            <Radio.Group buttonStyle="solid">
               {setList?.map((option) => (
                 <Button
                   className={option.isBooked ? "isbooked_button" : ""}
@@ -389,9 +406,9 @@ export const CourseLabelComponent = ({
               ))}
             </Radio.Group>
           </>
-        }
+        )}
       </div>
-    )
+    );
   }
 
   return (
@@ -413,34 +430,36 @@ export const CourseLabelComponent = ({
             >
               Delete
             </Button>
-            <Button
-              onClick={handleOpenSetData}
-            >
-              Cancel
-            </Button>
+            <Button onClick={handleOpenSetData}>Cancel</Button>
           </>
         }
       >
-        {dataSet &&
-          (
-            <>
-              <div>Set Name: {dataSet?.name}</div>
-              <div>In process: {dataSet?.isBooked ? <CheckOutlined /> : <CloseOutlined />}</div>
+        {dataSet && (
+          <>
+            <div>Set Name: {dataSet?.name}</div>
+            <div>
+              In process:{" "}
+              {dataSet?.isBooked ? <CheckOutlined /> : <CloseOutlined />}
+            </div>
 
-              {dataSet?.availableDates?.map((data, index) => (
-                <>
-                  <div> Session {index + 1}:
-                    <div className="formSession_modal">Date: {data.date}</div>
-                    <div className="formSession_modal">Start time: {data.startTime}</div>
-                    <div className="formSession_modal">End time: {data.endTime}</div>
+            {dataSet?.availableDates?.map((data, index) => (
+              <>
+                <div>
+                  {" "}
+                  Session {index + 1}:
+                  <div className="formSession_modal">Date: {data.date}</div>
+                  <div className="formSession_modal">
+                    Start time: {data.startTime}
                   </div>
-                </>
-              ))}
-            </>
-          )
-        }
-      </Modal >
-
+                  <div className="formSession_modal">
+                    End time: {data.endTime}
+                  </div>
+                </div>
+              </>
+            ))}
+          </>
+        )}
+      </Modal>
 
       <Modal
         open={isVisibled}
@@ -450,8 +469,8 @@ export const CourseLabelComponent = ({
           showPromiseConfirm({
             title: `Do you want to create ${nameSet}?`,
             handle: () => handleButtonOk(),
-          })}
-      
+          })
+        }
         onCancel={hanldeToggleModal}
         closable={false}
         className="fom_modal_addset"
@@ -459,10 +478,10 @@ export const CourseLabelComponent = ({
         <Form className="form_aaa">
           <label>Set Name</label>
           <Input
-            onChange={(e) =>
-              setNameSet(e.target.value)
-            }
-            placeholder="Set name" className="fom_modal_addset_input" />
+            onChange={(e) => setNameSet(e.target.value)}
+            placeholder="Set name"
+            className="fom_modal_addset_input"
+          />
 
           {formListAddSet.map((el, index) => (
             <div className="form_modal_child1">
@@ -472,8 +491,6 @@ export const CourseLabelComponent = ({
                 key={index}
                 style={{ border: "1px solid #ccc;" }}
               >
-
-
                 <Form.Item
                   name="range-picker"
                   rules={[
@@ -483,8 +500,7 @@ export const CourseLabelComponent = ({
                     },
                   ]}
                   className=""
-                >
-                </Form.Item>
+                ></Form.Item>
 
                 {/*  */}
                 <div className="form_modal_box1">
@@ -547,17 +563,15 @@ export const CourseLabelComponent = ({
                     <Select
                       mode="multiple"
                       allowClear
-                      style={{ width: '100%' }}
+                      style={{ width: "100%" }}
                       placeholder="Please select phase"
                       onChange={(e) =>
-                        onChangeValue(
-                          index,
-                          "courseProgramPhases",
-                          e
-                        )
+                        onChangeValue(index, "courseProgramPhases", e)
                       }
-                      options={phaseList?.map((phase) => ({ label: phase.name, value: phase.id }))}
-
+                      options={phaseList?.map((phase) => ({
+                        label: phase.name,
+                        value: phase.id,
+                      }))}
                     />
                   </Form.Item>
                   {formListAddSet.length > 1 && index !== 0 ? (
@@ -567,8 +581,6 @@ export const CourseLabelComponent = ({
                     />
                   ) : null}
                 </div>
-
-
               </Form>
             </div>
           ))}
@@ -606,4 +618,4 @@ export const CourseLabelComponent = ({
       {formAddSetForTutor}
     </>
   );
-}
+};
