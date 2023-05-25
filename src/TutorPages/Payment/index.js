@@ -89,8 +89,8 @@ const PaymentTutor = () => {
   const dataSource = paymentList.map(data => ({
     purchasedate: dayjs(data.createdAt).format("HH:mm, DD/MM/YYYY"),
     total: data.amount + "$",
-    student: data.student.firstName + ' ' + data.student.lastName,
-    courseName: data.bookedSession.course.name,
+    student: data.student?.firstName + ' ' + data.student?.lastName,
+    courseName: data.bookedSession?.course?.name,
     paymentid: data.id,
     data: data
   }))
@@ -111,7 +111,7 @@ const PaymentTutor = () => {
       dataIndex: "courseName",
       key: "courseName",
       render: (text) => {
-        const truncatedText = `${text.substring(0, 30)}...`;
+        const truncatedText = `${text?.substring(0, 30)}...`;
         return <span>{truncatedText}</span>;
       },
     },
@@ -120,7 +120,7 @@ const PaymentTutor = () => {
       dataIndex: "paymentid",
       key: "paymentid",
       render: (text) => {
-        const truncatedText = `${text.substring(0, 20)}...`;
+        const truncatedText = `${text?.substring(0, 20)}...`;
         return <span>{truncatedText}</span>;
       },
     },
@@ -314,11 +314,11 @@ const PaymentTutor = () => {
                             </div>
                             <div className="flex2">
                               <p className="payment__subtotal">Total: </p>
-                              <p>{dataMore?.bookedSession.price}</p>
+                              <p>{dataMore?.bookedSession?.price}</p>
                             </div>
                             <div className="flex4">
                               <p className="payment__fee">Fee: </p>
-                              <p>{100 - (dataMore?.amount / dataMore?.bookedSession.price) * 100 + "%"}</p>
+                              <p>{100 - (dataMore?.amount / dataMore?.bookedSession?.price) * 100 + "%"}</p>
                             </div>
                             <div className="flex3">
                               <p className="payment__total">Received: </p>
@@ -343,7 +343,7 @@ const PaymentTutor = () => {
                                 <h4 className="payment__sub">
                                   <i className="bx bxs-book-bookmark"></i>Subject:
                                 </h4>
-                                <p>{dataMore?.bookedSession.course.name.substring(0, 40) + "..."}</p>
+                                <p>{dataMore?.bookedSession?.course?.name.substring(0, 40) + "..."}</p>
                               </div>
 
                               <div className="payment__ttli1">
@@ -351,13 +351,13 @@ const PaymentTutor = () => {
                                   <h4 className="payment__tutors">
                                     <i class="bx bxs-id-card"></i>Student:
                                   </h4>
-                                  <p>{dataMore?.student.firstName + " " + dataMore?.student.lastName}</p>
+                                  <p>{dataMore?.student?.firstName + " " + dataMore?.student?.lastName}</p>
                                 </div>
                                 <div className="payment__li3">
                                   <h4 className="payment__prices">
                                     <i class="bx bxs-coin"></i>Price:
                                   </h4>
-                                  <p>{dataMore?.bookedSession.price + "$"}</p>
+                                  <p>{dataMore?.bookedSession?.price + "$"}</p>
                                 </div>
                               </div>
 
@@ -366,7 +366,7 @@ const PaymentTutor = () => {
                                   <h4 className="payment__sessiondates">
                                     <i className='bx bx-calendar-event' ></i>Session date:
                                   </h4>
-                                  <p>{dayjs(dataMore?.bookedSession.data.startDate).format("DD/MM/YYYY")} - {dayjs(dataMore?.bookedSession.data.endDate).format("DD/MM/YYYY")}</p>
+                                  <p>{dayjs(dataMore?.bookedSession?.data?.startDate).format("DD/MM/YYYY")} - {dayjs(dataMore?.bookedSession?.data?.endDate).format("DD/MM/YYYY")}</p>
                                 </div>
                               </div>
 
@@ -374,7 +374,7 @@ const PaymentTutor = () => {
                                 <h4 className="payment__times">
                                   <i class="bx bx-hourglass"></i>Session time:
                                 </h4>
-                                <p>{dayjs(dataMore?.bookedSession.data.startDate).format("HH:mm")} - {dayjs(dataMore?.bookedSession.data.endDate).format("HH:mm")}</p>
+                                <p>{dayjs(dataMore?.bookedSession?.data?.startDate).format("HH:mm")} - {dayjs(dataMore?.bookedSession?.data?.endDate).format("HH:mm")}</p>
                               </div>
                             </Form>
                           </div>
