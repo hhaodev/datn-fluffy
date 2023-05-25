@@ -126,7 +126,7 @@ export const CourseLabelComponent = ({
       })
       .then(result => setCoursePrograms(result.data.getCourseById.coursePrograms))
       .catch(error => dispatch(setError({ message: error })))
-  }, [id]);
+  }, [id, course.coursePrograms]);
 
   useEffect(() => {
     client
