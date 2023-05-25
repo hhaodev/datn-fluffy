@@ -482,7 +482,11 @@ export const CourseLabelComponent = ({
         </div>
       </div>
       {setList?.length === 0
-        ? <p>There are currently no classes available</p>
+        ?
+        <>
+          <p>There are currently no classes available!!!</p>
+          <button onClick={handleAddSet}>add set here?</button>
+        </>
         :
         <>
           <p>Available study sets</p>

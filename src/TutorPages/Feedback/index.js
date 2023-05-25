@@ -106,81 +106,80 @@ const CourseBox = () => {
             {/* <h1 className='feedback__h1'>FeedBack</h1> */}
 
             <div className="feedback__box">
-              <div className="feedback__box1">
-                {feedBackList &&
-                  feedBackList.map(data => (
-                    <>
-                      <div className="course-box" onClick={() => showModal(data)} >
-                        <div>
-                          <img
-                            src={data.student.avatarUrl}
-                            alt="Avatar"
-                            className="feedback__boxavt"
-                          />
-                        </div>
-                        <div className="course-box-info">
-                          <h3 className="course-box-title">{data.student.firstName + " " + data.student.lastName}</h3>
-                          <p className="course-box-subtitle">{data.course.name}</p>
-                        </div>
 
+              {feedBackList &&
+                feedBackList.map(data => (
+                  <div className="feedback__box1">
+                    <div className="course-box" onClick={() => showModal(data)} >
+                      <div>
+                        <img
+                          src={data.student.avatarUrl}
+                          alt="Avatar"
+                          className="feedback__boxavt"
+                        />
                       </div>
-                    </>
-                  ))
+                      <div className="course-box-info">
+                        <h3 className="course-box-title">{data.student.firstName + " " + data.student.lastName}</h3>
+                        <p className="course-box-subtitle">{data.course.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+              <Modal
+                className="custom-modal"
+                closable={false}
+                open={open}
+                onCancel={hideModal}
+                footer={
+                  <Button onClick={() => hideModal()}>Cancel</Button>
                 }
-                <Modal
-                  className="custom-modal"
-                  closable={false}
-                  open={open}
-                  onCancel={hideModal}
-                  footer={
-                    <Button onClick={() => hideModal()}>Cancel</Button>
-                  }
-                >
-                  {dataModal &&
-                    <>
-                      <div className="course-box-modal">
-                        <div className="feedback__boxall">
-                          <div className="course-box-avatar">
-                            <Space size={16} wrap>
-                              <Avatar
-                                src={dataModal.student.avatarUrl}
-                                alt="Avatar"
-                                className="feedback__formavt"
-                              />
-                            </Space>
-                          </div>
-                          <div className="feedback__tittle">
-                            <h3 className="course-box-title">Student: {dataModal.student.firstName + " " + dataModal.student.lastName}</h3>
-                            <p className="course-box-subtitle">
-                              Course: {dataModal.course.name}
-                            </p>
-                          </div>
+              >
+                {dataModal &&
+                  <>
+                    <div className="course-box-modal">
+                      <div className="feedback__boxall">
+                        <div className="course-box-avatar">
+                          <Space size={16} wrap>
+                            <Avatar
+                              src={dataModal.student.avatarUrl}
+                              alt="Avatar"
+                              className="feedback__formavt"
+                            />
+                          </Space>
                         </div>
+                        <div className="feedback__tittle">
+                          <h3 className="course-box-title">Student: {dataModal.student.firstName + " " + dataModal.student.lastName}</h3>
+                          <p className="course-box-subtitle">
+                            Course: {dataModal.course.name}
+                          </p>
+                        </div>
+                      </div>
 
-                        {dataFB &&
-                          dataFB.map(dataFB => (
-                            <>
-                              <p className="date_feedback">{dayjs(dataFB?.schedule.learnTime.date).format("DD/MM/YYYY")}: </p>
-                              <div className="form_modal_star">
-                                <div className=" form_fb_all">
-                                  <div className="form_des_modal">
-                                    <p className="course-box-description">
-                                      {dataFB?.message}
-                                    </p>
-                                  </div>
-                                  <div className="form_ratting">
-                                    <p className="feedback__star">{dataFB?.ratting}<i class="bx bxs-star"></i></p>
-                                  </div>
+                      {dataFB &&
+                        dataFB.map(dataFB => (
+                          <>
+                            <p className="date_feedback">{dayjs(dataFB?.schedule.learnTime.date).format("DD/MM/YYYY")}: </p>
+                            <div className="form_modal_star">
+                              <div className=" form_fb_all">
+                                <div className="form_des_modal">
+                                  <p className="course-box-description">
+                                    {dataFB?.message}
+                                  </p>
+                                </div>
+                                <div className="form_ratting">
+                                  <p className="feedback__star">{dataFB?.ratting}<i class="bx bxs-star"></i></p>
                                 </div>
                               </div>
-                            </>
-                          ))
-                        }
-                      </div>
-                    </>
-                  }
-                </Modal>
-              </div>
+                            </div>
+                          </>
+                        ))
+                      }
+                    </div>
+                  </>
+                }
+              </Modal>
+
             </div>
           </div>
         </main>
