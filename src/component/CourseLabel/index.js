@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { validate } from "graphql";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons"
 
 const { confirm } = Modal;
 
@@ -38,6 +38,15 @@ const ADD_SET = gql`
       id
       name
       isBooked
+    }
+  }
+`
+
+const DELETE_SET = gql`
+  mutation deleteSet($id: String!){
+    deleteSet(id:$id){
+      message
+      success
     }
   }
 `
@@ -90,6 +99,7 @@ export const CourseLabelComponent = ({
   const dispatch = useDispatch();
   const { id } = useParams()
   const [isVisibled, setIsVisibled] = useState(false);
+  const [isVisibled1, setIsVisibled1] = useState(false);
   const url = window.location.href
   const tutorId = course.tutorProfile.tutorId
   const setName = course?.sets?.find(
@@ -103,6 +113,8 @@ export const CourseLabelComponent = ({
   const phaseList = coursePrograms?.flatMap(obj => obj.courseProgramPhases)
   const [setList, setSetList] = useState([])
   const [status, setStatus] = useState(false)
+  const [dataSet, setDataSet] = useState()
+  console.log("🚀 ~ file: index.js:116 ~ dataSet:", dataSet)
 
   useEffect(() => {
     client
@@ -126,10 +138,11 @@ export const CourseLabelComponent = ({
       })
       .then(result => setSetList(result.data.getCourseById.sets))
       .catch(error => dispatch(setError({ message: error })))
-  }, [status])
+  }, [status, dataSet])
 
   const [buyCourse] = useMutation(BUY_COURSE)
   const [addSet] = useMutation(ADD_SET)
+  const [deleteSet] = useMutation(DELETE_SET)
 
 
   const handleBuyCourse = () => {
@@ -202,11 +215,11 @@ export const CourseLabelComponent = ({
       dispatch(setError({ message: "Please fill in all fields" }));
     }
   }
-
+  //add set
   const handleAddSet = () => {
     setIsVisibled(!isVisibled);
   }
-
+  //modal add set
   const hanldeToggleModal = () => {
     setIsVisibled(!isVisibled);
   };
@@ -264,6 +277,33 @@ export const CourseLabelComponent = ({
       onCancel() { },
     });
   };
+  ///handle Setttt
+  const handleOpenSetData = (option) => {
+    setIsVisibled1(!isVisibled1);
+    setDataSet(option)
+  }
+
+  const handleDeleteSet = (value) => {
+    if (value?.isBooked === true) {
+      dispatch(setError({ message: "This set is in progress!!" }))
+    } else {
+      const getData = async () => {
+        try {
+          const result = await deleteSet({
+            variables: {
+              id: value.id
+            },
+          });
+          dispatch(setError({ message: result.data.deleteSet.message }))
+          client.clearStore()
+          handleOpenSetData()
+        } catch (error) {
+          dispatch(setError({ message: error.message }))
+        }
+      }
+      getData()
+    }
+  }
 
   let groupBtnAction = (
     <div className="courses_buynow">
@@ -340,8 +380,9 @@ export const CourseLabelComponent = ({
             >
               {setList?.map((option) => (
                 <Button
+                  className={option.isBooked ? "isbooked_button" : ""}
+                  onClick={() => handleOpenSetData(option)}
                   key={option.id}
-                  name={option.name}
                 >
                   {option.name}
                 </Button>
@@ -356,6 +397,52 @@ export const CourseLabelComponent = ({
   return (
     <>
       <Modal
+        open={isVisibled1}
+        title={dataSet?.name}
+        closable={false}
+        onCancel={handleOpenSetData}
+        footer={
+          <>
+            <Button
+              onClick={() =>
+                showPromiseConfirm({
+                  title: `Do you want to delete ${dataSet?.name}`,
+                  handle: () => handleDeleteSet(dataSet),
+                })
+              }
+            >
+              Delete
+            </Button>
+            <Button
+              onClick={handleOpenSetData}
+            >
+              Cancel
+            </Button>
+          </>
+        }
+      >
+        {dataSet &&
+          (
+            <>
+              <div>Set Name: {dataSet?.name}</div>
+              <div>In process: {dataSet?.isBooked ? <CheckOutlined /> : <CloseOutlined />}</div>
+
+              {dataSet?.availableDates?.map((data, index) => (
+                <>
+                  <div> Session {index + 1}:
+                    <div className="formSession_modal">Date: {data.date}</div>
+                    <div className="formSession_modal">Start time: {data.startTime}</div>
+                    <div className="formSession_modal">End time: {data.endTime}</div>
+                  </div>
+                </>
+              ))}
+            </>
+          )
+        }
+      </Modal >
+
+
+      <Modal
         open={isVisibled}
         title="AddSet"
         // height={800}
@@ -364,6 +451,7 @@ export const CourseLabelComponent = ({
             title: `Do you want to create ${nameSet}?`,
             handle: () => handleButtonOk(),
           })}
+      
         onCancel={hanldeToggleModal}
         closable={false}
         className="fom_modal_addset"

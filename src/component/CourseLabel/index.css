@@ -176,3 +176,11 @@
   right: -465px;
 }
 
+.isbooked_button{
+  background-color: rgb(250, 250, 198);
+}
+
+.formSession_modal{
+  padding-left: 20px;
+}
+
