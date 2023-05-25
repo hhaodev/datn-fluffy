@@ -6,7 +6,7 @@ import client from "../../configGQL";
 import { useDispatch } from "react-redux";
 import { setError } from "../../Redux/features/notificationSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import { validate } from "graphql";
@@ -101,7 +101,7 @@ export const CourseLabelComponent = ({
   ]);
   const [coursePrograms, setCoursePrograms] = useState()
   const phaseList = coursePrograms?.flatMap(obj => obj.courseProgramPhases)
-  const [setList, setSetList] = useState()
+  const [setList, setSetList] = useState([])
   const [status, setStatus] = useState(false)
 
   useEffect(() => {
@@ -319,6 +319,40 @@ export const CourseLabelComponent = ({
       </div>
     );
   }
+
+  let formAddSetForTutor = (
+    <Fragment></Fragment>
+  )
+  if (tutorType) {
+    formAddSetForTutor = (
+      <div>
+        {setList?.length === 0
+          ?
+          <>
+            <p>There are currently no classes available!!!</p>
+            <button onClick={handleAddSet}>add set here?</button>
+          </>
+          :
+          <>
+            <p>Available study sets</p>
+            <Radio.Group
+              buttonStyle="solid"
+            >
+              {setList?.map((option) => (
+                <Button
+                  key={option.id}
+                  name={option.name}
+                >
+                  {option.name}
+                </Button>
+              ))}
+            </Radio.Group>
+          </>
+        }
+      </div>
+    )
+  }
+
   return (
     <>
       <Modal
@@ -481,29 +515,7 @@ export const CourseLabelComponent = ({
           <div className="all__button2">{groupBtnAction}</div>
         </div>
       </div>
-      {setList?.length === 0
-        ?
-        <>
-          <p>There are currently no classes available!!!</p>
-          <button onClick={handleAddSet}>add set here?</button>
-        </>
-        :
-        <>
-          <p>Available study sets</p>
-          <Radio.Group
-            buttonStyle="solid"
-          >
-            {setList?.map((option) => (
-              <Button
-                key={option.id}
-                name={option.name}
-              >
-                {option.name}
-              </Button>
-            ))}
-          </Radio.Group>
-        </>
-      }
+      {formAddSetForTutor}
     </>
   );
-};
+}
