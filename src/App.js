@@ -1,4 +1,5 @@
-import { Routes, Route, redirect, useNavigate } from "react-router-dom";
+import { Routes, Route, redirect } from "react-router-dom";
+import { socket } from "./socket";
 import { publicRoutes } from "./routes";
 import { Fragment, useEffect, useState } from "react";
 import DefaultLayout from "./layout/DefaultLayout";
@@ -27,7 +28,6 @@ export const GET_CATEGORY = gql`
 
 function App() {
   const error = useSelector((state) => state.error.content);
-
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -43,7 +43,6 @@ function App() {
   }, [error]);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const currentUser = useSelector((state) => state.user.currentUser);
 
   const [type, setType] = useState(null);
