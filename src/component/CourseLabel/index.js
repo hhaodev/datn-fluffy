@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
+import { validate } from "graphql";
 
 const { confirm } = Modal;
 
@@ -129,6 +130,8 @@ export const CourseLabelComponent = ({
 
   const [buyCourse] = useMutation(BUY_COURSE)
   const [addSet] = useMutation(ADD_SET)
+
+
   const handleBuyCourse = () => {
     const data = {
       successUrl: url,
@@ -159,27 +162,45 @@ export const CourseLabelComponent = ({
   }
 
   const handleButtonOk = () => {
+    let isValidated = true;
     const datatemp = {
       courseId: id,
       name: nameSet,
       availableDates: formListAddSet,
     };
-    const getData = async () => {
-      try {
-        const result = await addSet({
-          variables: {
-            input: datatemp,
-          },
-        });
-        setStatus(!status)
-        setIsVisibled(!isVisibled);
-        client.clearStore()
-        dispatch(setError({ message: "Create set successfully" }));
-      } catch (error) {
-        dispatch(setError({ message: error.message }));
-      }
-    };
-    getData();
+    if (nameSet) {
+      formListAddSet.forEach((el) => {
+        if (!el.startTime || !el.endTime || !el.date || !el.courseProgramPhases) {
+          isValidated = false;
+        } else {
+          isValidated = true;
+        }
+      })
+    } else {
+      isValidated = false
+    }
+
+    if (isValidated) {
+      const getData = async () => {
+        try {
+          const result = await addSet({
+            variables: {
+              input: datatemp,
+            },
+          });
+          setStatus(!status)
+          setIsVisibled(!isVisibled);
+          client.clearStore()
+          dispatch(setError({ message: "Create set successfully" }));
+        } catch (error) {
+          dispatch(setError({ message: error.message }));
+        }
+      };
+      getData();
+    }
+    else {
+      dispatch(setError({ message: "Please fill in all fields" }));
+    }
   }
 
   const handleAddSet = () => {
@@ -199,6 +220,7 @@ export const CourseLabelComponent = ({
     });
     setFormListAddSet(newFormList);
   };
+
   const handleDeleteForm = (index) => {
     const newFormList = formListAddSet.filter((el, i) => index !== i);
     setFormListAddSet(newFormList);
@@ -303,7 +325,11 @@ export const CourseLabelComponent = ({
         open={isVisibled}
         title="AddSet"
         // height={800}
-        onOk={handleButtonOk}
+        onOk={() =>
+          showPromiseConfirm({
+            title: `Do you want to create ${nameSet}?`,
+            handle: () => handleButtonOk(),
+          })}
         onCancel={hanldeToggleModal}
         closable={false}
         className="fom_modal_addset"
@@ -341,7 +367,7 @@ export const CourseLabelComponent = ({
                 {/*  */}
                 <div className="form_modal_box1">
                   {/* date */}
-                  <div style={{ width: "45%" }} className="form_modal_date">
+                  <div style={{ width: "100%" }} className="form_modal_date">
                     <label>Date</label>
                     <DatePicker
                       onChange={(e) =>
@@ -395,11 +421,12 @@ export const CourseLabelComponent = ({
 
                   {/* select */}
                   <Form.Item className="form_modal_select">
+                    <label>Phase</label>
                     <Select
                       mode="multiple"
                       allowClear
                       style={{ width: '100%' }}
-                      placeholder="Please select"
+                      placeholder="Please select phase"
                       onChange={(e) =>
                         onChangeValue(
                           index,
